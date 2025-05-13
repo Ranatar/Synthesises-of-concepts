@@ -1,0 +1,29 @@
+flowchart TD
+    Client([Клиентское приложение]) -->|1. Запрос| Producer[Producer]
+    Producer -->|2. Создание задачи| TaskStorage[(Task Storage)]
+    Producer -->|3. Добавление в очередь| Queue[Queue]
+    Producer -->|4. Возврат ID задачи| Client
+    
+    Queue -->|5. Извлечение задачи| Worker[Worker]
+    Worker -->|6. Получение данных задачи| TaskStorage
+    Worker -->|7. Запрос к API| ClaudeAPI([Claude API])
+    ClaudeAPI -->|8. Ответ от API| Worker
+    Worker -->|9. Сохранение результата| TaskStorage
+    Worker -->|10. Обновление статуса| Queue
+    
+    Scheduler[Scheduler] -->|Управление Workers| Worker
+    Scheduler -->|Мониторинг очереди| Queue
+    Scheduler -->|Планирование повторных попыток| Queue
+    
+    Client -->|Проверка статуса задачи| TaskStorage
+    TaskStorage -->|Результат выполнения| Client
+    
+    subgraph "Приоритеты очереди"
+        HighPriority[High Priority]
+        MediumPriority[Medium Priority]
+        LowPriority[Low Priority]
+    end
+    
+    Queue --- HighPriority
+    Queue --- MediumPriority
+    Queue --- LowPriority

@@ -1,0 +1,13 @@
+stateDiagram-v2
+    [*] --> created
+    created --> queued
+    queued --> processing
+    processing --> completed
+    processing --> failed
+    failed --> retrying
+    failed --> dead
+    retrying --> queued
+    queued --> cancelled
+    cancelled --> [*]
+    completed --> [*]
+    dead --> [*]

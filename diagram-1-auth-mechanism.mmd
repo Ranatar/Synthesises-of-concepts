@@ -1,0 +1,18 @@
+flowchart TD
+    Client([Клиентское приложение]) -->|1. Запрос с API-ключом| Auth[Middleware аутентификации]
+    Auth -->|2. Проверка API-ключа| KeyStorage[(Хранилище API-ключей)]
+    KeyStorage -->|3. Результат проверки| Auth
+    Auth -->|4a. При успешной аутентификации| API[API эндпоинты]
+    Auth -->|4b. При ошибке| ErrorResponse([Ответ с ошибкой])
+    API -->|5. Запрос к Claude API| ClaudeService[Сервис Claude API]
+    ClaudeService -->|6. Запрос с API-ключом Claude| ClaudeAPI([Claude API])
+    ClaudeAPI -->|7. Ответ| ClaudeService
+    ClaudeService -->|8. Обработанный ответ| API
+    API -->|9. Ответ клиенту| Client
+    
+    subgraph "Бэкенд-прокси"
+        Auth
+        API
+        ClaudeService
+        KeyStorage
+    end
