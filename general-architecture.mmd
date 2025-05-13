@@ -1,0 +1,18 @@
+flowchart TB
+    subgraph Client["Устройство пользователя"]
+        SPA["Клиентское SPA"]
+        LocalDB["Локальное хранилище\n(JSON файл)"]
+        SPA <--> LocalDB
+    end
+    
+    subgraph Server["Серверная часть"]
+        Proxy["Минималистичный\nбэкенд-прокси"]
+    end
+    
+    SPA <--> Proxy
+    Proxy <--> Claude["Claude 3.7 API"]
+    
+    style SPA fill:#b3e0ff,stroke:#0066cc
+    style LocalDB fill:#ffe6cc,stroke:#ff9933
+    style Proxy fill:#d9b3ff,stroke:#8000ff
+    style Claude fill:#ccffcc,stroke:#33cc33

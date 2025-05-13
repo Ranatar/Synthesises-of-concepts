@@ -1,0 +1,9 @@
+flowchart LR
+    UI["React UI\n(Компоненты)"] <--> Store["Redux Store\n(Состояние)"]
+    Store <--> DBService["DB Service\n(Бизнес-логика)"]
+    DBService --> JSONFile["JSON файл\nбаза данных"]
+    
+    style UI fill:#b3e0ff,stroke:#0066cc
+    style Store fill:#d9b3ff,stroke:#8000ff
+    style DBService fill:#ccffcc,stroke:#33cc33
+    style JSONFile fill:#ffe6cc,stroke:#ff9933

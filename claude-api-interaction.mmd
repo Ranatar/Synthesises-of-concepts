@@ -1,0 +1,22 @@
+flowchart LR
+    UI["React UI\n(Компоненты)"] <--> ClaudeService["Claude Service\n(Форматирование\nзапросов)"]
+    ClaudeService <--> BackendProxy["Бэкенд-прокси\n(Защищенная\nпередача)"]
+    BackendProxy <--> ClaudeAPI["Claude 3.7 API\n(Обработка данных)"]
+    
+    subgraph Client["Клиент (Браузер)"]
+        UI
+        ClaudeService
+    end
+    
+    subgraph Server["Сервер"]
+        BackendProxy
+    end
+    
+    subgraph External["Внешний сервис"]
+        ClaudeAPI
+    end
+    
+    style UI fill:#b3e0ff,stroke:#0066cc
+    style ClaudeService fill:#d9b3ff,stroke:#8000ff
+    style BackendProxy fill:#ccffcc,stroke:#33cc33
+    style ClaudeAPI fill:#ffe6cc,stroke:#ff9933
