@@ -1,0 +1,220 @@
+flowchart TB
+    %% Философы с цветовой кодировкой по школам/кружкам
+    
+    %% Официальная советская философия
+    Oizerman["Теодор Ойзерман (1914-2017)"]:::sovietOfficial
+    Konstantinov["Федор Константинов (1901-1991)"]:::sovietOfficial
+    Kedrov["Бонифатий Кедров (1903-1985)"]:::sovietOfficial
+    Mitin["Марк Митин (1901-1987)"]:::sovietOfficial
+    
+    %% Неомарксисты/Критические марксисты
+    Ilyenkov["Эвальд Ильенков (1924-1979)"]:::neoMarxist
+    Mamardashvili["Мераб Мамардашвили (1930-1990)"]:::neoMarxist
+    Zinoviev["Александр Зиновьев (1922-2006)"]:::neoMarxist
+    Batishchev["Генрих Батищев (1932-1990)"]:::neoMarxist
+    Lifshits["Михаил Лифшиц (1905-1983)"]:::neoMarxist
+    Mezhuev["Вадим Межуев (1933-2019)"]:::neoMarxist
+    
+    %% Религиозная/Экзистенциальная философия
+    Losev["Алексей Лосев (1893-1988)"]:::religious
+    Bibikhin["Владимир Бибихин (1938-2004)"]:::religious
+    Horujy["Сергей Хоружий (1941-2020)"]:::religious
+    Averintsev["Сергей Аверинцев (1937-2004)"]:::religious
+    TakhoGodi["Аза Тахо-Годи (1922-2018)"]:::religious
+    
+    %% Семиотика/Культурология
+    Bakhtin["Михаил Бахтин (1895-1975)"]:::semiotics
+    Lotman["Юрий Лотман (1922-1993)"]:::semiotics
+    Pyatigorsky["Александр Пятигорский (1929-2009)"]:::semiotics
+    Ivanov["Вячеслав Иванов (1929-2017)"]:::semiotics
+    Toporov["Владимир Топоров (1928-2005)"]:::semiotics
+    Uspensky["Борис Успенский (р. 1937)"]:::semiotics
+    
+    %% Методологический кружок/Системный подход
+    Shchedrovitsky["Георгий Щедровицкий (1929-1994)"]:::methodological
+    Bibler["Владимир Библер (1918-2000)"]:::methodological
+    Lektorsky["Владислав Лекторский (р. 1932)"]:::methodological
+    Schedrovitsky_Jr["Петр Щедровицкий (р. 1958)"]:::methodological
+    Rozov["Михаил Розов (1930-2011)"]:::methodological
+    Zinchenko["Владимир Зинченко (1931-2014)"]:::methodological
+    Lefebvre["Владимир Лефевр (1936-2020)"]:::methodological
+    
+    %% Постмодернисты/Постструктуралисты
+    Groys["Борис Гройс (р. 1947)"]:::postmodern
+    Epstein["Михаил Эпштейн (р. 1950)"]:::postmodern
+    Ryklin["Михаил Рыклин (р. 1948)"]:::postmodern
+    Podoroga["Валерий Подорога (1946-2020)"]:::postmodern
+    Girenok["Федор Гиренок (р. 1948)"]:::postmodern
+    Rudnev["Вадим Руднев (р. 1958)"]:::postmodern
+    Petrovskaya["Елена Петровская (р. 1960)"]:::postmodern
+    
+    %% Неотрадиционалисты/Евразийцы
+    Dugin["Александр Дугин (р. 1962)"]:::neoTraditional
+    Panarin["Александр Панарин (1940-2003)"]:::neoTraditional
+    Gumilev["Лев Гумилев (1912-1992)"]:::neoTraditional
+    
+    %% Другие - История философии/Этика и т.д.
+    Gaidenko["Пиама Гайденко (1934-2021)"]:::histPhil
+    Motroshilova["Нелли Мотрошилова (1934-2021)"]:::histPhil
+    Avtonomova["Наталия Автономова (р. 1945)"]:::histPhil
+    Guseinov["Абдусалам Гусейнов (р. 1939)"]:::histPhil
+    Stepin["Вячеслав Степин (1934-2018)"]:::histPhil
+    Frolov["Иван Фролов (1929-1999)"]:::histPhil
+    Ogurtsov["Александр Огурцов (1936-2014)"]:::histPhil
+    Apel["Наталья Апель (р. 1947)"]:::histPhil
+    
+    %% Новое поколение философов
+    Smirnov["Андрей Смирнов (р. 1952)"]:::histPhil
+    Chernyaev["Анатолий Черняев (р. 1964)"]:::histPhil
+    Markov["Александр Марков (р. 1976)"]:::postmodern
+    Mikhailov["Игорь Михайлов (1954-2018)"]:::histPhil
+    
+    %% Отношения учитель-ученик (сплошные линии)
+    Losev --> Bibikhin
+    Losev --> TakhoGodi
+    Losev --> Averintsev
+    Mamardashvili --> Podoroga
+    Shchedrovitsky --> Schedrovitsky_Jr
+    Oizerman --> Motroshilova
+    Kedrov --> Stepin
+    Konstantinov --> Guseinov
+    Lotman --> Uspensky
+    Lektorsky --> Ogurtsov
+    Shchedrovitsky --> Lefebvre
+    Podoroga --> Petrovskaya
+    Shchedrovitsky --> Rozov
+    Zinoviev --> Bibler
+    Lifshits --> Mezhuev
+    Pyatigorsky --> Rudnev
+    Panarin --> Dugin
+    Motroshilova --> Smirnov
+    Stepin --> Chernyaev
+    Podoroga --> Markov
+    Motroshilova --> Mikhailov
+    Bibikhin --> Chernyaev
+    
+    %% Интеллектуальное влияние (пунктирные линии)
+    Bakhtin -.-> Lotman
+    Lotman -.-> Bakhtin
+    Bakhtin -.-> Averintsev
+    Ilyenkov -.-> Mamardashvili
+    Mamardashvili -.-> Ilyenkov
+    Ilyenkov -.-> Batishchev
+    Batishchev -.-> Ilyenkov
+    Mamardashvili -.-> Ryklin
+    Losev -.-> Horujy
+    Horujy -.-> Losev
+    Pyatigorsky -.-> Rudnev
+    Lifshits -.-> Ilyenkov
+    Bakhtin -.-> Bibler
+    Bibler -.-> Bakhtin
+    Lotman -.-> Epstein
+    Mamardashvili -.-> Avtonomova
+    Avtonomova -.-> Mamardashvili
+    Shchedrovitsky -.-> Zinchenko
+    Zinchenko -.-> Shchedrovitsky
+    Dugin -.-> Girenok
+    Bibikhin -.-> Markov
+    Gumilev -.-> Dugin
+    Bakhtin -.-> Epstein
+    Ogurtsov -.-> Markov
+    Podoroga -.-> Mikhailov
+    
+    %% Полемика/Критика (точечные линии)
+    Zinoviev -..-> Oizerman
+    Oizerman -..-> Zinoviev
+    Dugin -..-> Groys
+    Groys -..-> Dugin
+    Ilyenkov -..-> Kedrov
+    Mamardashvili -..-> Konstantinov
+    Groys -..-> Epstein
+    Epstein -..-> Groys
+    Horujy -..-> Dugin
+    Dugin -..-> Horujy
+    Motroshilova -..-> Dugin
+    Podoroga -..-> Panarin
+    Bibler -..-> Kedrov
+    Mezhuev -..-> Mitin
+    Rudnev -..-> Girenok
+    Girenok -..-> Rudnev
+    Gumilev -..-> Oizerman
+    Chernyaev -..-> Dugin
+    Smirnov -..-> Markov
+    Horujy -..-> Girenok
+    
+    %% Сотрудничество/Дружба (толстые линии)
+    Mamardashvili === Pyatigorsky
+    Lotman === Ivanov
+    Lotman === Toporov
+    Ivanov === Toporov
+    Podoroga === Ryklin
+    Motroshilova === Gaidenko
+    Bibikhin === Averintsev
+    Horujy === Bibikhin
+    Ilyenkov === Batishchev
+    Groys === Ryklin
+    Avtonomova === Ryklin
+    Podoroga === Petrovskaya
+    Schedrovitsky_Jr === Rozov
+    Guseinov === Stepin
+    Frolov === Guseinov
+    Stepin === Lektorsky
+    Uspensky === Ivanov
+    Smirnov === Chernyaev
+    Markov === Petrovskaya
+    Avtonomova === Mikhailov
+    
+    %% Межгрупповые связи для обеспечения целостности схемы
+    Stepin -.-> Podoroga
+    Rudnev -.-> Uspensky
+    Motroshilova === Avtonomova
+    Bibler -.-> Horujy
+    Gumilev -.-> Panarin
+    Bibikhin === Girenok
+    Lektorsky -..-> Dugin
+    Ryklin -.-> Markov
+    Epstein === Markov
+    Guseinov -.-> Chernyaev
+    Stepin === Frolov
+    Ogurtsov === Mikhailov
+    
+    Bibler -.-> Bakhtin
+    Bakhtin -.-> Bibler
+    Lektorsky === Motroshilova
+    Zinchenko -.-> Bakhtin
+    Shchedrovitsky -..-> Ilyenkov
+    Ilyenkov -..-> Shchedrovitsky
+    Lefebvre -.-> Pyatigorsky
+    Pyatigorsky -.-> Lefebvre
+    Schedrovitsky_Jr === Stepin
+    Rozov -.-> Guseinov
+    Guseinov -.-> Rozov
+    Apel === Avtonomova
+    Apel -.-> Mamardashvili
+    
+    %% Стили для узлов
+    classDef sovietOfficial fill:#FF7777
+    classDef neoMarxist fill:#77AAFF
+    classDef religious fill:#77DD77
+    classDef semiotics fill:#AA77DD
+    classDef methodological fill:#FFAA77
+    classDef postmodern fill:#FFFF77
+    classDef neoTraditional fill:#AA5500
+    classDef histPhil fill:#AAAAAA
+    
+    %% Легенда
+    subgraph Легенда
+        SO["Официальная советская философия"]:::sovietOfficial
+        NM["Неомарксисты"]:::neoMarxist
+        RP["Религиозная философия"]:::religious
+        SC["Семиотика/Культурология"]:::semiotics
+        MS["Методологический кружок"]:::methodological
+        PM["Постмодернисты"]:::postmodern
+        NT["Неотрадиционалисты/Евразийцы"]:::neoTraditional
+        HP["История философии/Этика"]:::histPhil
+        
+        TS["Учитель-ученик (—)"]
+        II["Интеллектуальное влияние (-.->) "]
+        PC["Полемика/Критика (-..->)"]
+        CF["Сотрудничество/Дружба (===)"]
+    end
