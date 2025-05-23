@@ -1,0 +1,194 @@
+<svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Стили -->
+  <defs>
+    <style>
+      .box { fill: white; stroke: #333; stroke-width: 2; }
+      .db-box { fill: #e8f4f8; stroke: #0288d1; stroke-width: 2; }
+      .service-box { fill: #f3e5f5; stroke: #7b1fa2; stroke-width: 2; }
+      .ui-box { fill: #e8f5e9; stroke: #388e3c; stroke-width: 2; }
+      .external-box { fill: #fff3e0; stroke: #f57c00; stroke-width: 2; }
+      .text { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+      .title { font-weight: bold; font-size: 16px; }
+      .small { font-size: 12px; }
+      .arrow { fill: none; stroke: #666; stroke-width: 2; marker-end: url(#arrowhead); }
+      .data-flow { stroke: #0288d1; stroke-dasharray: 5,5; }
+      .api-flow { stroke: #7b1fa2; }
+      .user-flow { stroke: #388e3c; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+
+  <!-- Заголовок -->
+  <text x="600" y="30" class="text title" style="font-size: 20px;">Архитектура философского сервиса</text>
+
+  <!-- Frontend Layer -->
+  <g id="frontend-layer">
+    <rect x="50" y="70" width="1100" height="150" rx="10" class="ui-box" opacity="0.3"/>
+    <text x="600" y="90" class="text title">Frontend Layer</text>
+    
+    <!-- UI компоненты -->
+    <rect x="100" y="110" width="200" height="80" rx="5" class="ui-box"/>
+    <text x="200" y="135" class="text">Граф-редактор</text>
+    <text x="200" y="155" class="text small">- Drag & Drop</text>
+    <text x="200" y="170" class="text small">- Визуализация связей</text>
+    
+    <rect x="350" y="110" width="200" height="80" rx="5" class="ui-box"/>
+    <text x="450" y="135" class="text">Панель тезисов</text>
+    <text x="450" y="155" class="text small">- Редактор текста</text>
+    <text x="450" y="170" class="text small">- Группировка</text>
+    
+    <rect x="600" y="110" width="200" height="80" rx="5" class="ui-box"/>
+    <text x="700" y="135" class="text">Синтез концепций</text>
+    <text x="700" y="155" class="text small">- Выбор режима</text>
+    <text x="700" y="170" class="text small">- Визуализация результата</text>
+    
+    <rect x="850" y="110" width="200" height="80" rx="5" class="ui-box"/>
+    <text x="950" y="135" class="text">Панель управления</text>
+    <text x="950" y="155" class="text small">- История операций</text>
+    <text x="950" y="170" class="text small">- Настройки</text>
+  </g>
+
+  <!-- API Gateway -->
+  <rect x="400" y="260" width="400" height="60" rx="5" class="service-box"/>
+  <text x="600" y="285" class="text title">API Gateway</text>
+  <text x="600" y="305" class="text small">WebSocket / REST API / GraphQL</text>
+
+  <!-- Service Layer -->
+  <g id="service-layer">
+    <rect x="50" y="360" width="1100" height="200" rx="10" class="service-box" opacity="0.3"/>
+    <text x="600" y="380" class="text title">Service Layer</text>
+    
+    <!-- Микросервисы -->
+    <rect x="100" y="410" width="160" height="120" rx="5" class="service-box"/>
+    <text x="180" y="435" class="text">Graph Service</text>
+    <text x="180" y="455" class="text small">- Валидация</text>
+    <text x="180" y="470" class="text small">- Оптимизация</text>
+    <text x="180" y="485" class="text small">- Анализ структуры</text>
+    <text x="180" y="500" class="text small">- Расчет весов</text>
+    
+    <rect x="300" y="410" width="160" height="120" rx="5" class="service-box"/>
+    <text x="380" y="435" class="text">Thesis Service</text>
+    <text x="380" y="455" class="text small">- Генерация</text>
+    <text x="380" y="470" class="text small">- Валидация</text>
+    <text x="380" y="485" class="text small">- Группировка</text>
+    <text x="380" y="500" class="text small">- Ранжирование</text>
+    
+    <rect x="500" y="410" width="160" height="120" rx="5" class="service-box"/>
+    <text x="580" y="435" class="text">Synthesis Service</text>
+    <text x="580" y="455" class="text small">- Диалектика</text>
+    <text x="580" y="470" class="text small">- Интеграция</text>
+    <text x="580" y="485" class="text small">- Креативный режим</text>
+    <text x="580" y="500" class="text small">- Валидация</text>
+    
+    <rect x="700" y="410" width="160" height="120" rx="5" class="service-box"/>
+    <text x="780" y="435" class="text">Claude Service</text>
+    <text x="780" y="455" class="text small">- Промпт-менеджер</text>
+    <text x="780" y="470" class="text small">- Очередь запросов</text>
+    <text x="780" y="485" class="text small">- Кэширование</text>
+    <text x="780" y="500" class="text small">- Retry логика</text>
+    
+    <rect x="900" y="410" width="160" height="120" rx="5" class="service-box"/>
+    <text x="980" y="435" class="text">Analytics Service</text>
+    <text x="980" y="455" class="text small">- Метрики качества</text>
+    <text x="980" y="470" class="text small">- Использование</text>
+    <text x="980" y="485" class="text small">- Паттерны</text>
+    <text x="980" y="500" class="text small">- ML предсказания</text>
+  </g>
+
+  <!-- Data Layer -->
+  <g id="data-layer">
+    <rect x="50" y="600" width="1100" height="200" rx="10" class="db-box" opacity="0.3"/>
+    <text x="600" y="620" class="text title">Data Layer</text>
+    
+    <!-- Базы данных -->
+    <rect x="100" y="650" width="140" height="120" rx="5" class="db-box"/>
+    <text x="170" y="675" class="text">PostgreSQL</text>
+    <text x="170" y="695" class="text small">Основная БД</text>
+    <text x="170" y="710" class="text small">- Концепции</text>
+    <text x="170" y="725" class="text small">- Категории</text>
+    <text x="170" y="740" class="text small">- Связи</text>
+    <text x="170" y="755" class="text small">- Пользователи</text>
+    
+    <rect x="280" y="650" width="140" height="120" rx="5" class="db-box"/>
+    <text x="350" y="675" class="text">Neo4j</text>
+    <text x="350" y="695" class="text small">Граф БД</text>
+    <text x="350" y="710" class="text small">- Граф структуры</text>
+    <text x="350" y="725" class="text small">- Поиск путей</text>
+    <text x="350" y="740" class="text small">- Аналитика</text>
+    
+    <rect x="460" y="650" width="140" height="120" rx="5" class="db-box"/>
+    <text x="530" y="675" class="text">Redis</text>
+    <text x="530" y="695" class="text small">Кэш & Очереди</text>
+    <text x="530" y="710" class="text small">- Кэш ответов</text>
+    <text x="530" y="725" class="text small">- Сессии</text>
+    <text x="530" y="740" class="text small">- Очереди задач</text>
+    
+    <rect x="640" y="650" width="140" height="120" rx="5" class="db-box"/>
+    <text x="710" y="675" class="text">Elasticsearch</text>
+    <text x="710" y="695" class="text small">Поиск</text>
+    <text x="710" y="710" class="text small">- Полнотекстовый</text>
+    <text x="710" y="725" class="text small">- Семантический</text>
+    <text x="710" y="740" class="text small">- Индексация</text>
+    
+    <rect x="820" y="650" width="140" height="120" rx="5" class="db-box"/>
+    <text x="890" y="675" class="text">S3/MinIO</text>
+    <text x="890" y="695" class="text small">Хранилище</text>
+    <text x="890" y="710" class="text small">- Экспорты</text>
+    <text x="890" y="725" class="text small">- Бэкапы</text>
+    <text x="890" y="740" class="text small">- Медиа файлы</text>
+    
+    <rect x="1000" y="650" width="140" height="120" rx="5" class="db-box"/>
+    <text x="1070" y="675" class="text">Vector DB</text>
+    <text x="1070" y="695" class="text small">(Pinecone/Weaviate)</text>
+    <text x="1070" y="710" class="text small">- Эмбеддинги</text>
+    <text x="1070" y="725" class="text small">- Сходство</text>
+    <text x="1070" y="740" class="text small">- ML features</text>
+  </g>
+
+  <!-- External Services -->
+  <g id="external">
+    <rect x="950" y="260" width="200" height="60" rx="5" class="external-box"/>
+    <text x="1050" y="285" class="text title">Claude API</text>
+    <text x="1050" y="305" class="text small">Anthropic Claude 4</text>
+  </g>
+
+  <!-- Connections -->
+  <!-- Frontend to API Gateway -->
+  <line x1="200" y1="190" x2="500" y2="260" class="arrow user-flow"/>
+  <line x1="450" y1="190" x2="550" y2="260" class="arrow user-flow"/>
+  <line x1="700" y1="190" x2="650" y2="260" class="arrow user-flow"/>
+  <line x1="950" y1="190" x2="700" y2="260" class="arrow user-flow"/>
+
+  <!-- API Gateway to Services -->
+  <line x1="450" y1="320" x2="180" y2="410" class="arrow api-flow"/>
+  <line x1="520" y1="320" x2="380" y2="410" class="arrow api-flow"/>
+  <line x1="600" y1="320" x2="580" y2="410" class="arrow api-flow"/>
+  <line x1="680" y1="320" x2="780" y2="410" class="arrow api-flow"/>
+  <line x1="750" y1="320" x2="980" y2="410" class="arrow api-flow"/>
+
+  <!-- Claude Service to External -->
+  <line x1="860" y1="470" x2="950" y2="290" class="arrow api-flow"/>
+
+  <!-- Services to Databases -->
+  <line x1="180" y1="530" x2="170" y2="650" class="arrow data-flow"/>
+  <line x1="180" y1="530" x2="350" y2="650" class="arrow data-flow"/>
+  <line x1="380" y1="530" x2="170" y2="650" class="arrow data-flow"/>
+  <line x1="380" y1="530" x2="710" y2="650" class="arrow data-flow"/>
+  <line x1="580" y1="530" x2="350" y2="650" class="arrow data-flow"/>
+  <line x1="580" y1="530" x2="1070" y2="650" class="arrow data-flow"/>
+  <line x1="780" y1="530" x2="530" y2="650" class="arrow data-flow"/>
+  <line x1="980" y1="530" x2="890" y2="650" class="arrow data-flow"/>
+
+  <!-- Legend -->
+  <g transform="translate(50, 830)">
+    <text x="0" y="0" class="text title" style="text-anchor: start;">Легенда:</text>
+    <line x1="100" y1="-5" x2="140" y2="-5" class="arrow user-flow"/>
+    <text x="150" y="0" class="text small" style="text-anchor: start;">Пользовательский поток</text>
+    <line x1="300" y1="-5" x2="340" y2="-5" class="arrow api-flow"/>
+    <text x="350" y="0" class="text small" style="text-anchor: start;">API вызовы</text>
+    <line x1="480" y1="-5" x2="520" y2="-5" class="arrow data-flow"/>
+    <text x="530" y="0" class="text small" style="text-anchor: start;">Поток данных</text>
+  </g>
+</svg>
