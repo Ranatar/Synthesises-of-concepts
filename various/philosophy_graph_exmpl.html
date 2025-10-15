@@ -1,0 +1,4166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расширенный граф философских концепций</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            overflow: hidden;
+        }
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        #graph {
+            width: 100%;
+            height: 100%;
+        }
+
+        .node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .node:hover {
+            filter: brightness(1.3);
+        }
+
+        .node circle {
+            stroke-width: 3px;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.4));
+        }
+
+        .node.dimmed {
+            opacity: 0.2;
+        }
+
+        .node.highlighted {
+            opacity: 1;
+        }
+
+        .node.highlighted circle {
+            stroke-width: 5px;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.8));
+        }
+
+        .node.selected circle {
+            stroke-width: 6px;
+            stroke: #ffd700 !important;
+            filter: drop-shadow(0 0 15px #ffd700);
+        }
+
+        .node text {
+            font-size: 10px;
+            font-weight: 600;
+            pointer-events: none;
+            text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black;
+            fill: #fff;
+        }
+
+        .link {
+            fill: none;
+            stroke-width: 2px;
+            opacity: 0.4;
+            transition: opacity 0.3s, stroke-width 0.3s;
+        }
+
+        .link:hover {
+            opacity: 0.9;
+            stroke-width: 3.5px;
+        }
+
+        .link.dimmed {
+            opacity: 0.1;
+        }
+
+        .link.highlighted {
+            opacity: 1;
+            stroke-width: 4px;
+            filter: drop-shadow(0 0 5px currentColor);
+        }
+
+        .link.bidirectional {
+            stroke-dasharray: 5, 5;
+        }
+
+        #legend {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            max-width: 340px;
+            backdrop-filter: blur(10px);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        
+        #legend h3 {
+            margin: 0 0 15px 0;
+            color: #1a1a2e;
+            font-size: 19px;
+            border-bottom: 3px solid #6c5ce7;
+            padding-bottom: 10px;
+        }
+        
+        .legend-section {
+            margin-bottom: 18px;
+        }
+        
+        .legend-section h4 {
+            margin: 0 0 10px 0;
+            color: #2d3436;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Стили для radio buttons */
+        .legend-item input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            accent-color: #6c5ce7;
+        }
+        
+        .filter-controls {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .filter-controls button {
+            flex: 1;
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .filter-controls button:hover {
+            background: #7f8c8d;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 6px 0;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        
+        .legend-item:hover {
+            background: rgba(108, 92, 231, 0.1);
+        }
+        
+        .legend-item input[type="checkbox"] {
+            margin-right: 8px;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            accent-color: #6c5ce7;
+        }
+        
+        .legend-item label {
+            cursor: pointer;
+            font-size: 11px;
+            color: #2d3436;
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #2d3436;
+            flex-shrink: 0;
+        }
+        
+        .legend-line {
+            width: 35px;
+            height: 2.5px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .filter-stats {
+            font-size: 10px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        #legend::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        #legend::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        #legend::-webkit-scrollbar-thumb {
+            background: #6c5ce7;
+            border-radius: 10px;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.92);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 13px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            max-width: 280px;
+            border: 1px solid rgba(255,255,255,0.2);
+            z-index: 1000;
+        }
+
+        .tooltip strong {
+            font-size: 15px;
+            display: block;
+            margin-bottom: 5px;
+            color: #a29bfe;
+        }
+
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        #controls button {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 3px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        #controls button:hover {
+            background: #5f4fd1;
+        }
+
+        #controls button.active {
+            background: #00b894;
+        }
+
+        #info {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            color: #2d3436;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            font-weight: 500;
+            //z-index: 1;
+            transition: box-shadow 0.2s ease; /* Плавный переход для визуального эффекта */
+        }
+        
+        #info:hover {
+            z-index: 9999; /* Высокий приоритет при наведении */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4); /* Усиление тени для визуального эффекта */
+        }
+        
+        #detailModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.92);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+            max-width: 550px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 2000;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        #detailModal.show {
+            display: block;
+        }
+        
+        #modalOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+        }
+        
+        #modalOverlay.show {
+            display: block;
+        }
+        
+        #detailModal h2 {
+            margin: 0 0 8px 0;
+            color: #a29bfe;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        #detailModal .philosopher-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+        
+        #detailModal .description {
+            color: #e0e0e0;
+            margin-bottom: 18px;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+        
+        #detailModal .rubric-section {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 3px solid #a29bfe;
+        }
+        
+        #detailModal .rubric-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #a29bfe;
+            margin-bottom: 6px;
+        }
+        
+        #detailModal .rubric-description {
+            font-size: 12px;
+            color: #b0b0b0;
+            margin-bottom: 14px;
+            font-style: italic;
+        }
+        
+        #detailModal .related-concepts {
+            margin-top: 12px;
+        }
+        
+        #detailModal .related-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #e0e0e0;
+            margin-bottom: 8px;
+        }
+        
+        #detailModal .concept-item {
+            display: flex;
+            align-items: center;
+            padding: 7px 10px;
+            margin: 4px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        #detailModal .concept-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+            border-color: rgba(162, 155, 254, 0.4);
+        }
+        
+        #detailModal .concept-color {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 0 8px currentColor;
+        }
+        
+        #detailModal .concept-name {
+            font-size: 13px;
+            color: #e0e0e0;
+            flex-grow: 1;
+        }
+        
+        #detailModal .concept-philosopher {
+            font-size: 10px;
+            color: #a0a0a0;
+            font-style: italic;
+        }
+        
+        #detailModal .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+        
+        #detailModal .close-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg);
+        }
+        
+        #detailModal::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        #detailModal::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        #detailModal::-webkit-scrollbar-thumb {
+            background: #a29bfe;
+            border-radius: 10px;
+        }
+        
+        #detailModal::-webkit-scrollbar-thumb:hover {
+            background: #8b7fe6;
+        }
+        
+        /* Панель поиска пути - с возможностью сворачивания */
+        #pathFinder {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            max-width: 320px;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        #pathFinder.collapsed {
+            max-width: 60px;
+            padding: 10px;
+        }
+        
+        #pathFinder.collapsed .panel-content {
+            display: none;
+        }
+        
+        #pathFinder h3 {
+            margin: 0 0 15px 0;
+            color: #1a1a2e;
+            font-size: 17px;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        #pathFinder.collapsed h3 {
+            border-bottom: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .path-select-group {
+            margin-bottom: 15px;
+        }
+        
+        .path-select-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 5px;
+        }
+        
+        .path-select-group select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            font-size: 12px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        .path-select-group select:focus {
+            outline: none;
+            border-color: #e74c3c;
+        }
+        
+        #findPathBtn {
+            width: 100%;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-bottom: 10px;
+        }
+        
+        #findPathBtn:hover {
+            background: #c0392b;
+        }
+        
+        #pathResult {
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid #e74c3c;
+            display: none;
+        }
+        
+        #pathResult.show {
+            display: block;
+        }
+        
+        #pathResult .path-length {
+            font-size: 12px;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 8px;
+        }
+        
+        #pathResult .path-chain {
+            font-size: 11px;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+        
+        #pathResult .path-node {
+            display: inline-block;
+            padding: 3px 8px;
+            background: white;
+            border-radius: 4px;
+            margin: 2px;
+            border: 1px solid #e74c3c;
+        }
+        
+        #pathResult .path-arrow {
+            color: #e74c3c;
+            margin: 0 5px;
+        }
+        
+        /* Контейнер для узла пути с философом */
+        .path-node-container {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2px;
+            vertical-align: middle;
+        }
+        
+        .path-philosopher {
+            font-size: 9px;
+            color: #95a5a6;
+            font-style: italic;
+            margin-bottom: 2px;
+            white-space: nowrap;
+        }
+        
+        .path-node {
+            display: inline-block;
+            padding: 3px 8px;
+            background: white;
+            border-radius: 4px;
+            margin: 0;
+            border: 1px solid;
+        }
+        
+        .path-arrow {
+            display: inline-flex;
+            align-items: center;
+            margin: 0 5px;
+            font-weight: bold;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        
+        .path-arrow.bidirectional {
+            font-size: 12px;
+        }
+        
+        /* Панель статистики - с возможностью сворачивания */
+        #statsPanel {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            max-width: 320px;
+            max-height: 450px;
+            z-index: 1;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        #statsPanel.collapsed {
+            max-width: 60px;
+            max-height: 60px;
+            padding: 10px;
+            overflow: hidden;
+        }
+        
+        #statsPanel.collapsed .panel-content {
+            display: none;
+        }
+        
+        #statsPanel h3 {
+            margin: 0 0 15px 0;
+            color: #1a1a2e;
+            font-size: 17px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        #statsPanel.collapsed h3 {
+            border-bottom: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Кнопка сворачивания */
+        .collapse-btn {
+            background: rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        
+        .collapse-btn:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .collapsed .collapse-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+        }
+        
+        .stats-section {
+            margin-bottom: 20px;
+        }
+        
+        .stats-section h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #2d3436;
+            margin: 0 0 10px 0;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            padding: 6px 8px;
+            margin: 4px 0;
+            background: rgba(52, 152, 219, 0.08);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .stat-item:hover {
+            background: rgba(52, 152, 219, 0.18);
+            transform: translateX(3px);
+        }
+        
+        .stat-rank {
+            font-size: 13px;
+            font-weight: 700;
+            color: #3498db;
+            min-width: 25px;
+        }
+        
+        .stat-name {
+            flex-grow: 1;
+            font-size: 11px;
+            color: #2d3436;
+        }
+        
+        .stat-value {
+            font-size: 11px;
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        
+        .stat-philosopher {
+            font-size: 9px;
+            color: #95a5a6;
+            font-style: italic;
+            margin-left: 5px;
+        }
+        
+        #statsPanel::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        #statsPanel::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        #statsPanel::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 10px;
+        }
+        
+        /* Улучшенные связи с весами */
+        .link.weight-weak {
+            stroke-width: 2px;
+        }
+        
+        .link.weight-medium {
+            stroke-width: 3px;
+        }
+        
+        .link.weight-strong {
+            stroke-width: 5px;
+        }
+        
+        .link.path-highlight {
+            stroke-width: 6px !important;
+            opacity: 1 !important;
+            filter: drop-shadow(0 0 8px currentColor);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        /* Стили для внутренних противоречий */
+        .link.internal-contradiction {
+            stroke-dasharray: 8, 4;
+            animation: dash 20s linear infinite;
+        }
+        
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+        
+        /* Легенда весов */
+        .weight-legend {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .weight-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 10px;
+            color: #7f8c8d;
+        }
+        
+        .weight-line {
+            height: 2px;
+            margin-right: 10px;
+            background: #95a5a6;
+            flex-shrink: 0;
+        }
+        
+        .weight-line.weak { width: 20px; height: 2px; }
+        .weight-line.medium { width: 20px; height: 3px; }
+        .weight-line.strong { width: 20px; height: 5px; }
+        
+        /* Плавная анимация для заголовков при сворачивании */
+        .panel-title {
+            transition: opacity 0.2s;
+        }
+        
+        .collapsed .panel-title {
+            opacity: 0;
+            font-size: 0;
+            overflow: hidden;
+        }
+        
+        /* Иконка разворачивания для свернутых панелей */
+        .collapsed .collapse-btn .expand-icon {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Стили для табов метрик */
+        .metric-tabs {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            min-width: 70px;
+            background: #ecf0f1;
+            border: none;
+            padding: 6px 4px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: 600;
+            transition: background 0.2s;
+            color: #2d3436;
+        }
+        
+        .tab-btn:hover {
+            background: #d5dbde;
+        }
+        
+        .tab-btn.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        /* Стили для прогресс-бара */
+        #analysisProgress {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 8px;
+        }
+        
+        /* Стили для блока описания метрики */
+        .metric-description {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+        
+        .metric-description-title {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+        
+        .metric-description-content {
+            color: #34495e;
+            margin-bottom: 8px;
+        }
+        
+        .metric-description-formula {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <svg id="graph"></svg>
+        
+        <div id="modalOverlay"></div>
+            <div id="detailModal">
+                <button class="close-btn" onclick="closeDetailModal()">×</button>
+                <div id="modalContent"></div>
+            </div>
+        
+        <div id="legend">
+            <h3>🔍 Фильтры и легенда</h3>
+            
+            <div class="legend-section">
+                <h4>
+                    <span>Философы:</span>
+                </h4>
+                <div class="filter-controls">
+                    <button onclick="selectAllPhilosophers()">Все</button>
+                    <button onclick="deselectAllPhilosophers()">Сбросить</button>
+                </div>
+                <div id="philosopherFilters"></div>
+            </div>
+        
+            <div class="legend-section">
+                <h4>
+                    <span>Режим фильтрации:</span>
+                </h4>
+                <div class="legend-item">
+                    <input type="radio" id="filterAll" name="filterMode" value="all" checked onchange="changeFilterMode('all')">
+                    <label for="filterAll" style="font-size: 11px;">
+                        <span>Только выбранные философы</span>
+                    </label>
+                </div>
+                <div class="legend-item">
+                    <input type="radio" id="filterInternal" name="filterMode" value="internal" onchange="changeFilterMode('internal')">
+                    <label for="filterInternal" style="font-size: 11px;">
+                        <span>Только внутренние связи</span>
+                    </label>
+                </div>
+                <div class="legend-item">
+                    <input type="radio" id="filterContext" name="filterMode" value="context" onchange="changeFilterMode('context')">
+                    <label for="filterContext" style="font-size: 11px;">
+                        <span>С соседними узлами</span>
+                    </label>
+                </div>
+                <div style="font-size: 10px; color: #7f8c8d; margin-top: 8px; padding: 8px; background: rgba(108, 92, 231, 0.05); border-radius: 5px; line-height: 1.4;">
+                    <strong>Режимы:</strong><br>
+                    • <em>Только выбранные</em> - узлы и связи между ними<br>
+                    • <em>Только внутренние</em> - связи внутри систем<br>
+                    • <em>С соседними</em> - включая связанные узлы других философов
+                </div>
+            </div>
+        
+            <div class="legend-section">
+                <h4>
+                    <span>Типы связей:</span>
+                </h4>
+                <div class="filter-controls">
+                    <button onclick="selectAllRelations()">Все</button>
+                    <button onclick="deselectAllRelations()">Сбросить</button>
+                </div>
+                <div id="relationFilters"></div>
+                <div class="weight-legend">
+                    <div class="weight-item">
+                        <div class="weight-line weak"></div>
+                        <span>Слабое влияние</span>
+                    </div>
+                    <div class="weight-item">
+                        <div class="weight-line medium"></div>
+                        <span>Среднее влияние</span>
+                    </div>
+                    <div class="weight-item">
+                        <div class="weight-line strong"></div>
+                        <span>Сильное влияние</span>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="filter-stats" id="filterStats">
+                Показано: все концепции и связи
+            </div>
+        </div>
+        
+        <!-- Панель поиска пути -->
+        <div id="pathFinder">
+            <h3>
+                <span class="panel-title">🔍 Путь между концепциями</span>
+                <button class="collapse-btn" onclick="togglePanel('pathFinder')" title="Свернуть/Развернуть">
+                    <span class="expand-icon">−</span>
+                </button>
+            </h3>
+            <div class="panel-content">
+                <div class="path-select-group">
+                    <label for="sourceSelect">От концепции:</label>
+                    <select id="sourceSelect">
+                        <option value="">Выберите концепцию...</option>
+                    </select>
+                </div>
+                <div class="path-select-group">
+                    <label for="targetSelect">К концепции:</label>
+                    <select id="targetSelect">
+                        <option value="">Выберите концепцию...</option>
+                    </select>
+                </div>
+                <button id="findPathBtn" onclick="findAndShowPath()">Найти путь</button>
+                
+                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dfe6e9;">
+                    <div style="font-size: 11px; margin-bottom: 8px;">
+                        <label style="display: flex; align-items: center; margin-bottom: 5px; cursor: pointer;">
+                            <input type="checkbox" id="respectChronology" checked style="margin-right: 8px;">
+                            <span>Учитывать хронологию</span>
+                        </label>
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" id="respectDirection" checked style="margin-right: 8px;">
+                            <span>Учитывать направленность связей</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div id="pathResult"></div>
+            </div>
+        </div>
+        
+        <!-- Панель статистики с кнопками управления -->
+        <div id="statsPanel">
+            <h3>
+                <span class="panel-title">📊 Анализ графа</span>
+                <button class="collapse-btn" onclick="togglePanel('statsPanel')" title="Свернуть/Развернуть">
+                    <span class="expand-icon">−</span>
+                </button>
+            </h3>
+            <div class="panel-content">
+                <!-- Переключатели режимов -->
+                <div class="stats-section">
+                    <label style="display: flex; align-items: center; cursor: pointer; font-size: 11px; margin-bottom: 8px;">
+                        <input type="checkbox" id="useWeightsToggle" checked style="margin-right: 8px;" onchange="toggleWeightUsage()">
+                        <span>Учитывать веса связей</span>
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer; font-size: 11px; margin-bottom: 10px;">
+                        <input type="checkbox" id="respectDirectionToggle" checked style="margin-right: 8px;" onchange="toggleDirectionUsage()">
+                        <span>Учитывать направленность связей</span>
+                    </label>
+                </div>
+                
+                <!-- Кнопки запуска анализа -->
+                <div class="stats-section">
+                    <h4>Запуск анализа:</h4>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <button onclick="runFullAnalysis()" style="width: 100%; background: #3498db; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600;">
+                            🚀 Полный анализ
+                        </button>
+                        <button onclick="runQuickAnalysis()" style="width: 100%; background: #27ae60; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600;">
+                            ⚡ Быстрый анализ
+                        </button>
+                        <button onclick="clearAllCache()" style="width: 100%; background: #95a5a6; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600;">
+                            🔄 Сбросить кэш
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Общая статистика -->
+                <div class="stats-section" id="generalStatsSection" style="display: none;">
+                    <h4>Общая статистика</h4>
+                    <div id="generalStats" style="font-size: 11px; line-height: 1.8;"></div>
+                </div>
+                
+                <!-- Кнопка визуализации размером -->
+                <div class="stats-section" id="visualizationSection" style="display: none;">
+                    <button id="visualizeSizeBtn" onclick="toggleVisualizationBySize()" style="width: 100%; background: #27ae60; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600; transition: background 0.3s;">
+                        📏 Визуализировать размером
+                    </button>
+                </div>
+                
+                <!-- Табы для метрик -->
+                <div class="stats-section" id="metricsSection" style="display: none;">
+                    <div class="metric-tabs" style="display: flex; gap: 3px; margin-bottom: 10px; flex-wrap: wrap;">
+                        <button class="tab-btn" data-metric="degree" onclick="switchMetric('degree')" style="flex: 1; min-width: 70px; background: #ecf0f1; border: none; padding: 6px 4px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 600; transition: background 0.2s;">
+                            Degree
+                        </button>
+                        <button class="tab-btn" data-metric="pagerank" onclick="switchMetric('pagerank')" style="flex: 1; min-width: 70px; background: #ecf0f1; border: none; padding: 6px 4px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 600; transition: background 0.2s;">
+                            PageRank
+                        </button>
+                        <button class="tab-btn" data-metric="betweenness" onclick="switchMetric('betweenness')" style="flex: 1; min-width: 70px; background: #ecf0f1; border: none; padding: 6px 4px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 600; transition: background 0.2s;">
+                            Between.
+                        </button>
+                        <button class="tab-btn" data-metric="closeness" onclick="switchMetric('closeness')" style="flex: 1; min-width: 70px; background: #ecf0f1; border: none; padding: 6px 4px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 600; transition: background 0.2s;">
+                            Closeness
+                        </button>
+                        <button class="tab-btn" data-metric="clustering" onclick="switchMetric('clustering')" style="flex: 1; min-width: 70px; background: #ecf0f1; border: none; padding: 6px 4px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 600; transition: background 0.2s;">
+                            Clustering
+                        </button>
+                        <button class="tab-btn" data-metric="eigenvector" onclick="switchMetric('eigenvector')" style="flex: 1; min-width: 70px; background: #ecf0f1; border: none; padding: 6px 4px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 600; transition: background 0.2s;">
+                            Eigenvec.
+                        </button>
+                    </div>
+                    <div id="metricContent"></div>
+                </div>
+                
+                <!-- Индикатор прогресса -->
+                <div id="analysisProgress" style="display: none; margin-top: 15px; padding: 12px; background: rgba(52, 152, 219, 0.1); border-radius: 8px;">
+                    <div style="font-size: 11px; color: #2d3436; margin-bottom: 8px;">
+                        <strong id="progressLabel">Вычисление...</strong>
+                    </div>
+                    <div style="background: rgba(52, 152, 219, 0.2); height: 6px; border-radius: 3px; overflow: hidden;">
+                        <div id="progressBar" style="background: #3498db; height: 100%; width: 0%; transition: width 0.3s;"></div>
+                    </div>
+                    <div style="font-size: 10px; color: #7f8c8d; margin-top: 5px;">
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="controls">
+            <button onclick="resetSimulation()">🔄 Перезапустить</button>
+            <button onclick="centerGraph()">🎯 Центрировать</button>
+            <button id="groupBtn" onclick="toggleGrouping()">📦 Группировать</button>
+            <div id="exportButtons">
+                <button onclick="exportToPNG()">💾 PNG</button>
+                <button onclick="exportToSVG()">💾 SVG</button>
+            </div>
+        </div>
+
+        <div id="info">
+            💡 Клик - подсветка • Ctrl+клик - множественный выбор • Двойной клик - детали • Перетаскивайте • Колесо - масштаб
+        </div>
+
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <script>
+        // ============================================
+        // 1. ФИЛОСОФЫ (единый источник истины)
+        // ============================================
+        const philosophers = [
+            { id: "socrates", name: "Сократ", nameRu: "Сократ", color: "#e74c3c", birth: -469, death: -399, years: "469-399 до н.э." },
+            { id: "plato", name: "Платон", nameRu: "Платон", color: "#c0392b", birth: -428, death: -348, years: "428-348 до н.э." },
+            //...и далее
+            { id: "russell", name: "Рассел", nameRu: "Бертран Рассел", color: "#3498db", birth: 1872, death: 1970, years: "1872-1970" },
+            { id: "heidegger", name: "Хайдеггер", nameRu: "Хайдеггер", color: "#e67e22", birth: 1889, death: 1976, years: "1889-1976" }
+        ];
+        
+        // ============================================
+        // 2. РУБРИКИ (тематические категории)
+        // ============================================
+        const rubrics = [
+            {
+                id: "being",
+                name: "Бытие/Существование",
+                description: "Фундаментальные вопросы о природе реальности и существования"
+            },
+            //...и далее
+            {
+                id: "knowledge",
+                name: "Истина/Познание",
+                description: "Вопросы познания, истины и её критериев"
+            },
+            {
+                id: "method",
+                name: "Метод",
+                description: "Философские методы и подходы"
+            }
+        ];
+        
+        // ============================================
+        // 3. ТИПЫ СВЯЗЕЙ
+        // ============================================
+        const relationTypes = [
+            { id: "oppose", label: "противопоставление", color: "#e74c3c" },
+            { id: "ground", label: "обосновывает", color: "#3498db" },
+            { id: "develop", label: "развивает", color: "#2ecc71" },
+            { id: "critique", label: "критикует", color: "#f39c12" },
+            { id: "synthesize", label: "синтезирует", color: "#9b59b6" },
+            { id: "influence", label: "влияет", color: "#1abc9c" },
+            { id: "dialogue", label: "диалог", color: "#95a5a6" },
+            { id: "internal_contradiction", label: "внутреннее противоречие", color: "#e74c3c" },
+            //...и далее
+            { id: "limit", label: "ограничивает", color: "#e67e22" }
+        ];
+        
+        // ============================================
+        // 4. КОНЦЕПЦИИ
+        // ============================================
+        const concepts = [
+            { 
+                id: "maieutics", 
+                label: "Майевтика", 
+                philosopher: "socrates", 
+                rubrics: ["knowledge", "method"], 
+                description: "Метод извлечения знания через вопросы",
+                extendedDescription: "Искусство философского акушерства, при котором Сократ через систему наводящих вопросов помогал собеседнику 'родить' истину из собственного разума. Основан на убеждении, что знание уже присутствует в душе человека и нуждается лишь в правильном способе извлечения. Метод предполагает последовательное опровержение ложных мнений и постепенное приближение к истинному знанию через диалектический процесс."
+            },
+            { 
+                id: "anamnesis", 
+                label: "Анамнесис", 
+                philosopher: "plato", 
+                rubrics: ["knowledge"], 
+                description: "Воспоминание души об идеях",
+                extendedDescription: "Теория познания как припоминания того, что душа созерцала до воплощения в теле. Душа, пребывая в мире идей до рождения, обладала полным знанием; воплощение вызывает забвение, а процесс обучения есть постепенное восстановление утраченного знания. Чувственный опыт служит лишь поводом для пробуждения дремлющих в душе воспоминаний об идеальных сущностях."
+            },
+            //...и далее
+            { 
+                id: "external_world", 
+                label: "Внешний мир", 
+                philosopher: "russell", 
+                rubrics: ["being"], 
+                description: "Проблема существования внешнего мира",
+                extendedDescription: "Проблема внешнего мира для Рассела: как на основании знания чувственных данных обосновать существование независимых от сознания физических объектов? Рассел предлагает гипотезу, что физические объекты - логические конструкции из чувственных данных и возможных чувственных данных (sensibilia). Это попытка примирить эмпиризм с реализмом. Физические объекты не познаются напрямую, но постулируются как наилучшее объяснение упорядоченности опыта. Позднее Рассел склоняется к более реалистическим позициям, признавая непосредственное знание физических объектов."
+            },
+            { 
+                id: "dasein", 
+                label: "Dasein", 
+                philosopher: "heidegger", 
+                rubrics: ["being"], 
+                description: "Человеческое бытие-в-мире",
+                extendedDescription: "Не 'человек' как субстанция, а способ быть, экзистенция - присутствие (Da-sein), для которого в его бытии речь идет о самом этом бытии. Dasein всегда уже вброшено в мир, озабочено вещами и другими. Не изолированный субъект, а бытие-в-мире как целостная структура. Dasein онтологически отличается от сущего тем, что понимает бытие. Аналитика Dasein - путь к вопросу о смысле бытия вообще."
+            }
+        ];
+        
+        // ============================================
+        // 5. СВЯЗИ МЕЖДУ КОНЦЕПЦИЯМИ
+        // ============================================
+        const relations = [
+            { source: "maieutics", target: "anamnesis", type: "influence", weight: 2 },
+            //...и далее
+            { source: "external_world", target: "dasein", type: "dialogue", weight: 1, bidirectional: true }
+            
+        ];
+
+        // Создаём карту философов по id -> имя на русском
+        const philosopherIdToName = {};
+        philosophers.forEach(p => {
+            philosopherIdToName[p.id] = p.nameRu;
+        });
+        
+        // Создаём объект philosopherConcepts для совместимости с существующим кодом
+        const philosopherConcepts = {};
+        philosophers.forEach(p => {
+            philosopherConcepts[p.nameRu] = {
+                color: p.color,
+                years: p.years
+            };
+        });
+        
+        // Создаём объект philosopherOrder (уже есть в старом коде, но можно регенерировать)
+        const philosopherOrder = {};
+        philosophers.forEach(p => {
+            philosopherOrder[p.nameRu] = p.birth;
+        });
+        
+        // Преобразуем relationTypes из массива в объект
+        const relationTypesObj = {};
+        relationTypes.forEach(rt => {
+            relationTypesObj[rt.id] = {
+                color: rt.color,
+                label: rt.label
+            };
+        });
+        
+        // Создаём nodes из concepts
+        const nodes = concepts.map(c => ({
+            id: c.id,
+            label: c.label,
+            concept: philosopherIdToName[c.philosopher], // Преобразуем id в имя
+            description: c.description,
+            extendedDescription: c.extendedDescription
+        }));
+        
+        // Создаём links из relations
+        const links = relations.map(r => ({
+            source: r.source,
+            target: r.target,
+            type: r.type,
+            weight: r.weight || 2, // Вес по умолчанию, если не указан
+            bidirectional: r.bidirectional || false
+        }));
+        
+        // Создаём обратный индекс концепция -> рубрики
+        const conceptToRubrics = {};
+        concepts.forEach(c => {
+            conceptToRubrics[c.id] = c.rubrics || [];
+        });
+        
+        // Создаём объект rubrics для совместимости
+        const rubricsObj = {};
+        rubrics.forEach(r => {
+            rubricsObj[r.name] = {
+                concepts: concepts.filter(c => c.rubrics && c.rubrics.includes(r.id)).map(c => c.id),
+                description: r.description
+            };
+        });
+        
+        // Индивидуальные веса для связей (примеры ключевых связей)
+        const specificWeights = {
+            "maieutics-anamnesis": 2
+            //...и далее
+        };
+        
+        // Назначаем веса из relations, если они уже есть
+        links.forEach(link => {
+            const key = getLinkKey(link);
+            const reverseKey = `${typeof link.target === 'string' ? link.target : link.target.id}-${typeof link.source === 'string' ? link.source : link.source.id}`;
+            
+            // Если вес уже задан в relations, используем его
+            if (link.weight) {
+                // Ничего не делаем, вес уже установлен
+            }
+            // Проверяем специфический вес
+            else if (specificWeights[key]) {
+                link.weight = specificWeights[key];
+            } else if (specificWeights[reverseKey] && link.bidirectional) {
+                link.weight = specificWeights[reverseKey];
+            } else {
+                // Вес по умолчанию в зависимости от типа связи
+                switch(link.type) {
+                    case "ground":
+                    case "develop":
+                    case "synthesize":
+                        link.weight = 2;
+                        break;
+                    case "internal_contradiction":
+                        link.weight = 2;
+                        break;
+                    case "influence":
+                    case "dialogue":
+                        link.weight = 1;
+                        break;
+                    case "oppose":
+                    case "critique":
+                        link.weight = 2;
+                        break;
+                    default:
+                        link.weight = 2;
+                }
+            }
+        });
+        
+        // Глобальные переменные для переключения режимов расчёта
+        let useWeightedPaths = true;
+        let respectDirection = true;
+        
+        // Функция для генерации ключа связи
+        function getLinkKey(link) {
+            const source = typeof link.source === 'string' ? link.source : link.source.id;
+            const target = typeof link.target === 'string' ? link.target : link.target.id;
+            return `${source}-${target}`;
+        }
+        
+        // Назначаем веса
+        links.forEach(link => {
+            const key = getLinkKey(link);
+            const reverseKey = `${typeof link.target === 'string' ? link.target : link.target.id}-${typeof link.source === 'string' ? link.source : link.source.id}`;
+            
+            // Проверяем специфический вес
+            if (specificWeights[key]) {
+                link.weight = specificWeights[key];
+            } else if (specificWeights[reverseKey] && link.bidirectional) {
+                link.weight = specificWeights[reverseKey];
+            } else {
+                // Вес по умолчанию в зависимости от типа связи
+                switch(link.type) {
+                    case "ground":
+                    case "develop":
+                    case "synthesize":
+                        link.weight = 2; // По умолчанию среднее для этих типов
+                        break;
+                    case "internal_contradiction":
+                        link.weight = 2; // Противоречия обычно важны
+                        break;
+                    case "influence":
+                    case "dialogue":
+                        link.weight = 1; // По умолчанию слабое для косвенных влияний
+                        break;
+                    case "oppose":
+                    case "critique":
+                        link.weight = 2; // Критика обычно существенна
+                        break;
+                    default:
+                        link.weight = 2;
+                }
+            }
+        });
+        
+        // Дополнительная логика: усиливаем веса для связей внутри одного философа
+        links.forEach(link => {
+            const sourceNode = nodes.find(n => n.id === (typeof link.source === 'string' ? link.source : link.source.id));
+            const targetNode = nodes.find(n => n.id === (typeof link.target === 'string' ? link.target : link.target.id));
+            
+            // Если связь внутри системы одного философа и это ground/synthesize
+            if (sourceNode && targetNode && 
+                sourceNode.concept === targetNode.concept && 
+                (link.type === "ground" || link.type === "synthesize")) {
+                // Увеличиваем вес на 1, но не больше 3
+                link.weight = Math.min(link.weight + 1, 3);
+            }
+        });
+        
+        // Состояние фильтров
+        let selectedPhilosophers = new Set(Object.keys(philosopherConcepts));
+        let selectedRelations = new Set(Object.keys(relationTypesObj));
+        
+        // Режимы фильтрации: 'all' - только выбранные, 'internal' - только внутренние, 'context' - с соседними
+        let filterMode = 'all';
+        
+        // Инициализация селектов для поиска пути
+        function initPathFinder() {
+            const sourceSelect = document.getElementById('sourceSelect');
+            const targetSelect = document.getElementById('targetSelect');
+            
+            nodes.forEach(node => {
+                const option1 = document.createElement('option');
+                option1.value = node.id;
+                option1.textContent = `${node.label} (${node.concept})`;
+                sourceSelect.appendChild(option1);
+                
+                const option2 = document.createElement('option');
+                option2.value = node.id;
+                option2.textContent = `${node.label} (${node.concept})`;
+                targetSelect.appendChild(option2);
+            });
+        }
+        
+        // Поиск кратчайшего пути между двумя концепциями (BFS)
+        function findShortestPath(sourceId, targetId, respectChronology = true, useDirection = null) {
+            // Используем глобальный параметр, если не передан явно
+            const shouldRespectDirection = useDirection !== null ? useDirection : respectDirection;
+            
+            if (useWeightedPaths) {
+                return findShortestPathWeighted(sourceId, targetId, respectChronology, shouldRespectDirection);
+            } else {
+                return findShortestPathUnweighted(sourceId, targetId, respectChronology, shouldRespectDirection);
+            }
+        }
+        
+        // Взвешенный поиск (Дейкстра)
+        function findShortestPathWeighted(sourceId, targetId, respectChronology = true, shouldRespectDirection = true) {
+            if (sourceId === targetId) return [sourceId];
+            
+            const distances = {};
+            const previous = {};
+            const unvisited = new Set();
+            
+            nodes.forEach(n => {
+                distances[n.id] = Infinity;
+                previous[n.id] = null;
+                unvisited.add(n.id);
+            });
+            
+            distances[sourceId] = 0;
+            
+            while (unvisited.size > 0) {
+                // Найти узел с минимальным расстоянием
+                let current = null;
+                let minDist = Infinity;
+                unvisited.forEach(nodeId => {
+                    if (distances[nodeId] < minDist) {
+                        minDist = distances[nodeId];
+                        current = nodeId;
+                    }
+                });
+                
+                if (current === null || distances[current] === Infinity) break;
+                if (current === targetId) break;
+                
+                unvisited.delete(current);
+                
+                const currentNode = nodes.find(n => n.id === current);
+                
+                // Обновить расстояния до соседей
+                links.forEach(link => {
+                    const src = link.source.id || link.source;
+                    const tgt = link.target.id || link.target;
+                    
+                    let neighbor = null;
+                    let canTraverse = false;
+                    
+                    if (shouldRespectDirection) {
+                        // Учитываем направленность
+                        if (src === current) {
+                            neighbor = tgt;
+                            canTraverse = true;
+                        } else if (link.bidirectional && tgt === current) {
+                            neighbor = src;
+                            canTraverse = true;
+                        }
+                    } else {
+                        // Не учитываем направленность - граф ненаправленный
+                        if (src === current) {
+                            neighbor = tgt;
+                            canTraverse = true;
+                        } else if (tgt === current) {
+                            neighbor = src;
+                            canTraverse = true;
+                        }
+                    }
+                    
+                    if (canTraverse && neighbor && unvisited.has(neighbor)) {
+                        // Преобразуем вес: больший вес = меньшая "стоимость" связи
+                        const weight = link.weight || 2;
+                        const cost = 4 - weight;
+                        const alt = distances[current] + cost;
+                        
+                        if (respectChronology) {
+                            const nextNode = nodes.find(n => n.id === neighbor);
+                            const currentYear = philosopherOrder[currentNode.concept];
+                            const nextYear = philosopherOrder[nextNode.concept];
+                            
+                            if (nextYear < currentYear - 50) return;
+                        }
+                        
+                        if (alt < distances[neighbor]) {
+                            distances[neighbor] = alt;
+                            previous[neighbor] = current;
+                        }
+                    }
+                });
+            }
+            
+            // Восстановить путь
+            if (distances[targetId] === Infinity) return null;
+            
+            const path = [];
+            let current = targetId;
+            while (current !== null) {
+                path.unshift(current);
+                current = previous[current];
+            }
+            
+            return path;
+        }
+        
+        // Невзвешенный поиск (BFS)
+        function findShortestPathUnweighted(sourceId, targetId, respectChronology = true, shouldRespectDirection = true) {
+            if (sourceId === targetId) return [sourceId];
+            
+            const queue = [[sourceId]];
+            const visited = new Set([sourceId]);
+            
+            const adjacency = {};
+            nodes.forEach(n => adjacency[n.id] = []);
+            
+            links.forEach(l => {
+                const src = l.source.id || l.source;
+                const tgt = l.target.id || l.target;
+                
+                if (shouldRespectDirection) {
+                    adjacency[src].push(tgt);
+                    if (l.bidirectional) {
+                        adjacency[tgt].push(src);
+                    }
+                } else {
+                    adjacency[src].push(tgt);
+                    adjacency[tgt].push(src);
+                }
+            });
+            
+            while (queue.length > 0) {
+                const path = queue.shift();
+                const currentNodeId = path[path.length - 1];
+                
+                if (currentNodeId === targetId) {
+                    return path;
+                }
+                
+                const neighbors = adjacency[currentNodeId] || [];
+                for (const neighborId of neighbors) {
+                    if (!visited.has(neighborId)) {
+                        if (respectChronology) {
+                            const currentNode = nodes.find(n => n.id === currentNodeId);
+                            const nextNode = nodes.find(n => n.id === neighborId);
+                            
+                            const currentYear = philosopherOrder[currentNode.concept];
+                            const nextYear = philosopherOrder[nextNode.concept];
+                            
+                            if (nextYear < currentYear - 50) {
+                                continue;
+                            }
+                        }
+                        
+                        visited.add(neighborId);
+                        queue.push([...path, neighborId]);
+                    }
+                }
+            }
+            
+            return null;
+        }
+        
+        // Функция для отображения найденного пути
+        function findAndShowPath() {
+            const sourceId = document.getElementById('sourceSelect').value;
+            const targetId = document.getElementById('targetSelect').value;
+            const resultDiv = document.getElementById('pathResult');
+            
+            const respectChronology = document.getElementById('respectChronology').checked;
+            const respectDirection = document.getElementById('respectDirection').checked;
+            
+            if (!sourceId || !targetId) {
+                alert('Выберите обе концепции');
+                return;
+            }
+            
+            if (sourceId === targetId) {
+                alert('Выберите разные концепции');
+                return;
+            }
+            
+            const path = findShortestPath(sourceId, targetId, respectChronology, respectDirection);
+            
+            if (!path) {
+                const sourceNode = nodes.find(n => n.id === sourceId);
+                const targetNode = nodes.find(n => n.id === targetId);
+                
+                let message = 'Эти концепции не связаны';
+                if (respectChronology && respectDirection) {
+                    message += ' хронологически корректным путём с учётом направленности связей.';
+                } else if (respectChronology) {
+                    message += ' хронологически корректным путём.';
+                } else if (respectDirection) {
+                    message += ' с учётом направленности связей.';
+                } else {
+                    message += ' в графе.';
+                }
+                
+                resultDiv.innerHTML = `
+                    <div class="path-length">❌ Путь не найден</div>
+                    <div class="path-chain">${message}<br><br>
+                    <small style="color: #95a5a6;">Попробуйте снять ограничения ниже.</small></div>
+                    <button onclick="clearPathHighlight()" style="width: 100%; margin-top: 10px; background: #95a5a6; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 12px;">
+                        Очистить
+                    </button>
+                `;
+                resultDiv.classList.add('show');
+                resetHighlight();
+                return;
+            }
+            
+            // Формируем визуальное представление пути
+            const pathNodes = path.map(id => nodes.find(n => n.id === id));
+            
+            // Создаём HTML с узлами и стрелками
+            let pathHTML = '';
+            
+            for (let i = 0; i < pathNodes.length; i++) {
+                const node = pathNodes[i];
+                const philosopherColor = philosopherConcepts[node.concept].color;
+                
+                // Добавляем узел с философом
+                pathHTML += `
+                    <span class="path-node-container">
+                        <span class="path-philosopher">${node.concept}</span>
+                        <span class="path-node" style="border-color: ${philosopherColor};" title="${node.concept}: ${node.description}">
+                            ${node.label}
+                        </span>
+                    </span>
+                `;
+                
+                // Добавляем стрелку, если это не последний узел
+                if (i < pathNodes.length - 1) {
+                    const currentNode = pathNodes[i];
+                    const nextNode = pathNodes[i + 1];
+                    
+                    // Находим связь между текущим и следующим узлом
+                    const link = links.find(l => {
+                        const src = l.source.id || l.source;
+                        const tgt = l.target.id || l.target;
+                        
+                        if (respectDirection) {
+                            return (src === currentNode.id && tgt === nextNode.id) ||
+                                   (l.bidirectional && src === nextNode.id && tgt === currentNode.id);
+                        } else {
+                            return (src === currentNode.id && tgt === nextNode.id) ||
+                                   (src === nextNode.id && tgt === currentNode.id);
+                        }
+                    });
+                    
+                    if (link) {
+                        const linkColor = relationTypesObj[link.type].color;
+                        const linkLabel = relationTypesObj[link.type].label;
+                        const src = link.source.id || link.source;
+                        const tgt = link.target.id || link.target;
+                        
+                        // Определяем направление стрелки
+                        let arrow;
+                        if (link.bidirectional) {
+                            arrow = '↔';
+                        } else if (src === currentNode.id && tgt === nextNode.id) {
+                            arrow = '→';
+                        } else {
+                            arrow = '←';
+                        }
+                        
+                        pathHTML += `
+                            <span class="path-arrow ${link.bidirectional ? 'bidirectional' : ''}" 
+                                  style="color: ${linkColor};" 
+                                  title="${linkLabel}">
+                                ${arrow}
+                            </span>
+                        `;
+                    } else {
+                        // Если связь не найдена (не должно происходить)
+                        pathHTML += `<span class="path-arrow" style="color: #95a5a6;">→</span>`;
+                    }
+                }
+            }
+            
+            // Добавляем информацию о хронологии
+            const years = pathNodes.map(n => philosopherConcepts[n.concept].years);
+            const chronologyInfo = respectChronology ? 
+                `<div style="margin-top: 8px; font-size: 10px; color: #7f8c8d;">
+                    Хронология: ${years[0]} → ${years[years.length - 1]}
+                </div>` : '';
+            
+            resultDiv.innerHTML = `
+                <div class="path-length">✅ Длина пути: ${path.length} концепций</div>
+                <div class="path-chain" style="line-height: 2;">${pathHTML}</div>
+                ${chronologyInfo}
+                <button onclick="clearPathHighlight()" style="width: 100%; margin-top: 10px; background: #e74c3c; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 12px; transition: background 0.3s;" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'">
+                    🔄 Сбросить подсветку
+                </button>
+            `;
+            resultDiv.classList.add('show');
+            
+            // Подсвечиваем путь на графе
+            highlightPath(path, respectDirection);
+        }
+        
+        // Подсветка пути на графе
+        function highlightPath(path, respectDirection = true) {
+            resetHighlight();
+            
+            const pathSet = new Set(path);
+            const pathLinks = new Set();
+            
+            // Находим связи, которые входят в путь
+            for (let i = 0; i < path.length - 1; i++) {
+                const currentNode = path[i];
+                const nextNode = path[i + 1];
+                
+                const link = links.find(l => {
+                    const src = l.source.id || l.source;
+                    const tgt = l.target.id || l.target;
+                    
+                    if (respectDirection) {
+                        // Учитываем направленность: ищем связь в прямом направлении или bidirectional
+                        return (src === currentNode && tgt === nextNode) ||
+                               (l.bidirectional && src === nextNode && tgt === currentNode);
+                    } else {
+                        // Не учитываем направленность: любая связь между этими узлами подходит
+                        return (src === currentNode && tgt === nextNode) ||
+                               (src === nextNode && tgt === currentNode);
+                    }
+                });
+                
+                if (link) pathLinks.add(link);
+            }
+            
+            // Применяем стили
+            node.classed("dimmed", d => !pathSet.has(d.id))
+                .classed("highlighted", d => pathSet.has(d.id));
+            
+            link.classed("dimmed", l => !pathLinks.has(l))
+                .classed("path-highlight", l => pathLinks.has(l));
+        }
+        
+        // Очистка подсветки пути
+        function clearPathHighlight() {
+            resetHighlight();
+            const resultDiv = document.getElementById('pathResult');
+            resultDiv.classList.remove('show');
+            resultDiv.innerHTML = '';
+        }
+        
+        // Инициализация фильтров
+        function initFilters() {
+            // Создаем фильтры философов
+            const philContainer = document.getElementById('philosopherFilters');
+            Object.entries(philosopherConcepts).forEach(([name, data]) => {
+                const item = document.createElement('div');
+                item.className = 'legend-item';
+                item.innerHTML = `
+                    <input type="checkbox" id="phil-${name}" checked onchange="togglePhilosopher('${name}')">
+                    <label for="phil-${name}">
+                        <div class="legend-color" style="background: ${data.color}"></div>
+                        <span>${name}<small style="color: #95a5a6; font-size: 9px;"> (${data.years})</small></span>
+                    </label>
+                `;
+                philContainer.appendChild(item);
+            });
+        
+            // Создаем фильтры связей (без изменений)
+            const relContainer = document.getElementById('relationFilters');
+            Object.entries(relationTypesObj).forEach(([type, typeData]) => {
+                const item = document.createElement('div');
+                item.className = 'legend-item';
+                item.innerHTML = `
+                    <input type="checkbox" id="rel-${type}" checked onchange="toggleRelation('${type}')">
+                    <label for="rel-${type}">
+                        <div class="legend-line" style="background: ${typeData.color}"></div>
+                        <span>${typeData.label}</span>
+                    </label>
+                `;
+                relContainer.appendChild(item);
+            });
+        }
+        
+        // Переключение философа
+        function togglePhilosopher(philosopher) {
+            if (selectedPhilosophers.has(philosopher)) {
+                selectedPhilosophers.delete(philosopher);
+            } else {
+                selectedPhilosophers.add(philosopher);
+            }
+            applyFilters();
+        }
+        
+        // Переключение типа связи
+        function toggleRelation(relationType) {
+            if (selectedRelations.has(relationType)) {
+                selectedRelations.delete(relationType);
+            } else {
+                selectedRelations.add(relationType);
+            }
+            applyFilters();
+        }
+        
+        // Выбрать всех философов
+        function selectAllPhilosophers() {
+            selectedPhilosophers = new Set(Object.keys(philosopherConcepts));
+            Object.keys(philosopherConcepts).forEach(name => {
+                document.getElementById(`phil-${name}`).checked = true;
+            });
+            applyFilters();
+        }
+        
+        // Снять всех философов
+        function deselectAllPhilosophers() {
+            selectedPhilosophers.clear();
+            Object.keys(philosopherConcepts).forEach(name => {
+                document.getElementById(`phil-${name}`).checked = false;
+            });
+            applyFilters();
+        }
+        
+        // Выбрать все связи
+        function selectAllRelations() {
+            selectedRelations = new Set(Object.keys(relationTypesObj));
+            Object.keys(relationTypesObj).forEach(type => {
+                document.getElementById(`rel-${type}`).checked = true;
+            });
+            applyFilters();
+        }
+        
+        // Снять все связи
+        function deselectAllRelations() {
+            selectedRelations.clear();
+            Object.keys(relationTypesObj).forEach(type => {
+                document.getElementById(`rel-${type}`).checked = false;
+            });
+            applyFilters();
+        }
+        
+        // Переключение режима фильтрации
+        function changeFilterMode(mode) {
+            filterMode = mode;
+            applyFilters();
+        }
+        
+        // Debounce для оптимизации частых вызовов
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        // Оптимизированная версия applyFilters с debounce
+        const debouncedApplyFilters = debounce(function() {
+            applyFiltersImmediate();
+        }, 150);
+        
+        function applyFilters() {
+            debouncedApplyFilters();
+        }
+
+        // Применение фильтров с взаимосвязанной логикой
+        function applyFiltersImmediate() {
+            const allRelationsSelected = selectedRelations.size === Object.keys(relationTypesObj).length;
+            
+            if (filterMode === 'all') {
+                // Режим 1: Только выбранные философы
+                // Связи, где ОБА узла принадлежат выбранным философам
+                const validLinks = links.filter(l => {
+                    const typeSelected = selectedRelations.has(l.type);
+                    const sourcePhilosopherSelected = selectedPhilosophers.has(l.source.concept);
+                    const targetPhilosopherSelected = selectedPhilosophers.has(l.target.concept);
+                    return typeSelected && sourcePhilosopherSelected && targetPhilosopherSelected;
+                });
+                
+                const nodesInValidLinks = new Set();
+                validLinks.forEach(l => {
+                    nodesInValidLinks.add(l.source.id || l.source);
+                    nodesInValidLinks.add(l.target.id || l.target);
+                });
+                
+                node.style("display", d => {
+                    const philosopherSelected = selectedPhilosophers.has(d.concept);
+                    const inValidLinks = allRelationsSelected || nodesInValidLinks.has(d.id);
+                    return (philosopherSelected && inValidLinks) ? null : "none";
+                });
+                
+                link.style("display", l => {
+                    const typeSelected = selectedRelations.has(l.type);
+                    const sourcePhilosopherSelected = selectedPhilosophers.has(l.source.concept);
+                    const targetPhilosopherSelected = selectedPhilosophers.has(l.target.concept);
+                    const sourceInValidLinks = allRelationsSelected || nodesInValidLinks.has(l.source.id);
+                    const targetInValidLinks = allRelationsSelected || nodesInValidLinks.has(l.target.id);
+                    
+                    return (typeSelected && sourcePhilosopherSelected && targetPhilosopherSelected && 
+                            sourceInValidLinks && targetInValidLinks) ? null : "none";
+                });
+                
+            } else if (filterMode === 'internal') {
+                // Режим 2: Только внутренние связи
+                // Связи, где оба узла от ОДНОГО философа из выбранных
+                const validLinks = links.filter(l => {
+                    const typeSelected = selectedRelations.has(l.type);
+                    const sourcePhilosopherSelected = selectedPhilosophers.has(l.source.concept);
+                    const targetPhilosopherSelected = selectedPhilosophers.has(l.target.concept);
+                    const samePhilosopher = l.source.concept === l.target.concept;
+                    return typeSelected && sourcePhilosopherSelected && targetPhilosopherSelected && samePhilosopher;
+                });
+                
+                const nodesInValidLinks = new Set();
+                validLinks.forEach(l => {
+                    nodesInValidLinks.add(l.source.id || l.source);
+                    nodesInValidLinks.add(l.target.id || l.target);
+                });
+                
+                node.style("display", d => {
+                    const philosopherSelected = selectedPhilosophers.has(d.concept);
+                    const inValidLinks = allRelationsSelected || nodesInValidLinks.has(d.id);
+                    return (philosopherSelected && inValidLinks) ? null : "none";
+                });
+                
+                link.style("display", l => {
+                    const typeSelected = selectedRelations.has(l.type);
+                    const sourcePhilosopherSelected = selectedPhilosophers.has(l.source.concept);
+                    const targetPhilosopherSelected = selectedPhilosophers.has(l.target.concept);
+                    const samePhilosopher = l.source.concept === l.target.concept;
+                    const sourceInValidLinks = allRelationsSelected || nodesInValidLinks.has(l.source.id);
+                    const targetInValidLinks = allRelationsSelected || nodesInValidLinks.has(l.target.id);
+                    
+                    return (typeSelected && sourcePhilosopherSelected && targetPhilosopherSelected && 
+                            samePhilosopher && sourceInValidLinks && targetInValidLinks) ? null : "none";
+                });
+                
+            } else if (filterMode === 'context') {
+                // Режим 3: С соседними узлами
+                // Показываем выбранных философов + все узлы, с которыми они связаны
+                
+                // Сначала находим все связи, где хотя бы ОДИН конец - выбранный философ
+                const validLinks = links.filter(l => {
+                    const typeSelected = selectedRelations.has(l.type);
+                    const sourcePhilosopherSelected = selectedPhilosophers.has(l.source.concept);
+                    const targetPhilosopherSelected = selectedPhilosophers.has(l.target.concept);
+                    // Связь валидна, если хотя бы один конец принадлежит выбранному философу
+                    return typeSelected && (sourcePhilosopherSelected || targetPhilosopherSelected);
+                });
+                
+                // Собираем все узлы, участвующие в этих связях (включая "соседей")
+                const visibleNodes = new Set();
+                validLinks.forEach(l => {
+                    visibleNodes.add(l.source.id || l.source);
+                    visibleNodes.add(l.target.id || l.target);
+                });
+                
+                // Показываем все узлы, которые участвуют в валидных связях
+                node.style("display", d => {
+                    return visibleNodes.has(d.id) ? null : "none";
+                });
+                
+                // Показываем все валидные связи
+                link.style("display", l => {
+                    const typeSelected = selectedRelations.has(l.type);
+                    const sourcePhilosopherSelected = selectedPhilosophers.has(l.source.concept);
+                    const targetPhilosopherSelected = selectedPhilosophers.has(l.target.concept);
+                    const sourceVisible = visibleNodes.has(l.source.id);
+                    const targetVisible = visibleNodes.has(l.target.id);
+                    
+                    return (typeSelected && (sourcePhilosopherSelected || targetPhilosopherSelected) && 
+                            sourceVisible && targetVisible) ? null : "none";
+                });
+            }
+            
+            // Обновляем статистику
+            updateFilterStats();
+            
+            // Сбрасываем подсветку для скрытых узлов
+            const visibleNodeIds = new Set();
+            node.each(function(d) {
+                if (this.style.display !== "none") {
+                    visibleNodeIds.add(d.id);
+                }
+            });
+            
+            selectedNodes.forEach(node => {
+                if (!visibleNodeIds.has(node.id)) {
+                    selectedNodes.delete(node);
+                }
+            });
+        
+            if (selectedNodes.size === 0) {
+                resetHighlight();
+            } else {
+                highlightConnected(Array.from(selectedNodes));
+            }
+        }
+        // Обновление статистики фильтров
+        function updateFilterStats() {
+            let visibleNodesCount = 0;
+            let visibleLinksCount = 0;
+            
+            node.each(function() {
+                if (this.style.display !== "none") visibleNodesCount++;
+            });
+            
+            link.each(function() {
+                if (this.style.display !== "none") visibleLinksCount++;
+            });
+            
+            const totalNodes = nodes.length;
+            const totalLinks = links.length;
+            
+            document.getElementById('filterStats').textContent = 
+                `Показано: ${visibleNodesCount}/${totalNodes} концепций, ${visibleLinksCount}/${totalLinks} связей`;
+        }
+        
+        // Расчет влиятельности концепций (degree centrality) с кэшированием
+        let influenceCache = null;
+        
+        function calculateInfluence() {
+            if (influenceCache) return influenceCache;
+            
+            const influence = {};
+            
+            nodes.forEach(n => {
+                influence[n.id] = { in: 0, out: 0, total: 0, node: n };
+            });
+            
+            links.forEach(l => {
+                const src = l.source.id || l.source;
+                const tgt = l.target.id || l.target;
+                influence[src].out++;
+                influence[tgt].in++;
+                if (l.bidirectional) {
+                    influence[src].in++;
+                    influence[tgt].out++;
+                }
+            });
+            
+            Object.values(influence).forEach(i => {
+                i.total = i.in + i.out;
+            });
+            
+            const result = Object.values(influence).sort((a, b) => b.total - a.total);
+            influenceCache = result;
+            return result;
+        }
+        
+        function invalidateInfluenceCache() {
+            influenceCache = null;
+        }
+        
+        // Расчет узлов-мостов (betweenness centrality - ПОЛНАЯ версия с асинхронностью)
+        let betweennessCache = null;
+        let betweennessCalculating = false;
+        
+        // Асинхронная версия для полного расчёта без блокировки UI
+        // Правильный расчёт Betweenness Centrality (алгоритм Брандеса)
+        async function calculateBetweennessAsync(progressCallback) {
+            if (betweennessCache) return betweennessCache;
+            if (betweennessCalculating) return null;
+            
+            betweennessCalculating = true;
+            const betweenness = {};
+            nodes.forEach(n => betweenness[n.id] = 0);
+            
+            let processedNodes = 0;
+            const totalNodes = nodes.length;
+            
+            // Для каждого исходного узла
+            for (let sourceIdx = 0; sourceIdx < nodes.length; sourceIdx++) {
+                const source = nodes[sourceIdx];
+                
+                const S = []; // Стек узлов в порядке невозрастающего расстояния
+                const P = {}; // Предшественники на кратчайших путях
+                const sigma = {}; // Количество кратчайших путей
+                const d = {}; // Расстояния
+                const delta = {}; // Зависимости
+                
+                nodes.forEach(n => {
+                    P[n.id] = [];
+                    sigma[n.id] = 0;
+                    d[n.id] = -1;
+                    delta[n.id] = 0;
+                });
+                
+                sigma[source.id] = 1;
+                d[source.id] = 0;
+                
+                const Q = [source.id];
+                
+                // BFS для поиска кратчайших путей
+                while (Q.length > 0) {
+                    const v = Q.shift();
+                    S.push(v);
+                    
+                    // Для каждого соседа v
+                    links.forEach(link => {
+                        const src = link.source.id || link.source;
+                        const tgt = link.target.id || link.target;
+                        
+                        let w = null;
+                        
+                        // Учитываем направленность графа
+                        if (respectDirection) {
+                            if (src === v) {
+                                w = tgt;
+                            } else if (link.bidirectional && tgt === v) {
+                                w = src;
+                            }
+                        } else {
+                            // Ненаправленный граф
+                            if (src === v) {
+                                w = tgt;
+                            } else if (tgt === v) {
+                                w = src;
+                            }
+                        }
+                        
+                        if (w !== null) {
+                            // Вес связи (если useWeightedPaths = true)
+                            const weight = useWeightedPaths ? (4 - (link.weight || 2)) : 1;
+                            
+                            // Путь к w найден впервые?
+                            if (d[w] < 0) {
+                                Q.push(w);
+                                d[w] = d[v] + weight;
+                            }
+                            
+                            // Кратчайший путь к w через v?
+                            if (d[w] === d[v] + weight) {
+                                sigma[w] += sigma[v];
+                                P[w].push(v);
+                            }
+                        }
+                    });
+                }
+                
+                // Накопление (обратный проход)
+                while (S.length > 0) {
+                    const w = S.pop();
+                    P[w].forEach(v => {
+                        delta[v] += (sigma[v] / sigma[w]) * (1 + delta[w]);
+                    });
+                    if (w !== source.id) {
+                        betweenness[w] += delta[w];
+                    }
+                }
+                
+                processedNodes++;
+                
+                // Обновляем прогресс каждые 5 узлов
+                if (processedNodes % 5 === 0) {
+                    if (progressCallback) {
+                        progressCallback(processedNodes, totalNodes);
+                    }
+                    await new Promise(resolve => setTimeout(resolve, 0));
+                }
+            }
+            
+            // Нормализация
+            const normFactor = respectDirection ? 1.0 : 2.0;
+            Object.keys(betweenness).forEach(key => {
+                betweenness[key] /= normFactor;
+            });
+            
+            const result = Object.entries(betweenness)
+                .map(([id, value]) => ({
+                    node: nodes.find(n => n.id === id),
+                    value: value,
+                    count: Math.round(value)
+                }))
+                .sort((a, b) => b.value - a.value);
+            
+            betweennessCache = result;
+            betweennessCalculating = false;
+            
+            if (progressCallback) {
+                progressCallback(totalNodes, totalNodes);
+            }
+            
+            return result;
+        }
+        
+        // Синхронная версия для обратной совместимости (возвращает кэш или null)
+        function calculateBetweenness() {
+            if (betweennessCache) return betweennessCache;
+            
+            // Если кэша нет - запускаем асинхронный расчёт
+            if (!betweennessCalculating) {
+                calculateBetweennessAsync();
+            }
+            
+            return null; // Вернём null, пока идёт расчёт
+        }
+        
+        // Сброс кэша при изменении графа
+        function invalidateBetweennessCache() {
+            betweennessCache = null;
+            betweennessCalculating = false;
+        }
+        
+        // Кэш для PageRank
+        let pageRankCache = null;
+        let pageRankCalculating = false;
+        
+        function calculatePageRank(iterations = 20, dampingFactor = 0.85, progressCallback = null) {
+            if (pageRankCache) return Promise.resolve(pageRankCache);
+            if (pageRankCalculating) return Promise.resolve(null);
+            
+            pageRankCalculating = true;
+            
+            return new Promise(async (resolve) => {
+                const pageRank = {};
+                const inLinks = {};
+                const outDegree = {};
+                
+                // Инициализация
+                nodes.forEach(n => {
+                    pageRank[n.id] = 1.0 / nodes.length;
+                    inLinks[n.id] = [];
+                    outDegree[n.id] = 0;
+                });
+                
+                // Построить списки входящих связей и подсчитать исходящие
+                links.forEach(link => {
+                    const src = link.source.id || link.source;
+                    const tgt = link.target.id || link.target;
+                    const weight = useWeightedPaths ? (link.weight || 2) / 3.0 : 1.0;
+                    
+                    if (respectDirection) {
+                        // Направленный граф
+                        inLinks[tgt].push({ from: src, weight: weight });
+                        outDegree[src]++;
+                        
+                        if (link.bidirectional) {
+                            inLinks[src].push({ from: tgt, weight: weight });
+                            outDegree[tgt]++;
+                        }
+                    } else {
+                        // Ненаправленный граф
+                        inLinks[tgt].push({ from: src, weight: weight });
+                        inLinks[src].push({ from: tgt, weight: weight });
+                        outDegree[src]++;
+                        outDegree[tgt]++;
+                    }
+                });
+                
+                // Итеративный расчет
+                for (let iter = 0; iter < iterations; iter++) {
+                    const newPageRank = {};
+                    
+                    nodes.forEach(node => {
+                        let sum = 0;
+                        
+                        inLinks[node.id].forEach(inLink => {
+                            if (outDegree[inLink.from] > 0) {
+                                sum += (pageRank[inLink.from] / outDegree[inLink.from]) * inLink.weight;
+                            }
+                        });
+                        
+                        newPageRank[node.id] = (1 - dampingFactor) / nodes.length + dampingFactor * sum;
+                    });
+                    
+                    // Обновить значения
+                    Object.keys(newPageRank).forEach(key => {
+                        pageRank[key] = newPageRank[key];
+                    });
+                    
+                    // Обновляем прогресс
+                    if (progressCallback && iter % 5 === 0) {
+                        progressCallback(iter, iterations);
+                        await new Promise(res => setTimeout(res, 0));
+                    }
+                }
+                
+                const result = Object.entries(pageRank)
+                    .map(([id, value]) => ({
+                        node: nodes.find(n => n.id === id),
+                        value: value
+                    }))
+                    .sort((a, b) => b.value - a.value);
+                
+                pageRankCache = result;
+                pageRankCalculating = false;
+                
+                if (progressCallback) progressCallback(iterations, iterations);
+                
+                resolve(result);
+            });
+        }
+        
+        function invalidatePageRankCache() {
+            pageRankCache = null;
+            pageRankCalculating = false;
+        }
+        
+        // Кэш для Closeness
+        let closenessCache = null;
+        let closenessCalculating = false;
+        
+        async function calculateClosenessCentrality(progressCallback = null) {
+            if (closenessCache) return closenessCache;
+            if (closenessCalculating) return null;
+            
+            closenessCalculating = true;
+            const closeness = {};
+            
+            let processedNodes = 0;
+            const totalNodes = nodes.length;
+            
+            for (let i = 0; i < nodes.length; i++) {
+                const source = nodes[i];
+                let totalDistance = 0;
+                let reachableNodes = 0;
+                
+                for (let j = 0; j < nodes.length; j++) {
+                    if (i === j) continue;
+                    
+                    const target = nodes[j];
+                    // Используем глобальный параметр respectDirection
+                    const path = findShortestPath(source.id, target.id, false, respectDirection);
+                    
+                    if (path) {
+                        // Для взвешенного графа суммируем веса
+                        if (useWeightedPaths) {
+                            let pathWeight = 0;
+                            for (let k = 0; k < path.length - 1; k++) {
+                                const link = links.find(l => {
+                                    const src = l.source.id || l.source;
+                                    const tgt = l.target.id || l.target;
+                                    
+                                    if (respectDirection) {
+                                        return (src === path[k] && tgt === path[k + 1]) ||
+                                               (l.bidirectional && tgt === path[k] && src === path[k + 1]);
+                                    } else {
+                                        return (src === path[k] && tgt === path[k + 1]) ||
+                                               (tgt === path[k] && src === path[k + 1]);
+                                    }
+                                });
+                                pathWeight += (4 - (link?.weight || 2));
+                            }
+                            totalDistance += pathWeight;
+                        } else {
+                            totalDistance += path.length - 1;
+                        }
+                        reachableNodes++;
+                    }
+                }
+                
+                // Нормализованная closeness (Wasserman & Faust)
+                if (reachableNodes > 0) {
+                    const rawCloseness = reachableNodes / totalDistance;
+                    const normalizedCloseness = (reachableNodes / (nodes.length - 1)) * rawCloseness;
+                    
+                    closeness[source.id] = {
+                        value: normalizedCloseness,
+                        node: source,
+                        reachable: reachableNodes
+                    };
+                } else {
+                    closeness[source.id] = { value: 0, node: source, reachable: 0 };
+                }
+                
+                processedNodes++;
+                
+                if (processedNodes % 5 === 0) {
+                    if (progressCallback) {
+                        progressCallback(processedNodes, totalNodes);
+                    }
+                    await new Promise(resolve => setTimeout(resolve, 0));
+                }
+            }
+            
+            const result = Object.values(closeness).sort((a, b) => b.value - a.value);
+            closenessCache = result;
+            closenessCalculating = false;
+            
+            if (progressCallback) progressCallback(totalNodes, totalNodes);
+            
+            return result;
+        }
+        
+        function invalidateClosenessCache() {
+            closenessCache = null;
+            closenessCalculating = false;
+        }
+        
+        // Кэш для Clustering
+        let clusteringCache = null;
+        
+        function calculateClusteringCoefficient() {
+            if (clusteringCache) return clusteringCache;
+            
+            const clustering = {};
+            
+            nodes.forEach(node => {
+                // Найти всех соседей (для кластеризации всегда ненаправленный подход)
+                const neighbors = new Set();
+                links.forEach(link => {
+                    const src = link.source.id || link.source;
+                    const tgt = link.target.id || link.target;
+                    
+                    if (src === node.id) neighbors.add(tgt);
+                    if (tgt === node.id || link.bidirectional) neighbors.add(src);
+                });
+                
+                const k = neighbors.size;
+                if (k < 2) {
+                    clustering[node.id] = { value: 0, node: node, neighbors: k };
+                    return;
+                }
+                
+                // Подсчитать связи между соседями
+                let edgesBetweenNeighbors = 0;
+                const neighborArray = Array.from(neighbors);
+                
+                for (let i = 0; i < neighborArray.length; i++) {
+                    for (let j = i + 1; j < neighborArray.length; j++) {
+                        const hasEdge = links.some(link => {
+                            const src = link.source.id || link.source;
+                            const tgt = link.target.id || link.target;
+                            return (src === neighborArray[i] && tgt === neighborArray[j]) ||
+                                   (src === neighborArray[j] && tgt === neighborArray[i]) ||
+                                   (link.bidirectional && 
+                                    ((src === neighborArray[i] && tgt === neighborArray[j]) ||
+                                     (src === neighborArray[j] && tgt === neighborArray[i])));
+                        });
+                        if (hasEdge) edgesBetweenNeighbors++;
+                    }
+                }
+                
+                clustering[node.id] = {
+                    value: (2.0 * edgesBetweenNeighbors) / (k * (k - 1)),
+                    node: node,
+                    neighbors: k
+                };
+            });
+            
+            const result = Object.values(clustering).sort((a, b) => b.value - a.value);
+            clusteringCache = result;
+            return result;
+        }
+        
+        function invalidateClusteringCache() {
+            clusteringCache = null;
+        }
+        
+        // Взвешенная степень узла
+        function calculateWeightedDegree() {
+            const weightedDegree = {};
+            
+            nodes.forEach(node => {
+                let inWeight = 0;
+                let outWeight = 0;
+                let inCount = 0;
+                let outCount = 0;
+                
+                links.forEach(link => {
+                    const src = link.source.id || link.source;
+                    const tgt = link.target.id || link.target;
+                    const weight = useWeightedPaths ? (link.weight || 2) : 1;
+                    
+                    if (respectDirection) {
+                        // Направленный граф
+                        if (tgt === node.id) {
+                            inWeight += weight;
+                            inCount++;
+                        }
+                        if (src === node.id) {
+                            outWeight += weight;
+                            outCount++;
+                        }
+                        if (link.bidirectional) {
+                            if (src === node.id) {
+                                inWeight += weight;
+                                inCount++;
+                            }
+                            if (tgt === node.id) {
+                                outWeight += weight;
+                                outCount++;
+                            }
+                        }
+                    } else {
+                        // Ненаправленный граф
+                        if (tgt === node.id || src === node.id) {
+                            inWeight += weight;
+                            outWeight += weight;
+                            inCount++;
+                            outCount++;
+                        }
+                    }
+                });
+                
+                weightedDegree[node.id] = {
+                    inWeight: inWeight,
+                    outWeight: outWeight,
+                    totalWeight: respectDirection ? (inWeight + outWeight) : inWeight, // Для ненаправленного не удваиваем
+                    inCount: inCount,
+                    outCount: outCount,
+                    totalCount: respectDirection ? (inCount + outCount) : inCount,
+                    node: node
+                };
+            });
+            
+            return Object.values(weightedDegree).sort((a, b) => b.totalWeight - a.totalWeight);
+        }
+        
+        // Кэш для Eigenvector Centrality
+        let eigenvectorCache = null;
+        let eigenvectorCalculating = false;
+        
+        async function calculateEigenvectorCentrality(iterations = 100, progressCallback = null) {
+            if (eigenvectorCache) return eigenvectorCache;
+            if (eigenvectorCalculating) return null;
+            
+            eigenvectorCalculating = true;
+            
+            return new Promise(async (resolve) => {
+                const eigenvector = {};
+                
+                // Инициализация равными значениями
+                nodes.forEach(n => {
+                    eigenvector[n.id] = 1.0 / Math.sqrt(nodes.length);
+                });
+                
+                // Построить матрицу смежности
+                const adjacency = {};
+                nodes.forEach(n => adjacency[n.id] = []);
+                
+                links.forEach(link => {
+                    const src = link.source.id || link.source;
+                    const tgt = link.target.id || link.target;
+                    const weight = useWeightedPaths ? (link.weight || 2) / 3.0 : 1.0;
+                    
+                    if (respectDirection) {
+                        // Направленный граф - входящие связи
+                        adjacency[tgt].push({ neighbor: src, weight: weight });
+                        if (link.bidirectional) {
+                            adjacency[src].push({ neighbor: tgt, weight: weight });
+                        }
+                    } else {
+                        // Ненаправленный граф
+                        adjacency[src].push({ neighbor: tgt, weight: weight });
+                        adjacency[tgt].push({ neighbor: src, weight: weight });
+                    }
+                });
+                
+                // Power iteration method
+                for (let iter = 0; iter < iterations; iter++) {
+                    const newEigenvector = {};
+                    
+                    // Вычисляем новые значения
+                    nodes.forEach(node => {
+                        let sum = 0;
+                        adjacency[node.id].forEach(edge => {
+                            sum += eigenvector[edge.neighbor] * edge.weight;
+                        });
+                        newEigenvector[node.id] = sum;
+                    });
+                    
+                    // Нормализация (L2 norm)
+                    let norm = 0;
+                    Object.values(newEigenvector).forEach(val => {
+                        norm += val * val;
+                    });
+                    norm = Math.sqrt(norm);
+                    
+                    // Избегаем деления на ноль
+                    if (norm < 1e-10) {
+                        console.warn('Eigenvector: норма слишком мала, прерываем итерации');
+                        break;
+                    }
+                    
+                    Object.keys(newEigenvector).forEach(key => {
+                        eigenvector[key] = newEigenvector[key] / norm;
+                    });
+                    
+                    // Обновляем прогресс
+                    if (progressCallback && iter % 10 === 0) {
+                        progressCallback(iter, iterations);
+                        await new Promise(res => setTimeout(res, 0));
+                    }
+                }
+                
+                const result = Object.entries(eigenvector)
+                    .map(([id, value]) => ({
+                        node: nodes.find(n => n.id === id),
+                        value: value
+                    }))
+                    .sort((a, b) => b.value - a.value);
+                
+                eigenvectorCache = result;
+                eigenvectorCalculating = false;
+                
+                if (progressCallback) progressCallback(iterations, iterations);
+                
+                resolve(result);
+            });
+        }
+        
+        function invalidateEigenvectorCache() {
+            eigenvectorCache = null;
+            eigenvectorCalculating = false;
+        }
+        
+        // Переменные для визуализации размером
+        let originalNodeRadii = {};
+        let isVisualizingBySize = false;
+        let currentVisualizedMetric = null;
+        
+        // Сохранить оригинальные радиусы узлов
+        function saveOriginalRadii() {
+            if (Object.keys(originalNodeRadii).length === 0) {
+                nodes.forEach(n => {
+                    originalNodeRadii[n.id] = 18; // Оригинальный радиус
+                });
+            }
+        }
+        
+        // Визуализация метрики размером узлов
+        function visualizeMetricBySize(metricData, metricName) {
+            if (!metricData || metricData.length === 0) {
+                alert('Нет данных для визуализации');
+                return;
+            }
+            
+            saveOriginalRadii();
+            
+            isVisualizingBySize = true;
+            currentVisualizedMetric = metricName;
+            
+            // Найти минимальное и максимальное значение
+            const values = metricData.map(d => d.value || d.totalWeight || 0);
+            const minValue = Math.min(...values);
+            const maxValue = Math.max(...values);
+            
+            // Диапазон радиусов: от 8 до 35
+            const minRadius = 8;
+            const maxRadius = 35;
+            
+            // Создать мапу значений
+            const valueMap = {};
+            metricData.forEach(item => {
+                const value = item.value || item.totalWeight || 0;
+                // Нормализация в диапазон радиусов
+                let radius;
+                if (maxValue === minValue) {
+                    radius = (minRadius + maxRadius) / 2;
+                } else {
+                    radius = minRadius + ((value - minValue) / (maxValue - minValue)) * (maxRadius - minRadius);
+                }
+                valueMap[item.node.id] = radius;
+            });
+            
+            // Применить новые радиусы
+            node.selectAll("circle")
+                .transition()
+                .duration(500)
+                .attr("r", d => valueMap[d.id] || minRadius);
+            
+            // Обновить позицию текста
+            node.selectAll("text")
+                .transition()
+                .duration(500)
+                .attr("dy", d => -(valueMap[d.id] || minRadius) - 7);
+            
+            // Обновить маркеры (стрелки) - увеличить refX для больших узлов
+            links.forEach((l, i) => {
+                const tgt = l.target.id || l.target;
+                const targetRadius = valueMap[tgt] || minRadius;
+                
+                link.filter((linkData, idx) => idx === i)
+                    .attr("marker-end", d => {
+                        // Создаём временный маркер с правильным refX
+                        const markerId = `arrow-${d.type}-${i}`;
+                        const existingMarker = defs.select(`#${markerId}`);
+                        
+                        if (existingMarker.empty()) {
+                            const newMarker = defs.append("marker")
+                                .attr("id", markerId)
+                                .attr("viewBox", "0 -5 10 10")
+                                .attr("refX", targetRadius + 8)
+                                .attr("refY", 0)
+                                .attr("markerWidth", 6)
+                                .attr("markerHeight", 6)
+                                .attr("orient", "auto")
+                                .append("path")
+                                .attr("d", "M0,-5L10,0L0,5")
+                                .attr("fill", relationTypesObj[d.type].color);
+                        } else {
+                            existingMarker.attr("refX", targetRadius + 8);
+                        }
+                        
+                        return `url(#${markerId})`;
+                    });
+            });
+            
+            // Обновить надпись кнопки
+            const btn = document.getElementById('visualizeSizeBtn');
+            if (btn) {
+                btn.textContent = '🔄 Сбросить размеры';
+                btn.style.background = '#e74c3c';
+            }
+            
+            console.log(`Визуализация метрики "${metricName}" размером узлов активирована`);
+        }
+        
+        // Восстановить оригинальные размеры
+        function resetNodeSizes() {
+            if (!isVisualizingBySize) return;
+            
+            isVisualizingBySize = false;
+            currentVisualizedMetric = null;
+            
+            // Восстановить радиусы
+            node.selectAll("circle")
+                .transition()
+                .duration(500)
+                .attr("r", 18);
+            
+            // Восстановить позицию текста
+            node.selectAll("text")
+                .transition()
+                .duration(500)
+                .attr("dy", -25);
+            
+            // Восстановить оригинальные маркеры
+            link.attr("marker-end", d => `url(#arrow-${d.type})`);
+            
+            // Удалить временные маркеры
+            defs.selectAll("[id^='arrow-'][id$='-']").remove();
+            
+            // Обновить надпись кнопки
+            const btn = document.getElementById('visualizeSizeBtn');
+            if (btn) {
+                btn.textContent = '📏 Визуализировать размером';
+                btn.style.background = '#27ae60';
+            }
+            
+            console.log('Оригинальные размеры узлов восстановлены');
+        }
+        
+        // Переключатель визуализации
+        function toggleVisualizationBySize() {
+            if (isVisualizingBySize) {
+                resetNodeSizes();
+            } else {
+                // Визуализировать текущую метрику
+                if (!currentMetric) {
+                    alert('Сначала выберите метрику из табов');
+                    return;
+                }
+                
+                let metricData = null;
+                
+                switch(currentMetric) {
+                    case 'degree':
+                        metricData = calculateWeightedDegree();
+                        break;
+                    case 'pagerank':
+                        metricData = pageRankCache;
+                        break;
+                    case 'betweenness':
+                        metricData = betweennessCache;
+                        break;
+                    case 'closeness':
+                        metricData = closenessCache;
+                        break;
+                    case 'clustering':
+                        metricData = clusteringCache;
+                        break;
+                    case 'eigenvector':
+                        metricData = eigenvectorCache;
+                        break;
+                }
+                
+                if (!metricData) {
+                    alert('Сначала запустите анализ для выбранной метрики');
+                    return;
+                }
+                
+                visualizeMetricBySize(metricData, currentMetric);
+            }
+        }
+        
+        // Поиск компонент связности
+        function findConnectedComponents() {
+            const visited = new Set();
+            const components = [];
+            
+            nodes.forEach(node => {
+                if (visited.has(node.id)) return;
+                
+                const component = [];
+                const queue = [node.id];
+                visited.add(node.id);
+                
+                while (queue.length > 0) {
+                    const current = queue.shift();
+                    component.push(current);
+                    
+                    links.forEach(link => {
+                        const src = link.source.id || link.source;
+                        const tgt = link.target.id || link.target;
+                        
+                        if (respectDirection) {
+                            if (src === current && !visited.has(tgt)) {
+                                visited.add(tgt);
+                                queue.push(tgt);
+                            } else if (link.bidirectional && tgt === current && !visited.has(src)) {
+                                visited.add(src);
+                                queue.push(src);
+                            }
+                        } else {
+                            if (src === current && !visited.has(tgt)) {
+                                visited.add(tgt);
+                                queue.push(tgt);
+                            } else if (tgt === current && !visited.has(src)) {
+                                visited.add(src);
+                                queue.push(src);
+                            }
+                        }
+                    });
+                }
+                
+                components.push(component);
+            });
+            
+            return components;
+        }
+        
+        // Расчёт общей статистики графа
+        async function calculateGraphStatistics(progressCallback = null) {
+            const stats = {
+                nodes: nodes.length,
+                edges: links.length,
+                density: 0,
+                avgDegree: 0,
+                diameter: 0,
+                avgPathLength: 0,
+                components: 0,
+                avgClustering: 0,
+                reciprocity: 0
+            };
+            
+            // Плотность
+            const maxEdges = nodes.length * (nodes.length - 1);
+            stats.density = (2 * links.length) / maxEdges;
+            
+            // Средняя степень
+            const degrees = nodes.map(n => {
+                let degree = 0;
+                links.forEach(l => {
+                    const src = l.source.id || l.source;
+                    const tgt = l.target.id || l.target;
+                    
+                    if (respectDirection) {
+                        if (src === n.id || tgt === n.id) degree++;
+                        if (l.bidirectional && (src === n.id || tgt === n.id)) degree++;
+                    } else {
+                        if (src === n.id || tgt === n.id) degree++;
+                    }
+                });
+                return degree;
+            });
+            stats.avgDegree = degrees.reduce((a, b) => a + b, 0) / degrees.length;
+            
+            // Взаимность (reciprocity)
+            let bidirectionalCount = links.filter(l => l.bidirectional).length;
+            stats.reciprocity = links.length > 0 ? bidirectionalCount / links.length : 0;
+            
+            if (progressCallback) progressCallback(1, 4);
+            await new Promise(resolve => setTimeout(resolve, 0));
+            
+            // Диаметр и средняя длина пути
+            let totalPaths = 0;
+            let pathCount = 0;
+            let maxPath = 0;
+            
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const path = findShortestPath(nodes[i].id, nodes[j].id, false, respectDirection);
+                    if (path) {
+                        const length = path.length - 1;
+                        totalPaths += length;
+                        pathCount++;
+                        maxPath = Math.max(maxPath, length);
+                    }
+                }
+            }
+            
+            stats.diameter = maxPath;
+            stats.avgPathLength = pathCount > 0 ? totalPaths / pathCount : 0;
+            
+            if (progressCallback) progressCallback(2, 4);
+            await new Promise(resolve => setTimeout(resolve, 0));
+            
+            // Средний коэффициент кластеризации
+            const clustering = calculateClusteringCoefficient();
+            stats.avgClustering = clustering.reduce((sum, c) => sum + c.value, 0) / clustering.length;
+            
+            if (progressCallback) progressCallback(3, 4);
+            await new Promise(resolve => setTimeout(resolve, 0));
+            
+            // Количество компонент связности
+            stats.components = findConnectedComponents().length;
+            
+            if (progressCallback) progressCallback(4, 4);
+            
+            return stats;
+        }
+        
+        // Описания и интерпретации метрик
+        const metricDescriptions = {
+            degree: {
+                name: "Степень узла (Degree Centrality)",
+                description: "Количество связей узла с другими узлами",
+                interpretation: () => {
+                    if (respectDirection && useWeightedPaths) {
+                        return "В направленном взвешенном графе: высокий входящий вес = концепцию часто цитируют через сильные связи, высокий исходящий = концепция оказывает сильное влияние на другие.";
+                    } else if (respectDirection && !useWeightedPaths) {
+                        return "В направленном графе: высокие входящие связи = на концепцию часто ссылаются, высокие исходящие = концепция активно влияет на другие. Сила связей не учитывается.";
+                    } else if (!respectDirection && useWeightedPaths) {
+                        return "В ненаправленном взвешенном графе: высокое значение = концепция связана со многими идеями сильными связями. Чем больше вес связей, тем важнее концепция.";
+                    } else {
+                        return "В ненаправленном графе: высокое значение = концепция связана со многими идеями. Это \"хабы\" философской сети. Все связи считаются одинаково важными.";
+                    }
+                },
+                usage: "Используйте для выявления наиболее активно используемых концепций, вокруг которых строятся философские системы.",
+                formula: () => useWeightedPaths ? "Σ весов всех связей узла" : "Количество рёбер, инцидентных узлу"
+            },
+            
+            pagerank: {
+                name: "PageRank",
+                description: "Авторитетность узла через качество входящих связей",
+                interpretation: () => {
+                    if (respectDirection && useWeightedPaths) {
+                        return "Направленный взвешенный: концепция получает больше авторитета от важных узлов через сильные связи. Фундаментальное влияние (вес 3) передаёт больше авторитета, чем слабое упоминание (вес 1).";
+                    } else if (respectDirection && !useWeightedPaths) {
+                        return "Направленный: концепция важна, если на неё ссылаются другие влиятельные идеи. Все связи считаются равными по силе.";
+                    } else if (!respectDirection && useWeightedPaths) {
+                        return "Ненаправленный взвешенный: концепция важна через сильные связи с другими важными концепциями. Симметричное взаимное усиление.";
+                    } else {
+                        return "Ненаправленный: концепция важна, если связана с другими важными концепциями. Симметричная версия без учёта силы и направления связей.";
+                    }
+                },
+                usage: "Используйте для определения концепций, которые получают влияние от других важных идей. Отличается от Degree тем, что учитывает не только количество, но и важность соседей.",
+                formula: () => "PR(A) = (1-d)/N + d × Σ(PR(Ti)/C(Ti))" + (useWeightedPaths ? " × w(Ti,A)" : "")
+            },
+            
+            betweenness: {
+                name: "Betweenness Centrality (Посредничество)",
+                description: "Частота нахождения узла на кратчайших путях между другими узлами",
+                interpretation: () => {
+                    if (respectDirection && useWeightedPaths) {
+                        return "Направленный взвешенный: концепции-мосты, через которые проходит направленное влияние по наиболее сильным связям. Алгоритм предпочитает пути с высокими весами.";
+                    } else if (respectDirection && !useWeightedPaths) {
+                        return "Направленный: концепции-мосты для направленного влияния. Путь выбирается по минимуму рёбер, сила связей не важна.";
+                    } else if (!respectDirection && useWeightedPaths) {
+                        return "Ненаправленный взвешенный: концепции-мосты между традициями. Идеи распространяются через сильные связи — фундаментальные влияния важнее слабых упоминаний.";
+                    } else {
+                        return "Ненаправленный: концепции-мосты между традициями. Путь определяется минимумом шагов, все связи равнозначны.";
+                    }
+                },
+                usage: "Используйте для поиска концепций, которые соединяют различные философские школы. Удаление таких узлов может разбить граф на изолированные компоненты.",
+                formula: () => {
+                    const base = "CB(v) = Σ(σst(v)/σst), где σst — число кратчайших путей";
+                    return base + (useWeightedPaths ? " (с учётом весов — минимум 'стоимости')" : " (минимум рёбер)");
+                }
+            },
+            
+            closeness: {
+                name: "Closeness Centrality (Близость)",
+                description: "Обратное среднее расстояние от узла до всех остальных узлов",
+                interpretation: () => {
+                    if (respectDirection && useWeightedPaths) {
+                        return "Направленный взвешенный: концепция в центре потока влияния. Может быстро «достучаться» до других идей по сильным направленным связям. Фундаментальные связи сокращают 'расстояние'.";
+                    } else if (respectDirection && !useWeightedPaths) {
+                        return "Направленный: из концепции можно быстро достичь других идей по направленным связям. Расстояние = число шагов.";
+                    } else if (!respectDirection && useWeightedPaths) {
+                        return "Ненаправленный взвешенный: концепция в самом центре сети взаимовлияний. Сильные связи делают её более 'близкой' ко всем остальным идеям.";
+                    } else {
+                        return "Ненаправленный: концепция в центре сети. Может достичь любой другой идеи за минимум шагов, независимо от силы связей.";
+                    }
+                },
+                usage: "Используйте для выявления концепций, которые могут служить отправной точкой для понимания всей философской системы. Они наиболее «доступны» из любой части сети.",
+                formula: () => {
+                    const base = "CC(v) = (n-1) / Σd(v,u), где d(v,u) — расстояние";
+                    return base + (useWeightedPaths ? " (взвешенное)" : " (по числу рёбер)");
+                }
+            },
+            
+            clustering: {
+                name: "Clustering Coefficient (Коэффициент кластеризации)",
+                description: "Степень, в которой соседи узла связаны между собой",
+                interpretation: () => {
+                    return "Высокий коэффициент = концепция в плотном кластере взаимосвязанных идей (философская школа). Низкий = соединяет разные группы. Метрика всегда ненаправленная по определению, веса не влияют на расчёт.";
+                },
+                usage: "Используйте для определения, является ли концепция частью тесно связанной философской школы (высокий коэффициент) или служит мостом между разными традициями (низкий коэффициент).",
+                formula: () => "C(v) = 2e(v) / (k(v)(k(v)-1)), где e(v) — рёбра между соседями"
+            },
+            
+            eigenvector: {
+                name: "Eigenvector Centrality",
+                description: "Влиятельность узла через связи с другими влиятельными узлами",
+                interpretation: () => {
+                    if (respectDirection && useWeightedPaths) {
+                        return "Направленный взвешенный: концепция важна, если на неё сильно влияют другие важные концепции. Входящая связь от влиятельного узла с весом 3 даёт больше 'очков', чем с весом 1.";
+                    } else if (respectDirection && !useWeightedPaths) {
+                        return "Направленный: концепция важна через входящие связи от других важных узлов. Количество важнее силы связи.";
+                    } else if (!respectDirection && useWeightedPaths) {
+                        return "Ненаправленный взвешенный: концепция важна через сильные связи с другими важными концепциями. Взаимное усиление через фундаментальные влияния.";
+                    } else {
+                        return "Ненаправленный: концепция важна, если связана с другими важными концепциями. Симметричное взаимное усиление, все связи равны.";
+                    }
+                },
+                usage: "Используйте для выявления концепций, которые составляют ядро философской традиции. Они важны не сами по себе, а через взаимное усиление с другими ключевыми идеями.",
+                formula: () => {
+                    const base = "x(v) = (1/λ) × Σ A(v,u) × x(u)";
+                    return base + (useWeightedPaths ? ", A — взвешенная матрица" : ", A — бинарная матрица");
+                }
+            }
+        };
+        
+        // Функция показа описания метрики
+        function showMetricDescription(metricName) {
+            const desc = metricDescriptions[metricName];
+            if (!desc) return '';
+            
+            // Получаем динамические значения (функции или статические строки)
+            const interpretation = typeof desc.interpretation === 'function' 
+                ? desc.interpretation() 
+                : desc.interpretation;
+            const formula = typeof desc.formula === 'function' 
+                ? desc.formula() 
+                : desc.formula;
+            
+            return `
+                <div style="background: rgba(52, 152, 219, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 12px; font-size: 11px; line-height: 1.6;">
+                    <div style="font-weight: 700; color: #2c3e50; margin-bottom: 6px; font-size: 12px;">
+                        ${desc.name}
+                    </div>
+                    <div style="color: #34495e; margin-bottom: 8px;">
+                        <strong>Что измеряет:</strong> ${desc.description}
+                    </div>
+                    <div style="color: #34495e; margin-bottom: 8px;">
+                        <strong>Интерпретация:</strong> ${interpretation}
+                    </div>
+                    <div style="color: #34495e; margin-bottom: 8px;">
+                        <strong>Применение:</strong> ${desc.usage}
+                    </div>
+                    <div style="color: #7f8c8d; font-style: italic; font-size: 10px;">
+                        <strong>Формула:</strong> ${formula}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Функция показа описания метрики
+        function showMetricDescription(metricName) {
+            const desc = metricDescriptions[metricName];
+            if (!desc) return '';
+            
+            return `
+                <div style="background: rgba(52, 152, 219, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 12px; font-size: 11px; line-height: 1.6;">
+                    <div style="font-weight: 700; color: #2c3e50; margin-bottom: 6px; font-size: 12px;">
+                        ${desc.name}
+                    </div>
+                    <div style="color: #34495e; margin-bottom: 8px;">
+                        <strong>Что измеряет:</strong> ${desc.description}
+                    </div>
+                    <div style="color: #34495e; margin-bottom: 8px;">
+                        <strong>Интерпретация:</strong> ${desc.interpretation}
+                    </div>
+                    <div style="color: #34495e; margin-bottom: 8px;">
+                        <strong>Применение:</strong> ${desc.usage}
+                    </div>
+                    <div style="color: #7f8c8d; font-style: italic; font-size: 10px;">
+                        <strong>Формула:</strong> ${desc.formula}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Текущая выбранная метрика
+        let currentMetric = null;
+        
+        // Переключение использования весов
+        function toggleWeightUsage() {
+            useWeightedPaths = document.getElementById('useWeightsToggle').checked;
+            
+            // Сбрасываем кэш всех метрик, зависящих от весов
+            invalidateBetweennessCache();
+            invalidatePageRankCache();
+            invalidateClosenessCache();
+            invalidateClusteringCache();
+            invalidateEigenvectorCache();
+            
+            console.log('Режим учёта весов:', useWeightedPaths ? 'Включён' : 'Выключен');
+            
+            // Если визуализация активна, сбрасываем её
+            if (isVisualizingBySize) {
+                resetNodeSizes();
+            }
+            
+            // Если есть текущая метрика, обновляем её
+            if (currentMetric) {
+                showMetric(currentMetric);
+            }
+        }
+        
+        // Переключение учёта направленности (НОВОЕ!)
+        function toggleDirectionUsage() {
+            respectDirection = document.getElementById('respectDirectionToggle').checked;
+            
+            // Сбрасываем кэш ВСЕХ метрик, так как направленность влияет на всё
+            invalidateInfluenceCache();
+            invalidateBetweennessCache();
+            invalidatePageRankCache();
+            invalidateClosenessCache();
+            invalidateClusteringCache(); // Кластеризация не зависит, но сбросим для единообразия
+            invalidateEigenvectorCache();
+            
+            console.log('Режим учёта направленности:', respectDirection ? 'Включён' : 'Выключен');
+            
+            // Если визуализация активна, сбрасываем её
+            if (isVisualizingBySize) {
+                resetNodeSizes();
+            }
+            
+            // Если есть текущая метрика, обновляем её
+            if (currentMetric) {
+                showMetric(currentMetric);
+            }
+        }
+        
+        // Быстрый анализ (только Degree и общая статистика)
+        async function runQuickAnalysis() {
+            showProgress('Быстрый анализ...', 0);
+            
+            try {
+                // Общая статистика
+                const stats = await calculateGraphStatistics((current, total) => {
+                    const percent = Math.round((current / total) * 50);
+                    showProgress('Общая статистика...', percent);
+                });
+                displayGeneralStats(stats);
+                
+                // Degree centrality
+                showProgress('Степень узлов...', 75);
+                await new Promise(resolve => setTimeout(resolve, 100));
+                
+                document.getElementById('generalStatsSection').style.display = 'block';
+                document.getElementById('metricsSection').style.display = 'block';
+                document.getElementById('visualizationSection').style.display = 'block';
+                
+                switchMetric('degree');
+                
+                showProgress('Готово!', 100);
+                setTimeout(hideProgress, 1000);
+                
+            } catch (error) {
+                console.error('Ошибка при анализе:', error);
+                hideProgress();
+                alert('Произошла ошибка при анализе');
+            }
+        }
+        
+        // Полный анализ (все метрики)
+        async function runFullAnalysis() {
+            showProgress('Запуск полного анализа...', 0);
+            
+            try {
+                // 1. Общая статистика (15%)
+                const stats = await calculateGraphStatistics((current, total) => {
+                    const percent = Math.round((current / total) * 15);
+                    showProgress('Общая статистика...', percent);
+                });
+                displayGeneralStats(stats);
+                
+                // 2. PageRank (15%)
+                showProgress('Расчёт PageRank...', 15);
+                await calculatePageRank(20, 0.85, (current, total) => {
+                    const percent = 15 + Math.round((current / total) * 15);
+                    showProgress('Расчёт PageRank...', percent);
+                });
+                
+                // 3. Eigenvector (15%)
+                showProgress('Расчёт Eigenvector...', 30);
+                await calculateEigenvectorCentrality(100, (current, total) => {
+                    const percent = 30 + Math.round((current / total) * 15);
+                    showProgress('Расчёт Eigenvector...', percent);
+                });
+                
+                // 4. Betweenness (25%)
+                showProgress('Расчёт Betweenness...', 45);
+                await calculateBetweennessAsync((current, total) => {
+                    const percent = 45 + Math.round((current / total) * 25);
+                    showProgress('Расчёт Betweenness...', percent);
+                });
+                
+                // 5. Closeness (20%)
+                showProgress('Расчёт Closeness...', 70);
+                await calculateClosenessCentrality((current, total) => {
+                    const percent = 70 + Math.round((current / total) * 20);
+                    showProgress('Расчёт Closeness...', percent);
+                });
+                
+                // 6. Clustering (10%)
+                showProgress('Расчёт Clustering...', 90);
+                await new Promise(resolve => setTimeout(resolve, 100));
+                calculateClusteringCoefficient();
+                
+                document.getElementById('generalStatsSection').style.display = 'block';
+                document.getElementById('metricsSection').style.display = 'block';
+                document.getElementById('visualizationSection').style.display = 'block';
+                
+                switchMetric('pagerank');
+                
+                showProgress('Анализ завершён!', 100);
+                setTimeout(hideProgress, 1500);
+                
+                console.log('Полный анализ завершён');
+                
+            } catch (error) {
+                console.error('Ошибка при полном анализе:', error);
+                hideProgress();
+                alert('Произошла ошибка при анализе');
+            }
+        }
+        
+        // Показать прогресс
+        function showProgress(label, percent) {
+            const progressDiv = document.getElementById('analysisProgress');
+            const progressBar = document.getElementById('progressBar');
+            const progressPercent = document.getElementById('progressPercent');
+            const progressLabel = document.getElementById('progressLabel');
+            
+            progressDiv.style.display = 'block';
+            progressBar.style.width = percent + '%';
+            progressPercent.textContent = percent + '%';
+            progressLabel.textContent = label;
+        }
+        
+        // Скрыть прогресс
+        function hideProgress() {
+            const progressDiv = document.getElementById('analysisProgress');
+            progressDiv.style.display = 'none';
+        }
+        
+        // Сброс всего кэша
+        function clearAllCache() {
+            invalidateInfluenceCache();
+            invalidateBetweennessCache();
+            invalidatePageRankCache();
+            invalidateClosenessCache();
+            invalidateClusteringCache();
+            invalidateEigenvectorCache();
+            
+            // Сбросить визуализацию
+            if (isVisualizingBySize) {
+                resetNodeSizes();
+            }
+            
+            document.getElementById('generalStatsSection').style.display = 'none';
+            document.getElementById('metricsSection').style.display = 'none';
+            document.getElementById('visualizationSection').style.display = 'none';
+            
+            currentMetric = null;
+            
+            console.log('Весь кэш очищен');
+            alert('Кэш очищен. Запустите анализ снова.');
+        }
+        
+        // Отображение общей статистики
+        function displayGeneralStats(stats) {
+            const statsDiv = document.getElementById('generalStats');
+            
+            const modeInfo = `
+                <div style="background: rgba(52, 152, 219, 0.08); padding: 8px; border-radius: 5px; margin-bottom: 8px; font-size: 10px;">
+                    Режим: <strong>${respectDirection ? 'Направленный' : 'Ненаправленный'}</strong> граф, 
+                    веса <strong>${useWeightedPaths ? 'учитываются' : 'не учитываются'}</strong>
+                </div>
+            `;
+            
+            statsDiv.innerHTML = modeInfo + `
+                Узлов: <strong>${stats.nodes}</strong><br>
+                Рёбер: <strong>${stats.edges}</strong><br>
+                Плотность: <strong>${stats.density.toFixed(4)}</strong><br>
+                Средняя степень: <strong>${stats.avgDegree.toFixed(2)}</strong><br>
+                Взаимность: <strong>${(stats.reciprocity * 100).toFixed(1)}%</strong><br>
+                Диаметр: <strong>${stats.diameter}</strong><br>
+                Средний путь: <strong>${stats.avgPathLength.toFixed(2)}</strong><br>
+                Компонент связности: <strong>${stats.components}</strong><br>
+                Средняя кластеризация: <strong>${stats.avgClustering.toFixed(3)}</strong>
+            `;
+        }
+        
+        // Переключение метрик
+        function switchMetric(metricName) {
+            currentMetric = metricName;
+            
+            // Обновляем активную кнопку
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-metric="${metricName}"]`)?.classList.add('active');
+            
+            showMetric(metricName);
+        }
+        
+        // Показать конкретную метрику
+        function showMetric(metricName) {
+            const contentDiv = document.getElementById('metricContent');
+            
+            // Показать описание метрики
+            let html = showMetricDescription(metricName);
+            
+            switch(metricName) {
+                case 'degree':
+                    const degree = calculateWeightedDegree();
+                    html += formatMetricResults(
+                        degree.slice(0, 10), 
+                        'totalWeight',
+                        useWeightedPaths ? 'Взвешенная степень' : 'Степень узла'
+                    );
+                    break;
+                    
+                case 'pagerank':
+                    if (pageRankCache) {
+                        html += formatMetricResults(
+                            pageRankCache.slice(0, 10), 
+                            'value',
+                            'PageRank',
+                            true
+                        );
+                    } else {
+                        html += '<div style="font-size: 11px; color: #95a5a6; padding: 10px;">Запустите анализ для вычисления PageRank</div>';
+                    }
+                    break;
+                    
+                case 'betweenness':
+                    if (betweennessCache) {
+                        html += formatMetricResults(
+                            betweennessCache.slice(0, 10), 
+                            'value',
+                            'Betweenness',
+                            true
+                        );
+                    } else {
+                        html += '<div style="font-size: 11px; color: #95a5a6; padding: 10px;">Запустите анализ для вычисления Betweenness</div>';
+                    }
+                    break;
+                    
+                case 'closeness':
+                    if (closenessCache) {
+                        html += formatMetricResults(
+                            closenessCache.slice(0, 10), 
+                            'value',
+                            'Closeness',
+                            true
+                        );
+                    } else {
+                        html += '<div style="font-size: 11px; color: #95a5a6; padding: 10px;">Запустите анализ для вычисления Closeness</div>';
+                    }
+                    break;
+                    
+                case 'clustering':
+                    if (clusteringCache) {
+                        html += formatMetricResults(
+                            clusteringCache.slice(0, 10), 
+                            'value',
+                            'Коэффициент кластеризации',
+                            true
+                        );
+                    } else {
+                        const clustering = calculateClusteringCoefficient();
+                        html += formatMetricResults(
+                            clustering.slice(0, 10), 
+                            'value',
+                            'Коэффициент кластеризации',
+                            true
+                        );
+                    }
+                    break;
+                    
+                case 'eigenvector':
+                    if (eigenvectorCache) {
+                        html += formatMetricResults(
+                            eigenvectorCache.slice(0, 10), 
+                            'value',
+                            'Eigenvector Centrality',
+                            true
+                        );
+                    } else {
+                        html += '<div style="font-size: 11px; color: #95a5a6; padding: 10px;">Запустите анализ для вычисления Eigenvector</div>';
+                    }
+                    break;
+            }
+            
+            contentDiv.innerHTML = html;
+        }
+        
+        // Форматирование результатов метрики
+        function formatMetricResults(data, valueKey, title, isDecimal = false) {
+            if (!data || data.length === 0) {
+                return '<div style="font-size: 11px; color: #95a5a6; padding: 10px;">Нет данных</div>';
+            }
+            
+            let html = `<h4 style="margin: 10px 0; font-size: 13px;">${title}</h4>`;
+            
+            data.forEach((item, index) => {
+                const value = item[valueKey];
+                const displayValue = isDecimal ? value.toFixed(4) : Math.round(value);
+                
+                html += `
+                    <div class="stat-item" onclick="highlightNodeById('${item.node.id}')">
+                        <span class="stat-rank">${index + 1}.</span>
+                        <span class="stat-name">${item.node.label}</span>
+                        <span class="stat-value">${displayValue}</span>
+                        <span class="stat-philosopher">${item.node.concept}</span>
+                    </div>
+                `;
+            });
+            
+            return html;
+        }
+        
+        // Подсветка узла по ID
+        function highlightNodeById(nodeId) {
+            const nodeData = nodes.find(n => n.id === nodeId);
+            if (nodeData) {
+                selectedNodes.clear();
+                selectedNodes.add(nodeData);
+                highlightConnected([nodeData]);
+                
+                // Центрируем на узле
+                const nodeElement = node.filter(d => d.id === nodeId);
+                if (nodeElement.size() > 0) {
+                    const d = nodeElement.datum();
+                    const transform = d3.zoomIdentity
+                        .translate(width / 2 - d.x, height / 2 - d.y)
+                        .scale(1.5);
+                    svg.transition().duration(750).call(zoom.transform, transform);
+                }
+            }
+        }
+        
+        // Экспорт в PNG
+        function exportToPNG() {
+            const svgElement = document.getElementById('graph');
+            const svgClone = svgElement.cloneNode(true);
+            
+            // Получаем текущий transform от zoom
+            const gElement = svgClone.querySelector('g');
+            const transform = g.attr('transform');
+            if (transform) {
+                gElement.setAttribute('transform', transform);
+            }
+            
+            // Применяем инлайн-стили к тексту
+            const textElements = svgClone.querySelectorAll('text');
+            textElements.forEach(text => {
+                text.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+                text.style.fontSize = '10px';
+                text.style.fontWeight = '600';
+                text.style.fill = '#fff';
+                text.style.textShadow = '0 0 4px black';
+            });
+            
+            // Применяем инлайн-стили к узлам
+            const circles = svgClone.querySelectorAll('circle');
+            circles.forEach(circle => {
+                const computedStyle = window.getComputedStyle(circle);
+                circle.style.strokeWidth = '3px';
+                circle.style.filter = 'drop-shadow(0 0 10px rgba(255,255,255,0.4))';
+            });
+            
+            // Применяем инлайн-стили к связям
+            const paths = svgClone.querySelectorAll('path.link');
+            paths.forEach(path => {
+                path.style.fill = 'none';
+                const computedStyle = window.getComputedStyle(path);
+                path.style.stroke = computedStyle.stroke;
+                path.style.strokeWidth = computedStyle.strokeWidth;
+                path.style.opacity = computedStyle.opacity;
+            });
+            
+            // Увеличиваем разрешение для лучшего качества
+            const scale = 2;
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = width * scale;
+            canvas.height = height * scale;
+            ctx.scale(scale, scale);
+            
+            const svgData = new XMLSerializer().serializeToString(svgClone);
+            const img = new Image();
+            
+            img.onload = function() {
+                // Рисуем фон
+                ctx.fillStyle = '#0f0c29';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Рисуем SVG
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                // Конвертируем в PNG
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.download = 'philosophy-graph.png';
+                    link.href = url;
+                    link.click();
+                    URL.revokeObjectURL(url);
+                }, 'image/png');
+            };
+            
+            img.onerror = function(e) {
+                console.error('Ошибка загрузки изображения:', e);
+                alert('Ошибка при экспорте. Попробуйте использовать экспорт в SVG.');
+            };
+            
+            // Кодируем SVG данные
+            const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(svgBlob);
+            img.src = url;
+        }
+        
+        // Экспорт в SVG
+        function exportToSVG() {
+            const svgElement = document.getElementById('graph');
+            const svgData = new XMLSerializer().serializeToString(svgElement);
+            
+            const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.download = 'philosophy-graph.svg';
+            link.href = url;
+            link.click();
+            
+            URL.revokeObjectURL(url);
+        }
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        
+        const svg = d3.select("#graph")
+            .attr("width", width)
+            .attr("height", height);
+
+        // Контейнер для масштабирования и прокрутки
+        const g = svg.append("g");
+
+        // Настройка zoom
+        const zoom = d3.zoom()
+            .scaleExtent([0.1, 4])
+            .on("zoom", (event) => {
+                g.attr("transform", event.transform);
+            });
+
+        svg.call(zoom);
+
+        // Клик на фон для сброса подсветки
+        svg.on("click", function(event) {
+            if (event.target === this) {
+                resetHighlight();
+            }
+        });
+
+        const defs = svg.append("defs");
+        
+        Object.keys(relationTypesObj).forEach(type => {
+            defs.append("marker")
+                .attr("id", `arrow-${type}`)
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 26)
+                .attr("refY", 0)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 6)
+                .attr("orient", "auto")
+                .append("path")
+                .attr("d", "M0,-5L10,0L0,5")
+                .attr("fill", relationTypesObj[type].color);
+            // Специальный маркер для внутренних противоречий
+            defs.append("marker")
+                .attr("id", "arrow-internal_contradiction")
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 26)
+                .attr("refY", 0)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 6)
+                .attr("orient", "auto")
+                .append("path")
+                .attr("d", "M0,-5L10,0L0,5")
+                .attr("fill", relationTypesObj["internal_contradiction"].color);
+            
+        });
+
+        let simulation = d3.forceSimulation(nodes)
+            .force("link", d3.forceLink(links).id(d => d.id).distance(160))
+            .force("charge", d3.forceManyBody().strength(-350))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(45))
+            .alphaDecay(0.02); // Ускоряем затухание симуляции
+        
+        // Останавливаем симуляцию после стабилизации
+        let tickCount = 0;
+        const maxTicks = 300; // Ограничиваем количество тиков
+        
+        simulation.on("tick", () => {
+            tickCount++;
+            
+            // Оптимизация: обновляем только видимые элементы
+            link.filter(function() { return this.style.display !== "none"; })
+                .attr("d", d => {
+                    const dx = d.target.x - d.source.x;
+                    const dy = d.target.y - d.source.y;
+                    const dr = Math.sqrt(dx * dx + dy * dy) * 1.5;
+                    return `M${d.source.x},${d.source.y}A${dr},${dr} 0 0,1 ${d.target.x},${d.target.y}`;
+                });
+
+            node.filter(function() { return this.style.display !== "none"; })
+                .attr("transform", d => `translate(${d.x},${d.y})`);
+            
+            // Останавливаем после определенного количества тиков
+            if (tickCount >= maxTicks) {
+                simulation.stop();
+            }
+        });
+        
+        simulation.on("end", () => {
+            console.log("Симуляция завершена после", tickCount, "тиков");
+            console.log("Производительность - узлов:", nodes.length, "связей:", links.length);
+            
+            // Информация о памяти (если доступно)
+            if (performance.memory) {
+                console.log("Использование памяти:", 
+                    Math.round(performance.memory.usedJSHeapSize / 1048576), "МБ");
+            }
+        });
+
+        // Позиции для группировки по философам
+        const philosopherNames = Object.keys(philosopherConcepts);
+        const groupPositions = {};
+        const cols = 6;
+        const rows = Math.ceil(philosopherNames.length / cols);
+        const spacingX = width / (cols + 1);
+        const spacingY = height / (rows + 1);
+
+        philosopherNames.forEach((phil, i) => {
+            const col = i % cols;
+            const row = Math.floor(i / cols);
+            groupPositions[phil] = {
+                x: spacingX * (col + 1),
+                y: spacingY * (row + 1)
+            };
+        });
+
+        let isGrouped = false;
+        let selectedNodes = new Set(); // Множество выбранных узлов
+
+        const link = g.append("g")
+            .selectAll("path")
+            .data(links)
+            .enter()
+            .append("path")
+            .attr("class", d => {
+                let classes = "link";
+                if (d.bidirectional) classes += " bidirectional";
+                if (d.type === "internal_contradiction") classes += " internal-contradiction";
+                
+                // Добавляем класс веса
+                if (d.weight === 1) classes += " weight-weak";
+                else if (d.weight === 2) classes += " weight-medium";
+                else if (d.weight === 3) classes += " weight-strong";
+                
+                return classes;
+            })
+            .attr("stroke", d => relationTypesObj[d.type].color)
+            .attr("marker-end", d => `url(#arrow-${d.type})`);
+
+        const node = g.append("g")
+            .selectAll("g")
+            .data(nodes)
+            .enter()
+            .append("g")
+            .attr("class", "node")
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        node.append("circle")
+            .attr("r", 18)
+            .attr("fill", d => philosopherConcepts[d.concept].color)
+            .attr("stroke", "#fff");
+
+        node.append("text")
+            .attr("dy", -25)
+            .attr("text-anchor", "middle")
+            .text(d => d.label);
+
+        // Обработка клика на узле с исправлением утечки таймера
+        let clickTimer = null;
+        let clickCount = 0;
+        let lastClickedNode = null;
+        
+        node.on("click", function(event, d) {
+            event.stopPropagation();
+            
+            clickCount++;
+            
+            // Очищаем предыдущий таймер при новом клике
+            if (clickTimer) {
+                clearTimeout(clickTimer);
+                clickTimer = null;
+            }
+            
+            if (clickCount === 1) {
+                lastClickedNode = d;
+                // Первый клик - ждём, будет ли второй
+                clickTimer = setTimeout(() => {
+                    // Одинарный клик - подсветка связей
+                    if (event.ctrlKey || event.metaKey) {
+                        // Ctrl зажат - множественный выбор
+                        if (selectedNodes.has(lastClickedNode)) {
+                            selectedNodes.delete(lastClickedNode);
+                        } else {
+                            selectedNodes.add(lastClickedNode);
+                        }
+                    } else {
+                        // Ctrl не зажат - одиночный выбор
+                        if (selectedNodes.size === 1 && selectedNodes.has(lastClickedNode)) {
+                            selectedNodes.clear();
+                        } else {
+                            selectedNodes.clear();
+                            selectedNodes.add(lastClickedNode);
+                        }
+                    }
+                    
+                    if (selectedNodes.size > 0) {
+                        highlightConnected(Array.from(selectedNodes));
+                    } else {
+                        resetHighlight();
+                    }
+                    clickCount = 0;
+                    clickTimer = null;
+                    lastClickedNode = null;
+                }, 300);
+            } else if (clickCount === 2) {
+                // Двойной клик - показываем детальную информацию
+                showDetailModal(d);
+                clickCount = 0;
+                lastClickedNode = null;
+            }
+        });
+
+        // Подсветка связанных узлов и связей (оптимизированная версия)
+        function highlightConnected(selectedDataArray) {
+            const connectedNodes = new Set();
+            const connectedLinks = new Set();
+            
+            // Обрабатываем каждый выбранный узел
+            selectedDataArray.forEach(selectedData => {
+                connectedNodes.add(selectedData.id);
+                
+                // Находим все связанные узлы и связи
+                links.forEach(l => {
+                    const sourceId = l.source.id || l.source;
+                    const targetId = l.target.id || l.target;
+                    
+                    if (sourceId === selectedData.id) {
+                        connectedNodes.add(targetId);
+                        connectedLinks.add(l);
+                    } else if (targetId === selectedData.id) {
+                        connectedNodes.add(sourceId);
+                        connectedLinks.add(l);
+                    }
+                });
+            });
+            
+            // Применяем стили пакетно для лучшей производительности
+            const selectedIds = new Set(selectedDataArray.map(sd => sd.id));
+            
+            node.classed("dimmed", d => !connectedNodes.has(d.id))
+                .classed("highlighted", d => connectedNodes.has(d.id))
+                .classed("selected", d => selectedIds.has(d.id));
+            
+            link.classed("dimmed", l => !connectedLinks.has(l))
+                .classed("highlighted", l => connectedLinks.has(l));
+        }
+
+        // Сброс подсветки
+        function resetHighlight() {
+            selectedNodes.clear();
+            node.classed("dimmed", false)
+                .classed("highlighted", false)
+                .classed("selected", false);
+            link.classed("dimmed", false)
+                .classed("highlighted", false)
+                .classed("path-highlight", false);
+        }
+
+        // Управление сворачиванием панелей
+        function togglePanel(panelId) {
+            const panel = document.getElementById(panelId);
+            const isCollapsed = panel.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                panel.classList.remove('collapsed');
+                // Меняем иконку на минус
+                const btn = panel.querySelector('.collapse-btn .expand-icon');
+                btn.textContent = '−';
+                // Сохраняем состояние
+                localStorage.setItem(`${panelId}_collapsed`, 'false');
+            } else {
+                panel.classList.add('collapsed');
+                // Меняем иконку на плюс
+                const btn = panel.querySelector('.collapse-btn .expand-icon');
+                btn.textContent = '+';
+                // Сохраняем состояние
+                localStorage.setItem(`${panelId}_collapsed`, 'true');
+            }
+        }
+        
+        // Восстановление состояния панелей при загрузке
+        function restorePanelStates() {
+            const panels = ['pathFinder', 'statsPanel'];
+            
+            panels.forEach(panelId => {
+                const collapsed = localStorage.getItem(`${panelId}_collapsed`) === 'true';
+                if (collapsed) {
+                    const panel = document.getElementById(panelId);
+                    panel.classList.add('collapsed');
+                    const btn = panel.querySelector('.collapse-btn .expand-icon');
+                    if (btn) btn.textContent = '+';
+                }
+            });
+        }
+
+        // Tooltip с дебаунсом для оптимизации
+        const tooltip = d3.select("#tooltip");
+        let tooltipTimeout = null;
+
+        node.on("mouseover", function(event, d) {
+            if (tooltipTimeout) clearTimeout(tooltipTimeout);
+            
+            tooltipTimeout = setTimeout(() => {
+                tooltip
+                    .style("opacity", 1)
+                    .html(`<strong>${d.label}</strong><br/>${d.description}<br/><em>${d.concept}</em>`)
+                    .style("left", (event.pageX + 15) + "px")
+                    .style("top", (event.pageY - 15) + "px");
+            }, 100); // Небольшая задержка
+        })
+        .on("mouseout", function() {
+            if (tooltipTimeout) {
+                clearTimeout(tooltipTimeout);
+                tooltipTimeout = null;
+            }
+            tooltip.style("opacity", 0);
+        });
+
+        link.on("mouseover", function(event, d) {
+            if (tooltipTimeout) clearTimeout(tooltipTimeout);
+            
+            tooltipTimeout = setTimeout(() => {
+                const sourceNode = nodes.find(n => n.id === (d.source.id || d.source));
+                const targetNode = nodes.find(n => n.id === (d.target.id || d.target));
+                const direction = d.bidirectional ? "↔" : "→";
+                tooltip
+                    .style("opacity", 1)
+                    .html(`<strong>${relationTypesObj[d.type].label}</strong><br/>${sourceNode.label} ${direction} ${targetNode.label}`)
+                    .style("left", (event.pageX + 15) + "px")
+                    .style("top", (event.pageY - 15) + "px");
+            }, 100);
+        })
+        .on("mouseout", function() {
+            if (tooltipTimeout) {
+                clearTimeout(tooltipTimeout);
+                tooltipTimeout = null;
+            }
+            tooltip.style("opacity", 0);
+        });
+
+        function dragstarted(event, d) {
+            if (!event.active) {
+                tickCount = 0; 
+                simulation.alphaTarget(0.3).restart();
+            }
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+
+        function resetSimulation() {
+            nodes.forEach(n => {
+                n.fx = null;
+                n.fy = null;
+            });
+            resetHighlight();
+            tickCount = 0;
+            simulation.alpha(1).restart();
+        }
+
+        function centerGraph() {
+            const transform = d3.zoomIdentity
+                .translate(window.innerWidth / 2, window.innerHeight / 2)
+                .scale(1);
+            svg.transition().duration(750).call(zoom.transform, transform);
+            simulation.force("center", d3.forceCenter(window.innerWidth / 2, window.innerHeight / 2));
+            tickCount = 0;
+            simulation.alpha(0.3).restart();
+        }
+
+        function toggleGrouping() {
+            isGrouped = !isGrouped;
+            const btn = document.getElementById('groupBtn');
+            
+            resetHighlight();
+            
+            if (isGrouped) {
+                btn.classList.add('active');
+                btn.textContent = '📦 Разгруппировать';
+                
+                // Добавляем силы группировки
+                simulation
+                    .force("x", d3.forceX(d => groupPositions[d.concept].x).strength(0.3))
+                    .force("y", d3.forceY(d => groupPositions[d.concept].y).strength(0.3))
+                    .force("charge", d3.forceManyBody().strength(-200))
+                    .force("collision", d3.forceCollide().radius(40));
+            } else {
+                btn.classList.remove('active');
+                btn.textContent = '📦 Группировать';
+                
+                // Убираем силы группировки
+                simulation
+                    .force("x", null)
+                    .force("y", null)
+                    .force("charge", d3.forceManyBody().strength(-350))
+                    .force("collision", d3.forceCollide().radius(45))
+                    .force("center", d3.forceCenter(window.innerWidth / 2, window.innerHeight / 2));
+            }
+            tickCount = 0;
+            simulation.alpha(0.5).restart();
+        }
+
+        window.addEventListener('resize', () => {
+            const newWidth = window.innerWidth;
+            const newHeight = window.innerHeight;
+            svg.attr("width", newWidth).attr("height", newHeight);
+            
+            // Пересчитываем позиции групп
+            const newSpacingX = newWidth / (cols + 1);
+            const newSpacingY = newHeight / (rows + 1);
+            philosopherNames.forEach((phil, i) => {
+                const col = i % cols;
+                const row = Math.floor(i / cols);
+                groupPositions[phil] = {
+                    x: newSpacingX * (col + 1),
+                    y: newSpacingY * (row + 1)
+                };
+            });
+            
+            if (isGrouped) {
+                simulation
+                    .force("x", d3.forceX(d => groupPositions[d.concept].x).strength(0.3))
+                    .force("y", d3.forceY(d => groupPositions[d.concept].y).strength(0.3));
+            } else {
+                simulation.force("center", d3.forceCenter(newWidth / 2, newHeight / 2));
+            }
+            
+            simulation.alpha(0.3).restart();
+        });
+        
+        function showDetailModal(conceptData) {
+            const modal = document.getElementById('detailModal');
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('modalContent');
+            
+            // Получаем рубрики этой концепции
+            const conceptRubrics = conceptToRubrics[conceptData.id] || [];
+            
+            let html = `
+                <h2>${conceptData.label}</h2>
+                <div class="philosopher-tag" style="background: ${philosopherConcepts[conceptData.concept].color}">
+                    ${conceptData.concept}
+                </div>
+                <div class="description">${conceptData.extendedDescription}</div>
+            `;
+            
+            if (conceptRubrics.length > 0) {
+                // Находим данные рубрик
+                const rubricDataArray = conceptRubrics.map(rubricId => 
+                    rubrics.find(r => r.id === rubricId)
+                ).filter(r => r !== undefined);
+                
+                rubricDataArray.forEach(rubricData => {
+                    // Находим другие концепции из той же рубрики
+                    const relatedConcepts = nodes.filter(n => {
+                        const nRubrics = conceptToRubrics[n.id] || [];
+                        return nRubrics.includes(rubricData.id) && n.id !== conceptData.id;
+                    });
+                    
+                    html += `
+                        <div class="rubric-section">
+                            <div class="rubric-title">📚 Рубрика: ${rubricData.name}</div>
+                            <div class="rubric-description">${rubricData.description}</div>
+                            
+                            ${relatedConcepts.length > 0 ? `
+                                <div class="related-concepts">
+                                    <div class="related-title">Также в этой рубрике (${relatedConcepts.length}):</div>
+                                    ${relatedConcepts.slice(0, 10).map(c => `
+                                        <div class="concept-item" onclick="closeDetailModal(); setTimeout(() => showDetailModal(nodes.find(n => n.id === '${c.id}')), 100);">
+                                            <div class="concept-color" style="background: ${philosopherConcepts[c.concept].color}"></div>
+                                            <div class="concept-name">${c.label}</div>
+                                            <div class="concept-philosopher">${c.concept}</div>
+                                        </div>
+                                    `).join('')}
+                                    ${relatedConcepts.length > 10 ? `<div style="font-size: 10px; color: #95a5a6; margin-top: 8px;">и ещё ${relatedConcepts.length - 10}...</div>` : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            } else {
+                html += `<div class="rubric-section">
+                    <div class="rubric-description" style="color: #95a5a6;">
+                        Эта концепция пока не отнесена к какой-либо рубрике.
+                    </div>
+                </div>`;
+            }
+            
+            content.innerHTML = html;
+            modal.classList.add('show');
+            overlay.classList.add('show');
+        }
+        
+        function closeDetailModal() {
+            const modal = document.getElementById('detailModal');
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('modalContent');
+            
+            // Очищаем содержимое для удаления обработчиков
+            content.innerHTML = '';
+            
+            modal.classList.remove('show');
+            overlay.classList.remove('show');
+        }
+        
+        // Закрытие по клику на overlay
+        document.getElementById('modalOverlay').addEventListener('click', closeDetailModal);
+        
+        // Закрытие по Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeDetailModal();
+            }
+        });
+        
+        // Инициализируем фильтры при загрузке
+        console.log("Инициализация графа:", nodes.length, "узлов,", links.length, "связей");
+        initFilters();
+        updateFilterStats();
+        
+        // Инициализируем новые функции
+        initPathFinder();
+        
+        // Восстанавливаем состояние панелей
+        restorePanelStates();
+        
+        // Обновляем статистику после завершения симуляции
+        simulation.on("end", () => {
+            console.log("Симуляция завершена. Запустите анализ вручную.");
+        });
+        
+        // Обработчики для чекбоксов
+        document.getElementById('useWeightsToggle').checked = useWeightedPaths;
+        document.getElementById('respectDirectionToggle').checked = respectDirection;
+        
+        // Инициализация оригинальных радиусов
+        saveOriginalRadii();
+        
+        console.log("Граф инициализирован. Используйте кнопки для запуска анализа.");
+        console.log("Текущий режим: веса -", useWeightedPaths ? "ВКЛ" : "ВЫКЛ", 
+                    ", направленность -", respectDirection ? "ВКЛ" : "ВЫКЛ");
+        
+    </script>
+</body>
+</html>
