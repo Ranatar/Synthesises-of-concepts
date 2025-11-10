@@ -90,7 +90,7 @@ Weighted Clustering
 10. Актуальное бытие 1.7778 Фома Аквинский
 
 Local Cohesion
-1 .Аргумент против приватного языка 3.0460 Витгенштейн
+1. Аргумент против приватного языка 3.0460 Витгенштейн
 2. Следование правилу 2.9056 Витгенштейн
 3. Мимесис 2.8827 Платон
 4. Паноптикум 2.4261 Фуко
@@ -1796,340 +1796,340 @@ PageRank, используя только существование/вес св
 Running final PGI analysis!
 
 ```bash
-cd /home/claude && cat > pgi_analysis.js << 'EOF' 
-const fs = require('fs'); 
+cd /home/claude && cat > pgi_analysis.js << 'EOF'
+const fs = require('fs');
 
-// Загружаем данные 
-const data = JSON.parse(fs.readFileSync('/home/claude/graph_data_complete.json', 'utf8')); 
-const { philosophers, concepts, edges } = data; 
+// Загружаем данные
+const data = JSON.parse(fs.readFileSync('/home/claude/graph_data_complete.json', 'utf8'));
+const { philosophers, concepts, edges } = data;
 
-console.log(`✓ Загружено: ${philosophers.length} философов, ${concepts.length} концепций, ${edges.length} связей\n`); 
+console.log(`✓ Загружено: ${philosophers.length} философов, ${concepts.length} концепций, ${edges.length} связей\n`);
 
-// ============================================ 
-// РАСЧЁТ PROBLEM-GENERATING INDEX (PGI) 
-// ============================================ 
+// ============================================
+// РАСЧЁТ PROBLEM-GENERATING INDEX (PGI)
+// ============================================
 
-function analyzeProblemGeneratingCapacity(philosophers, concepts, edges) { 
-const results = philosophers.map((philosopher, philIndex) => { 
-const philConcepts = concepts 
-.filter(c => c.philosopher === philosopher.id) 
-.map(c => c.id); 
+function analyzeProblemGeneratingCapacity(philosophers, concepts, edges) {
+    const results = philosophers.map((philosopher, philIndex) => {
+        const philConcepts = concepts
+            .filter(c => c.philosopher === philosopher.id)
+            .map(c => c.id);
+        
+        // Метрики
+        let criticalIncoming = 0;
+        let developIncoming = 0;
+        let diversitySet = new Set();
+        let temporalSum = 0;
+        let bidirectionalBonus = 0;
+        
+        edges.forEach(edge => {
+            if (philConcepts.includes(edge.target)) {
+                const sourceConcept = concepts.find(c => c.id === edge.source);
+                if (!sourceConcept) return;
+                
+                const sourcePhil = sourceConcept.philosopher;
+                const sourceIndex = philosophers.findIndex(p => p.id === sourcePhil);
+                
+                // Только связи от последующих философов
+                if (sourceIndex > philIndex) {
+                    const isCritical = ['critique', 'oppose', 'dialogue'].includes(edge.type);
+                    const isDevelop = edge.type === 'develop';
+                    
+                    if (isCritical || isDevelop) {
+                        if (isCritical) {
+                            criticalIncoming += edge.weight;
+                        } else {
+                            developIncoming += edge.weight * 0.7;
+                        }
+                        
+                        diversitySet.add(sourcePhil);
+                        
+                        const distance = sourceIndex - philIndex;
+                        const temporalWeight = edge.weight * Math.log(distance + 1);
+                        temporalSum += temporalWeight;
+                        
+                        if (edge.bidirectional) {
+                            bidirectionalBonus += edge.weight * 0.5;
+                        }
+                    }
+                }
+            }
+        });
+        
+        const diversity = diversitySet.size;
+        
+        // Финальный индекс
+        const PGI = (criticalIncoming * 0.35) + 
+                    (developIncoming * 0.25) +
+                    (temporalSum * 0.25) + 
+                    (diversity * 1.5) +
+                    (bidirectionalBonus * 0.15);
+        
+        return {
+            id: philosopher.id,
+            name: philosopher.name,
+            position: philIndex + 1,
+            PGI: PGI,
+            criticalIncoming: criticalIncoming,
+            developIncoming: developIncoming,
+            temporalWeight: temporalSum,
+            diversity: diversity,
+            bidirectionalBonus: bidirectionalBonus
+        };
+    });
+    
+    results.sort((a, b) => b.PGI - a.PGI);
+    results.forEach((r, i) => r.rank = i + 1);
+    
+    return results;
+}
 
-// Метрики 
-let criticalIncoming = 0; 
-let developIncoming = 0; 
-let diversitySet = new Set(); 
-let temporalSum = 0; 
-let bidirectionalBonus = 0; 
+// Запускаем анализ
+const pgiResults = analyzeProblemGeneratingCapacity(philosophers, concepts, edges);
 
-edges.forEach(edge => { 
-if (philConcepts.includes(edge.target)) { 
-const sourceConcept = concepts.find(c => c.id === edge.source); 
-if (!sourceConcept) return; 
+// Выводим топ-20
+console.log("╔═══════════════════════════════════════════════════════════════════════════╗");
+console.log("║              PROBLEM-GENERATING INDEX (PGI) - TOP 20                      ║");
+console.log("║   (Метрика проблемопорождающей способности философа)                      ║");
+console.log("╚═══════════════════════════════════════════════════════════════════════════╝\n");
 
-const sourcePhil = sourceConcept.philosopher; 
-const sourceIndex = philosophers.findIndex(p => p.id === sourcePhil); 
+pgiResults.slice(0, 20).forEach((result) => {
+    console.log(`${String(result.rank).padStart(2)}. ${result.name.padEnd(20)} (позиция в истории: #${result.position}/42)`);
+    console.log(`    PGI: ${result.PGI.toFixed(2)}`);
+    console.log(`    ├─ Критика/оппозиция/диалог: ${result.criticalIncoming.toFixed(1)}`);
+    console.log(`    ├─ Развитие идей: ${result.developIncoming.toFixed(1)}`);
+    console.log(`    ├─ Темпоральный вес: ${result.temporalWeight.toFixed(2)}`);
+    console.log(`    ├─ Разнообразие реакций: ${result.diversity} философов`);
+    console.log(`    └─ Двунаправл. диалог: ${result.bidirectionalBonus.toFixed(1)}`);
+    console.log();
+});
 
-// Только связи от последующих философов 
-if (sourceIndex > philIndex) { 
-const isCritical = ['critique', 'oppose', 'dialogue'].includes(edge.type); 
-const isDevelop = edge.type === 'develop'; 
+// Сохраняем полные результаты
+fs.writeFileSync('/mnt/user-data/outputs/pgi_full_results.json', JSON.stringify(pgiResults, null, 2));
+console.log("✓ Полные результаты сохранены в /outputs/pgi_full_results.json\n");
 
-if (isCritical || isDevelop) { 
-if (isCritical) { 
-criticalIncoming += edge.weight; 
-} else { 
-developIncoming += edge.weight * 0.7; 
-} 
+// Специальный фокус на Декарте
+const descartes = pgiResults.find(r => r.id === 'descartes');
+if (descartes) {
+    console.log("═══════════════════════════════════════════════════════════════════════════");
+    console.log("                       СПЕЦИАЛЬНЫЙ ФОКУС: ДЕКАРТ");
+    console.log("═══════════════════════════════════════════════════════════════════════════\n");
+    console.log(`Ранг по PGI: #${descartes.rank} из ${pgiResults.length} философов`);
+    console.log(`PGI Score: ${descartes.PGI.toFixed(2)}`);
+    console.log(`Историческая позиция: #${descartes.position} из ${philosophers.length} (XVII век)`);
+    console.log(`\nКомпоненты PGI:`);
+    console.log(`  Критические реакции: ${descartes.criticalIncoming.toFixed(1)}`);
+    console.log(`  Развитие его идей: ${descartes.developIncoming.toFixed(1)}`);
+    console.log(`  Темпоральное влияние: ${descartes.temporalWeight.toFixed(2)}`);
+    console.log(`  Философов, реагирующих: ${descartes.diversity}`);
+    console.log(`  Двунаправленный обмен: ${descartes.bidirectionalBonus.toFixed(1)}`);
+    
+    const percentile = ((pgiResults.length - descartes.rank + 1) / pgiResults.length * 100).toFixed(0);
+    console.log(`\nОценка: Декарт в топ-${percentile}% по проблемопорождающей способности.`);
+    
+    if (descartes.rank <= 5) {
+        console.log("→ ВЫСОКАЯ проблемогенерирующая способность");
+    } else if (descartes.rank <= 10) {
+        console.log("→ ЗНАЧИТЕЛЬНАЯ проблемогенерирующая способность");
+    } else if (descartes.rank <= 20) {
+        console.log("→ УМЕРЕННАЯ проблемогенерирующая способность");
+    } else {
+        console.log("→ НИЗКАЯ проблемогенерирующая способность");
+    }
+}
 
-diversitySet.add(sourcePhil); 
-
-const distance = sourceIndex - philIndex; 
-const temporalWeight = edge.weight * Math.log(distance + 1); 
-temporalSum += temporalWeight; 
-
-if (edge.bidirectional) { 
-bidirectionalBonus += edge.weight * 0.5; 
-} 
-} 
-} 
-} 
-}); 
-
-const diversity = diversitySet.size; 
-
-// Финальный индекс 
-const PGI = (criticalIncoming * 0.35) + 
-(developIncoming * 0.25) + 
-(temporalSum * 0.25) + 
-(diversity * 1.5) + 
-(bidirectionalBonus * 0.15); 
-
-return { 
-id: philosopher.id, 
-name: philosopher.name, 
-position: philIndex + 1, 
-PGI: PGI, 
-criticalIncoming: criticalIncoming, 
-developIncoming: developIncoming, 
-temporalWeight: temporalSum, 
-diversity: diversity, 
-bidirectionalBonus: bidirectionalBonus 
-}; 
-}); 
-
-results.sort((a, b) => b.PGI - a.PGI); 
-results.forEach((r, i) => r.rank = i + 1); 
-
-return results; 
-} 
-
-// Запускаем анализ 
-const pgiResults = analyzeProblemGeneratingCapacity(philosophers, concepts, edges); 
-
-// Выводим топ-20 
-console.log("╔═══════════════════════════════════════════════════════════════════════════╗"); 
-console.log("║ PROBLEM-GENERATING INDEX (PGI) - TOP 20 ║"); 
-console.log("║ (Метрика проблемопорождающей способности философа) ║"); 
-console.log("╚═══════════════════════════════════════════════════════════════════════════╝\n"); 
-
-pgiResults.slice(0, 20).forEach((result) => { 
-console.log(`${String(result.rank).padStart(2)}. ${result.name.padEnd(20)} (позиция в истории: #${result.position}/42)`); 
-console.log(` PGI: ${result.PGI.toFixed(2)}`); 
-console.log(` ├─ Критика/оппозиция/диалог: ${result.criticalIncoming.toFixed(1)}`); 
-console.log(` ├─ Развитие идей: ${result.developIncoming.toFixed(1)}`); 
-console.log(` ├─ Темпоральный вес: ${result.temporalWeight.toFixed(2)}`); 
-console.log(` ├─ Разнообразие реакций: ${result.diversity} философов`); 
-console.log(` └─ Двунаправл. диалог: ${result.bidirectionalBonus.toFixed(1)}`); 
-console.log(); 
-}); 
-
-// Сохраняем полные результаты 
-fs.writeFileSync('/mnt/user-data/outputs/pgi_full_results.json', JSON.stringify(pgiResults, null, 2)); 
-console.log("✓ Полные результаты сохранены в /outputs/pgi_full_results.json\n"); 
-
-// Специальный фокус на Декарте 
-const descartes = pgiResults.find(r => r.id === 'descartes'); 
-if (descartes) { 
-console.log("═══════════════════════════════════════════════════════════════════════════"); 
-console.log(" СПЕЦИАЛЬНЫЙ ФОКУС: ДЕКАРТ"); 
-console.log("═══════════════════════════════════════════════════════════════════════════\n"); 
-console.log(`Ранг по PGI: #${descartes.rank} из ${pgiResults.length} философов`); 
-console.log(`PGI Score: ${descartes.PGI.toFixed(2)}`); 
-console.log(`Историческая позиция: #${descartes.position} из ${philosophers.length} (XVII век)`); 
-console.log(`\nКомпоненты PGI:`); 
-console.log(` Критические реакции: ${descartes.criticalIncoming.toFixed(1)}`); 
-console.log(` Развитие его идей: ${descartes.developIncoming.toFixed(1)}`); 
-console.log(` Темпоральное влияние: ${descartes.temporalWeight.toFixed(2)}`); 
-console.log(` Философов, реагирующих: ${descartes.diversity}`); 
-console.log(` Двунаправленный обмен: ${descartes.bidirectionalBonus.toFixed(1)}`); 
-
-const percentile = ((pgiResults.length - descartes.rank + 1) / pgiResults.length * 100).toFixed(0); 
-console.log(`\nОценка: Декарт в топ-${percentile}% по проблемопорождающей способности.`); 
-
-if (descartes.rank <= 5) { 
-console.log("→ ВЫСОКАЯ проблемогенерирующая способность"); 
-} else if (descartes.rank <= 10) { 
-console.log("→ ЗНАЧИТЕЛЬНАЯ проблемогенерирующая способность"); 
-} else if (descartes.rank <= 20) { 
-console.log("→ УМЕРЕННАЯ проблемогенерирующая способность"); 
-} else { 
-console.log("→ НИЗКАЯ проблемогенерирующая способность"); 
-} 
-} 
-
-EOF 
+EOF
 node pgi_analysis.js
 ```
 
 Output
 
 ```bash
-✓ Загружено: 42 философов, 333 концепций, 971 связей 
+✓ Загружено: 42 философов, 333 концепций, 971 связей
 
-╔═══════════════════════════════════════════════════════════════════════════╗ 
-║ PROBLEM-GENERATING INDEX (PGI) - TOP 20 ║ 
-║ (Метрика проблемопорождающей способности философа) ║ 
-╚═══════════════════════════════════════════════════════════════════════════╝ 
+╔═══════════════════════════════════════════════════════════════════════════╗
+║              PROBLEM-GENERATING INDEX (PGI) - TOP 20                      ║
+║   (Метрика проблемопорождающей способности философа)                      ║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-1. Кант (позиция в истории: #17/42) 
-PGI: 40.32 
-├─ Критика/оппозиция/диалог: 25.0 
-├─ Развитие идей: 4.9 
-├─ Темпоральный вес: 73.36 
-├─ Разнообразие реакций: 8 философов 
-└─ Двунаправл. диалог: 0.0 
+ 1. Кант                 (позиция в истории: #17/42)
+    PGI: 40.32
+    ├─ Критика/оппозиция/диалог: 25.0
+    ├─ Развитие идей: 4.9
+    ├─ Темпоральный вес: 73.36
+    ├─ Разнообразие реакций: 8 философов
+    └─ Двунаправл. диалог: 0.0
 
-2. Гегель (позиция в истории: #20/42) 
-PGI: 39.57 
-├─ Критика/оппозиция/диалог: 36.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 65.28 
-├─ Разнообразие реакций: 7 философов 
-└─ Двунаправл. диалог: 1.0 
+ 2. Гегель               (позиция в истории: #20/42)
+    PGI: 39.57
+    ├─ Критика/оппозиция/диалог: 36.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 65.28
+    ├─ Разнообразие реакций: 7 философов
+    └─ Двунаправл. диалог: 1.0
 
-3. Декарт (позиция в истории: #11/42) 
-PGI: 22.68 
-├─ Критика/оппозиция/диалог: 14.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 29.12 
-├─ Разнообразие реакций: 7 философов 
-└─ Двунаправл. диалог: 0.0 
+ 3. Декарт               (позиция в истории: #11/42)
+    PGI: 22.68
+    ├─ Критика/оппозиция/диалог: 14.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 29.12
+    ├─ Разнообразие реакций: 7 философов
+    └─ Двунаправл. диалог: 0.0
 
-4. Аристотель (позиция в истории: #6/42) 
-PGI: 16.94 
-├─ Критика/оппозиция/диалог: 6.0 
-├─ Развитие идей: 2.8 
-├─ Темпоральный вес: 26.57 
-├─ Разнообразие реакций: 5 философов 
-└─ Двунаправл. диалог: 0.0 
+ 4. Аристотель           (позиция в истории: #6/42)
+    PGI: 16.94
+    ├─ Критика/оппозиция/диалог: 6.0
+    ├─ Развитие идей: 2.8
+    ├─ Темпоральный вес: 26.57
+    ├─ Разнообразие реакций: 5 философов
+    └─ Двунаправл. диалог: 0.0
 
-5. Спиноза (позиция в истории: #13/42) 
-PGI: 16.42 
-├─ Критика/оппозиция/диалог: 6.0 
-├─ Развитие идей: 2.8 
-├─ Темпоральный вес: 24.50 
-├─ Разнообразие реакций: 5 философов 
-└─ Двунаправл. диалог: 0.0 
+ 5. Спиноза              (позиция в истории: #13/42)
+    PGI: 16.42
+    ├─ Критика/оппозиция/диалог: 6.0
+    ├─ Развитие идей: 2.8
+    ├─ Темпоральный вес: 24.50
+    ├─ Разнообразие реакций: 5 философов
+    └─ Двунаправл. диалог: 0.0
 
-6. Маркс (позиция в истории: #24/42) 
-PGI: 12.35 
-├─ Критика/оппозиция/диалог: 9.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 23.90 
-├─ Разнообразие реакций: 2 философов 
-└─ Двунаправл. диалог: 1.5 
+ 6. Маркс                (позиция в истории: #24/42)
+    PGI: 12.35
+    ├─ Критика/оппозиция/диалог: 9.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 23.90
+    ├─ Разнообразие реакций: 2 философов
+    └─ Двунаправл. диалог: 1.5
 
-7. Хайдеггер (позиция в истории: #35/42) 
-PGI: 9.57 
-├─ Критика/оппозиция/диалог: 6.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 11.27 
-├─ Разнообразие реакций: 3 философов 
-└─ Двунаправл. диалог: 1.0 
+ 7. Хайдеггер            (позиция в истории: #35/42)
+    PGI: 9.57
+    ├─ Критика/оппозиция/диалог: 6.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 11.27
+    ├─ Разнообразие реакций: 3 философов
+    └─ Двунаправл. диалог: 1.0
 
-8. Сартр (позиция в истории: #39/42) 
-PGI: 8.83 
-├─ Критика/оппозиция/диалог: 14.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 9.70 
-├─ Разнообразие реакций: 1 философов 
-└─ Двунаправл. диалог: 0.0 
+ 8. Сартр                (позиция в истории: #39/42)
+    PGI: 8.83
+    ├─ Критика/оппозиция/диалог: 14.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 9.70
+    ├─ Разнообразие реакций: 1 философов
+    └─ Двунаправл. диалог: 0.0
 
-9. Платон (позиция в истории: #5/42) 
-PGI: 8.12 
-├─ Критика/оппозиция/диалог: 8.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 9.29 
-├─ Разнообразие реакций: 2 философов 
-└─ Двунаправл. диалог: 0.0 
+ 9. Платон               (позиция в истории: #5/42)
+    PGI: 8.12
+    ├─ Критика/оппозиция/диалог: 8.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 9.29
+    ├─ Разнообразие реакций: 2 философов
+    └─ Двунаправл. диалог: 0.0
 
-10. Фихте (позиция в истории: #18/42) 
-PGI: 8.04 
-├─ Критика/оппозиция/диалог: 2.0 
-├─ Развитие идей: 3.5 
-├─ Темпоральный вес: 13.85 
-├─ Разнообразие реакций: 2 философов 
-└─ Двунаправл. диалог: 0.0 
+10. Фихте                (позиция в истории: #18/42)
+    PGI: 8.04
+    ├─ Критика/оппозиция/диалог: 2.0
+    ├─ Развитие идей: 3.5
+    ├─ Темпоральный вес: 13.85
+    ├─ Разнообразие реакций: 2 философов
+    └─ Двунаправл. диалог: 0.0
 
-11. Дильтей (позиция в истории: #25/42) 
-PGI: 7.40 
-├─ Критика/оппозиция/диалог: 5.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 9.42 
-├─ Разнообразие реакций: 2 философов 
-└─ Двунаправл. диалог: 2.0 
+11. Дильтей              (позиция в истории: #25/42)
+    PGI: 7.40
+    ├─ Критика/оппозиция/диалог: 5.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 9.42
+    ├─ Разнообразие реакций: 2 философов
+    └─ Двунаправл. диалог: 2.0
 
-12. Сократ (позиция в истории: #4/42) 
-PGI: 6.92 
-├─ Критика/оппозиция/диалог: 2.0 
-├─ Развитие идей: 1.4 
-├─ Темпоральный вес: 11.49 
-├─ Разнообразие реакций: 2 философов 
-└─ Двунаправл. диалог: 0.0 
+12. Сократ               (позиция в истории: #4/42)
+    PGI: 6.92
+    ├─ Критика/оппозиция/диалог: 2.0
+    ├─ Развитие идей: 1.4
+    ├─ Темпоральный вес: 11.49
+    ├─ Разнообразие реакций: 2 философов
+    └─ Двунаправл. диалог: 0.0
 
-13. Фома Аквинский (позиция в истории: #9/42) 
-PGI: 6.91 
-├─ Критика/оппозиция/диалог: 4.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 10.05 
-├─ Разнообразие реакций: 2 философов 
-└─ Двунаправл. диалог: 0.0 
+13. Фома Аквинский       (позиция в истории: #9/42)
+    PGI: 6.91
+    ├─ Критика/оппозиция/диалог: 4.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 10.05
+    ├─ Разнообразие реакций: 2 философов
+    └─ Двунаправл. диалог: 0.0
 
-14. Фреге (позиция в истории: #28/42) 
-PGI: 6.22 
-├─ Критика/оппозиция/диалог: 2.0 
-├─ Развитие идей: 1.4 
-├─ Темпоральный вес: 8.69 
-├─ Разнообразие реакций: 2 философов 
-└─ Двунаправл. диалог: 0.0 
+14. Фреге                (позиция в истории: #28/42)
+    PGI: 6.22
+    ├─ Критика/оппозиция/диалог: 2.0
+    ├─ Развитие идей: 1.4
+    ├─ Темпоральный вес: 8.69
+    ├─ Разнообразие реакций: 2 философов
+    └─ Двунаправл. диалог: 0.0
 
-15. Гераклит (позиция в истории: #2/42) 
-PGI: 5.95 
-├─ Критика/оппозиция/диалог: 3.0 
-├─ Развитие идей: 1.4 
-├─ Темпоральный вес: 5.30 
-├─ Разнообразие реакций: 2 философов 
-└─ Двунаправл. диалог: 1.5 
+15. Гераклит             (позиция в истории: #2/42)
+    PGI: 5.95
+    ├─ Критика/оппозиция/диалог: 3.0
+    ├─ Развитие идей: 1.4
+    ├─ Темпоральный вес: 5.30
+    ├─ Разнообразие реакций: 2 философов
+    └─ Двунаправл. диалог: 1.5
 
-16. Гуссерль (позиция в истории: #33/42) 
-PGI: 5.75 
-├─ Критика/оппозиция/диалог: 3.0 
-├─ Развитие идей: 1.4 
-├─ Темпоральный вес: 5.09 
-├─ Разнообразие реакций: 2 философов 
-└─ Двунаправл. диалог: 0.5 
+16. Гуссерль             (позиция в истории: #33/42)
+    PGI: 5.75
+    ├─ Критика/оппозиция/диалог: 3.0
+    ├─ Развитие идей: 1.4
+    ├─ Темпоральный вес: 5.09
+    ├─ Разнообразие реакций: 2 философов
+    └─ Двунаправл. диалог: 0.5
 
-17. Юм (позиция в истории: #16/42) 
-PGI: 5.52 
-├─ Критика/оппозиция/диалог: 4.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 4.48 
-├─ Разнообразие реакций: 2 философов 
-└─ Двунаправл. диалог: 0.0 
+17. Юм                   (позиция в истории: #16/42)
+    PGI: 5.52
+    ├─ Критика/оппозиция/диалог: 4.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 4.48
+    ├─ Разнообразие реакций: 2 философов
+    └─ Двунаправл. диалог: 0.0
 
-18. Бэкон (позиция в истории: #10/42) 
-PGI: 5.27 
-├─ Критика/оппозиция/диалог: 4.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 3.47 
-├─ Разнообразие реакций: 2 философов 
-└─ Двунаправл. диалог: 0.0 
+18. Бэкон                (позиция в истории: #10/42)
+    PGI: 5.27
+    ├─ Критика/оппозиция/диалог: 4.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 3.47
+    ├─ Разнообразие реакций: 2 философов
+    └─ Двунаправл. диалог: 0.0
 
-19. Делёз (позиция в истории: #41/42) 
-PGI: 5.09 
-├─ Критика/оппозиция/диалог: 6.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 4.16 
-├─ Разнообразие реакций: 1 философов 
-└─ Двунаправл. диалог: 3.0 
+19. Делёз                (позиция в истории: #41/42)
+    PGI: 5.09
+    ├─ Критика/оппозиция/диалог: 6.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 4.16
+    ├─ Разнообразие реакций: 1 философов
+    └─ Двунаправл. диалог: 3.0
 
-20. Парменид (позиция в истории: #3/42) 
-PGI: 4.03 
-├─ Критика/оппозиция/диалог: 2.0 
-├─ Развитие идей: 0.0 
-├─ Темпоральный вес: 7.33 
-├─ Разнообразие реакций: 1 философов 
-└─ Двунаправл. диалог: 0.0 
+20. Парменид             (позиция в истории: #3/42)
+    PGI: 4.03
+    ├─ Критика/оппозиция/диалог: 2.0
+    ├─ Развитие идей: 0.0
+    ├─ Темпоральный вес: 7.33
+    ├─ Разнообразие реакций: 1 философов
+    └─ Двунаправл. диалог: 0.0
 
-✓ Полные результаты сохранены в /outputs/pgi_full_results.json 
+✓ Полные результаты сохранены в /outputs/pgi_full_results.json
 
-═══════════════════════════════════════════════════════════════════════════ 
-СПЕЦИАЛЬНЫЙ ФОКУС: ДЕКАРТ 
-═══════════════════════════════════════════════════════════════════════════ 
+═══════════════════════════════════════════════════════════════════════════
+                       СПЕЦИАЛЬНЫЙ ФОКУС: ДЕКАРТ
+═══════════════════════════════════════════════════════════════════════════
 
-Ранг по PGI: #3 из 42 философов 
-PGI Score: 22.68 
-Историческая позиция: #11 из 42 (XVII век) 
+Ранг по PGI: #3 из 42 философов
+PGI Score: 22.68
+Историческая позиция: #11 из 42 (XVII век)
 
-Компоненты PGI: 
-Критические реакции: 14.0 
-Развитие его идей: 0.0 
-Темпоральное влияние: 29.12 
-Философов, реагирующих: 7 
-Двунаправленный обмен: 0.0 
+Компоненты PGI:
+  Критические реакции: 14.0
+  Развитие его идей: 0.0
+  Темпоральное влияние: 29.12
+  Философов, реагирующих: 7
+  Двунаправленный обмен: 0.0
 
-Оценка: Декарт в топ-95% по проблемопорождающей способности. 
+Оценка: Декарт в топ-95% по проблемопорождающей способности.
 → ВЫСОКАЯ проблемогенерирующая способность
 ```
 
