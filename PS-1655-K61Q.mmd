@@ -1,0 +1,120 @@
+%% PhiloSynth — Граф категорий
+%% Форма узла      → процессуальная роль (синтез, тезис, антитезис…)
+%% Обводка (пунктир)→ структурная роль (генеративная, мост…)
+%% Цвет заливки    → тип категории
+%% Толщина обводки  → центральность (0–1)
+%% Прозрачность    → определённость (0–1)
+%% Цвет ребра      → тип связи
+%% Толщина ребра    → сила связи (0–1)
+
+graph LR
+
+    subgraph CL0["Онтология блага"]
+        N0{{"`Резонансное благо`"}}
+        N4[/"`Гетерогедония`"/]
+        N5_1>"`Пластическая норма`"]
+        N8_0>"`Коллективная атараксия`"]
+        N10[\"`Социальный гедонизм`"\]
+    end
+    subgraph CL1["Архитектура социальных условий"]
+        N1{"`Апония социального тела`"}
+        N3>"`Институциональная атараксия`"]
+        N6{"`Сад как прообраз`"}
+        N8_1>"`Коллективная атараксия`"]
+        N9>"`Ретракция`"]
+    end
+    subgraph CL2["Эпистемология и историчность нормы"]
+        N2{{"`Стадиальная терапия`"}}
+        N5_0>"`Пластическая норма`"]
+        N7>"`Цивилизационный Тетрафармакос`"]
+        N11{"`Эпистемическое освобождение`"}
+    end
+
+    N5_0 --- N5_1
+    N8_0 --- N8_1
+
+    N0 <-->|"основание"| N1
+    N0 <-->|"основание"| N4
+    N0 -->|"основание"| N10
+    N0 -->|"определяющая"| N5_1
+    N0 -->|"эмерджентность"| N8_0
+    N1 -->|"развитие"| N3
+    N1 <-->|"определяющая"| N2
+    N2 -->|"эмерджентность"| N7
+    N2 <-->|"средство-цель"| N11
+    N2 -->|"средство-цель"| N5_0
+    N3 -->|"основание"| N6
+    N3 <-->|"дополнительность"| N9
+    N3 -->|"каузальная"| N8_1
+    N4 <-->|"диалектическая"| N10
+    N4 -->|"дополнительность"| N9
+    N5_0 <-->|"средство-цель"| N11
+    N6 -->|"эмерджентность"| N4
+    N7 <-->|"корреляционная"| N11
+    N8_0 -->|"эмерджентность ↺"| N8_0
+    N10 -->|"основание"| N6
+    N11 <-->|"каузальная"| N5_0
+    N9 <-->|"корреляционная"| N6
+    N1 -->|"дополнительность"| N8_1
+
+    linkStyle 0 stroke:#888,stroke-width:1px,stroke-dasharray:5
+    linkStyle 1 stroke:#888,stroke-width:1px,stroke-dasharray:5
+    linkStyle 2 stroke:#1abc9c,stroke-width:4.3px
+    linkStyle 3 stroke:#1abc9c,stroke-width:4.6px
+    linkStyle 4 stroke:#1abc9c,stroke-width:4.5px
+    linkStyle 5 stroke:#d35400,stroke-width:4.0px
+    linkStyle 6 stroke:#f1c40f,stroke-width:4.2px
+    linkStyle 7 stroke:#27ae60,stroke-width:4.4px
+    linkStyle 8 stroke:#d35400,stroke-width:4.1px
+    linkStyle 9 stroke:#f1c40f,stroke-width:4.3px
+    linkStyle 10 stroke:#e67e22,stroke-width:4.3px
+    linkStyle 11 stroke:#e67e22,stroke-width:3.9px
+    linkStyle 12 stroke:#1abc9c,stroke-width:4.1px
+    linkStyle 13 stroke:#2ecc71,stroke-width:3.7px
+    linkStyle 14 stroke:#4a90d9,stroke-width:4.5px
+    linkStyle 15 stroke:#e74c3c,stroke-width:4.4px
+    linkStyle 16 stroke:#2ecc71,stroke-width:3.6px
+    linkStyle 17 stroke:#e67e22,stroke-width:4.0px
+    linkStyle 18 stroke:#f1c40f,stroke-width:3.8px
+    linkStyle 19 stroke:#aaaaaa,stroke-width:3.8px
+    linkStyle 20 stroke:#f1c40f,stroke-width:3.5px
+    linkStyle 21 stroke:#1abc9c,stroke-width:3.9px
+    linkStyle 22 stroke:#4a90d9,stroke-width:4.0px
+    linkStyle 23 stroke:#aaaaaa,stroke-width:3.8px
+    linkStyle 24 stroke:#2ecc71,stroke-width:3.2px
+
+    classDef t0 fill:#e8a838,stroke:#e8a838,color:#1a1814
+    class N0 t0
+    classDef t1 fill:#27ae60,stroke:#27ae60,color:#fff
+    class N1,N6 t1
+    classDef t2 fill:#e67e22,stroke:#e67e22,color:#1a1814
+    class N2,N7 t2
+    classDef t3 fill:#2980b9,stroke:#2980b9,color:#fff
+    class N3,N9 t3
+    classDef t4 fill:#e8a838,stroke:#e8a838,color:#1a1814
+    class N4 t4
+    classDef t5 fill:#50c878,stroke:#50c878,color:#1a1814
+    class N5_1,N5_0,N11 t5
+    classDef t6 fill:#1abc9c,stroke:#1abc9c,color:#fff
+    class N8_0,N8_1 t6
+    classDef t7 fill:#78d724,stroke:#78d724,color:#1a1814
+    class N10 t7
+
+    style N0 stroke-width:4.8px,fill-opacity:0.66
+    style N1 stroke-width:4.3px,fill-opacity:0.62
+    style N2 stroke-width:4.2px,fill-opacity:0.67
+    style N3 stroke-width:4.5px,fill-opacity:0.59,stroke-dasharray:8,3
+    style N4 stroke-width:4.4px,fill-opacity:0.58
+    style N5_1 stroke-width:4.1px,fill-opacity:0.64
+    style N5_0 stroke-width:4.1px,fill-opacity:0.64
+    style N6 stroke-width:3.9px,fill-opacity:0.69,stroke-dasharray:2,2
+    style N7 stroke-width:4.0px,fill-opacity:0.60,stroke-dasharray:2,2
+    style N8_0 stroke-width:4.3px,fill-opacity:0.56,stroke-dasharray:8,3
+    style N8_1 stroke-width:4.3px,fill-opacity:0.56,stroke-dasharray:8,3
+    style N9 stroke-width:3.8px,fill-opacity:0.61,stroke-dasharray:2,2
+    style N10 stroke-width:4.5px,fill-opacity:0.59
+    style N11 stroke-width:4.0px,fill-opacity:0.66,stroke-dasharray:8,3
+
+    style CL0 fill:#4a90d9,fill-opacity:0.08,stroke:#4a90d9,stroke-width:2px
+    style CL1 fill:#e8a838,fill-opacity:0.08,stroke:#e8a838,stroke-width:2px
+    style CL2 fill:#50c878,fill-opacity:0.08,stroke:#50c878,stroke-width:2px
