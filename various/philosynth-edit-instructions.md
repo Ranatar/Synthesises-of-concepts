@@ -3398,15 +3398,1874 @@
 
 ---
 
-## Общая сводка проекта (обновлённая)
+> Промежуточная сводка Этапов 1–4 + исправлений: ~2180 строк / ~74 замены.  
+> Полная сводка с учётом Дополнений A–D — в конце документа.
 
-| Этап | Описание | Новый код | Замены |
+---
+
+## Дополнение A: Посекционный лог генерации
+
+> Предусловие: все промпты разделов (включая critique и dialogue) единообразно используют формат `«Название секции»` → `<div data-section="Название секции"><h4>Название секции</h4>...`. Это ручная правка промптов, не описываемая в данной инструкции.
+>
+> Данное дополнение не зависит от Этапов 1–4 и может применяться независимо.
+
+---
+
+## A1. JS — Карта секций `SUBSECTION_MAP`
+
+**Где:** сразу **после** константы `SEC_NAMES` (строка ~4719 исходного файла).  
+**Якорь:** найти закрывающую `};` объекта `SEC_NAMES`. **Вставить ПОСЛЕ неё:**
+
+```javascript
+
+      // ════════════════════════════════════════
+      // SUBSECTION MAP — ожидаемые секции каждого раздела
+      // ════════════════════════════════════════
+
+      /**
+       * Базовая карта секций (не зависит от synthLevel/method).
+       * Ключ — sectionKey раздела, значение — массив имён секций
+       * в порядке, в котором они запрашиваются в промпте.
+       */
+      const SUBSECTION_MAP_BASE = {
+        sum: [
+          "Цели и метод",
+          "Портрет каждого философа",
+          "Новизна и ценность",
+          "Структура документа",
+          "Индекс когерентности",
+          "Точки напряжения",
+          "Оценка сложности",
+        ],
+        graph: [
+          "Методология построения графа",
+          "Таблица категорий",
+          "Таблица связей",
+          "Топология графа",
+          "Топологическая таблица",
+        ],
+        theses: [
+          "Онтологические тезисы",
+          "Эпистемологические тезисы",
+          "Этические и аксиологические тезисы",
+          "Сводная таблица тезисов",
+        ],
+        name: [
+          "Таблица вариантов названия",
+          "Сравнительный анализ вариантов",
+          "Итоговая рекомендация",
+        ],
+        history: [
+          "Исторический контекст",
+          "Источники влияния",
+          "Генеалогия идей",
+          "Современные концепции",
+          "Потенциальное влияние",
+          "Название в историческом контексте",
+        ],
+        origin: [
+          "Идентификация родительских традиций",
+          "Элементная декомпозиция",
+          "Оценка оригинальности",
+          "Потенциальные возражения",
+        ],
+        practical: [
+          "Образование",
+          "Этика и принятие решений",
+          "Психология и личностное развитие",
+          "Социальные институты",
+          "Межкультурный диалог",
+          "Сводная таблица",
+        ],
+        dialogue: [
+          "Диалог",
+          "Итоговая таблица диалога",
+          "Аналитический комментарий",
+        ],
+        evolution: [
+          "Направления развития",
+          "Предлагаемые изменения графа",
+          "Эволюция названия",
+          "Интеграция с современной наукой",
+          "Временная карта развития",
+        ],
+        // critique — после ручной унификации промпта:
+        // пункты 2 и 3 зависят от synthLevel — вставляются динамически в buildSubsectionMap
+        critique: [
+          "Внутренняя когерентность",
+          // ← сюда buildSubsectionMap вставит пункты 2 и 3
+          "Верность методу синтеза",
+          "Сохранение ценных аспектов",
+          "Разрешение противоречий",
+          "Слепые пятна",
+          "Итоговая оценка",
+          "Рекомендации по улучшению",
+        ],
+      };
+
+      /**
+       * Секции glossary зависят от synthLevel.
+       */
+      const SUBSECTION_MAP_GLOSSARY = {
+        comparative: [
+          "Таблица определений",
+          "Переопределённые термины",
+          "Заимствованные термины",
+          "Новые термины",
+        ],
+        transformative: [
+          "Таблица определений",
+          "Преобразованные термины",
+          "Эмерджентные термины",
+        ],
+        generative: [
+          "Таблица определений",
+          "Термины, преодолевающие ограничения",
+          "Термины, порождённые проблемой",
+        ],
+      };
+
+      /**
+       * Пункт 2 критики — зависит от synthLevel.
+       * Название секции совпадает с заголовком, выносимым в `«...»`.
+       */
+      const SUBSECTION_CRITIQUE_NOVELTY = {
+        comparative:    "Философская новизна",
+        transformative: "Эмерджентность концепции",
+        generative:     "Проблемная генерация",
+      };
+
+      /**
+       * Пункт 3 критики — зависит от synthLevel.
+       *
+       * ВАЖНО: названия в этих константах ОБЯЗАНЫ точно совпадать
+       * с текстом в «...» в соответствующих промптах (после их ручной унификации).
+       */
+      const SUBSECTION_CRITIQUE_CHECK = {
+        comparative:    "Верность источникам",
+        transformative: "Верность уровню синтеза",
+        generative:     "Верность уровню синтеза",
+      };
+
+      /**
+       * Возвращает полную карту секций для данных параметров синтеза.
+       * @param {{ synthLevel?: string }} p
+       * @returns {{ [sectionKey: string]: string[] }}
+       */
+      function buildSubsectionMap(p) {
+        const level = p?.synthLevel || "comparative";
+
+        // Собираем critique: вставляем пункты 2 и 3 (динамические) после пункта 1
+        const critiqueBase = SUBSECTION_MAP_BASE.critique;
+        const critique = [
+          critiqueBase[0],                                          // Внутренняя когерентность
+          SUBSECTION_CRITIQUE_NOVELTY[level] || "Оценка новизны",   // пункт 2
+          SUBSECTION_CRITIQUE_CHECK[level] || "Верность источникам", // пункт 3
+          ...critiqueBase.slice(1),                                  // Верность методу синтеза, Сохранение..., и т.д.
+        ];
+
+        return {
+          ...SUBSECTION_MAP_BASE,
+          glossary: SUBSECTION_MAP_GLOSSARY[level] || SUBSECTION_MAP_GLOSSARY.comparative,
+          critique,
+        };
+      }
+```
+
+---
+
+## A2. JS — Трекер секций при стриминге
+
+**Где:** сразу **после** `buildSubsectionMap` (из A1).
+
+```javascript
+
+      /**
+       * Парсит текущий html-буфер стриминга и возвращает массив распознанных секций
+       * с позициями и размерами.
+       *
+       * @param {string} html — накопленный HTML
+       * @param {string[]} expectedSections — ожидаемые секции для данного раздела
+       * @returns {{ name: string, startChar: number, chars: number, status: "done"|"streaming" }[]}
+       */
+      function parseSubsectionsFromHTML(html, expectedSections) {
+        if (!html || !expectedSections || !expectedSections.length) return [];
+
+        // Ищем все data-section="..." вхождения
+        const regex = /data-section="([^"]+)"/g;
+        const found = []; // { name, pos }
+        let m;
+        while ((m = regex.exec(html)) !== null) {
+          found.push({ name: m[1], pos: m.index });
+        }
+
+        if (!found.length) return [];
+
+        const result = [];
+
+        // Для каждой ожидаемой секции: найдена ли она в html?
+        for (let i = 0; i < expectedSections.length; i++) {
+          const expected = expectedSections[i];
+
+          // Ищем среди найденных (нечёткое совпадение: contains в обе стороны)
+          const match = found.find(f =>
+            f.name === expected ||
+            f.name.toLowerCase().includes(expected.toLowerCase()) ||
+            expected.toLowerCase().includes(f.name.toLowerCase())
+          );
+
+          if (!match) continue;
+
+          // Начало секции — позиция data-section
+          const startChar = match.pos;
+
+          // Конец секции — начало следующей найденной секции или конец html
+          const foundIdx = found.indexOf(match);
+          const nextFound = found[foundIdx + 1];
+          const endChar = nextFound ? nextFound.pos : html.length;
+          const chars = endChar - startChar;
+
+          // Статус: если это последняя найденная секция и она не закрыта
+          // (нет следующей после неё) — streaming
+          const isLast = foundIdx === found.length - 1;
+          const status = isLast ? "streaming" : "done";
+
+          result.push({ name: expected, startChar, chars, status });
+        }
+
+        return result;
+      }
+```
+
+---
+
+## A3. JS — Модификация `streamResp()`: передача html в callback
+
+**Где:** внутри функции `streamResp()` (строка ~5509 исходного файла).
+
+**Найти:**
+```javascript
+                // Callback для обновления лога в реальном времени
+                if (onDelta) onDelta(html.length);
+```
+
+**Заменить на:**
+```javascript
+                // Callback для обновления лога в реальном времени
+                if (onDelta) onDelta(html.length, html);
+```
+
+---
+
+## A4. JS — Модификация `generateDoc()`: трекинг секций
+
+**Где:** внутри цикла `for (let i = 0; i < passes.length; i++)` в `generateDoc()`.
+
+### A4a. Построить карту секций и передать в genEntry
+
+**Найти:**
+```javascript
+          const genEntry = {
+            sectionKey: pass.map(d => d.key).join("+"),
+            sectionLabel,
+            priorChars:  prior.length,
+            taskChars:   sp.length,
+            inputChars:  SYS.length + fp.length,
+            outputChars: 0,
+            outputTokens: 0,
+            inputTokens: 0,
+            cost: 0,
+            error: null,
+            status: "streaming",
+          };
+```
+
+**Заменить на:**
+```javascript
+          // Карта ожидаемых секций для этого прохода
+          const subsecMap = buildSubsectionMap(p);
+          const expectedSubs = pass.flatMap(d => subsecMap[d.key] || []);
+
+          const genEntry = {
+            sectionKey: pass.map(d => d.key).join("+"),
+            sectionLabel,
+            priorChars:  prior.length,
+            taskChars:   sp.length,
+            inputChars:  SYS.length + fp.length,
+            outputChars: 0,
+            outputTokens: 0,
+            inputTokens: 0,
+            cost: 0,
+            error: null,
+            status: "streaming",
+            expectedSubsections: expectedSubs,
+            subsections: [],
+          };
+```
+
+### A4b. Обновлять subsections при каждом чанке
+
+**Найти:**
+```javascript
+          // Троттлинг обновления лога во время стриминга
+          let lastLogRefresh = 0;
+          const onDelta = (charsSoFar) => {
+            genEntry.outputChars = charsSoFar;
+            const now = Date.now();
+            if (now - lastLogRefresh > 300) {
+              lastLogRefresh = now;
+              refreshCtxLogIfOpen();
+            }
+          };
+```
+
+**Заменить на:**
+```javascript
+          // Троттлинг обновления лога во время стриминга
+          let lastLogRefresh = 0;
+          const onDelta = (charsSoFar, htmlSoFar) => {
+            genEntry.outputChars = charsSoFar;
+
+            // Обновляем subsections (только если есть ожидаемые)
+            if (htmlSoFar && expectedSubs.length > 0) {
+              genEntry.subsections = parseSubsectionsFromHTML(htmlSoFar, expectedSubs);
+            }
+
+            const now = Date.now();
+            if (now - lastLogRefresh > 300) {
+              lastLogRefresh = now;
+              refreshCtxLogIfOpen();
+            }
+          };
+```
+
+### A4c. Финализация subsections после завершения стриминга
+
+**Найти** (после `const usage = await streamResp(...)`):**
+```javascript
+            genEntry.outputChars = ct.innerHTML.length;
+            genEntry.inputTokens = usage.input_tokens;
+            genEntry.outputTokens = usage.output_tokens;
+```
+
+**Вставить ПОСЛЕ `genEntry.outputChars = ct.innerHTML.length;`:**
+```javascript
+            // Финализация subsections: все переходят в done
+            if (expectedSubs.length > 0) {
+              genEntry.subsections = parseSubsectionsFromHTML(ct.innerHTML, expectedSubs);
+              genEntry.subsections.forEach(s => { s.status = "done"; });
+            }
+```
+
+---
+
+## A5. JS — Модификация `formatCtxLogHTML()`: отображение секций
+
+**Где:** внутри `formatCtxLogHTML()` (строка ~8613 исходного файла).
+
+**Найти** блок, отображающий статус «ВЫХОД:» для `streaming`:
+```javascript
+            if (g.status === "streaming") {
+              // Генерация в процессе — показываем накопленные символы с анимированным индикатором
+              lines.push('<span style="color:#aaa;font-weight:500">ВЫХОД:</span> ' +
+                '<span style="color:#7ba7e8">' + num(g.outputChars) + ' симв.</span>' +
+                ' <span style="color:#7ba7e8">⟳ генерация...</span>');
+```
+
+**Заменить ЦЕЛИКОМ** весь блок `if (g.status === "streaming") {...} else if (g.status === "error") {...} else {...}` (от `if (g.status === "streaming")` до закрывающей `}` перед `lines.push('<span style="color:#555555">' + '─'.repeat(60)`) **на:**
+
+```javascript
+            if (g.status === "streaming") {
+              lines.push('<span style="color:#aaa;font-weight:500">ВЫХОД:</span> ' +
+                '<span style="color:#7ba7e8">' + num(g.outputChars) + ' симв.</span>' +
+                ' <span style="color:#7ba7e8">⟳ генерация...</span>');
+            } else if (g.status === "error") {
+              lines.push('<span style="color:#aaa;font-weight:500">ВЫХОД:</span> ' +
+                '<span style="color:#e06060;font-weight:600">⚠ ОШИБКА: ' + esc(g.error) + '</span>');
+            } else {
+              const ratioOut = g.outputChars > 0 && g.outputTokens > 0
+                ? ' <span style="color:#888888">(' + (g.outputChars / g.outputTokens).toFixed(1) + ' с/т)</span>'
+                : '';
+              lines.push('<span style="color:#aaa;font-weight:500">ВЫХОД:</span> ' +
+                '<span style="color:#4db87a">' + num(g.outputChars) + ' симв.</span>' +
+                ' → <span style="color:#4db87a;font-weight:600">' + num(g.outputTokens) + ' ток.</span>' + ratioOut);
+              lines.push('  Стоимость: <span style="color:#d4a017;font-weight:600">$' +
+                g.cost.toFixed(4) + '</span> (' + (g.cost * 100).toFixed(2) + '¢)');
+              if (g.error) {
+                lines.push('  <span style="color:#e06060;font-weight:600">⚠ ОШИБКА: ' +
+                  esc(g.error) + '</span>');
+              }
+            }
+
+            // ── Посекционная разбивка ──
+            const subs = g.subsections || [];
+            const expected = g.expectedSubsections || [];
+            if (expected.length > 0) {
+              lines.push('');
+              lines.push('  <span style="color:#aaa;font-weight:500">СЕКЦИИ:</span>');
+
+              const foundMap = {};
+              for (const s of subs) foundMap[s.name] = s;
+
+              for (const secName of expected) {
+                const s = foundMap[secName];
+                const lbl = esc(secName).padEnd(40);
+                if (s) {
+                  if (s.status === "streaming") {
+                    lines.push('    <span style="color:#7ba7e8">⟳</span> ' + lbl +
+                      '<span style="color:#7ba7e8">' + num(s.chars) + ' симв.</span>' +
+                      ' <span style="color:#7ba7e8;font-size:9px">генерация</span>');
+                  } else {
+                    lines.push('    <span style="color:#4db87a">✓</span> ' + lbl +
+                      '<span style="color:#4db87a">' + num(s.chars) + ' симв.</span>');
+                  }
+                } else {
+                  lines.push('    <span style="color:#555">◌</span> ' + lbl +
+                    '<span style="color:#555">—</span>');
+                }
+              }
+            }
+```
+
+---
+
+## A6. JS — Модификация `formatCtxLog()` (plaintext): отображение секций
+
+**Где:** внутри `formatCtxLog()` (строка ~8472 исходного файла).
+
+**Найти** блок вывода «ВЫХОД:» — аналогичная структура.
+
+**После** строки:
+```javascript
+              if (g.error) {
+                lines.push("  ⚠ ОШИБКА: " + g.error);
+              }
+            }
+```
+
+(это конец else-ветки внутри цикла `for (const g of genLog)`, перед `lines.push("─".repeat(70))`)
+
+**Вставить ПЕРЕД `lines.push("─".repeat(70))`:**
+
+```javascript
+            // Посекционная разбивка (plaintext)
+            const subs = g.subsections || [];
+            const expected = g.expectedSubsections || [];
+            if (expected.length > 0) {
+              lines.push("");
+              lines.push("  СЕКЦИИ:");
+
+              const foundMap = {};
+              for (const s of subs) foundMap[s.name] = s;
+
+              for (const secName of expected) {
+                const s = foundMap[secName];
+                const lbl = secName.padEnd(42);
+                if (s) {
+                  if (s.status === "streaming") {
+                    lines.push("    ⟳ " + lbl + num(s.chars).padStart(7) + " симв.  генерация");
+                  } else {
+                    lines.push("    ✓ " + lbl + num(s.chars).padStart(7) + " симв.");
+                  }
+                } else {
+                  lines.push("    ◌ " + lbl + "     —");
+                }
+              }
+            }
+```
+
+---
+
+## A7. Сводка Дополнения A
+
+| Место | Действие | Объём |
+|---|---|---|
+| После `SEC_NAMES` | `SUBSECTION_MAP_BASE`, `SUBSECTION_MAP_GLOSSARY`, `SUBSECTION_CRITIQUE_NOVELTY/_CHECK`, `buildSubsectionMap` | ~130 строк |
+| После `buildSubsectionMap` | `parseSubsectionsFromHTML` | ~45 строк |
+| `streamResp()` | Передача `html` в callback | 1 строка (замена) |
+| `generateDoc()` цикл | `expectedSubs` + расширение `genEntry` + обновление в `onDelta` + финализация | ~25 строк (замены + вставки) |
+| `formatCtxLogHTML()` | Блок «СЕКЦИИ:» после «ВЫХОД:» | ~25 строк (вставка) |
+| `formatCtxLog()` | Блок «СЕКЦИИ:» (plaintext) | ~20 строк (вставка) |
+| `regenerateSection()` | `expectedSubsections` + `subsections` в genEntry, парсинг в onDelta, финализация | ~20 строк (замены + вставки) |
+| `cascadeRegenerateOne()` | То же | ~15 строк (замены + вставки) |
+
+**Итого Дополнение A: ~245 строк нового кода, ~55 строк замен.**
+
+---
+
+## A8. JS — Посекционный трекинг в `regenerateSection()` и `cascadeRegenerateOne()`
+
+### A8a. Модификация `regenerateSection()` (Этап 1, пункт 4)
+
+**Найти** в `regenerateSection()` блок создания `genEntry`:
+```javascript
+          const genEntry = {
+            sectionKey: sectionKey,
+            sectionLabel: def.title + " [перегенерация]",
+            priorChars: prior.length,
+            taskChars: sp.length,
+            inputChars: SYS.length + fp.length,
+            outputChars: 0,
+            inputTokens: 0,
+            outputTokens: 0,
+            cost: 0,
+            error: null,
+            status: "streaming",
+            source: "edit",
+          };
+```
+
+**Заменить ЦЕЛИКОМ на:**
+```javascript
+          // Карта ожидаемых секций для трекинга
+          const subsecMap = buildSubsectionMap(fullP);
+          const expectedSubs = subsecMap[sectionKey] || [];
+
+          const genEntry = {
+            sectionKey: sectionKey,
+            sectionLabel: def.title + " [перегенерация]",
+            priorChars: prior.length,
+            taskChars: sp.length,
+            inputChars: SYS.length + fp.length,
+            outputChars: 0,
+            inputTokens: 0,
+            outputTokens: 0,
+            cost: 0,
+            error: null,
+            status: "streaming",
+            source: "edit",
+            expectedSubsections: expectedSubs,
+            subsections: [],
+          };
+```
+
+**Затем найти** в `regenerateSection()` блок `onDelta`:
+```javascript
+          let lastLogRefresh = 0;
+          const onDelta = (charsSoFar) => {
+            genEntry.outputChars = charsSoFar;
+            if (progressText) progressText.textContent = "Генерация... " + charsSoFar + " симв.";
+          };
+```
+
+**Заменить ЦЕЛИКОМ на:**
+```javascript
+          let lastLogRefresh = 0;
+          const onDelta = (charsSoFar, htmlSoFar) => {
+            genEntry.outputChars = charsSoFar;
+            if (htmlSoFar && expectedSubs.length > 0) {
+              genEntry.subsections = parseSubsectionsFromHTML(htmlSoFar, expectedSubs);
+            }
+            if (progressText) progressText.textContent = "Генерация... " + charsSoFar + " симв.";
+          };
+```
+
+**Затем найти** (после `const usage = await streamResp(...)` в `regenerateSection()`):
+```javascript
+          genEntry.outputChars = container.innerHTML.length;
+          genEntry.inputTokens = usage.input_tokens;
+```
+
+**Вставить ПЕРЕД `genEntry.inputTokens`:**
+```javascript
+          if (expectedSubs.length > 0) {
+            genEntry.subsections = parseSubsectionsFromHTML(container.innerHTML, expectedSubs);
+            genEntry.subsections.forEach(s => { s.status = "done"; });
+          }
+```
+
+### A8b. Модификация `cascadeRegenerateOne()` (Этап 4, пункт 25)
+
+**Найти** в `cascadeRegenerateOne()` блок создания `genEntry`:
+```javascript
+        const genEntry = {
+          sectionKey,
+          sectionLabel: def.title + " [каскад]",
+          priorChars: prior.length,
+          taskChars: sp.length,
+          inputChars: SYS.length + fp.length,
+          outputChars: 0,
+          inputTokens: 0,
+          outputTokens: 0,
+          cost: 0,
+          error: null,
+          status: "streaming",
+          source: "cascade",
+        };
+```
+
+**Заменить ЦЕЛИКОМ на:**
+```javascript
+        // Карта ожидаемых секций
+        const subsecMap = buildSubsectionMap(fullP);
+        const expectedSubs = subsecMap[sectionKey] || [];
+
+        const genEntry = {
+          sectionKey,
+          sectionLabel: def.title + " [каскад]",
+          priorChars: prior.length,
+          taskChars: sp.length,
+          inputChars: SYS.length + fp.length,
+          outputChars: 0,
+          inputTokens: 0,
+          outputTokens: 0,
+          cost: 0,
+          error: null,
+          status: "streaming",
+          source: "cascade",
+          expectedSubsections: expectedSubs,
+          subsections: [],
+        };
+```
+
+**Затем найти** в `cascadeRegenerateOne()` callback:
+```javascript
+        const usage = await streamResp(fp, container, SYS, (chars) => {
+          genEntry.outputChars = chars;
+        });
+```
+
+**Заменить ЦЕЛИКОМ на:**
+```javascript
+        const usage = await streamResp(fp, container, SYS, (chars, html) => {
+          genEntry.outputChars = chars;
+          if (html && expectedSubs.length > 0) {
+            genEntry.subsections = parseSubsectionsFromHTML(html, expectedSubs);
+          }
+        });
+```
+
+**Затем найти** (после `const usage = ...` в `cascadeRegenerateOne()`):
+```javascript
+        genEntry.outputChars = container.innerHTML.length;
+        genEntry.inputTokens = usage.input_tokens;
+```
+
+**Вставить ПЕРЕД `genEntry.inputTokens`:**
+```javascript
+        if (expectedSubs.length > 0) {
+          genEntry.subsections = parseSubsectionsFromHTML(container.innerHTML, expectedSubs);
+          genEntry.subsections.forEach(s => { s.status = "done"; });
+        }
+```
+
+---
+
+## A9. Примечания к тестированию
+
+### В процессе генерации
+1. Откройте лог контекста во время стриминга раздела.
+2. После «ВЫХОД: N симв. ⟳ генерация...» должен появиться блок «СЕКЦИИ:»:
+   - Уже сгенерированные секции: `✓ Цели и метод                  1 423 симв.`
+   - Текущая секция: `⟳ Портрет каждого философа          847 симв.  генерация`
+   - Ожидающие: `◌ Новизна и ценность                  —`
+3. Числа обновляются в реальном времени (с троттлингом ~300 мс).
+4. Все секции обязаны появиться в порядке из промпта.
+
+### После завершения
+1. Все секции в статусе `✓` с финальным количеством символов.
+2. Сумма символов по секциям может быть меньше общего «ВЫХОД:» — разница это разметка между секциями (шапка `<div class="doc-section">`, `.section-num`, `.section-title`).
+
+### Plaintext-копия
+1. Нажмите «Скопировать лог» — в буфере та же структура, но без HTML-тегов.
+
+### Секции glossary зависят от уровня
+1. При `comparative`: ожидаются «Переопределённые термины», «Заимствованные термины», «Новые термины».
+2. При `transformative`: «Преобразованные термины», «Эмерджентные термины».
+3. Убедитесь, что лог показывает правильный набор для выбранного уровня.
+
+### Секции critique зависят от уровня синтеза
+1. При `comparative`: ожидаются «Философская новизна», «Верность источникам», «Верность методу синтеза».
+2. При `transformative`: «Эмерджентность концепции», «Верность уровню синтеза», «Верность методу синтеза».
+3. При `generative`: «Проблемная генерация», «Верность уровню синтеза», «Верность методу синтеза».
+4. Пункт 4 («Верность методу синтеза») одинаков для всех методов — варьируется только содержание внутри.
+5. Убедитесь, что лог показывает правильные названия для текущего уровня.
+
+### Модель пропустила секцию
+1. Если модель не сгенерировала одну из ожидаемых секций — она останется как `◌ ... —` после завершения. Это нормальное и информативное поведение: лог явно показывает пропуск.
+
+### Совместимость с системой редактирования
+1. При перегенерации раздела через «Изменить» — лог показывает секции раздела (модификации в пункте A8).
+2. При каскадной перегенерации — каждый каскадный раздел также трекает секции.
+3. В обоих случаях `genEntry.source` указывает `"edit"` или `"cascade"`, а `expectedSubsections` и `subsections` заполнены.
+
+---
+
+## Дополнение B: Видимый лог контекста в сохранённом HTML-файле
+
+> Модифицирует пункт 19 (Этап 3). Применять **после** Этапа 3.
+
+---
+
+## B1. JS — Модификация `saveHTML()`: рендер лога в видимый блок
+
+**Где:** в коде `saveHTML()` из пункта 19 (Этап 3).
+
+**Найти** (внутри блока, добавленного в пункте 19):
+```javascript
+          stateJSON = `\n<script type="application/json" id="philosynth-state">${JSON.stringify(stateData)}<\/script>`;
+```
+
+**Заменить на:**
+```javascript
+          stateJSON = `\n<script type="application/json" id="philosynth-state">${JSON.stringify(stateData)}<\/script>`;
+
+          // ── Видимый лог контекста ──
+          const logHTML = typeof formatCtxLogHTML === "function" ? formatCtxLogHTML() : "";
+          if (logHTML && !logHTML.includes("Лог пуст")) {
+            stateJSON += `\n<details style="
+              max-width:1100px; margin:20px auto 0; 
+              border:1px solid #d8d4cc; background:#1a1814;
+            ">
+              <summary style="
+                padding:10px 18px; cursor:pointer;
+                font-family:'IBM Plex Mono',monospace; font-size:10px;
+                letter-spacing:2px; text-transform:uppercase;
+                color:#8a8278; background:#f2f0eb;
+                list-style:none; display:flex; align-items:center; gap:6px;
+                user-select:none;
+              ">◈ Лог контекста и генерации</summary>
+              <div style="padding:20px; overflow-x:auto;">
+                <pre style="
+                  font-family:'IBM Plex Mono',monospace; font-size:11px;
+                  line-height:1.7; color:#c8c0b0; white-space:pre-wrap;
+                  word-break:break-all; margin:0;
+                ">${logHTML}</pre>
+              </div>
+            </details>`;
+          }
+```
+
+Лог рендерится через `formatCtxLogHTML()` — ту же функцию, что используется в модальном окне лога на странице. Результат вставляется как `<details>` с инлайн-стилями (чтобы работать без внешних CSS-классов в автономном файле). Блок располагается после `#docOutput`, визуально — под футером документа.
+
+---
+
+## B2. Примечания
+
+- Лог **не включается**, если он пуст (проверка `"Лог пуст"`).
+- Стили инлайновые — `<details>` не зависит от CSS-переменных страницы и корректно отображается в автономном файле.
+- JSON-состояние (`<script id="philosynth-state">`) по-прежнему сохраняется — оно нужно для импорта. Видимый лог — дополнение для чтения, не замена.
+- При импорте файла видимый `<details>` с логом не мешает парсингу: `extractSections()` ищет только `.doc-section` внутри `#docBodies`/`#docOutput`.
+- Если Дополнение A (посекционный лог) применено, `formatCtxLogHTML()` уже включает блок «СЕКЦИИ:» — он автоматически попадёт и в сохранённый файл.
+
+---
+
+## Дополнение C: Валидация метаданных при импорте
+
+> Модифицирует пункт 21 (Этап 3). Применять **после** Этапа 3.
+
+Текущая реализация `extractMetadata` при отсутствии данных молчаливо подставляет значения по умолчанию. Это опасно: пользователь не узнает, что при перегенерации раздела промпт будет построен с пустым списком философов или неверным методом.
+
+---
+
+## C1. JS — Функция валидации метаданных
+
+**Где:** сразу **после** функции `extractMetadata()` (из пункта 21, Этап 3).  
+**Вставить ПОСЛЕ неё:**
+
+```javascript
+
+      /**
+       * Проверяет извлечённые метаданные и возвращает массив предупреждений.
+       * Пустой массив = всё в порядке.
+       * @param {Object} meta
+       * @param {Object|null} embeddedState — встроенное JSON-состояние (или null)
+       * @returns {{ field: string, message: string, critical: boolean }[]}
+       */
+      function validateImportMeta(meta, embeddedState) {
+        const warnings = [];
+
+        if (!meta.phil || meta.phil.length === 0) {
+          warnings.push({
+            field: "phil",
+            message: "Список философов не найден. Перегенерация разделов невозможна без него.",
+            critical: true,
+          });
+        }
+
+        if (!meta.seed) {
+          warnings.push({
+            field: "seed",
+            message: "Зерно концепции не найдено. Перегенерация разделов будет работать без контекста задачи.",
+            critical: true,
+          });
+        }
+
+        // method / synthLevel / depth — проверяем, был ли fallback
+        const methodDisplay = meta._raw?.methodDisplay || "";
+        const depthDisplay = meta._raw?.depthDisplay || "";
+        const synthDisplay = meta._raw?.synthDisplay || "";
+
+        if (!methodDisplay || !REVERSE_ML[methodDisplay]) {
+          warnings.push({
+            field: "method",
+            message: `Метод синтеза не распознан (найдено: «${methodDisplay || "—"}»). Подставлен «Диалектический» по умолчанию.`,
+            critical: false,
+          });
+        }
+
+        if (!depthDisplay || !REVERSE_DL[depthDisplay]) {
+          warnings.push({
+            field: "depth",
+            message: `Глубина не распознана (найдено: «${depthDisplay || "—"}»). Подставлена «Стандартная» по умолчанию.`,
+            critical: false,
+          });
+        }
+
+        if (!synthDisplay || !REVERSE_SL[synthDisplay]) {
+          warnings.push({
+            field: "synthLevel",
+            message: `Уровень синтеза не распознан (найдено: «${synthDisplay || "—"}»). Подставлен «Сравнительный» по умолчанию.`,
+            critical: false,
+          });
+        }
+
+        if (!meta.ctx) {
+          // Не критично — контекст опционален
+        }
+
+        if (!embeddedState) {
+          warnings.push({
+            field: "log",
+            message: "Лог контекста и генерации отсутствует. История стоимости и контекстных зависимостей недоступна. " +
+              "Лог начнёт накапливаться заново при редактировании.",
+            critical: false,
+          });
+        }
+
+        return warnings;
+      }
+```
+
+---
+
+## C2. JS — Модификация `extractMetadata()`: сохранение сырых значений
+
+Для работы валидации `extractMetadata` должна сохранить исходные строки из DOM до обратного маппинга.
+
+**Найти** в `extractMetadata()` (пункт 21):
+```javascript
+        return { phil, method, depth, synthLevel, seed, ctx, docNum };
+```
+
+**Заменить на:**
+```javascript
+        return {
+          phil, method, depth, synthLevel, seed, ctx, docNum,
+          _raw: { methodDisplay, depthDisplay, synthDisplay },
+        };
+```
+
+---
+
+## C3. JS — Модификация `importHTML()`: вызов валидации и показ предупреждений
+
+**Найти** в `importHTML()` (пункт 21):
+```javascript
+        // ── 5. Заполнение DOM ──
+        populateFromImport(docOutput, meta, sections, embeddedState);
+```
+
+**Вставить ПЕРЕД этой строкой:**
+```javascript
+        // ── 2b. Валидация метаданных ──
+        const metaWarnings = validateImportMeta(meta, embeddedState);
+        const hasCritical = metaWarnings.some(w => w.critical);
+
+        if (metaWarnings.length > 0) {
+          let warnMsg = "Импорт: обнаружены проблемы с метаданными:\n\n";
+          for (const w of metaWarnings) {
+            warnMsg += (w.critical ? "⚠ КРИТИЧНО: " : "⚡ Внимание: ") + w.message + "\n";
+          }
+
+          if (hasCritical) {
+            warnMsg += "\nКритические поля отсутствуют. Документ будет отображён, " +
+              "но редактирование (перегенерация разделов) заблокировано.\n" +
+              "Заполните недостающие поля в форме ввода и нажмите «Изменить» повторно.\n\n" +
+              "Продолжить импорт?";
+            if (!confirm(warnMsg)) {
+              throw new Error("Импорт отменён пользователем.");
+            }
+          } else {
+            // Некритичные — информируем, не блокируем
+            alert(warnMsg + "\nЗначения по умолчанию подставлены. Проверьте форму ввода.");
+          }
+        }
+
+```
+
+---
+
+## C4. JS — Модификация `buildDocStateFromImport()`: пометка неполного состояния
+
+**Найти** в `buildDocStateFromImport()` (пункт 21) строку:
+```javascript
+        DOC_STATE.ready = true;
+```
+
+**Заменить на:**
+```javascript
+        // Проверяем полноту: если критические поля отсутствуют — DOC_STATE.ready,
+        // но DOC_STATE.incomplete = true → openEditModal покажет предупреждение
+        const metaWarnings = validateImportMeta(meta, embeddedState);
+        const hasCritical = metaWarnings.some(w => w.critical);
+        DOC_STATE.ready = true;
+        DOC_STATE.incomplete = hasCritical;
+        DOC_STATE.importWarnings = metaWarnings;
+```
+
+---
+
+## C5. JS — Модификация `openEditModal()`: блокировка при неполных данных
+
+**Найти** в `openEditModal()` (Этап 1, пункт 4):
+```javascript
+        if (!DOC_STATE.ready) {
+          alert("Документ ещё не сгенерирован.");
+          return;
+        }
+```
+
+**Заменить на:**
+```javascript
+        if (!DOC_STATE.ready) {
+          alert("Документ ещё не сгенерирован.");
+          return;
+        }
+        if (DOC_STATE.incomplete) {
+          let msg = "Редактирование ограничено: при импорте не удалось извлечь ключевые параметры.\n\n";
+          for (const w of (DOC_STATE.importWarnings || [])) {
+            if (w.critical) msg += "⚠ " + w.message + "\n";
+          }
+          msg += "\nЗаполните недостающие поля в форме ввода. " +
+            "После этого система автоматически обновит параметры.\n\n" +
+            "Открыть модальное окно только для просмотра?";
+          if (!confirm(msg)) return;
+        }
+```
+
+---
+
+## C6. JS — Запрет перегенерации, удаления и добавления при неполных данных
+
+### C6a. `confirmAndRegenerate()`
+
+**Найти** в `confirmAndRegenerate()` (Этап 1, пункт 4) самое начало:
+```javascript
+      function confirmAndRegenerate(sectionKey) {
+        const label = KEY_LABELS[sectionKey] || sectionKey;
+```
+
+**Вставить ПОСЛЕ `const label = ...`:**
+```javascript
+        if (DOC_STATE.incomplete) {
+          alert("Перегенерация невозможна: не все параметры синтеза восстановлены при импорте.\n\n" +
+            "Заполните недостающие поля (философы, зерно) в форме ввода.");
+          return;
+        }
+```
+
+### C6b. `confirmAndDelete()`
+
+**Найти** в `confirmAndDelete()` (Этап 2, пункт 13) самое начало:
+```javascript
+      function confirmAndDelete(sectionKey) {
+        const label = KEY_LABELS[sectionKey] || sectionKey;
+```
+
+**Вставить ПОСЛЕ `const label = ...`:**
+```javascript
+        if (DOC_STATE.incomplete) {
+          alert("Удаление невозможно: не все параметры синтеза восстановлены при импорте.\n\n" +
+            "Заполните недостающие поля в форме ввода.");
+          return;
+        }
+```
+
+### C6c. `confirmAndAdd()`
+
+**Найти** в `confirmAndAdd()` (Этап 2, пункт 14) самое начало:
+```javascript
+      function confirmAndAdd(sectionKey) {
+        const label = KEY_LABELS[sectionKey] || sectionKey;
+```
+
+**Вставить ПОСЛЕ `const label = ...`:**
+```javascript
+        if (DOC_STATE.incomplete) {
+          alert("Добавление невозможно: не все параметры синтеза восстановлены при импорте.\n\n" +
+            "Заполните недостающие поля в форме ввода.");
+          return;
+        }
+```
+
+---
+
+## C7. JS — Обновление `DOC_STATE.incomplete` при изменении формы
+
+Если пользователь заполнил недостающие поля в форме, `DOC_STATE.incomplete` должен сброситься. 
+
+**Где:** в конце функции `syncFormFromImport()` (из пункта 32, Исправления).
+
+**Найти:**
+```javascript
+        if (typeof updateCostEstimate === "function") updateCostEstimate();
+      }
+```
+
+**Вставить ПЕРЕД закрывающей `}`:**
+```javascript
+
+        // Слушатели для сброса incomplete при ручном заполнении формы
+        const recheckIncomplete = () => {
+          if (!DOC_STATE.incomplete) return;
+          const phil = getPhil();
+          const seed = document.getElementById("seedInput")?.value?.trim();
+          if (phil.length > 0 && seed) {
+            // Обновляем params из формы
+            DOC_STATE.params.phil = phil;
+            DOC_STATE.params.seed = seed;
+            DOC_STATE.params.method = document.getElementById("synthesisMethod")?.value || DOC_STATE.params.method;
+            DOC_STATE.params.depth = document.getElementById("depthLevel")?.value || DOC_STATE.params.depth;
+            DOC_STATE.params.synthLevel = document.getElementById("synthesisLevel")?.value || DOC_STATE.params.synthLevel;
+            DOC_STATE.params.ctx = document.getElementById("contextInput")?.value?.trim() || "";
+            DOC_STATE.incomplete = false;
+            DOC_STATE.importWarnings = [];
+            recalcDependencies();
+            const statusEl = document.getElementById("importStatus");
+            if (statusEl) {
+              statusEl.textContent += " · Параметры дополнены ✓";
+              statusEl.className = "import-status ok";
+            }
+          }
+        };
+
+        // Навешиваем обработчики на ключевые поля
+        for (const id of ["seedInput", "synthesisMethod", "synthesisLevel", "depthLevel", "contextInput"]) {
+          const el = document.getElementById(id);
+          if (el) el.addEventListener("change", recheckIncomplete);
+        }
+        const philBox = document.getElementById("philBox");
+        if (philBox) philBox.addEventListener("change", recheckIncomplete);
+```
+
+---
+
+## C8. JS — Добавить поле `incomplete` в `resetDocState()`
+
+**Найти** в `resetDocState()` (Этап 1, пункт 3):
+```javascript
+        DOC_STATE.editedSections = new Set();
+```
+
+**Вставить ПОСЛЕ:**
+```javascript
+        DOC_STATE.incomplete = false;
+        DOC_STATE.importWarnings = [];
+```
+
+---
+
+## C9. JS — Авто-заполнение `genCommon` при первой перегенерации
+
+Если файл был импортирован без встроенного состояния, `genCommon` остаётся `null`, и в логе контекста не отображается блок «Общие элементы промпта». При первой перегенерации мы уже вычисляем все составляющие промпта — можно заполнить `genCommon`.
+
+**Где:** в функции `regenerateSection()` (Этап 1, пункт 4).
+
+**Найти:**
+```javascript
+          const SYS = buildSYS();
+          const partBase = baseCtx(fullP);
+          const partRules = htmlRules();
+          const partQuality = buildPartQuality(fullP);
+```
+
+**Вставить ПОСЛЕ этих строк:**
+```javascript
+
+          // Заполняем genCommon, если он отсутствует (импорт без лога)
+          if (!genCommon) {
+            const scaffoldLen = `ПАРАМЕТРЫ СИНТЕЗА:\n\n\nЗАДАНИЕ: составь ТОЛЬКО следующие разделы (строго в указанном порядке, без добавления других):\n\n\n\n`.length;
+            genCommon = {
+              sysChars:      SYS.length,
+              baseChars:     partBase.length,
+              rulesChars:    partRules.length,
+              qualityChars:  partQuality.length,
+              scaffoldChars: scaffoldLen,
+              totalChars:    SYS.length + partBase.length + partRules.length + partQuality.length + scaffoldLen,
+            };
+          }
+```
+
+> Аналогичную вставку следует добавить и в `cascadeRegenerateOne()` (Этап 4, пункт 25) — после тех же четырёх строк `const SYS = ...`. Код идентичен.
+
+---
+
+## C10. Сводка Дополнения C
+
+| Место | Действие | Объём |
+|---|---|---|
+| После `extractMetadata()` | `validateImportMeta()` | ~60 строк |
+| `extractMetadata()` | Добавить `_raw` в return | 1 строка (замена) |
+| `importHTML()` | Вызов валидации + confirm/alert | ~20 строк (вставка) |
+| `buildDocStateFromImport()` | Пометка `incomplete` | ~4 строки (замена) |
+| `openEditModal()` | Проверка `incomplete` | ~10 строк (вставка) |
+| `confirmAndRegenerate/Delete/Add()` | Блокировка при `incomplete` | ~15 строк (вставка) |
+| `syncFormFromImport()` | Слушатели + авто-сброс `incomplete` | ~25 строк (вставка) |
+| `resetDocState()` | Поля `incomplete`, `importWarnings` | 2 строки (вставка) |
+| `regenerateSection()` | Авто-заполнение `genCommon` | ~10 строк (вставка) |
+| `cascadeRegenerateOne()` | Авто-заполнение `genCommon` | ~10 строк (вставка) |
+
+**Итого Дополнение C: ~155 строк нового кода, ~5 строк замен.**
+
+---
+
+## Дополнение D: Фактическая карта зависимостей из `ctxLog`
+
+> Применять **после** Этапов 1–4 и Дополнения C.
+> Надстройка над теоретической системой зависимостей — не заменяет её, а дополняет фактическими данными.
+
+---
+
+## D1. JS — Построение фактической карты зависимостей
+
+**Где:** сразу **после** функции `computeDependents()` (Этап 1, пункт 3).  
+**Якорь:** найти закрывающую `}` функции `computeDependents`. **Вставить ПОСЛЕ неё:**
+
+```javascript
+
+      // ════════════════════════════════════════
+      // FACTUAL DEPS — карта реально использованных зависимостей из ctxLog
+      // ════════════════════════════════════════
+
+      /**
+       * Строит карту фактических зависимостей из ctxLog.
+       * Для каждого раздела-потребителя — какие разделы-источники он реально использовал
+       * и сколько символов контекста получил.
+       *
+       * @param {Array} log — массив ctxLog
+       * @returns {{ [consumer: string]: { [source: string]: { chars: number, keys: string[], statuses: string[] } } }}
+       */
+      function buildFactualDepsMap(log) {
+        if (!log || !log.length) return {};
+
+        // При мультисессионном логе для одного sectionKey может быть
+        // несколько записей (оригинал + перегенерации). Берём ПОСЛЕДНЮЮ:
+        // она отражает актуальное состояние зависимостей раздела.
+        const latestByKey = {};
+        for (const entry of log) {
+          latestByKey[entry.sectionKey] = entry; // перезаписывает → остаётся последняя
+        }
+
+        const map = {};
+        for (const entry of Object.values(latestByKey)) {
+          const consumer = entry.sectionKey;
+          if (!map[consumer]) map[consumer] = {};
+
+          for (const e of entry.entries) {
+            const source = sourceOf(e.key);
+            if (source === "sum" || source === consumer) continue;
+            if (e.status === "missing") continue;
+
+            if (!map[consumer][source]) {
+              map[consumer][source] = { chars: 0, keys: [], statuses: [] };
+            }
+
+            const info = map[consumer][source];
+            info.keys.push(e.key);
+            info.statuses.push(e.status);
+
+            if (e.status === "found" || e.status === "truncated") {
+              info.chars += e.len || 0;
+            }
+          }
+        }
+        return map;
+      }
+
+      /**
+       * Инверсия buildFactualDepsMap: для каждого раздела-источника —
+       * кто реально получал его контекст и сколько.
+       *
+       * @returns {{ [source: string]: { consumers: { key: string, chars: number, keys: string[] }[], totalChars: number } }}
+       */
+      function computeFactualDependents(factualDeps) {
+        const result = {};
+
+        for (const [consumer, sources] of Object.entries(factualDeps)) {
+          for (const [source, info] of Object.entries(sources)) {
+            if (!result[source]) result[source] = { consumers: [], totalChars: 0 };
+            result[source].consumers.push({
+              key: consumer,
+              chars: info.chars,
+              keys: info.keys,
+            });
+            result[source].totalChars += info.chars;
+          }
+        }
+
+        // Сортируем потребителей по убыванию chars
+        for (const data of Object.values(result)) {
+          data.consumers.sort((a, b) => b.chars - a.chars);
+        }
+
+        return result;
+      }
+
+      /**
+       * Для раздела возвращает оценку качества контекста на основе ctxLog.
+       * @returns {{ score: number, reqFound: number, reqTotal: number, optIncluded: number, optTotal: number, issues: string[] }}
+       */
+      function getSectionContextQuality(sectionKey) {
+        // Ищем последний ctxLog для этого раздела (может быть несколько при перегенерациях)
+        const entries = ctxLog.filter(e => e.sectionKey === sectionKey);
+        if (!entries.length) return null;
+
+        const entry = entries[entries.length - 1]; // последний
+        const issues = [];
+
+        // Отсутствующие обязательные
+        const missingReq = entry.entries.filter(e =>
+          e.priority === "required" && (e.status === "missing" || e.status === "dropped")
+        );
+        if (missingReq.length > 0) {
+          const names = missingReq.map(e => CTX_LABELS[e.key] || e.key);
+          issues.push("Отсутствовали обязательные: " + names.join(", "));
+        }
+
+        // Пропущенные из-за бюджета
+        const skipped = entry.entries.filter(e => e.status === "skipped_budget");
+        if (skipped.length > 0) {
+          issues.push(skipped.length + " контекст(ов) пропущено из-за бюджета");
+        }
+
+        // Обрезанные
+        const truncated = entry.entries.filter(e => e.status === "truncated");
+        if (truncated.length > 0) {
+          issues.push(truncated.length + " контекст(ов) обрезано");
+        }
+
+        // Заменители
+        const substitutes = entry.entries.filter(e => e.isSubstitute && e.status === "found");
+        if (substitutes.length > 0) {
+          issues.push(substitutes.length + " подстановок(ки)");
+        }
+
+        // Общий score: 0-100
+        const reqScore = entry.reqTotal > 0 ? (entry.reqFound / entry.reqTotal) : 1;
+        const budgetUsage = entry.budget > 0 ? Math.min(1, entry.totalUsed / entry.budget) : 0;
+        const score = Math.round(reqScore * 70 + budgetUsage * 30);
+
+        return {
+          score,
+          reqFound: entry.reqFound,
+          reqTotal: entry.reqTotal,
+          optIncluded: entry.optIncluded,
+          optTotal: entry.optTotal,
+          budgetUsed: entry.totalUsed,
+          budget: entry.budget,
+          issues,
+        };
+      }
+```
+
+---
+
+## D2. JS — Заполнение `DOC_STATE.factualDeps` после генерации и импорта
+
+### D2a. В `populateDocState()` (Этап 1, пункт 3)
+
+**Найти** (в конце `populateDocState`, перед закрывающей `}`):
+```javascript
+        DOC_STATE.effectiveDeps = effectiveDeps;
+        DOC_STATE.resolvedDeps = resolvedDeps;
+```
+
+**Вставить ПОСЛЕ:**
+```javascript
+        DOC_STATE.factualDeps = buildFactualDepsMap(ctxLog);
+```
+
+### D2b. В `buildDocStateFromImport()` (Этап 3, пункт 21)
+
+**Найти** (ближе к концу функции):
+```javascript
+        DOC_STATE.effectiveDeps = effectiveDeps;
+```
+
+**Вставить ПОСЛЕ:**
+```javascript
+        DOC_STATE.factualDeps = buildFactualDepsMap(ctxLog);
+```
+
+### D2c. В `resetDocState()` (Этап 1, пункт 3)
+
+**Найти:**
+```javascript
+        DOC_STATE.incomplete = false;
+```
+
+**Вставить ПЕРЕД:**
+```javascript
+        DOC_STATE.factualDeps = {};
+```
+
+---
+
+## D3. JS — Обновление `DOC_STATE.factualDeps` после перегенерации
+
+В `regenerateSection()` (Этап 1, пункт 4) и `cascadeRegenerateOne()` (Этап 4, пункт 25), `ctxLog` пополняется внутри `buildContextForSection`. После завершения перегенерации `factualDeps` устаревает.
+
+**Где:** в `regenerateSection()`, **найти:**
+```javascript
+          // ── 12. Обновляем DOC_STATE ──
+          DOC_STATE.sectionHTML[sectionKey] = container.innerHTML;
+```
+
+**Вставить ПЕРЕД этой строкой:**
+```javascript
+          // Пересобираем фактическую карту зависимостей
+          DOC_STATE.factualDeps = buildFactualDepsMap(ctxLog);
+```
+
+**То же самое** в `cascadeRegenerateOne()`, **найти:**
+```javascript
+        // DOC_STATE
+        DOC_STATE.sectionHTML[sectionKey] = container.innerHTML;
+```
+
+**Вставить ПЕРЕД:**
+```javascript
+        DOC_STATE.factualDeps = buildFactualDepsMap(ctxLog);
+```
+
+---
+
+## D4. JS — Модификация `showCascadePanel()`: фактический вес зависимостей
+
+**Где:** в `showCascadePanel()` (Этап 4, пункт 25).
+
+### D4a. Фильтрация по фактическим зависимостям
+
+**Найти:**
+```javascript
+        // Сортируем в топологическом порядке
+        deps = sortInTopoOrder(deps);
+```
+
+**Заменить ЦЕЛИКОМ на:**
+```javascript
+        // Обогащаем фактическими данными (если доступны)
+        const factDeps = DOC_STATE.factualDeps || {};
+        const factReverse = computeFactualDependents(factDeps);
+        const factInfo = factReverse[triggerKey];
+
+        // Для action "regen": фильтруем теоретических зависимых,
+        // оставляя только тех, кто реально использовал контекст источника
+        if (action === "regen" && factInfo) {
+          const factConsumers = new Set(factInfo.consumers.map(c => c.key));
+          const theoretical = deps.filter(k => !factConsumers.has(k));
+          const factual = deps.filter(k => factConsumers.has(k));
+
+          // Фактические — всегда показываем; теоретические — помечаем как низкоприоритетные
+          deps = [...factual, ...theoretical];
+        }
+
+        // Сортируем в топологическом порядке
+        deps = sortInTopoOrder(deps);
+```
+
+### D4b. Показ символов контекста в элементах списка
+
+**Найти** генерацию элементов списка:
+```javascript
+          const item = document.createElement("label");
+          item.className = "cascade-item";
+          item.id = "cascadeItem-" + depKey;
+          item.innerHTML = `
+            <input type="checkbox" value="${depKey}" checked>
+            <span>§ ${num} — ${esc(depLabel)}</span>
+            <span class="cascade-item-status" id="cascadeStatus-${depKey}"></span>`;
+          listEl.appendChild(item);
+```
+
+**Заменить ЦЕЛИКОМ на:**
+```javascript
+          // Фактический вес: сколько символов контекста из triggerKey получал depKey
+          let weightHint = "";
+          if (factInfo) {
+            const consumer = factInfo.consumers.find(c => c.key === depKey);
+            if (consumer && consumer.chars > 0) {
+              weightHint = `<span style="font-size:9px;color:var(--gold);margin-left:4px">${consumer.chars.toLocaleString("ru")} симв.</span>`;
+            } else if (!consumer) {
+              // Теоретическая зависимость, фактически не использовалась
+              weightHint = `<span style="font-size:9px;color:var(--ink-dim);margin-left:4px">не использовал</span>`;
+            }
+          }
+
+          const item = document.createElement("label");
+          item.className = "cascade-item";
+          item.id = "cascadeItem-" + depKey;
+
+          // Теоретические зависимости по умолчанию не отмечены
+          const isFactual = factInfo?.consumers.some(c => c.key === depKey && c.chars > 0);
+          const checkedAttr = (isFactual || !factInfo) ? "checked" : "";
+
+          item.innerHTML = `
+            <input type="checkbox" value="${depKey}" ${checkedAttr}>
+            <span>§ ${num} — ${esc(depLabel)}${weightHint}</span>
+            <span class="cascade-item-status" id="cascadeStatus-${depKey}"></span>`;
+          listEl.appendChild(item);
+```
+
+---
+
+## D5. JS — Модификация `renderEditSections()`: индикатор качества контекста
+
+**Где:** в `renderEditSections()` (Этап 1, пункт 4 + модификации Этапа 2, пункт 15).
+
+**Найти** строку, формирующую заголовок карточки:
+```javascript
+          let headerHTML = `
+            <div class="edit-sec-card-header">
+              <div class="edit-sec-title">${isEdited ? "⟳ " : ""}§ ${def.num} — ${esc(label)}</div>
+              <div class="edit-sec-num">${key}</div>
+            </div>`;
+```
+
+**Заменить ЦЕЛИКОМ на:**
+```javascript
+          // Индикатор качества контекста из ctxLog
+          let qualityBadge = "";
+          const quality = getSectionContextQuality(key);
+          if (quality) {
+            let badgeColor, badgeText;
+            if (quality.score >= 90) {
+              badgeColor = "var(--green-check)";
+              badgeText = quality.score + "%";
+            } else if (quality.score >= 60) {
+              badgeColor = "var(--gold)";
+              badgeText = quality.score + "%";
+            } else {
+              badgeColor = "var(--red)";
+              badgeText = quality.score + "%";
+            }
+            const tooltip = [
+              `Контекст: ${quality.reqFound}/${quality.reqTotal} обяз., ${quality.optIncluded}/${quality.optTotal} опц.`,
+              `Бюджет: ${quality.budgetUsed.toLocaleString("ru")}/${quality.budget.toLocaleString("ru")} симв.`,
+              ...quality.issues,
+            ].join("&#10;");
+            qualityBadge = ` <span title="${tooltip}" style="font-family:var(--mono);font-size:9px;color:${badgeColor};border:1px solid ${badgeColor};padding:1px 5px;margin-left:6px;cursor:help">${badgeText}</span>`;
+          }
+
+          // Предупреждение о деградации (обязательные контексты отсутствовали)
+          let degradationHTML = "";
+          if (quality && quality.issues.length > 0 && quality.score < 70) {
+            degradationHTML = `
+              <div class="edit-dep-warn caution" style="margin-top:6px">
+                <span class="dep-icon">⚡</span>
+                <span>Раздел был сгенерирован с неполным контекстом (${quality.score}%). ` +
+                quality.issues.join("; ") + `. Рекомендуется перегенерировать.</span>
+              </div>`;
+          }
+
+          let headerHTML = `
+            <div class="edit-sec-card-header">
+              <div class="edit-sec-title">${isEdited ? "⟳ " : ""}§ ${def.num} — ${esc(label)}${qualityBadge}</div>
+              <div class="edit-sec-num">${key}</div>
+            </div>${degradationHTML}`;
+```
+
+---
+
+## D6. Сводка Дополнения D
+
+| Место | Действие | Объём |
+|---|---|---|
+| После `computeDependents()` | `buildFactualDepsMap`, `computeFactualDependents`, `getSectionContextQuality` | ~120 строк |
+| `populateDocState()` | Заполнение `factualDeps` | 1 строка |
+| `buildDocStateFromImport()` | Заполнение `factualDeps` | 1 строка |
+| `resetDocState()` | Сброс `factualDeps` | 1 строка |
+| `regenerateSection()` | Пересборка `factualDeps` | 1 строка |
+| `cascadeRegenerateOne()` | Пересборка `factualDeps` | 1 строка |
+| `showCascadePanel()` | Фильтрация + вес в элементах | ~40 строк (замена) |
+| `renderEditSections()` | Бейдж качества + предупреждение | ~35 строк (замена) |
+
+**Итого Дополнение D: ~125 строк нового кода, ~75 строк замен.**
+
+---
+
+## D7. Примечания к тестированию
+
+### Индикатор качества в модальном окне
+1. Сгенерируйте документ с 6+ разделами.
+2. Откройте «Изменить» — у каждого раздела (кроме первого после sum) бейдж с процентом.
+3. Наведите на бейдж — tooltip показывает: «Контекст: 5/5 обяз., 3/4 опц. Бюджет: 18400/24000 симв.»
+4. Если score < 70% — под заголовком карточки появляется предупреждение с перечнем проблем.
+
+### Фактические зависимости в каскаде
+1. Перегенерируйте «Граф категорий».
+2. В каскадной панели разделы, реально использовавшие контекст графа, показывают количество символов: «§ 4 — Корпус тезисов  4 200 симв.»
+3. Разделы, теоретически зависящие от графа, но не получившие его контекст (из-за бюджета или другой причины), помечены «не использовал» и **не отмечены** галочкой по умолчанию.
+4. Пользователь может вручную отметить их, если хочет.
+
+### Импорт с логом и без
+1. Импорт файла с `ctxLog` → `factualDeps` заполняется → бейджи и фактические веса доступны.
+2. Импорт файла без лога → `ctxLog = []` → `factualDeps = {}` → система работает как раньше (только теоретические зависимости, без бейджей).
+
+### Каскад «delete»
+1. При удалении раздела `forceDeps` передаётся извне (Этап 4, пункт 27). `factInfo` для удалённого раздела берётся из `factualDeps`, вычисленных **до** удаления (см. пункт 27a — `dependentsBefore`).
+2. Для корректной работы нужно, чтобы `factualDeps` тоже запоминались до удаления. **Модификация пункта 27a** (Этап 4):
+
+**Найти** в `deleteSection()`:
+```javascript
+        // ── 0. Запоминаем зависимые ДО удаления ──
+        const dependentsBefore = computeDependents(DOC_STATE.effectiveDeps);
+```
+
+**Заменить на:**
+```javascript
+        // ── 0. Запоминаем зависимые ДО удаления ──
+        const dependentsBefore = computeDependents(DOC_STATE.effectiveDeps);
+        const factualDepsBefore = DOC_STATE.factualDeps ? { ...DOC_STATE.factualDeps } : {};
+```
+
+А в вызове `showCascadePanel` (пункт 27b) после удаления `factualDeps` уже пересобрана без удалённого раздела. Чтобы `showCascadePanel` мог использовать данные **до** удаления, передаём их:
+
+**Найти:**
+```javascript
+          showCascadePanel("delete", sectionKey, remainingAffected);
+```
+
+**Заменить на:**
+```javascript
+          showCascadePanel("delete", sectionKey, remainingAffected, factualDepsBefore);
+```
+
+И в сигнатуре `showCascadePanel` — добавить опциональный четвёртый параметр:
+
+**Найти:**
+```javascript
+      function showCascadePanel(action, triggerKey, forceDeps) {
+```
+
+**Заменить на:**
+```javascript
+      function showCascadePanel(action, triggerKey, forceDeps, overrideFactualDeps) {
+```
+
+И в теле — использовать его:
+
+**Найти:**
+```javascript
+        const factDeps = DOC_STATE.factualDeps || {};
+```
+
+**Заменить на:**
+```javascript
+        const factDeps = overrideFactualDeps || DOC_STATE.factualDeps || {};
+```
+
+---
+
+> Промежуточная сводка Этапов 1–4, исправлений и Дополнений A–D: ~2740 строк / ~214 замен.
+> Полная сводка с учётом всех Дополнений — в конце документа.
+
+---
+
+## Дополнение E: Импорт по URL
+
+> Применять **после** Этапа 3 и Дополнения C.
+> Расширяет UI импорта: рядом с кнопкой «↑ Импорт HTML» (файл) появляется поле для URL.
+
+---
+
+## E1. CSS — Стили поля URL-импорта
+
+**Где:** в конец CSS-блока (перед `</style>`):
+
+```css
+
+      /* ── URL IMPORT ── */
+      .import-url-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .import-url-input {
+        flex: 1;
+        border: 1px solid var(--rule-strong);
+        background: var(--white);
+        padding: 7px 12px;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--ink);
+        outline: none;
+        transition: border-color 0.15s;
+      }
+      .import-url-input:focus {
+        border-color: var(--violet);
+        box-shadow: 0 0 0 3px rgba(107, 0, 170, 0.08);
+      }
+      .import-url-input::placeholder {
+        color: var(--ink-dim);
+        font-size: 11px;
+      }
+      .import-url-btn {
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        background: transparent;
+        border: 1px solid var(--rule-strong);
+        padding: 8px 16px;
+        cursor: pointer;
+        color: var(--ink-mid);
+        transition: all 0.15s;
+        white-space: nowrap;
+      }
+      .import-url-btn:hover {
+        border-color: var(--violet);
+        color: var(--violet);
+      }
+      .import-url-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+```
+
+---
+
+## E2. HTML — Поле URL под кнопкой файлового импорта
+
+**Где:** модифицирует пункт 18b (Этап 3). Нужно расширить блок `.import-row`.
+
+**Найти** (из пункта 18b):
+```html
+        <div class="import-row">
+          <button class="import-btn" onclick="document.getElementById('importFileInput').click()">
+            ↑ Импорт HTML
+          </button>
+          <span class="import-status" id="importStatus"></span>
+        </div>
+```
+
+**Заменить ЦЕЛИКОМ на:**
+```html
+        <div class="import-row">
+          <button class="import-btn" onclick="document.getElementById('importFileInput').click()">
+            ↑ Файл
+          </button>
+          <span class="import-status" id="importStatus"></span>
+        </div>
+        <div class="import-url-row">
+          <input class="import-url-input" id="importUrlInput" type="url"
+                 placeholder="https://example.com/document.html"
+                 onkeydown="if(event.key==='Enter'){importFromUrl();}">
+          <button class="import-url-btn" id="importUrlBtn" onclick="importFromUrl()">
+            ↑ Импорт по URL
+          </button>
+        </div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--ink-dim);margin-top:4px;line-height:1.5;letter-spacing:0.3px">
+          ⚠ При кросс-доменной загрузке содержимое страницы может пройти через сторонний CORS-прокси.
+          Для конфиденциальных документов используйте импорт из файла.
+        </div>
+```
+
+---
+
+## E3. JS — Функции импорта по URL
+
+**Где:** сразу **после** функции `handleImportFile()` (Этап 3, пункт 21).  
+**Якорь:** найти закрывающую `}` функции `handleImportFile`. **Вставить ПОСЛЕ неё:**
+
+```javascript
+
+      // ════════════════════════════════════════
+      // IMPORT BY URL
+      // ════════════════════════════════════════
+
+      /** Список CORS-прокси (пробуются по порядку) */
+      const CORS_PROXIES = [
+        (url) => "https://api.allorigins.win/raw?url=" + encodeURIComponent(url),
+        (url) => "https://corsproxy.io/?" + encodeURIComponent(url),
+      ];
+
+      /**
+       * Загружает HTML по URL и передаёт в importHTML.
+       * Стратегия: прямой fetch → CORS-прокси → инструкция скачать вручную.
+       */
+      async function importFromUrl() {
+        const input = document.getElementById("importUrlInput");
+        const btn = document.getElementById("importUrlBtn");
+        const statusEl = document.getElementById("importStatus");
+        const rawUrl = input?.value?.trim();
+
+        if (!rawUrl) {
+          if (statusEl) {
+            statusEl.className = "import-status err";
+            statusEl.textContent = "⚠ Введите URL";
+          }
+          return;
+        }
+
+        // Валидация URL
+        let url;
+        try {
+          url = new URL(rawUrl);
+          if (!["http:", "https:"].includes(url.protocol)) throw new Error();
+        } catch {
+          if (statusEl) {
+            statusEl.className = "import-status err";
+            statusEl.textContent = "⚠ Некорректный URL";
+          }
+          return;
+        }
+
+        if (btn) btn.disabled = true;
+        if (statusEl) {
+          statusEl.className = "import-status";
+          statusEl.textContent = "Загрузка...";
+        }
+
+        // Извлекаем имя файла из URL
+        const filename = url.pathname.split("/").pop() || "import.html";
+
+        try {
+          const htmlString = await fetchWithFallback(url.href, statusEl);
+
+          // Проверяем, что это HTML
+          if (!htmlString || !htmlString.includes("<")) {
+            throw new Error("Ответ не содержит HTML.");
+          }
+
+          importHTML(htmlString, filename);
+
+          if (statusEl) {
+            statusEl.className = "import-status ok";
+            statusEl.textContent = "✓ Импортирован: " + filename;
+          }
+          if (input) input.value = "";
+
+        } catch (err) {
+          console.error("Ошибка импорта по URL:", err);
+          if (statusEl) {
+            statusEl.className = "import-status err";
+            statusEl.textContent = "⚠ " + err.message;
+          }
+        } finally {
+          if (btn) btn.disabled = false;
+        }
+      }
+
+      /**
+       * Пытается загрузить URL: сначала напрямую, затем через CORS-прокси.
+       * @param {string} url
+       * @param {HTMLElement|null} statusEl — для обновления статуса
+       * @returns {Promise<string>} — HTML-содержимое
+       */
+      async function fetchWithFallback(url, statusEl) {
+        // ── 1. Прямой fetch ──
+        try {
+          if (statusEl) statusEl.textContent = "Прямая загрузка...";
+          const resp = await fetch(url, {
+            mode: "cors",
+            headers: { "Accept": "text/html" },
+          });
+          if (resp.ok) {
+            const text = await resp.text();
+            if (text && text.includes("<")) return text;
+          }
+        } catch (e) {
+          // CORS или сетевая ошибка — продолжаем к прокси
+          console.log("Прямой fetch не удался:", e.message);
+        }
+
+        // ── 2. CORS-прокси (по порядку) ──
+        for (let i = 0; i < CORS_PROXIES.length; i++) {
+          const proxyUrl = CORS_PROXIES[i](url);
+          try {
+            if (statusEl) statusEl.textContent = `Прокси ${i + 1}/${CORS_PROXIES.length}...`;
+            const resp = await fetch(proxyUrl);
+            if (resp.ok) {
+              const text = await resp.text();
+              if (text && text.includes("<")) return text;
+            }
+          } catch (e) {
+            console.log(`Прокси ${i + 1} не удался:`, e.message);
+          }
+        }
+
+        // ── 3. Все попытки исчерпаны ──
+        throw new Error(
+          "Не удалось загрузить: сервер блокирует кросс-доменные запросы. " +
+          "Скачайте файл вручную (Ctrl+S на странице) и загрузите через кнопку «↑ Файл»."
+        );
+      }
+```
+
+---
+
+## E4. Сводка Дополнения E
+
+| Место | Действие | Объём |
+|---|---|---|
+| CSS | Стили `.import-url-row`, `.import-url-input`, `.import-url-btn` | ~40 строк |
+| HTML (пункт 18b) | Поле URL + кнопка | ~12 строк (замена) |
+| После `handleImportFile()` | `CORS_PROXIES`, `importFromUrl`, `fetchWithFallback` | ~100 строк |
+
+**Итого Дополнение E: ~140 строк нового кода, ~6 строк замен.**
+
+---
+
+## E5. Примечания к тестированию
+
+### Прямой fetch (тот же домен или CORS-разрешённый)
+1. Если PhiloSynth и импортируемый файл на одном домене — загрузка мгновенная.
+2. Если сервер отдаёт `Access-Control-Allow-Origin: *` — тоже работает напрямую.
+3. Статус: «Прямая загрузка...» → «✓ Импортирован: PS-6361-FEAG.html».
+
+### Fallback через CORS-прокси
+1. GitHub Pages не отдаёт CORS-заголовки для HTML.
+2. Прямой fetch молча падает → система пробует `api.allorigins.win`, затем `corsproxy.io`.
+3. Статус: «Прямая загрузка...» → «Прокси 1/2...» → «✓ Импортирован».
+4. Если первый прокси лежит — пробуется второй. Если оба — сообщение с инструкцией скачать вручную.
+
+### Ввод по Enter
+1. Введите URL в поле и нажмите Enter — импорт запускается без нажатия кнопки.
+
+### Валидация
+1. Пустое поле → «⚠ Введите URL».
+2. `ftp://...` или невалидная строка → «⚠ Некорректный URL».
+3. URL, возвращающий не-HTML (JSON API, изображение) → «⚠ Ответ не содержит HTML».
+
+### Интеграция с существующим импортом
+1. После загрузки HTML по URL вызывается тот же `importHTML(htmlString, filename)` — вся валидация, заполнение DOC_STATE, синхронизация формы работают идентично файловому импорту.
+2. `filename` извлекается из URL path: `https://example.com/docs/PS-1234.html` → `"PS-1234.html"`.
+
+### Приватность
+1. CORS-прокси видит URL запрашиваемой страницы. Содержимое страницы проходит через прокси-сервер.
+2. Если это неприемлемо — пользователь может скачать файл вручную и загрузить через «↑ Файл».
+3. Рекомендация: добавить tooltip или подсказку рядом с полем URL: «При загрузке через внешний прокси содержимое страницы проходит через сторонний сервер».
+
+---
+
+## Общая сводка проекта (финальная)
+
+| Блок | Описание | Новый код | Замены |
 |---|---|---|---|
-| 1 | DOC_STATE + перегенерация | ~680 строк | 3 строки |
-| 2 | Удаление + добавление | ~580 строк | ~10 строк |
-| 3 | Импорт + состояние в файле | ~385 строк | ~6 строк |
-| 4 | Каскадные предложения | ~375 строк | ~35 строк |
+| Этап 1 | DOC_STATE + перегенерация | ~680 строк | 3 строки |
+| Этап 2 | Удаление + добавление | ~580 строк | ~10 строк |
+| Этап 3 | Импорт + состояние в файле | ~385 строк | ~6 строк |
+| Этап 4 | Каскадные предложения | ~375 строк | ~35 строк |
 | fix | Исправления упущений | ~160 строк | ~20 строк |
-| **Итого** | | **~2180 строк** | **~74 строки** |
+| A | Посекционный лог генерации | ~245 строк | ~55 строк |
+| B | Лог контекста в сохранённом файле | ~35 строк | ~5 строк |
+| C | Валидация метаданных при импорте | ~155 строк | ~5 строк |
+| D | Фактическая карта зависимостей | ~125 строк | ~75 строк |
+| E | Импорт по URL | ~140 строк | ~6 строк |
+| **Итого** | | **~2880 строк** | **~220 строк** |
 
-Финальный объём файла после применения всех этапов и исправлений: ~8818 + ~2180 ≈ **~11 000 строк**.
+Финальный объём файла: ~8818 + ~2880 ≈ **~11 700 строк**.
