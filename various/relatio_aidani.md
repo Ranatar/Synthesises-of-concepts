@@ -6,6 +6,8 @@ IN NOMINE PATRIS
 ET FILII  
 ET SPIRITVS SANCTI
 
+*Tapes argenteus cum Arbore Prima et stella*
+
 ☧
 
 ---
@@ -191,6 +193,12 @@ Tunc Finrothus, vidensque me intentum, vocem quasi cantantis sumpsit — aliquid
 
 *Olim,* dixit, *cum mundus iuvenis esset et sol nondum in caelo esset positus, Valar — quos vos Potestates vocare possetis — in terra nostra duas Arbores plantaverunt ad lumen praebendum Amanorum. Non erant arbores sicut istae quas vides in horto isto: illae enim erant quasi ipsa lux in formam arboris contracta, quasi Sapientia Ilúvatar se manifestans per radicem et frondem et florem.*
 
+---
+
+*Arbores has duas ipsedepinxi, sicut Pater Cellach mihi descripserat se eas in codice antiquo Aidani manu factas vidisse, antequam tempus deleret. — frater Coemanus*
+
+---
+
 Et descripsit eas voce tam clara ut ego paene eas oculis meis viderem: **Arborem Primam**, quam *Telperion* vocabant, magnam et vetustissimam, folia habentem viridia et flores argenteos, ex quorum floribus lumen manabat purum et frigidulum quasi luna plena sed sine umbra et sine intermissione. *Nomen eius,* inquit, *in sermonem tuum forsitan reddere possim quasi Argentea Frondositas vel Splendor Argenti. Radices eius — aiunt — terram Amani totam sub se tenebant, et cum venti leves ramos eius moverent, lux ipsa quasi cantabat, scintillans inter folia. Hoc primum lumen erat mundi.*
 
 ***Secunda Arbor**,* dixit, *paululum minor sed ardentior, flores aureos habebat ex quibus lux calida et gaudosa fluebat, similis soli aestivo sed sine ardore nocivo — lux pura et benigna, sub qua omnia visa sunt pulchriora quam sunt. Eam* *Laurelin* *nominavimus, id est quasi Canens aurum vel Aurea Melodia. Nam lux illius arboris quasi musica erat: non quam aure audis, sed quam oculus et corpus totum sentit. Alternatim lucebant, ita ut lux argentea paulatim decresceret dum aurea crescebat, et rursum aurea minueretur et argentea floreret — et in brevi spatio temporis ambo simul fulgebant, in mixtura luminis tam pretiosa ut nunc, cum de hoc loquor, lacrimae mihi subveniunt, etiamsi multi anni transierunt.*
@@ -253,11 +261,11 @@ Et Finrothus me audiebat — et hoc etiam mirabile erat — non modo aures praeb
 
 Cum finivi loqui, siluit diu. Ita diu ut putarem me offendisse. Sed non erat ira in silentio eius — erat consideratio profunda, quasi qui calculum longum in animo ponit. Tandem dixit:
 
-De hoc Uno qui descendit in mortem ut mortem vinceret — et qui natus est ex muliere mortali et portavit in carne omnem tristitiam carnis — habuimus inter nos prophetias antiquas, voces quasi in visione auditas, de quibus non omnes concordabant nec clara erant. Iam intelligo melius. Sed haec via — ut tu dicis — via est filiorum Mortis, via est quod Donum Ignotum recipit. Nos non sumus filii Mortis. Via nostra alia est — et an habemus viam, vel an egimus via, vel an nos quoque indigemus manus quae nos ducat — hoc quaerimus et non invenimus, et in hac quaestione sumus saecula et saecula.
+*De hoc Uno qui descendit in mortem ut mortem vinceret — et qui natus est ex muliere mortali et portavit in carne omnem tristitiam carnis — habuimus inter nos prophetias antiquas, voces quasi in visione auditas, de quibus non omnes concordabant nec clara erant. Iam intelligo melius. Sed haec via — ut tu dicis — via est filiorum Mortis, via est quod Donum Ignotum recipit. Nos non sumus filii Mortis. Via nostra alia est — et an habemus viam, vel an egimus via, vel an nos quoque indigemus manus quae nos ducat — hoc quaerimus et non invenimus, et in hac quaestione sumus saecula et saecula.*
 
 Et surrexit Finrothus et ivit ad fenestram ubi lux argentea intrabat et voltum eius argenteum faciebat, et dixit ultima verba quae de eo in hoc libro scribo:
 
-Tu habes peccatum unius hominis in historia carnis tuae. Nos habemus peccatum unius Angeli in historia memoriae nostrae. Forsitan utrique misericordia egent — sed misericordia alia et alia, sicut vulnera alia et alia. Illam discretionem *Ilúvatar* solus novit. Nos servimus. Amamus. Creamus. Custodimus. Cantamus. An sufficiat — in ipsius manu est, non in mea.
+*Tu habes peccatum unius hominis in historia carnis tuae. Nos habemus peccatum unius Angeli in historia memoriae nostrae. Forsitan utrique misericordia egent — sed misericordia alia et alia, sicut vulnera alia et alia. Illam discretionem* Ilúvatar *solus novit. Nos servimus. Amamus. Creamus. Custodimus. Cantamus. An sufficiat — in ipsius manu est, non in mea.*
 
 Et non potui ei respondere. Et hodie adhuc non possum.
 
@@ -333,6 +341,12 @@ Lapidem illum — qui mihi nunc inter omnia quae possideo res pretiosissima est 
 
 Navigavi. Et post tres dies — vel tres annos, quia fratres mihi postea dixerunt triennium me abfuisse, quod ego non credidi donec calendarium vidi — in aquas notas perveni, et phocas Hibernicas agnovi, et aves Hibernicas, et tandem clivum Hiberniae in Oriente aspexi. Et in portum qui prope monasterium nostrum est applicui, et Cellach frater qui me planantem vidit annos tres nunc ridebat et flebat simul in porta.
 
+---
+
+*Postquam reversus est, per dies pauci eum vidi. Aliter loquebatur. Aliter tacebat. Aliter spectabat. Ubi nunc es, frater Aidane? — frater Cellach*
+
+---
+
 Abii per tres annos. Mihi velut tres dies videbantur. Tempus in terra *Aman* aliter fluit. Hoc inter cetera iudicio Dei relinquo.
 
 ## ☩ Conclusio et Confessio ☩
@@ -355,7 +369,7 @@ Unum addo — non ut respondeam quod respondere non possum, sed quia tacere nequ
 
 Orate pro me, fratre Aidano peccatore, et orate — si fas est — pro illis *Immortalibus* ultra oceanum, quos Deus ipse novit quomodo et quantum, et qui — hoc certo scio — Deum suum *Ilúvatar* amant et ei serviunt fideliter in terra sua, et cantant cantus de quibus mundus iste nescit, et memoriam rerum ab initio mundi custodiunt ne pereat.
 
-☩ Miserere nobis omnibus, Domine, et iudica nos misericorditer — scientes et nescientes, mortales et immortales, filios Donationis et filios Cantus. ☩
+☩ **Miserere nobis omnibus, Domine, et iudica nos misericorditer — scientes et nescientes, mortales et immortales, filios Donationis et filios Cantus.** ☩
 
 ---
 
@@ -379,4 +393,8 @@ SIT NOMEN
 DOMINI  
 BENEDICTVM
 
+*Tapes aureus cum Arbore Secunda et calice*
+
 Α ☩ Ω
+
+<!-- Explicit · Anno Domini DCCCXCVI -->
