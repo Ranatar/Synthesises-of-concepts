@@ -12,7 +12,17 @@ ET SPIRITVS SANCTI
 
 ---
 
+---
+
+ORATE PRO FRATRIBVS  
+QVI HOC OPUS  
+CVSTODIERVNT
+
+---
+
 # INCIPIT RELATIO FRATRIS AIDANI MONACHI INSVLAE HII
+
+> *Foliatum fratre Bernardo anno Domini MCXLVII*
 
 *De Peregrinatione Sua Mira*  
 *Ad Terram Vltra Occidentale Mare*  
