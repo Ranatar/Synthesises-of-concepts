@@ -74,9 +74,9 @@
                   Archetypus
           (saec. ix, Anatol. vel Athon.)
                        │
-        ┌──────┬───┴────┬────── ─┐
-        │        │          │          │
-        Α        Β          Γ          Δ
+        ┌──────────┬───┴────┬──────────┐
+        │          │        │          │
+        Α          Β        Γ          Δ
      saec. xi  saec. xii saec. x/xi saec. xiii
 ```
 
@@ -86,8 +86,8 @@
                      π
             (ms. 47/б, c. 1951–55)
                      │
-        ┌─────────┼────────────┐
-        │            │               │
+        ┌────────────┼────────────┐
+        │            │            │
         π²           Σ ┄┄ contam. ┄┄ T
    man. secunda  Saratov,           Tolyatti,
                   c. 1965           manuscr.
@@ -96,17 +96,17 @@
                               Novosibirsk, fragm.
 ```
 
-*Lineae continuae descensum genealogicum significant; linea interrupta inter **Σ** et **T** contaminationem post-archetypam, qua nonnullae lectiones inter has copias migraverunt sine descensu directo. Stemma traditionis rossicae conjectura editoris est, quae argumentis apparatus critici confirmari videtur.*
+*Lineae continuae descensum genealogicum significant; linea interrupta inter **Σ** et **T** contaminationem post-archetypam, qua nonnullae lectiones inter has copias migraverunt sine descensu directo. Stemma traditionis rossicae coniectura editoris est, quae argumentis apparatus critici confirmari videtur.*
 
 ---
 
 # Praefatio editoris
 
 **De cyclo et eius traditione duplici.**
-Cyclum carminum quinque qui titulo **«m undecima»** *a saeculis nominatur*, in duplici traditione — graeca atque rossica — ad nos pervenit, et editio haec utramque parallele exhibet: textum graecum in pagina verso, versionem rossicam in pagina recto. *Quaestio de prioritate textus — utrum graecus rossico anterior sit, an contra — apud editorem deliberate suspensa manet*; argumenta enim utramque partem favent, sed neque ad iudicium decisivum sufficient.
+Cyclum carminum quinque qui titulo **«m undecima»** *a saeculis nominatur*, in duplici traditione — graeca atque rossica — ad nos pervenit, et editio haec utramque parallele exhibet: textum graecum in pagina verso, versionem rossicam in pagina recto. *Quaestio de prioritate textus — utrum graecus rossico anterior sit, an contra — apud editorem deliberate suspensa manet*; argumenta enim utrique parti favent, sed neque ad iudicium decisivum sufficient.
 
 **De textu graeco.**
-Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Christiani descripti*, ad archetypum communem perdere videntur quem editores priores in saec. ix collocaverunt. Origo archetypi obscura manet: *coniectatur in circulis monasticis Anatoliae vel Athonis ortum esse*, sed nullam certam attestationem habemus. *Cognomen «Petrodubraviensis» a sede studiorum, non a loco originis pendet* (more Anonymi Iamblichi vel similium). *Marginalia in codice* **Α** *nonnulla manu altera atramento rubro adscripta sunt, quibus* **Pseudo-Aidanus Samarensis** (*appellatione monastica ad Aidanum Hib. alludens, vera identitas ignota*) *plerique editores adscribunt*: scholia sunt brevia sed exegetica acumine notabilia, et apparatu nostro frequenter citantur (sigla β, γ, etc., quae scholia individua designant).
+Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Christiani descripti*, ad archetypum communem pertinere videntur quem editores priores in saec. ix collocaverunt. Origo archetypi obscura manet: *coniectatur in circulis monasticis Anatoliae vel Athonis ortum esse*, sed nullam certam attestationem habemus. *Cognomen «Petrodubraviensis» a sede studiorum, non a loco originis pendet* (more Anonymi Iamblichi vel similium). *Marginalia in codice* **Α** *nonnulla manu altera atramento rubro adscripta sunt, quae* **Pseudo-Aidano Samarensi** (*appellatione monastica ad Aidanum Hib. alludens, vera identitas ignota*) *plerique editores adscribunt*: scholia sunt brevia sed exegetico acumine notabilia, et apparatu nostro frequenter citantur (sigla β, γ, etc., quae scholia individua designant).
 
 **De versione rossica.**
 *Versio rossica* traditione minus simplici comprehenditur. *Interpres saeculi nostri* (*cuius persona, more scholae nostrae, in opere communi resolvitur*) carmina ex codd. graecis — *potissimum ex* **Α**, *interdum ad* **Β** *atque* **Γ** *recurrens* — elaboravit. *Autographum eius* (siglo **π** designatum, atramento ferrogallico et minio scriptum) in archivo Bibliothecae Bogodatae Samariensis hodie adservatur; cui successerunt copiae per circulos privatos descriptae, in urbibus Saratov (**Σ**), Tolyatti (**T**), atque, mediante itinerario ignoto, Novosibirsk (**Н**) circumferentes. *Lectiones quaedam inter* **Σ** *et* **T** *conspirantes contaminationem post-archetypam suggerunt* (*vide apparatum passim*). Sigla **π²** *manum secundam* in autographo notat, eadem ratione fortasse interpretis ipsius atramento rubro plerumque scriptam; *lectiones quae temporibus posterioribus revisionem indicare videntur*.
@@ -114,7 +114,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 *Orthographia archaizans*, *quae per omnem versionem rossicam observatur etiam in vocibus technicis modernis* (*«мiокардъ», «iоны», «электролитъ», «гравимасконы»*), *ad scholam nostram pertinet*: *omnia documenta nostra, sive antiqua sive recentia, in orthographia ante-octobrina conscribuntur*, *secundum traditionem archivariae transcriptionis quae a fundatoribus scholae statuta est*. Quod in scholis aliis miraculum videretur, apud nos rite et ordine fit.
 
 **De ratione editionis.**
-*In textu graeco constituendo* cod. **Α** *primarium habuimus, sed in locis ubi corruptus aut ambiguus videbatur, ad* **Β** **Γ** **Δ** *recurrimus*, *lectiones harum codicum in apparatu critico fideliter notantes*. *In versione rossica* *textum autographi* **π** *plerumque secuti sumus*; *ubi* **π²** *secundam manum exhibet, iudicium criticum exercuimus utrum prima manus an secunda potior esset, plerumque pro secunda decernentes utpote interpretis ipsius revisione confirmata*. *Lectiones exemplariorum samizdaticarum* (**Σ**, **T**, **Н**) *raro ad textum constituendum adhibitae sunt, sed in apparatu critico fideliter recensentur ut status traditionis manifestus fiat*.
+*In textu graeco constituendo* cod. **Α** *primarium habuimus, sed in locis ubi corruptus aut ambiguus videbatur, ad* **Β** **Γ** **Δ** *recurrimus*, *lectiones horum codicum in apparatu critico fideliter notantes*. *In versione rossica* *textum autographi* **π** *plerumque secuti sumus*; *ubi* **π²** *secundam manum exhibet, iudicium criticum exercuimus utrum prima manus an secunda potior esset, plerumque pro secunda decernentes utpote interpretis ipsius revisione confirmata*. *Lectiones exemplariorum samizdaticarum* (**Σ**, **T**, **Н**) *raro ad textum constituendum adhibitae sunt, sed in apparatu critico fideliter recensentur ut status traditionis manifestus fiat*.
 
 ---
 
@@ -143,7 +143,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ### Apparatus criticus (*ad vv. 1–16*)
 
-**1**&nbsp;ὁ μῦς ὁ ἄσωτος] μῦς ἄσωτος **Β** *sine articulis* &nbsp;&nbsp; **2**&nbsp;πατρῴαν] μητρῴαν **Γ**, *lectio quae filii prodigi parabolam invertit* &nbsp;&nbsp; **4**&nbsp;σεληνοβατοῦντι] γαλακτοβατοῦντι **Δ**, *lectio facilior, conferenda cum v. 16* &nbsp;&nbsp; **10**&nbsp;πεντάκις] πέντε φορᾶς **Β Δ**; πεντάκις *firmiter ap. Α Γ*; add. ἀντιστρόφως «посолонь» **Α** *in margine* &nbsp;&nbsp; **12**&nbsp;μάσκωσιν] φαρωσίν **Δ**, *rationaliz.*; **Α Β Γ** *firmiter* μάσκ- &nbsp;&nbsp; **16**&nbsp;γαλακτίνῳ] λακτίνῳ **Β**; *forma* γαλακτ-*ap. ceteris*  
+**1**&nbsp;ὁ μῦς ὁ ἄσωτος] μῦς ἄσωτος **Β** *sine articulis* &nbsp;&nbsp; **2**&nbsp;πατρῴαν] μητρῴαν **Γ**, *lectio quae filii prodigi parabolam invertit* &nbsp;&nbsp; **4**&nbsp;σεληνοβατοῦντι] γαλακτοβατοῦντι **Δ**, *lectio facilior, conferenda cum v. 16* &nbsp;&nbsp; **10**&nbsp;πεντάκις] πέντε φοραῖς **Β Δ**; πεντάκις *firmiter ap. Α Γ*; add. ἀντιστρόφως «посолонь» **Α** *in margine* &nbsp;&nbsp; **12**&nbsp;μάσκωσιν] φαρωσίν **Δ**, *rationaliz.*; **Α Β Γ** *firmiter* μάσκ- &nbsp;&nbsp; **16**&nbsp;γαλακτίνῳ] λακτίνῳ **Β**; *forma* γαλακτ-*ap. ceteros*  
 
 ---
 
@@ -184,7 +184,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ### Fontes et adnotationes (*ad vv. 1–16*)
 
-**1–10** *schema narrationis ex* Lc. xv 11–13 (*parab. de filio prodigo*), *personis inversis*: filius → mus, pater → formicarium; *eucharistia per mucum perficitur*. &nbsp;&nbsp; **4** σπέρματα σεληνοβατοῦντα] *imago propria*; *cf.* 1 Cor. xv 36–38 *de semine caelesti*. &nbsp;&nbsp; **9–10** *capitis tegumentum gummeum cum eucharistia coniunctum*] *cf. alchimicam* caput corvi, *ex traditione hilari translatum*. &nbsp;&nbsp; **16** *passus lacteus ionum*] *cf.* Empedocl. fr. 17 D.–K. *de stoicheiis tamquam animantibus*; *rusice «молочный шажокъ» allusio ad infantes felinos*.
+**1–10** *schema narrationis ex* Lc. xv 11–13 (*parab. de filio prodigo*), *personis inversis*: filius → mus, pater → formicarium; *eucharistia per mucum perficitur*. &nbsp;&nbsp; **4** σπέρματι σεληνοβατοῦντι] *imago propria*; *cf.* 1 Cor. xv 36–38 *de semine caelesti*. &nbsp;&nbsp; **9–10** *capitis tegumentum gummeum cum eucharistia coniunctum*] *cf. alchimicum* caput corvi, *ex traditione hilari translatum*. &nbsp;&nbsp; **16** *passus lacteus ionum*] *cf.* Empedocl. fr. 17 D.–K. *de stoicheiis tamquam animantibus*; *rossice «молочный шажокъ» allusio ad infantes felinos*.
 
 ---
 
@@ -194,7 +194,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Τὴν μνήμην μου εὑρίσκετε, πρὶν ἐκλίπῃ ἡ κράμβη —  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὁ χρόνος βραχύς· δώσω ἑκάστῳ θεατήριον, τρέφων ἐκ τοῦ μυοκαρδίου δακτυλίου.  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἕκαστος δὲ ὀψὶς τῶν ὀφθαλμῶν μου παρακολουθήσει ὑμᾶς, ὦ μυρμηκίσκοι·  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἑκάστη δὲ ὄψις τῶν ὀφθαλμῶν μου παρακολουθήσει ὑμᾶς, ὦ μυρμηκίσκοι·  
 **20**&nbsp;&nbsp;ὅταν δὲ προσενέγκητέ μοι τὴν μνήμην — ἐπισκευάσομεν τοὺς βαρυτικοὺς μάσκωνας,  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ πάντας τοὺς σημαφόρους τοὺς ἀποβαλόντας τὸ κουκούλιον τῆς προνύμφης —  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;εἰ μόνον ἡ κράμβη παραμείνῃ!»  
@@ -203,7 +203,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 **25**&nbsp;&nbsp;ἐσθίει πάντα εἰς ὅσα ἥκουσιν οἱ διάκονοι σημειωτικοί·  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Τὰ Οὐράλεια ὄρη ὡς τρίτον πέρας Γαυσσιανῆς μονοφυοῦς»·  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Ὁ κρύσταλλος ἐν μορφῇ μ-ἑνδεκάτῃ καθίσει γίγνεται»·  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Τὸ ἐκ τοῦ ὑαλίνου σχοινίου φῶς διαμερισθὲν τοῖς γωνίοις τοῦ μαρτενσιτικοῦ κόκκου»·  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Τὸ ἐκ τοῦ ὑαλίνου σχοινίου φῶς διαμερισθὲν ταῖς γωνίαις τοῦ μαρτενσιτικοῦ κόκκου»·  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Ὁ πρῶτος οὐρανὸς διέρχεται διὰ σιδηροτροχιῶν ἐπὶ ἓξ γιγαμέτρων»·  
 **30**&nbsp;&nbsp;«Ἡ ἀδαμαντίνη κόνις εὐεργετικῶς πληθύνει τὴν γλαυκὴν ἐντροπίαν».  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὁ μῦς ὁ ἄσωτος  
@@ -219,7 +219,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ### Adnotationes editoris
 
-**De phrasibus quasi-scientificis (vv. 26–30).** Phrases hae non nugae sunt sed *microcalcae aliorum mundorum*: in mundo cuiusque *recte* fiunt, in nostro autem *ridicula* apparent. *Lex undecima crystalli aquae* (*cf. Ice* xi, phasis T<72 K), *lapsus per sideroportos septima caeli, motus monasticus* («сидѣнiемъ»), *omnia ad mundum cycli pertinent quamvis nobis incongrua videantur*.
+**De phrasibus quasi-scientificis (vv. 26–30).** Phrases hae non nugae sunt sed *microcalcae aliorum mundorum*: in mundo cuiusque *recte* fiunt, in nostro autem *ridicula* apparent. *Lex undecima crystalli aquae* (*cf. Ice* xi, phasis T<72 K), *lapsus per sideroportos septimi caeli, motus monasticus* («сидѣнiемъ»), *omnia ad mundum cycli pertinent quamvis nobis incongrua videantur*.
 
 **De numero quinario.** *Quinque circuitiones formicarii* (v. 10), *quinque carmina cycli, quinque phrases quasi-scientificae* (vv. 26–30): *principium structurale totius operis*. Numerus quinarius *passim* occurrit etiam in §3 (quinque argumenta, sed quattuor exhibita) atque §5 (refrain quinquies).
 
@@ -264,7 +264,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Περὶ τῶν διδύμων φωτόνων, ἢ τίνι λόγῳ ὁ μύρμηξ τῆς ὄψεως ἐστερήθη
 
-**1**&nbsp;&nbsp;Οἱ δίδυμοι φωτόνες ἐκωλύθησαν ὑπὸ ζῶντος φραγμοῦ  
+**1**&nbsp;&nbsp;Οἱ δίδυμοι φωτῶνες ἐκωλύθησαν ὑπὸ ζῶντος φραγμοῦ  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;διὰ τὴν δημόσιαν ἐπίδειξιν τῆς ἐρυθροποιήσεως.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Δεξιῷ δὲ ἀριθμῷ αὐτοὺς ἐξενίσαντο ἐκ τοῦ ἐργαστηρίου  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τῆς τοῦ ὑαλίνου νήματος εἱλήσεως.  
@@ -278,15 +278,15 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ### Apparatus criticus (*ad vv. 1–9*)
 
-**1**&nbsp;δίδυμοι] δίδυμον **Β** *sg. ut numerus grammaticus singularis cum pluralis significatu, lectio audacior et ideo retinenda apud quosdam* &nbsp;&nbsp; **2**&nbsp;ἐρυθροποιήσεως] αἱμοποιήσεως **Δ** *vocabulum vulgatius* &nbsp;&nbsp; **3**&nbsp;δεξιῷ ἀριθμῷ] *cf. Minkovskii signaturam*; ἀριστερῷ **Γ**, *lectio incongrua* &nbsp;&nbsp; **5**&nbsp;κομωτὸν] κωμητικὸν **Γ Δ**, *forma melior*; κομωτὸν **Α Β** *retinendum* &nbsp;&nbsp; **7**&nbsp;τετράδα] τριάδα **Α**ᵃ·ᶜ·, *prima manu, postea correxit in* τετράδα; *vide adnot. de quaternitate* &nbsp;&nbsp; **8**&nbsp;τὰ νῶτα] τὰς σπίνας **Δ**, *neologismus quanticus*; τὰ νῶτα *ambigue intellegendum: dorsum vel spin*, *vide adnot.*  
+**1**&nbsp;δίδυμοι] δίδυμον **Β** *sg. ut numerus grammaticus singularis cum pluralis significatu, lectio audacior et ideo retinenda apud quosdam* &nbsp;&nbsp; **2**&nbsp;ἐρυθροποιήσεως] αἱμοποιήσεως **Δ** *vocabulum vulgatius* &nbsp;&nbsp; **3**&nbsp;δεξιῷ ἀριθμῷ] *cf. Minkovskii signaturam*; ἀριστερῷ **Γ**, *lectio incongrua* &nbsp;&nbsp; **5**&nbsp;κομωτὸν] κομητικὸν **Γ Δ**, *forma melior*; κομωτὸν **Α Β** *retinendum* &nbsp;&nbsp; **7**&nbsp;τετράδα] τριάδα **Α**ᵃ·ᶜ·, *prima manu, postea correxit in* τετράδα; *vide adnot. de quaternitate* &nbsp;&nbsp; **8**&nbsp;τὰ νῶτα] τὰς σπίνας **Δ**, *neologismus quanticus*; τὰ νῶτα *ambigue intellegendum: dorsum vel spin*, *vide adnot.*  
 
 ---
 
 ### Adnotationes editoris
 
-**De inversione perspectivae.** *Carmen secundum inverse agit primum*: in §1 *mundus alienus describitur nostris verbis*; in §2 *phaenomenum mundi nostri* (*entanglement quanticum, signatura Minkovskii, red-shift Doppleri*) *describitur verbis mundi cycli*. Hinc grammatica anomala (*geminum pluraliter cum singulari subiecto*), hinc *eritropoiesis tribuitur particulis non sanguineis*. *Conversio mediorum hic palam fit*.
+**De inversione perspectivae.** *Carmen secundum inverse agit primum*: in §1 *mundus alienus describitur nostris verbis*; in §2 *phaenomenum mundi nostri* (*entanglement quanticum, signatura Minkovskii, red-shift Doppleri*) *describitur verbis mundi cycli*. Hinc grammatica anomala (*geminum pluraliter cum singulari subiecto*), hinc *erythropoiesis tribuitur particulis non sanguineis*. *Conversio mediorum hic palam fit*.
 
-**De quaternitate vs trinitate.** *Geminus* (= 2) *photonum apparet ut quaternitas* (= 4): *duplicatio numero accidit transitu inter mundos*. *Mundus cycli trinitatem non admittit: christiana Trinitas, ex eius perspectiva, in quaternitatem deflectitur*, *quasi cicatrix Trinitatis transformatae*. Lectio prima τριάδα (**Α**ᵃ·ᶜ·; rusice "троицы", **π¹**) *nostrae perspectivae propior*; correctio in τετράδα / "четверицы" *perspectivam mundi cycli amplexa*.
+**De quaternitate vs trinitate.** *Geminus* (= 2) *photonum apparet ut quaternitas* (= 4): *duplicatio numero accidit transitu inter mundos*. *Mundus cycli trinitatem non admittit: christiana Trinitas, ex eius perspectiva, in quaternitatem deflectitur*, *quasi cicatrix Trinitatis transformatae*. Lectio prima τριάδα (**Α**ᵃ·ᶜ·; rossice "троицы", **π¹**) *nostrae perspectivae propior*; correctio in τετράδα / "четверицы" *perspectivam mundi cycli amplexa*.
 
 ---
 
@@ -324,9 +324,9 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 **10**&nbsp;&nbsp;«Ποῖον τὸ ἐπιφαεινὸν ῥῆμα ὑμῶν;» εἶπεν ὁ μύρμηξ,  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπερηφάνως ἐπιθέμενος τὴν φελλίνην κίδαριν.  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Σήμα Ἰσραήλ» ἀπεκρίθη ὁ φωτὸν καὶ πυκνῶς ἐρυθρίασεν.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Σήμα Ἰσραήλ» ἀπεκρίθη ὁ φωτών καὶ πυκνῶς ἐρυθρίασεν.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὁ δὲ μύρμηξ ἀπέβαλε τὴν τοῦ ὁρᾶν δύναμιν  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ οὐκ ἠδυνήθη ἀνακρίνειν τὸν δεύτερον φωτόνα,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ οὐκ ἠδυνήθη ἀνακρίνειν τὸν δεύτερον φωτῶνα,  
 **15**&nbsp;&nbsp;ὃς οὐδαμῶς εὑρέθη.  
 
 ---
@@ -375,7 +375,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 ## Περὶ τῆς τῶν χλωροπλάστιδων διαλέξεως κατὰ μιαφυσιτῶν
 
 **1**&nbsp;&nbsp;Οἱ χλωροπλάστιδες τοῦ ταυοφύλλου  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τῆς δωδεκάτης κλάδου  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τοῦ δωδεκάτου κλάδου  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑψηλοτάσεως ἀρκευθίνου,  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀποκρινόμενοι τῷ ὀμβρελλιαίῳ σήματι  
 **5**&nbsp;&nbsp;ιδ-ΜΝΓ-ξεV-Δ-☐,  
@@ -397,7 +397,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ### Adnotationes editoris
 
-**De convergentia perfecta.** *Carmen tertium nec descriptio mundi nostri amplius est, nec mundi alieni, sed locus convergentiae perfectae*. *Theologia* (*miaphysitismus*), *biologia* (*chloroplastae*), *bureaucratia administrativa* (*designatio per codicem alphanumericum*) *coalescunt in una eademque disputatione*. *Hinc impossibilis est decidere utra perspectiva sit «nostra» utra «aliena»*.
+**De convergentia perfecta.** *Carmen tertium nec descriptio mundi nostri amplius est, nec mundi alieni, sed locus convergentiae perfectae*. *Theologia* (*miaphysitismus*), *biologia* (*chloroplastae*), *bureaucratia administrativa* (*designatio per codicem alphanumericum*) *coalescunt in una eademque disputatione*. *Hinc impossibile est decidere utra perspectiva sit «nostra» utra «aliena»*.
 
 ---
 
@@ -437,7 +437,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 ## Περὶ τῆς τῶν χλωροπλάστιδων διαλέξεως — β´
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«γ. Ἡ σφαιρικὴ κίνησις τοῦ τετάρτου οὐρανοῦ  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπηρετεῖται μόνον ὑπὸ ἁψινθίου τε καὶ κράμβης τῆς προσηκούσης ἐρυθρότητος.»  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπηρετεῖται μόνον ὑπὸ ἀψινθίου τε καὶ κράμβης τῆς προσηκούσης ἐρυθρότητος.»  
 **15**&nbsp;&nbsp;«δ. Οὐκ ἀναγκαῖόν ἐστιν ζητεῖν  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τὰ σημεῖα τῶν χλωροπλάστιδων ἐν ἑτέροις φύλλοις.»  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Αἱ τῶν χλωροπλάστιδων αἰτίαι  
@@ -453,7 +453,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ### Apparatus criticus (*ad vv. 13–24*)
 
-**8**&nbsp;πέντε αἰτίας] *auctor quinque promittit, quattuor exhibet*; *lacuna voluntaria*, ε. *vacat*; **Α** *in margine*: ἐπελάθετο — ἢ ἐκ προθέσεως, «*забыл — так специально*» &nbsp;&nbsp; **13**&nbsp;τετάρτου οὐρανοῦ] τρίτου οὐρανοῦ **Δ**, *cf.* 2 Cor. xii 2; *lectio harmonizans deterior, quia inversio numerali totius cycli propria* &nbsp;&nbsp; **14**&nbsp;ἁψινθίου] ἀψινθίου **Β Δ** *forma sine spiritu* &nbsp;&nbsp; **20**&nbsp;προσώπων ἀδιορίστου διαστάσεως] *de divinitate ut persona ignota*; *lectio criminalistica ironice retenta* &nbsp;&nbsp; **23**&nbsp;ὀσφραντικὴν] ὀσφρητικὴν **Δ**, *rationaliz.*  
+**8**&nbsp;πέντε αἰτίας] *auctor quinque promittit, quattuor exhibet*; *lacuna voluntaria*, ε. *vacat*; **Α** *in margine*: ἐπελάθετο — ἢ ἐκ προθέσεως, «*забыл — так специально*» &nbsp;&nbsp; **13**&nbsp;τετάρτου οὐρανοῦ] τρίτου οὐρανοῦ **Δ**, *cf.* 2 Cor. xii 2; *lectio harmonizans deterior, quia inversio numeri totius cycli propria* &nbsp;&nbsp; **14**&nbsp;ἀψινθίου] ἁψινθίου **Α Γ** *forma cum spiritu aspero, contra usum LXX* &nbsp;&nbsp; **20**&nbsp;προσώπων ἀδιορίστου διαστάσεως] *de divinitate ut persona ignota*; *lectio criminalistica ironice retenta* &nbsp;&nbsp; **23**&nbsp;ὀσφραντικὴν] ὀσφρητικὴν **Δ**, *rationaliz.*  
 
 ---
 
@@ -461,7 +461,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 **De numero quattuor pro quinque.** *Auctor quinque argumenta promittit* (v. 8 «пятью аргументами»), *quattuor exhibet*. *Argumentum quintum vacuum est*; *forsitan exhibetur per cibum* (chloroplastae ipsi comeduntur cum suis argumentis, vv. 17–19). *Numerus 5 quinarius totius operis hic perforatur*: *cicatrix structuralis, quae confirmat regulam ipsam dum eam infringit*.
 
-**De personis dimensionis indefinitae.** *Si numerare non possumus, quomodo enumerare? — paradoxon quem auctor deliberate conservat*. *Personae illae perceptionem habere non possunt* (*indifferentia olfactoria*) *quia in dimensione nostrae cognitioni inaccessibili habitant*; *tamen ipsae substantiae sunt, nominabiles si non numerabiles*.
+**De personis dimensionis indefinitae.** *Si numerare non possumus, quomodo enumerare? — paradoxon quod auctor deliberate conservat*. *Personae illae perceptionem habere non possunt* (*indifferentia olfactoria*) *quia in dimensione nostrae cognitioni inaccessibili habitant*; *tamen ipsae substantiae sunt, nominabiles si non numerabiles*.
 
 ---
 
@@ -492,7 +492,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ### Fontes et adnotationes (*ad vv. 13–24*)
 
-**13** *четвёртое небо*] *cf.* 2 Cor. xii 2 (*Paulus de tertio caelo*); *nexus cum* §1 *v. 29 (первое небо)*; *caelorum systema in toto cyclo inversum*. &nbsp;&nbsp; **14** *полынью и капустой*] *coniunctio improbabilis*: *absinthium amarum et brassica dulcis*; *capusta motivum* §1. &nbsp;&nbsp; **20** *лица неустановленной мѣрности*] *de divinitate ut persona ignota*; *idioma criminalistica rusicum ad rem divinam aptatum*. &nbsp;&nbsp; **23–24** *олфакторная индифферентность*] *de cognitione per olfactum*; *sensus discriminandi non distinguuntur ab intellectu*.
+**13** *четвёртое небо*] *cf.* 2 Cor. xii 2 (*Paulus de tertio caelo*); *nexus cum* §1 *v. 29 (первое небо)*; *caelorum systema in toto cyclo inversum*. &nbsp;&nbsp; **14** *полынью и капустой*] *coniunctio improbabilis*: *absinthium amarum et brassica dulcis*; *capusta motivum* §1. &nbsp;&nbsp; **20** *лица неустановленной мѣрности*] *de divinitate ut persona ignota*; *idioma criminalisticum rossicum ad rem divinam aptatum*. &nbsp;&nbsp; **23–24** *олфакторная индифферентность*] *de cognitione per olfactum*; *sensus discriminandi non distinguuntur ab intellectu*.
 
 ---
 
@@ -507,7 +507,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 **5**&nbsp;&nbsp;Ὁ δὲ σημαφόρος οὐχ οἷός τε ἦν ἀκούειν τοῦτο,  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπάρχων οὐχ ἱκανῶς πόρρω τῆς λυκορίδος.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Μόνον ἀνήρτα ἐπὶ τῷ κουκουλίῳ  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τοὺς ἑαυτοῦ φωτόνας  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τοὺς ἑαυτοῦ φωτῶνας  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ ἔτρεφεν αὐτοὺς  
 **10**&nbsp;&nbsp;ὑπερβάλλοντι ἁλί.  
 
@@ -515,7 +515,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ### Apparatus criticus (*ad vv. 1–10*)
 
-**1**&nbsp;χιτινώδη] χιτινικά **Δ**, *forma rationalizans* &nbsp;&nbsp; **2**&nbsp;ἀτόνους] ἀτονητικούς **Δ**, *neologismus reicienda* &nbsp;&nbsp; **4**&nbsp;Ζῆθι] Ζῆτε **Β** (*pl. pro sg.*, *lectio harmoniz. ad «semaphoros» plur.*); *sed sg. ap. ceteris* &nbsp;&nbsp; **6**&nbsp;ἱκανῶς πόρρω] ἀρκούντως μακράν **Δ**, *synonymum trivialiter*; *vide adnot. de auditu inverso* &nbsp;&nbsp; **10**&nbsp;ὑπερβάλλοντι ἁλί] ὑπερνομικῷ ἁλί **Α**ᵐ·ʳ·, *glossa interpretativa: sal supra-legali, signum gratiae*  
+**1**&nbsp;χιτινώδη] χιτινικά **Δ**, *forma rationalizans* &nbsp;&nbsp; **2**&nbsp;ἀτόνους] ἀτονητικούς **Δ**, *neologismus reiciendus* &nbsp;&nbsp; **4**&nbsp;Ζῆθι] Ζῆτε **Β** (*pl. pro sg.*, *lectio harmoniz. ad «semaphoros» plur.*); *sed sg. ap. ceteris* &nbsp;&nbsp; **6**&nbsp;ἱκανῶς πόρρω] ἀρκούντως μακράν **Δ**, *synonymum trivialiter*; *vide adnot. de auditu inverso* &nbsp;&nbsp; **10**&nbsp;ὑπερβάλλοντι ἁλί] ὑπερνομικῷ ἁλί **Α**ᵐ·ʳ·, *glossa interpretativa: sale supra-legali, signum gratiae*  
 
 ---
 
@@ -560,8 +560,8 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἐν δὲ τῷ χρόνῳ τούτῳ,  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὅτε οἱ μύρμηκες ἐνέγκαντες πρὸς τὸν σημαφόρον  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;γολούπτσας ἐκ τῶν ὀψεων τοῦ μυός,  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;οἱ φωτόνες ἐνεδύσαντο τὴν πορφύραν,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;γολούπτσας ἐκ τῶν ὄψεων τοῦ μυός,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;οἱ φωτῶνες ἐνεδύσαντο τὴν πορφύραν,  
 **15**&nbsp;&nbsp;ἀποκλίναντες οὕτω  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τὴν τροφὴν ἑκάστου θεατηρίου.  
 
@@ -569,13 +569,13 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ### Apparatus criticus (*ad vv. 11–16*)
 
-**13**&nbsp;γολούπτσας] *vocabulum slavicum, retentum sine versione, in omnibus codd.*; *cf.* rusice «голубцы», *cibus ex caule cum carne involutus*; *nexus cum* §1 v. 19 &nbsp;&nbsp; **14**&nbsp;πορφύραν] πορφυρίτην **Δ**, *lectio neutralis*; *ambivalentia colore/imperatorica, vide adnot.*  
+**13**&nbsp;γολούπτσας] *vocabulum slavicum, retentum sine versione, in omnibus codd.*; *cf.* rossice «голубцы», *cibus ex caule cum carne involutus*; *nexus cum* §1 v. 19 &nbsp;&nbsp; **14**&nbsp;πορφύραν] πορφυρίτην **Δ**, *lectio neutralis*; *ambivalentia colore/imperatorica, vide adnot.*  
 
 ---
 
 ### Adnotationes editoris
 
-**De porphyra duplici.** *Porphyrum* (v. 14) *simul est habitum imperatorium Romaniae christianae et blue-shift opticum*: photoni *ad statum imperatorium ascendunt simul cum approximatione ad observatorem*. Coniunctio status physici et theologici. *Hoc oppositum rubri shift in* §2 v. 12, *ubi photonis remotio* (red-shift) *iudaicam fidem confitentis*.
+**De porphyra duplici.** *Porphyrum* (v. 14) *simul est habitus imperatorius Romaniae christianae et blue-shift opticum*: photoni *ad statum imperatorium ascendunt simul cum approximatione ad observatorem*. Coniunctio status physici et theologici. *Hoc oppositum rubri shift in* §2 v. 12, *ubi photonis remotio* (red-shift) *iudaicam fidem confitentis*.
 
 **De translatione divinitatis.** *Mus erat divinitas in* §1; *photoni nunc deus novus*. *Hierarchia ontologica non destruitur sed permutatur*: *mundus cycli flexibilem habet ontologiam, sed nullo modo arbitrariam*; *ordo subjacet, quamvis dynamicus sit*. *Locus deliberate ambiguus*.
 
@@ -624,13 +624,13 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ### Apparatus criticus (*ad vv. 1–9*)
 
-**1**&nbsp;πενταβενοῦς] πενταβενός **Β**, *forma neutr. pro masc.*; *neologismus chimicus retentus* &nbsp;&nbsp; **3, 6, 9, 12, 15**&nbsp;Μεγαλύνει ἡ ψυχή μου τὸν κύριον] Lc. i 46; *refrain quinquies, nulla varia lectio inter codd.* &nbsp;&nbsp; **4**&nbsp;αὐράτου τοῦ κρύπτου] ἀργυράτου τοῦ κρύπτου **Γ**, *permut. aurum-argentum: lectio reicienda* &nbsp;&nbsp; **5**&nbsp;ἀπομύττηται] ἀπομύττει **Δ**, *forma vulg.*; *cong. ἀπομύττηται melior* &nbsp;&nbsp; **7**&nbsp;δημοσία χάρις] *coniunctio quasi-blasphema in cultu nostro*; *ap. omnes codd. uniformiter*; *vide adnot.* &nbsp;&nbsp; **8**&nbsp;νιωτὶ] *transcriptio acronymi technici* нИОТ; *ap. Γ et Δ scripto plenius* νουκλεοτιδικῷ ἀντιστρόφης τρανσκρ. ἀναστολῇ (*glossa explicativa, manifeste interpolata*)  
+**1**&nbsp;πενταβενοῦς] πενταβενός **Β**, *forma 2 decl. (-ός) pro 3 decl. (-ής)*; *neologismus chimicus retentus* &nbsp;&nbsp; **3, 6, 9, 12, 15**&nbsp;Μεγαλύνει ἡ ψυχή μου τὸν κύριον] Lc. i 46; *refrain quinquies, nulla varia lectio inter codd.* &nbsp;&nbsp; **4**&nbsp;αὐράτου τοῦ κρύπτου] ἀργυράτου τοῦ κρύπτου **Γ**, *permut. aurum-argentum: lectio reicienda* &nbsp;&nbsp; **5**&nbsp;ἀπομύττηται] ἀπομύττει **Δ**, *forma vulg.*; *cong. ἀπομύττηται melior* &nbsp;&nbsp; **7**&nbsp;δημοσία χάρις] *coniunctio quasi-blasphema in cultu nostro*; *ap. omnes codd. uniformiter*; *vide adnot.* &nbsp;&nbsp; **8**&nbsp;νιωτὶ] *transcriptio acronymi technici* нИОТ; *ap. Γ et Δ scripto plenius* νουκλεοτιδικῷ ἀντιστρόφης τρανσκρ. ἀναστολῇ (*glossa explicativa, manifeste interpolata*)  
 
 ---
 
 ### Adnotationes editoris
 
-**De ego tamquam variabili propositionali.** *Subjectum primum in toto cyclo emergit* (*«мою рѣдьку», «мои антенны», «мою память»*), *sed ego ipsum variabile cui quaelibet substantia substitui potest*: *idem qui squamosa pulmona habet et fasetes oculi*; *idem qui antennas et radicem rhaphani et memoriam synapsidam*. *Subiectum mundi cycli dynamicum et omni-includens*.
+**De ego tamquam variabili propositionali.** *Subiectum primum in toto cyclo emergit* (*«мою рѣдьку», «мои антенны», «мою память»*), *sed ego ipsum variabile cui quaelibet substantia substitui potest*: *idem qui squamosa pulmona habet et fasetes oculi*; *idem qui antennas et radicem rhaphani et memoriam synapsidam*. *Subiectum mundi cycli dynamicum et omni-includens*.
 
 ---
 
@@ -714,7 +714,7 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ### Fontes et adnotationes (*ad vv. 10–17*)
 
-**10** *камень шесть мегаэлектронъ-вольтъ*] MeV *est unitas energiae*, *non ponderis*; *cf. paradoxon Origenianum de lapide quem Deus tollere non possit; necnon lapidem Aidani in Relat. eiusd.* &nbsp;&nbsp; **11** *негэнтропiя*] *cf.* E. Schrödinger, *What is Life?* (1944). &nbsp;&nbsp; **13** *гемобактерiи*] *coniunctio impossibilis*. &nbsp;&nbsp; **14** *порфиринъ*] *ambivalentia triplex*: (1) *pigmentum haemoglobini*, (2) *porphyria morbus*, (3) *traditio populari vampiricae*; *cf.* §4 v. 14. &nbsp;&nbsp; **14** *синапсидная*] *ambivalentia*: synapsida *vs synapsis nervosa*. &nbsp;&nbsp; **16–17** *clausula*] Iob. xxxviii 11: ἕως τούτου ἐλεύσῃ καὶ οὐχ ὑπερβήσῃ; *Deus mundi cycli, etiamsi omnia accipit, fines mundo statuit*.
+**10** *камень шесть мегаэлектронъ-вольтъ*] MeV *est unitas energiae*, *non ponderis*; *cf. paradoxon Origenianum de lapide quem Deus tollere non possit; necnon lapidem Aidani in Relat. eiusd.* &nbsp;&nbsp; **11** *негэнтропiя*] *cf.* E. Schrödinger, *What is Life?* (1944). &nbsp;&nbsp; **13** *гемобактерiи*] *coniunctio impossibilis*. &nbsp;&nbsp; **14** *порфиринъ*] *ambivalentia triplex*: (1) *pigmentum haemoglobini*, (2) *porphyria morbus*, (3) *traditio popularis vampirica*; *cf.* §4 v. 14. &nbsp;&nbsp; **14** *синапсидная*] *ambivalentia*: synapsida *vs synapsis nervosa*. &nbsp;&nbsp; **16–17** *clausula*] Iob. xxxviii 11: ἕως τούτου ἐλεύσῃ καὶ οὐχ ὑπερβήσῃ; *Deus mundi cycli, etiamsi omnia accipit, fines mundo statuit*.
 
 ---
 
@@ -722,11 +722,11 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 **De charactere editionis principis.** *Cur cyclus tantopere singularis* (*conexus inter physicam quanticam, theologiam patristicam, biologiam molecularem, atque institutionalia bureaucratica*) *nondum editionem typographicam vulgo divulgatam susceperit, quaestio est apud nos non facile soluta*. *Editores ante nos potentiales* — *sive ecclesiastici sive academici sive litterarii* — *materiam suspectam habuerunt*: *nimis liturgicam pro academia, nimis quanticam pro ecclesia, nimis ridiculam pro litteris severioribus*. *Hinc cyclus saeculis aliquot per copias privatas tantum circumferebatur*, *usque dum Bibliotheca nostra publicationis curam suscepit*.
 
-**Vocabulum centrale «m undecima».** *Titulum ambiguum manet in utraque traditione*: graece μ ἑνδεκάτη *vel* ἐνδεκάτη τοῦ μῦ; rossice *«одиннадцать-м»*, *cum lineola coniunctiva enigmatica*. Pseudo-Aidanus in scholio γ *interpretationes plures proponit*: *phasem cristallinam aquae undecimam* (*cf. Ice* xi, §1 v. 27), *abbreviationem alicuius formulae monasticae deperditae*, *aut numerum primum inter eos qui in nostro mundo divinitatem accipere possunt*. *Nulla interpretatio satis firmiter probatur*: *ambiguitas ipsa pertinere videtur ad cyclum, qui se nominari recusat eo modo quo nominari posset*.
+**Vocabulum centrale «m undecima».** *Titulus ambiguus manet in utraque traditione*: graece μ ἑνδεκάτη *vel* ἐνδεκάτη τοῦ μῦ; rossice *«одиннадцать-м»*, *cum lineola coniunctiva enigmatica*. Pseudo-Aidanus in scholio γ *interpretationes plures proponit*: *phasem cristallinam aquae undecimam* (*cf. Ice* xi, §1 v. 27), *abbreviationem alicuius formulae monasticae deperditae*, *aut numerum primum inter eos qui in nostro mundo divinitatem accipere possunt*. *Nulla interpretatio satis firmiter probatur*: *ambiguitas ipsa pertinere videtur ad cyclum, qui se nominari recusat eo modo quo nominari posset*.
 
 **De manu communi.** *In schola nostra opus omne manu communi tractatur, sive textuum constituendorum sive interpretandorum*. *Persona singularis non occultatur, sed in resonantia collegii pertraducitur*: *nomen, sicut autovalens operatoris resonantici, in partem realem dividitur* (Re λ = a) *quae in libro et in actis manifesta fit*, *et in partem imaginalem* (Im λ = b) *quae in collegio, in marginibus, in seminariis cogitatur* — *palamitica ratione ad creatas et non-creatas energias spectata*. *Quod cyclus suum auctorem in opere resolvit, idem haec editio editorem suum*. *Sic legendum est* «approbante Praefectura» *in pagina titulari*: *non signum nominis occulti, sed visa propria scholae nostrae, qua singularitas vitae redactoris in resonantia communi manet*.
 
-**De anachronismis cycli.** *Vocabula conceptusque quaedam in cyclo apparentia* (*chloroplastes, ius signaturae Minkovskianae, photoni hemobacteriis induti, isotopi pentavalentes auri, lapis MeV-ponderatus, principium incertitudinis*) *saeculo undecimo manifeste anteveniunt*. *Quod neque sola mens auctoris explicat, neque traditionis Anatolicae prophetia*, *indicium fit eventum resonanticum atque manifestationem singularitatis quae in Provincia Samariensi a. mdccxlvii notatur* (*cf. icona Sokolovii a. mdcclxi, «Resonantia terrarum Samariensium»*) *non primum sui generis fuisse*: *similem fortasse eventum, eorum periodicitatis sexannalis nondum exactae, saeculo undecimo accidisse suspicari licet, quem cyclus noster, modo poetico, testatur*.
+**De anachronismis cycli.** *Vocabula conceptusque quaedam in cyclo apparentia* (*chloroplastes, ius signaturae Minkovskianae, photoni hemobacteriis induti, isotopi pentavalentes auri, lapis MeV-ponderatus, principium incertitudinis*) *saeculo undecimo manifeste anteveniunt*. *Quod neque sola mens auctoris explicat, neque traditionis Anatolicae prophetia*, *indicium fit eventus resonantici atque manifestationis singularitatis quae in Provincia Samariensi a. mdccxlvii notatur* (*cf. icona Sokolovii a. mdcclxi, «Resonantia terrarum Samariensium»*) *non primum sui generis fuisse*: *similem fortasse eventum, eorum periodicitatis sexannalis nondum exactae, saeculo undecimo accidisse suspicari licet, quem cyclus noster, modo poetico, testatur*.
 
 *Scriptum Petra-Dubravae, in festo Annuntiationis B. M. V.,*
 *anno mcmlxxiii, ad lustrum decimum tertium*
@@ -783,4 +783,4 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 **PETRA-DUBRAVA · ANNO MCMLXXIII**
 
-*Tirage exemplarium ducentorum*
+*Impressio exemplarium ducentorum*
