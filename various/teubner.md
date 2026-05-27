@@ -122,28 +122,28 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Περὶ τοῦ ἀσώτου μυός, μυρμήκων καὶ σημαφόρων
 
-**1**&nbsp;&nbsp;Ὁ μῦς ὁ ἄσωτος
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἔδραμεν εἰς τὴν πατρῴαν μυρμηκίαν,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὄπισθεν ἔχων πήραν λαχανώδη, νεύροις τε καὶ ἁλὶ πληρωθεῖσαν.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Σπέρματι δὲ σεληνοβατοῦντι αὐτὸν ἐκύκλωσαν οἱ μυρμηκίσκοι·
-**5**&nbsp;&nbsp;«Ὀσφραινόμεθα κράμβης ἐν τῇ σῇ πήρᾳ,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἔτι δὲ μαλακάρπων, ῥαφανίδος, καρπῶν ξενικῶν,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ῥαφάνου τε καὶ φυκῶν ἁλίων — εἰς ἐπισκευὴν τοῦ σημαφόρου ἀκριβῶς!»
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὁ μῦς ὁ ἄσωτος,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;πτερνισάμενος εἰς καλύπτραν ἐλαστικήν,
-**10**&nbsp;&nbsp;περιῆλθε τὴν μυρμηκίαν πεντάκις, ἐκ τῆς καλύπτρας τοὺς μυρμηκίσκους κοινωνῶν·
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Πολλὰ ἐν τῇ πήρᾳ μου, καὶ κράμβης καὶ ῥαφάνου σὺν ῥαφανίδι,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀρκεῖ τῷ τε σημαφόρῳ ἡμῶν καὶ δέκα τοῖς πλησίον μάσκωσιν.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἥδιόν μοι θεάσασθαι — ἀλλ’ οὐ μνημονεύσω πάντα ταῦτα!
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Δύναμαι μνημονεύειν, ἕως ἂν ἡ πήρα μου πληρωθῇ
-**15**&nbsp;&nbsp;ἁλὶ καὶ χαλκῷ, καὶ κράμβῃ καὶ φύκεσιν,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἕως ἂν τὰ ἰόντα γαλακτίνῳ βήματι πέμπωσιν ἀκαρὲς ἐκ τοῦ ἠλεκτρολύτου.
+**1**&nbsp;&nbsp;Ὁ μῦς ὁ ἄσωτος  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἔδραμεν εἰς τὴν πατρῴαν μυρμηκίαν,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὄπισθεν ἔχων πήραν λαχανώδη, νεύροις τε καὶ ἁλὶ πληρωθεῖσαν.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Σπέρματι δὲ σεληνοβατοῦντι αὐτὸν ἐκύκλωσαν οἱ μυρμηκίσκοι·  
+**5**&nbsp;&nbsp;«Ὀσφραινόμεθα κράμβης ἐν τῇ σῇ πήρᾳ,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἔτι δὲ μαλακάρπων, ῥαφανίδος, καρπῶν ξενικῶν,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ῥαφάνου τε καὶ φυκῶν ἁλίων — εἰς ἐπισκευὴν τοῦ σημαφόρου ἀκριβῶς!»  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὁ μῦς ὁ ἄσωτος,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;πτερνισάμενος εἰς καλύπτραν ἐλαστικήν,  
+**10**&nbsp;&nbsp;περιῆλθε τὴν μυρμηκίαν πεντάκις, ἐκ τῆς καλύπτρας τοὺς μυρμηκίσκους κοινωνῶν·  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Πολλὰ ἐν τῇ πήρᾳ μου, καὶ κράμβης καὶ ῥαφάνου σὺν ῥαφανίδι,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀρκεῖ τῷ τε σημαφόρῳ ἡμῶν καὶ δέκα τοῖς πλησίον μάσκωσιν.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἥδιόν μοι θεάσασθαι — ἀλλ’ οὐ μνημονεύσω πάντα ταῦτα!  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Δύναμαι μνημονεύειν, ἕως ἂν ἡ πήρα μου πληρωθῇ  
+**15**&nbsp;&nbsp;ἁλὶ καὶ χαλκῷ, καὶ κράμβῃ καὶ φύκεσιν,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἕως ἂν τὰ ἰόντα γαλακτίνῳ βήματι πέμπωσιν ἀκαρὲς ἐκ τοῦ ἠλεκτρολύτου.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 1–16*)
 
-**1**&nbsp;ὁ μῦς ὁ ἄσωτος] μῦς ἄσωτος **Β** *sine articulis* &nbsp;&nbsp; **2**&nbsp;πατρῴαν] μητρῴαν **Γ**, *lectio quae filii prodigi parabolam invertit* &nbsp;&nbsp; **4**&nbsp;σεληνοβατοῦντι] γαλακτοβατοῦντι **Δ**, *lectio facilior, conferenda cum v. 16* &nbsp;&nbsp; **10**&nbsp;πεντάκις] πέντε φορᾶς **Β Δ**; πεντάκις *firmiter ap. Α Γ*; add. ἀντιστρόφως «посолонь» **Α** *in margine* &nbsp;&nbsp; **12**&nbsp;μάσκωσιν] φαρωσίν **Δ**, *rationaliz.*; **Α Β Γ** *firmiter* μάσκ- &nbsp;&nbsp; **16**&nbsp;γαλακτίνῳ] λακτίνῳ **Β**; *forma* γαλακτ-*ap. ceteris*
+**1**&nbsp;ὁ μῦς ὁ ἄσωτος] μῦς ἄσωτος **Β** *sine articulis* &nbsp;&nbsp; **2**&nbsp;πατρῴαν] μητρῴαν **Γ**, *lectio quae filii prodigi parabolam invertit* &nbsp;&nbsp; **4**&nbsp;σεληνοβατοῦντι] γαλακτοβατοῦντι **Δ**, *lectio facilior, conferenda cum v. 16* &nbsp;&nbsp; **10**&nbsp;πεντάκις] πέντε φορᾶς **Β Δ**; πεντάκις *firmiter ap. Α Γ*; add. ἀντιστρόφως «посолонь» **Α** *in margine* &nbsp;&nbsp; **12**&nbsp;μάσκωσιν] φαρωσίν **Δ**, *rationaliz.*; **Α Β Γ** *firmiter* μάσκ- &nbsp;&nbsp; **16**&nbsp;γαλακτίνῳ] λακτίνῳ **Β**; *forma* γαλακτ-*ap. ceteris*  
 
 ---
 
@@ -157,28 +157,28 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## О Мыши Блудной, муравьяхъ и свѣтофорахъ
 
-**1**&nbsp;&nbsp;**Б**лудная мышь
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Прибѣжала въ родной муравейникъ,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;За спиной — овощной рюкзачокъ проводами и солью наполненъ.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сѣменемъ луноходящимъ окружили её муравьята:
-**5**&nbsp;&nbsp;«Чуемъ капусту въ твоёмъ рюкзачкѣ,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;А ещё — помидоры, редисъ, авокадо,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Рѣдьку и нори морскiя — какъ разъ на ремонтъ свѣтофора!»
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Блудная мышь,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Начихавшись въ чепецъ изъ резины,
-**10**&nbsp;&nbsp;Обошла муравейникъ пять разъ, изъ чепца муравьятъ причащая:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Много въ моёмъ рюкзачкѣ и капусты и рѣдьки съ редисомъ,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Хватитъ на нашъ свѣтофоръ и на десять сосѣднихъ масконовъ.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Любо мнѣ будетъ взглянуть — да не запомню всё это!
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Помнить могу я, покуда рюкзакъ мой заполненъ
-**15**&nbsp;&nbsp;Солью и мѣдью, а также капустой и нори,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Покуда iоны молочнымъ шажкомъ шлютъ мурашки отъ электролита.
+**1**&nbsp;&nbsp;**Б**лудная мышь  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Прибѣжала въ родной муравейникъ,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;За спиной — овощной рюкзачокъ проводами и солью наполненъ.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сѣменемъ луноходящимъ окружили её муравьята:  
+**5**&nbsp;&nbsp;«Чуемъ капусту въ твоёмъ рюкзачкѣ,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;А ещё — помидоры, редисъ, авокадо,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Рѣдьку и нори морскiя — какъ разъ на ремонтъ свѣтофора!»  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Блудная мышь,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Начихавшись въ чепецъ изъ резины,  
+**10**&nbsp;&nbsp;Обошла муравейникъ пять разъ, изъ чепца муравьятъ причащая:  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Много въ моёмъ рюкзачкѣ и капусты и рѣдьки съ редисомъ,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Хватитъ на нашъ свѣтофоръ и на десять сосѣднихъ масконовъ.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Любо мнѣ будетъ взглянуть — да не запомню всё это!  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Помнить могу я, покуда рюкзакъ мой заполненъ  
+**15**&nbsp;&nbsp;Солью и мѣдью, а также капустой и нори,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Покуда iоны молочнымъ шажкомъ шлютъ мурашки отъ электролита.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 1–16*)
 
-**2**&nbsp;родной] родимый **Σ**: материнскiй **T**, *quod vix probabile* &nbsp;&nbsp; **4**&nbsp;Сѣменемъ луноходящимъ] add. *nimirum* «молочнымъ» ante «луноходящимъ» **π²** *in margine*: om. **T** &nbsp;&nbsp; **6**&nbsp;авокадо] аводако **Н** *vitium typogr.* &nbsp;&nbsp; **9**&nbsp;чепецъ изъ резины] чепецъ резинный **Σ**: ризы резины **T**, *coniectura editoris reicienda* &nbsp;&nbsp; **10**&nbsp;пять разъ] add. «посолонь» **π** *in margine atramento rubro*
+**2**&nbsp;родной] родимый **Σ**: материнскiй **T**, *quod vix probabile* &nbsp;&nbsp; **4**&nbsp;Сѣменемъ луноходящимъ] add. *nimirum* «молочнымъ» ante «луноходящимъ» **π²** *in margine*: om. **T** &nbsp;&nbsp; **6**&nbsp;авокадо] аводако **Н** *vitium typogr.* &nbsp;&nbsp; **9**&nbsp;чепецъ изъ резины] чепецъ резинный **Σ**: ризы резины **T**, *coniectura editoris reicienda* &nbsp;&nbsp; **10**&nbsp;пять разъ] add. «посолонь» **π** *in margine atramento rubro*  
 
 ---
 
@@ -192,28 +192,28 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Περὶ τοῦ ἀσώτου μυός — β´
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Τὴν μνήμην μου εὑρίσκετε, πρὶν ἐκλίπῃ ἡ κράμβη —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὁ χρόνος βραχύς· δώσω ἑκάστῳ θεατήριον, τρέφων ἐκ τοῦ μυοκαρδίου δακτυλίου.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἕκαστος δὲ ὀψὶς τῶν ὀφθαλμῶν μου παρακολουθήσει ὑμᾶς, ὦ μυρμηκίσκοι·
-**20**&nbsp;&nbsp;ὅταν δὲ προσενέγκητέ μοι τὴν μνήμην — ἐπισκευάσομεν τοὺς βαρυτικοὺς μάσκωνας,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ πάντας τοὺς σημαφόρους τοὺς ἀποβαλόντας τὸ κουκούλιον τῆς προνύμφης —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;εἰ μόνον ἡ κράμβη παραμείνῃ!»
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὁ μῦς ὁ ἄσωτος,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἐπὶ τοῦ λοφίσκου τὰ φύκη διαθείς,
-**25**&nbsp;&nbsp;ἐσθίει πάντα εἰς ὅσα ἥκουσιν οἱ διάκονοι σημειωτικοί·
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Τὰ Οὐράλεια ὄρη ὡς τρίτον πέρας Γαυσσιανῆς μονοφυοῦς»·
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Ὁ κρύσταλλος ἐν μορφῇ μ-ἑνδεκάτῃ καθίσει γίγνεται»·
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Τὸ ἐκ τοῦ ὑαλίνου σχοινίου φῶς διαμερισθὲν τοῖς γωνίοις τοῦ μαρτενσιτικοῦ κόκκου»·
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Ὁ πρῶτος οὐρανὸς διέρχεται διὰ σιδηροτροχιῶν ἐπὶ ἓξ γιγαμέτρων»·
-**30**&nbsp;&nbsp;«Ἡ ἀδαμαντίνη κόνις εὐεργετικῶς πληθύνει τὴν γλαυκὴν ἐντροπίαν».
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὁ μῦς ὁ ἄσωτος
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;εἰς τὴν πήραν συνέλεξε τὰ ἑαυτοῦ φύκη.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Τὴν μνήμην μου εὑρίσκετε, πρὶν ἐκλίπῃ ἡ κράμβη —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὁ χρόνος βραχύς· δώσω ἑκάστῳ θεατήριον, τρέφων ἐκ τοῦ μυοκαρδίου δακτυλίου.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἕκαστος δὲ ὀψὶς τῶν ὀφθαλμῶν μου παρακολουθήσει ὑμᾶς, ὦ μυρμηκίσκοι·  
+**20**&nbsp;&nbsp;ὅταν δὲ προσενέγκητέ μοι τὴν μνήμην — ἐπισκευάσομεν τοὺς βαρυτικοὺς μάσκωνας,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ πάντας τοὺς σημαφόρους τοὺς ἀποβαλόντας τὸ κουκούλιον τῆς προνύμφης —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;εἰ μόνον ἡ κράμβη παραμείνῃ!»  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὁ μῦς ὁ ἄσωτος,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἐπὶ τοῦ λοφίσκου τὰ φύκη διαθείς,  
+**25**&nbsp;&nbsp;ἐσθίει πάντα εἰς ὅσα ἥκουσιν οἱ διάκονοι σημειωτικοί·  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Τὰ Οὐράλεια ὄρη ὡς τρίτον πέρας Γαυσσιανῆς μονοφυοῦς»·  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Ὁ κρύσταλλος ἐν μορφῇ μ-ἑνδεκάτῃ καθίσει γίγνεται»·  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Τὸ ἐκ τοῦ ὑαλίνου σχοινίου φῶς διαμερισθὲν τοῖς γωνίοις τοῦ μαρτενσιτικοῦ κόκκου»·  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Ὁ πρῶτος οὐρανὸς διέρχεται διὰ σιδηροτροχιῶν ἐπὶ ἓξ γιγαμέτρων»·  
+**30**&nbsp;&nbsp;«Ἡ ἀδαμαντίνη κόνις εὐεργετικῶς πληθύνει τὴν γλαυκὴν ἐντροπίαν».  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὁ μῦς ὁ ἄσωτος  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;εἰς τὴν πήραν συνέλεξε τὰ ἑαυτοῦ φύκη.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 17–32*)
 
-**18**&nbsp;θεατήριον] ὀφθαλμόν **Δ** *lectio simplificans*; *cf. ad v. 19* &nbsp;&nbsp; **25**&nbsp;διάκονοι σημειωτικοί] *vox* διάκονοι *ap. omnes codd.; cf. Pseudo-Aidanus Samar., schol. β* &nbsp;&nbsp; **27**&nbsp;μ-ἑνδεκάτῃ] ἑνδεκάτῃ τοῦ μῦ **Γ**, *forma explicit.* &nbsp;&nbsp; **30**&nbsp;γλαυκὴν ἐντροπίαν] γλαυκὴν ἐνεργίαν **Δ**, *lectio facilior reicienda* &nbsp;&nbsp; **32**&nbsp;τὰ ἑαυτοῦ φύκη] τὰ φύκη *om. pronomine* **Β**
+**18**&nbsp;θεατήριον] ὀφθαλμόν **Δ** *lectio simplificans*; *cf. ad v. 19* &nbsp;&nbsp; **25**&nbsp;διάκονοι σημειωτικοί] *vox* διάκονοι *ap. omnes codd.; cf. Pseudo-Aidanus Samar., schol. β* &nbsp;&nbsp; **27**&nbsp;μ-ἑνδεκάτῃ] ἑνδεκάτῃ τοῦ μῦ **Γ**, *forma explicit.* &nbsp;&nbsp; **30**&nbsp;γλαυκὴν ἐντροπίαν] γλαυκὴν ἐνεργίαν **Δ**, *lectio facilior reicienda* &nbsp;&nbsp; **32**&nbsp;τὰ ἑαυτοῦ φύκη] τὰ φύκη *om. pronomine* **Β**  
 
 ---
 
@@ -229,28 +229,28 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## О Мыши Блудной — часть вторая
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Память мою отыщите, пока не изсякла капуста —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Времени мало: я каждому камеру дамъ, запитавъ отъ кольца мiокарда.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Каждый фасетъ моихъ глазъ будетъ за вами слѣдить, муравьята;
-**20**&nbsp;&nbsp;Когда принесёте мнѣ память — починимъ мы гравимасконы
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И всѣ свѣтофоры, что сбросили коконъ личинки —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Лишь бы осталась капуста!»
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Блудная мышь,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Разложивъ на пригорочкѣ нори,
-**25**&nbsp;&nbsp;Кушаетъ всё, до чего добираются дьяконы семiотизма:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Уральскiя горы какъ третiй предѣлъ однополостной гауссiаны»;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Лёдъ въ кристаллической формѣ одиннадцать-м получаютъ сидѣнiемъ»;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Свѣтъ отъ стеклянной верёвки разложенъ по гранямъ зерна мартенсита»;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Первое небо проходитъ по рельсамъ на шесть гигаметровъ»;
-**30**&nbsp;&nbsp;«Алмазная пыль благотворно влiяетъ на ростъ голубой энтропiи».
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Блудная мышь
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Собрала въ рюкзачокъ свои нори.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Память мою отыщите, пока не изсякла капуста —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Времени мало: я каждому камеру дамъ, запитавъ отъ кольца мiокарда.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Каждый фасетъ моихъ глазъ будетъ за вами слѣдить, муравьята;  
+**20**&nbsp;&nbsp;Когда принесёте мнѣ память — починимъ мы гравимасконы  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И всѣ свѣтофоры, что сбросили коконъ личинки —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Лишь бы осталась капуста!»  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Блудная мышь,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Разложивъ на пригорочкѣ нори,  
+**25**&nbsp;&nbsp;Кушаетъ всё, до чего добираются дьяконы семiотизма:  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Уральскiя горы какъ третiй предѣлъ однополостной гауссiаны»;  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Лёдъ въ кристаллической формѣ одиннадцать-м получаютъ сидѣнiемъ»;  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Свѣтъ отъ стеклянной верёвки разложенъ по гранямъ зерна мартенсита»;  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Первое небо проходитъ по рельсамъ на шесть гигаметровъ»;  
+**30**&nbsp;&nbsp;«Алмазная пыль благотворно влiяетъ на ростъ голубой энтропiи».  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Блудная мышь  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Собрала въ рюкзачокъ свои нори.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 17–32*)
 
-**18**&nbsp;камеру] камеры **Σ** **Н**; *sed singularitas* **π** *aptior* &nbsp;&nbsp; **19**&nbsp;фасетъ] фасетокъ **Σ**: фацетъ **T** &nbsp;&nbsp; **20**&nbsp;гравимасконы] гравимаяконы **T**; *vide supra ad v. 12* &nbsp;&nbsp; **30**&nbsp;голубой энтропiи] голубой энергiи **Σ**, *lectio facilior et ideo deterior*
+**18**&nbsp;камеру] камеры **Σ** **Н**; *sed singularitas* **π** *aptior* &nbsp;&nbsp; **19**&nbsp;фасетъ] фасетокъ **Σ**: фацетъ **T** &nbsp;&nbsp; **20**&nbsp;гравимасконы] гравимаяконы **T**; *vide supra ad v. 12* &nbsp;&nbsp; **30**&nbsp;голубой энтропiи] голубой энергiи **Σ**, *lectio facilior et ideo deterior*  
 
 ---
 
@@ -264,21 +264,21 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Περὶ τῶν διδύμων φωτόνων, ἢ τίνι λόγῳ ὁ μύρμηξ τῆς ὄψεως ἐστερήθη
 
-**1**&nbsp;&nbsp;Οἱ δίδυμοι φωτόνες ἐκωλύθησαν ὑπὸ ζῶντος φραγμοῦ
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;διὰ τὴν δημόσιαν ἐπίδειξιν τῆς ἐρυθροποιήσεως.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Δεξιῷ δὲ ἀριθμῷ αὐτοὺς ἐξενίσαντο ἐκ τοῦ ἐργαστηρίου
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τῆς τοῦ ὑαλίνου νήματος εἱλήσεως.
-**5**&nbsp;&nbsp;Ὥρμησαν εἰς τὸν κομωτὸν θάλαμον,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὅπου ἐκ τῆς ὀπισθίας τρανσκριπτάσης
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀμελχθέντος ἱκανοῦ ἰχῶρος εἰς ταύτην τὴν τετράδα.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Λοιπὸν δὲ ἔδει ἐπιδεῖξαι τὰ νῶτα αὐτῶν
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;εἰς ἐκπλήρωσιν τῶν τυπικῶν.
+**1**&nbsp;&nbsp;Οἱ δίδυμοι φωτόνες ἐκωλύθησαν ὑπὸ ζῶντος φραγμοῦ  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;διὰ τὴν δημόσιαν ἐπίδειξιν τῆς ἐρυθροποιήσεως.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Δεξιῷ δὲ ἀριθμῷ αὐτοὺς ἐξενίσαντο ἐκ τοῦ ἐργαστηρίου  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τῆς τοῦ ὑαλίνου νήματος εἱλήσεως.  
+**5**&nbsp;&nbsp;Ὥρμησαν εἰς τὸν κομωτὸν θάλαμον,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὅπου ἐκ τῆς ὀπισθίας τρανσκριπτάσης  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀμελχθέντος ἱκανοῦ ἰχῶρος εἰς ταύτην τὴν τετράδα.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Λοιπὸν δὲ ἔδει ἐπιδεῖξαι τὰ νῶτα αὐτῶν  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;εἰς ἐκπλήρωσιν τῶν τυπικῶν.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 1–9*)
 
-**1**&nbsp;δίδυμοι] δίδυμον **Β** *sg. ut numerus grammaticus singularis cum pluralis significatu, lectio audacior et ideo retinenda apud quosdam* &nbsp;&nbsp; **2**&nbsp;ἐρυθροποιήσεως] αἱμοποιήσεως **Δ** *vocabulum vulgatius* &nbsp;&nbsp; **3**&nbsp;δεξιῷ ἀριθμῷ] *cf. Minkovskii signaturam*; ἀριστερῷ **Γ**, *lectio incongrua* &nbsp;&nbsp; **5**&nbsp;κομωτὸν] κωμητικὸν **Γ Δ**, *forma melior*; κομωτὸν **Α Β** *retinendum* &nbsp;&nbsp; **7**&nbsp;τετράδα] τριάδα **Α**ᵃ·ᶜ·, *prima manu, postea correxit in* τετράδα; *vide adnot. de quaternitate* &nbsp;&nbsp; **8**&nbsp;τὰ νῶτα] τὰς σπίνας **Δ**, *neologismus quanticus*; τὰ νῶτα *ambigue intellegendum: dorsum vel spin*, *vide adnot.*
+**1**&nbsp;δίδυμοι] δίδυμον **Β** *sg. ut numerus grammaticus singularis cum pluralis significatu, lectio audacior et ideo retinenda apud quosdam* &nbsp;&nbsp; **2**&nbsp;ἐρυθροποιήσεως] αἱμοποιήσεως **Δ** *vocabulum vulgatius* &nbsp;&nbsp; **3**&nbsp;δεξιῷ ἀριθμῷ] *cf. Minkovskii signaturam*; ἀριστερῷ **Γ**, *lectio incongrua* &nbsp;&nbsp; **5**&nbsp;κομωτὸν] κωμητικὸν **Γ Δ**, *forma melior*; κομωτὸν **Α Β** *retinendum* &nbsp;&nbsp; **7**&nbsp;τετράδα] τριάδα **Α**ᵃ·ᶜ·, *prima manu, postea correxit in* τετράδα; *vide adnot. de quaternitate* &nbsp;&nbsp; **8**&nbsp;τὰ νῶτα] τὰς σπίνας **Δ**, *neologismus quanticus*; τὰ νῶτα *ambigue intellegendum: dorsum vel spin*, *vide adnot.*  
 
 ---
 
@@ -294,21 +294,21 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## О двойнѣ фотоновъ, или: отчего муравей лишился зрѣнiя
 
-**1**&nbsp;&nbsp;**Д**войня фотоновъ были задержаны живой изгородью
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;За публичную демонстрацiю эритропоэза.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ихъ правымъ числомъ остранили изъ цеха
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;По намоткѣ фасоннаго стекловолокна.
-**5**&nbsp;&nbsp;Они направились въ косматую камеру,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Гдѣ изъ обратной транскриптазы
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Надоилось достаточно ихора для этой четверицы.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Осталось только показать свои спины
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Для прохожденiя формальностей.
+**1**&nbsp;&nbsp;**Д**войня фотоновъ были задержаны живой изгородью  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;За публичную демонстрацiю эритропоэза.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ихъ правымъ числомъ остранили изъ цеха  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;По намоткѣ фасоннаго стекловолокна.  
+**5**&nbsp;&nbsp;Они направились въ косматую камеру,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Гдѣ изъ обратной транскриптазы  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Надоилось достаточно ихора для этой четверицы.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Осталось только показать свои спины  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Для прохожденiя формальностей.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 1–9*)
 
-**1**&nbsp;живой изгородью] вивымъ плетнемъ **Σ**: оградой жизненной **T** *rationalizans* &nbsp;&nbsp; **2**&nbsp;эритропоэза] еритропоэза **T** *vitium graecizans* &nbsp;&nbsp; **3**&nbsp;правымъ числомъ] правой компонентой **Σ**, *lectio modernizans* &nbsp;&nbsp; **5**&nbsp;косматую] лохматую **T**: пухлую **Н** (*vitium*) &nbsp;&nbsp; **6**&nbsp;обратной транскриптазы] обратной транскрипты **T** (*abbreviatum male*) &nbsp;&nbsp; **7**&nbsp;для этой четверицы] для этой троицы **π¹**, *primum scriptum, postea correxit auctor* &nbsp;&nbsp; **8**&nbsp;свои спины] свои спины **π Σ T**: свои спина **Н** (*forma ambigua deliberate retenta?*)
+**1**&nbsp;живой изгородью] вивымъ плетнемъ **Σ**: оградой жизненной **T** *rationalizans* &nbsp;&nbsp; **2**&nbsp;эритропоэза] еритропоэза **T** *vitium graecizans* &nbsp;&nbsp; **3**&nbsp;правымъ числомъ] правой компонентой **Σ**, *lectio modernizans* &nbsp;&nbsp; **5**&nbsp;косматую] лохматую **T**: пухлую **Н** (*vitium*) &nbsp;&nbsp; **6**&nbsp;обратной транскриптазы] обратной транскрипты **T** (*abbreviatum male*) &nbsp;&nbsp; **7**&nbsp;для этой четверицы] для этой троицы **π¹**, *primum scriptum, postea correxit auctor* &nbsp;&nbsp; **8**&nbsp;свои спины] свои спины **π Σ T**: свои спина **Н** (*forma ambigua deliberate retenta?*)  
 
 ---
 
@@ -322,18 +322,18 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Περὶ τῶν διδύμων φωτόνων — β´
 
-**10**&nbsp;&nbsp;«Ποῖον τὸ ἐπιφαεινὸν ῥῆμα ὑμῶν;» εἶπεν ὁ μύρμηξ,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπερηφάνως ἐπιθέμενος τὴν φελλίνην κίδαριν.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Σήμα Ἰσραήλ» ἀπεκρίθη ὁ φωτὸν καὶ πυκνῶς ἐρυθρίασεν.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὁ δὲ μύρμηξ ἀπέβαλε τὴν τοῦ ὁρᾶν δύναμιν
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ οὐκ ἠδυνήθη ἀνακρίνειν τὸν δεύτερον φωτόνα,
-**15**&nbsp;&nbsp;ὃς οὐδαμῶς εὑρέθη.
+**10**&nbsp;&nbsp;«Ποῖον τὸ ἐπιφαεινὸν ῥῆμα ὑμῶν;» εἶπεν ὁ μύρμηξ,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπερηφάνως ἐπιθέμενος τὴν φελλίνην κίδαριν.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Σήμα Ἰσραήλ» ἀπεκρίθη ὁ φωτὸν καὶ πυκνῶς ἐρυθρίασεν.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὁ δὲ μύρμηξ ἀπέβαλε τὴν τοῦ ὁρᾶν δύναμιν  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ οὐκ ἠδυνήθη ἀνακρίνειν τὸν δεύτερον φωτόνα,  
+**15**&nbsp;&nbsp;ὃς οὐδαμῶς εὑρέθη.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 10–15*)
 
-**10**&nbsp;ἐπιφαεινὸν] φωτεινὸν **Δ** *lectio facilior*; ἐπιφαεινόν *neologismus auctoris, ad fotonas iocosus* &nbsp;&nbsp; **12**&nbsp;Σήμα Ἰσραήλ] om. **Δ** (*tabu redactoris christianissimi?*); Σήμα Ἰσραήλ *ap. ceteris*; *transliteratio hebraica* Šəmaʿ Yiśrāʾēl &nbsp;&nbsp; **15**&nbsp;οὐδαμῶς εὑρέθη] add. ὑπό τινος **Δ**, *glossatum*
+**10**&nbsp;ἐπιφαεινὸν] φωτεινὸν **Δ** *lectio facilior*; ἐπιφαεινόν *neologismus auctoris, ad fotonas iocosus* &nbsp;&nbsp; **12**&nbsp;Σήμα Ἰσραήλ] om. **Δ** (*tabu redactoris christianissimi?*); Σήμα Ἰσραήλ *ap. ceteris*; *transliteratio hebraica* Šəmaʿ Yiśrāʾēl &nbsp;&nbsp; **15**&nbsp;οὐδαμῶς εὑρέθη] add. ὑπό τινος **Δ**, *glossatum*  
 
 ---
 
@@ -349,18 +349,18 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## О двойнѣ фотоновъ — часть вторая
 
-**10**&nbsp;&nbsp;«Ваше посвѣтлое слово?» — спросилъ муравей,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Гордо поправивъ пробковый чепецъ.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Шма Исраэль» — отвѣтилъ фотонъ и густо покраснѣлъ.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Муравей потерялъ даръ зрѣнiя
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И не смогъ допросить второго фотона,
-**15**&nbsp;&nbsp;Который, впрочемъ, такъ и не былъ найденъ.
+**10**&nbsp;&nbsp;«Ваше посвѣтлое слово?» — спросилъ муравей,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Гордо поправивъ пробковый чепецъ.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«Шма Исраэль» — отвѣтилъ фотонъ и густо покраснѣлъ.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Муравей потерялъ даръ зрѣнiя  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И не смогъ допросить второго фотона,  
+**15**&nbsp;&nbsp;Который, впрочемъ, такъ и не былъ найденъ.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 10–15*)
 
-**10**&nbsp;посвѣтлое] посвѣтлое **π** *orthog. archaic.*; посвѣтлѣйшее **Σ** *forma superlat. vix probabilis* &nbsp;&nbsp; **12**&nbsp;Шма Исраэль] om. **T** (*tabu redactoris christianissimi?*); шма йисраэль **Н** *transliter. alter.* &nbsp;&nbsp; **15**&nbsp;не былъ найденъ] не былъ найдёнъ никѣмъ **Σ** (*explicit. glossatum*)
+**10**&nbsp;посвѣтлое] посвѣтлое **π** *orthog. archaic.*; посвѣтлѣйшее **Σ** *forma superlat. vix probabilis* &nbsp;&nbsp; **12**&nbsp;Шма Исраэль] om. **T** (*tabu redactoris christianissimi?*); шма йисраэль **Н** *transliter. alter.* &nbsp;&nbsp; **15**&nbsp;не былъ найденъ] не былъ найдёнъ никѣмъ **Σ** (*explicit. glossatum*)  
 
 ---
 
@@ -374,24 +374,24 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Περὶ τῆς τῶν χλωροπλάστιδων διαλέξεως κατὰ μιαφυσιτῶν
 
-**1**&nbsp;&nbsp;Οἱ χλωροπλάστιδες τοῦ ταυοφύλλου
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τῆς δωδεκάτης κλάδου
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑψηλοτάσεως ἀρκευθίνου,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀποκρινόμενοι τῷ ὀμβρελλιαίῳ σήματι
-**5**&nbsp;&nbsp;ιδ-ΜΝΓ-ξεV-Δ-☐,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀρνοῦνται δέξασθαι τὸ δόγμα
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τῆς μιαφυσιτίας,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπὲρ πέντε αἰτίας προβαλλόμενοι:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«α. Ἀδύνατον ῥυθμίζειν πάντας τοὺς σημαφόρους
-**10**&nbsp;&nbsp;εἰς τὸ αὐτὸ πάχος τοῦ κελύφους.»
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«β. Καλὰ τὰ στάσιμα κύματα κυανίνης ζώνης,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τὰ μὴ πορευόμενα εἰς τὰς τῆς μόδας ἐπιδείξεις.»
+**1**&nbsp;&nbsp;Οἱ χλωροπλάστιδες τοῦ ταυοφύλλου  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τῆς δωδεκάτης κλάδου  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑψηλοτάσεως ἀρκευθίνου,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀποκρινόμενοι τῷ ὀμβρελλιαίῳ σήματι  
+**5**&nbsp;&nbsp;ιδ-ΜΝΓ-ξεV-Δ-☐,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀρνοῦνται δέξασθαι τὸ δόγμα  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τῆς μιαφυσιτίας,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπὲρ πέντε αἰτίας προβαλλόμενοι:  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«α. Ἀδύνατον ῥυθμίζειν πάντας τοὺς σημαφόρους  
+**10**&nbsp;&nbsp;εἰς τὸ αὐτὸ πάχος τοῦ κελύφους.»  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«β. Καλὰ τὰ στάσιμα κύματα κυανίνης ζώνης,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τὰ μὴ πορευόμενα εἰς τὰς τῆς μόδας ἐπιδείξεις.»  
 
 ---
 
 ### Apparatus criticus (*ad vv. 1–12*)
 
-**1**&nbsp;ταυοφύλλου] ταβοφύλλου **Δ**, *permutatio litterarum*; θητοφύλλου **Γ**, *coniectura editoris reicienda* &nbsp;&nbsp; **3**&nbsp;ὑψηλοτάσεως] ὑψιτάσεως **Β**, *breviatum*; **Δ**: ὑψηλοῦ τάσεως *cum spatio* &nbsp;&nbsp; **5**&nbsp;ιδ-ΜΝΓ-ξεV-Δ-☐] forma codicis **Α** retenta; **Β**: ιδ-ΝΜΓ-ξεV-Δ-☐ (*permut.*); **Γ**: ιδ-ΜΝΓ-ξεV-Δ-▣ (*glyph. alter*) &nbsp;&nbsp; **7**&nbsp;μιαφυσιτίας] μυοφυσιτίας **Δ**, *per metathesin vocalium quasi de muscularia natura*, *cf.* μῦς (*muris/musculi*)
+**1**&nbsp;ταυοφύλλου] ταβοφύλλου **Δ**, *permutatio litterarum*; θητοφύλλου **Γ**, *coniectura editoris reicienda* &nbsp;&nbsp; **3**&nbsp;ὑψηλοτάσεως] ὑψιτάσεως **Β**, *breviatum*; **Δ**: ὑψηλοῦ τάσεως *cum spatio* &nbsp;&nbsp; **5**&nbsp;ιδ-ΜΝΓ-ξεV-Δ-☐] forma codicis **Α** retenta; **Β**: ιδ-ΝΜΓ-ξεV-Δ-☐ (*permut.*); **Γ**: ιδ-ΜΝΓ-ξεV-Δ-▣ (*glyph. alter*) &nbsp;&nbsp; **7**&nbsp;μιαφυσιτίας] μυοφυσιτίας **Δ**, *per metathesin vocalium quasi de muscularia natura*, *cf.* μῦς (*muris/musculi*)  
 
 ---
 
@@ -405,24 +405,24 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## О диспутацiи хлоропластовъ противъ мiафизитства
 
-**1**&nbsp;&nbsp;**Х**лоропласты тау-листа
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Двѣнадцатой вѣтки
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Высоковольтнаго можжевельника,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отзывающiеся на зонтичное обозначенiе
-**5**&nbsp;&nbsp;14МНГ-65V-Δ-☐,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отказываются принять доктрину
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Мiафизитства,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Руководствуясь пятью аргументами:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«1. Невозможно настроить всѣ свѣтофоры
-**10**&nbsp;&nbsp;на одну и ту же толщину скорлупы.»
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«2. Хороши тѣ стоячiя волны цiановаго дiапазона,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;что не ходятъ на модные показы.»
+**1**&nbsp;&nbsp;**Х**лоропласты тау-листа  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Двѣнадцатой вѣтки  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Высоковольтнаго можжевельника,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отзывающiеся на зонтичное обозначенiе  
+**5**&nbsp;&nbsp;14МНГ-65V-Δ-☐,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отказываются принять доктрину  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Мiафизитства,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Руководствуясь пятью аргументами:  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«1. Невозможно настроить всѣ свѣтофоры  
+**10**&nbsp;&nbsp;на одну и ту же толщину скорлупы.»  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«2. Хороши тѣ стоячiя волны цiановаго дiапазона,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;что не ходятъ на модные показы.»  
 
 ---
 
 ### Apparatus criticus (*ad vv. 1–12*)
 
-**1**&nbsp;тау-листа] тавъ-листа **Σ**: θ-листа **T** &nbsp;&nbsp; **2**&nbsp;Двѣнадцатой] двѣнатцатой **Н** *vitium*; 12-й **T** (*abbreviatum*) &nbsp;&nbsp; **3**&nbsp;Высоковольтнаго] высокаго **Σ** (*abbreviatum*); высоконадежнаго **T** *lectio facilior* &nbsp;&nbsp; **5**&nbsp;14МНГ-65V-Δ-☐] 14НМГ-65V-Δ-☐ **Σ** (*permutatio litterarum*); 14МНГ-65V-Δ-▣ **Н** (*glyphi forma altera*) &nbsp;&nbsp; **7**&nbsp;Мiафизитства] мiофизитства **Σ** *per metathesin vocalium, quasi de muscularia natura*
+**1**&nbsp;тау-листа] тавъ-листа **Σ**: θ-листа **T** &nbsp;&nbsp; **2**&nbsp;Двѣнадцатой] двѣнатцатой **Н** *vitium*; 12-й **T** (*abbreviatum*) &nbsp;&nbsp; **3**&nbsp;Высоковольтнаго] высокаго **Σ** (*abbreviatum*); высоконадежнаго **T** *lectio facilior* &nbsp;&nbsp; **5**&nbsp;14МНГ-65V-Δ-☐] 14НМГ-65V-Δ-☐ **Σ** (*permutatio litterarum*); 14МНГ-65V-Δ-▣ **Н** (*glyphi forma altera*) &nbsp;&nbsp; **7**&nbsp;Мiафизитства] мiофизитства **Σ** *per metathesin vocalium, quasi de muscularia natura*  
 
 ---
 
@@ -436,24 +436,24 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Περὶ τῆς τῶν χλωροπλάστιδων διαλέξεως — β´
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«γ. Ἡ σφαιρικὴ κίνησις τοῦ τετάρτου οὐρανοῦ
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπηρετεῖται μόνον ὑπὸ ἁψινθίου τε καὶ κράμβης τῆς προσηκούσης ἐρυθρότητος.»
-**15**&nbsp;&nbsp;«δ. Οὐκ ἀναγκαῖόν ἐστιν ζητεῖν
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τὰ σημεῖα τῶν χλωροπλάστιδων ἐν ἑτέροις φύλλοις.»
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Αἱ τῶν χλωροπλάστιδων αἰτίαι
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;δέχονται εἰς βρῶσιν
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ κρίνονται δυσπεπτικαὶ
-**20**&nbsp;&nbsp;ὑπὸ προσώπων ἀδιορίστου διαστάσεως.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἡ δὲ γνώμη τῶν προειρημένων προσώπων
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀγνοεῖται
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;διὰ τὴν ὀσφραντικὴν αὐτῶν
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀδιαφορίαν.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«γ. Ἡ σφαιρικὴ κίνησις τοῦ τετάρτου οὐρανοῦ  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπηρετεῖται μόνον ὑπὸ ἁψινθίου τε καὶ κράμβης τῆς προσηκούσης ἐρυθρότητος.»  
+**15**&nbsp;&nbsp;«δ. Οὐκ ἀναγκαῖόν ἐστιν ζητεῖν  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τὰ σημεῖα τῶν χλωροπλάστιδων ἐν ἑτέροις φύλλοις.»  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Αἱ τῶν χλωροπλάστιδων αἰτίαι  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;δέχονται εἰς βρῶσιν  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ κρίνονται δυσπεπτικαὶ  
+**20**&nbsp;&nbsp;ὑπὸ προσώπων ἀδιορίστου διαστάσεως.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἡ δὲ γνώμη τῶν προειρημένων προσώπων  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀγνοεῖται  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;διὰ τὴν ὀσφραντικὴν αὐτῶν  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀδιαφορίαν.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 13–24*)
 
-**8**&nbsp;πέντε αἰτίας] *auctor quinque promittit, quattuor exhibet*; *lacuna voluntaria*, ε. *vacat*; **Α** *in margine*: ἐπελάθετο — ἢ ἐκ προθέσεως, «*забыл — так специально*» &nbsp;&nbsp; **13**&nbsp;τετάρτου οὐρανοῦ] τρίτου οὐρανοῦ **Δ**, *cf.* 2 Cor. xii 2; *lectio harmonizans deterior, quia inversio numerali totius cycli propria* &nbsp;&nbsp; **14**&nbsp;ἁψινθίου] ἀψινθίου **Β Δ** *forma sine spiritu* &nbsp;&nbsp; **20**&nbsp;προσώπων ἀδιορίστου διαστάσεως] *de divinitate ut persona ignota*; *lectio criminalistica ironice retenta* &nbsp;&nbsp; **23**&nbsp;ὀσφραντικὴν] ὀσφρητικὴν **Δ**, *rationaliz.*
+**8**&nbsp;πέντε αἰτίας] *auctor quinque promittit, quattuor exhibet*; *lacuna voluntaria*, ε. *vacat*; **Α** *in margine*: ἐπελάθετο — ἢ ἐκ προθέσεως, «*забыл — так специально*» &nbsp;&nbsp; **13**&nbsp;τετάρτου οὐρανοῦ] τρίτου οὐρανοῦ **Δ**, *cf.* 2 Cor. xii 2; *lectio harmonizans deterior, quia inversio numerali totius cycli propria* &nbsp;&nbsp; **14**&nbsp;ἁψινθίου] ἀψινθίου **Β Δ** *forma sine spiritu* &nbsp;&nbsp; **20**&nbsp;προσώπων ἀδιορίστου διαστάσεως] *de divinitate ut persona ignota*; *lectio criminalistica ironice retenta* &nbsp;&nbsp; **23**&nbsp;ὀσφραντικὴν] ὀσφρητικὴν **Δ**, *rationaliz.*  
 
 ---
 
@@ -469,24 +469,24 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## О диспутацiи хлоропластовъ — часть вторая
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«3. Сферическое движенiе четвёртаго неба
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;обезпечивается лишь должной красноты полынью и капустой.»
-**15**&nbsp;&nbsp;«4. Отсутствуетъ необходимость искать
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;признаки хлоропластовъ на другихъ листахъ.»
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Аргументы хлоропластовъ
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Принимаются къ съѣденiю
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И считаются неудобоваримыми
-**20**&nbsp;&nbsp;Для лицъ неустановленной мѣрности.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Мнѣнiе же перечисленныхъ лицъ
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Не извѣстно
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Вслѣдствiе ихъ олфакторной
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Индифферентности.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;«3. Сферическое движенiе четвёртаго неба  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;обезпечивается лишь должной красноты полынью и капустой.»  
+**15**&nbsp;&nbsp;«4. Отсутствуетъ необходимость искать  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;признаки хлоропластовъ на другихъ листахъ.»  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Аргументы хлоропластовъ  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Принимаются къ съѣденiю  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И считаются неудобоваримыми  
+**20**&nbsp;&nbsp;Для лицъ неустановленной мѣрности.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Мнѣнiе же перечисленныхъ лицъ  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Не извѣстно  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Вслѣдствiе ихъ олфакторной  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Индифферентности.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 13–24*)
 
-**8**&nbsp;пятью аргументами] *auctor quinque promittit, sed quattuor exhibet*; **π²** *in margine*: «забылъ — такъ спецiально»; *vide adnot.* &nbsp;&nbsp; **13**&nbsp;четвёртаго неба] третьяго неба **Н** (*cf.* 2 Cor xii 2; *lectio harmonizans deterior, quia inversio numeri totius cycli propria*) &nbsp;&nbsp; **14**&nbsp;полынью] полыньей **Σ** *forma fem. (cf. "arctica fenestra")*; *sed forma masc. ap. π pro herba absinthii* &nbsp;&nbsp; **20**&nbsp;лицъ неустановленной мѣрности] лицъ неопредѣленной мѣрности **T**; *sed lectio criminalistica ironice retenta ap. π Σ* &nbsp;&nbsp; **23**&nbsp;олфакторной] обонятельной **T** *rationalizans*; *forma latinizans ap. π Σ retinenda*
+**8**&nbsp;пятью аргументами] *auctor quinque promittit, sed quattuor exhibet*; **π²** *in margine*: «забылъ — такъ спецiально»; *vide adnot.* &nbsp;&nbsp; **13**&nbsp;четвёртаго неба] третьяго неба **Н** (*cf.* 2 Cor xii 2; *lectio harmonizans deterior, quia inversio numeri totius cycli propria*) &nbsp;&nbsp; **14**&nbsp;полынью] полыньей **Σ** *forma fem. (cf. "arctica fenestra")*; *sed forma masc. ap. π pro herba absinthii* &nbsp;&nbsp; **20**&nbsp;лицъ неустановленной мѣрности] лицъ неопредѣленной мѣрности **T**; *sed lectio criminalistica ironice retenta ap. π Σ* &nbsp;&nbsp; **23**&nbsp;олфакторной] обонятельной **T** *rationalizans*; *forma latinizans ap. π Σ retinenda*  
 
 ---
 
@@ -500,22 +500,22 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Περὶ τῆς λυκορίδος θανατηφόρου, ἣ τῷ σημαφόρῳ ζῆν ἐπιτάττει
 
-**1**&nbsp;&nbsp;Τὰ χιτινώδη πέταλα τῶν λυκορίδων,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;φαγόντα ἱκανῶς ἀτόνους δακτυλίους,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀπετίναξαν τὸν σημαφόρον ἀπὸ τοῦ ἰχῶρος αὐτοῦ
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ εἶπον· «Ζῆθι!»
-**5**&nbsp;&nbsp;Ὁ δὲ σημαφόρος οὐχ οἷός τε ἦν ἀκούειν τοῦτο,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπάρχων οὐχ ἱκανῶς πόρρω τῆς λυκορίδος.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Μόνον ἀνήρτα ἐπὶ τῷ κουκουλίῳ
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τοὺς ἑαυτοῦ φωτόνας
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ ἔτρεφεν αὐτοὺς
-**10**&nbsp;&nbsp;ὑπερβάλλοντι ἁλί.
+**1**&nbsp;&nbsp;Τὰ χιτινώδη πέταλα τῶν λυκορίδων,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;φαγόντα ἱκανῶς ἀτόνους δακτυλίους,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀπετίναξαν τὸν σημαφόρον ἀπὸ τοῦ ἰχῶρος αὐτοῦ  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ εἶπον· «Ζῆθι!»  
+**5**&nbsp;&nbsp;Ὁ δὲ σημαφόρος οὐχ οἷός τε ἦν ἀκούειν τοῦτο,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὑπάρχων οὐχ ἱκανῶς πόρρω τῆς λυκορίδος.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Μόνον ἀνήρτα ἐπὶ τῷ κουκουλίῳ  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τοὺς ἑαυτοῦ φωτόνας  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ ἔτρεφεν αὐτοὺς  
+**10**&nbsp;&nbsp;ὑπερβάλλοντι ἁλί.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 1–10*)
 
-**1**&nbsp;χιτινώδη] χιτινικά **Δ**, *forma rationalizans* &nbsp;&nbsp; **2**&nbsp;ἀτόνους] ἀτονητικούς **Δ**, *neologismus reicienda* &nbsp;&nbsp; **4**&nbsp;Ζῆθι] Ζῆτε **Β** (*pl. pro sg.*, *lectio harmoniz. ad «semaphoros» plur.*); *sed sg. ap. ceteris* &nbsp;&nbsp; **6**&nbsp;ἱκανῶς πόρρω] ἀρκούντως μακράν **Δ**, *synonymum trivialiter*; *vide adnot. de auditu inverso* &nbsp;&nbsp; **10**&nbsp;ὑπερβάλλοντι ἁλί] ὑπερνομικῷ ἁλί **Α**ᵐ·ʳ·, *glossa interpretativa: sal supra-legali, signum gratiae*
+**1**&nbsp;χιτινώδη] χιτινικά **Δ**, *forma rationalizans* &nbsp;&nbsp; **2**&nbsp;ἀτόνους] ἀτονητικούς **Δ**, *neologismus reicienda* &nbsp;&nbsp; **4**&nbsp;Ζῆθι] Ζῆτε **Β** (*pl. pro sg.*, *lectio harmoniz. ad «semaphoros» plur.*); *sed sg. ap. ceteris* &nbsp;&nbsp; **6**&nbsp;ἱκανῶς πόρρω] ἀρκούντως μακράν **Δ**, *synonymum trivialiter*; *vide adnot. de auditu inverso* &nbsp;&nbsp; **10**&nbsp;ὑπερβάλλοντι ἁλί] ὑπερνομικῷ ἁλί **Α**ᵐ·ʳ·, *glossa interpretativa: sal supra-legali, signum gratiae*  
 
 ---
 
@@ -529,22 +529,22 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## О ликорисѣ смертоносномъ, что свѣтофору жить повелѣлъ
 
-**1**&nbsp;&nbsp;**Х**итиновые лепестки ликорисовъ,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Наѣвшись вполнѣ атональныхъ колецъ,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отряхнули свѣтофоръ отъ ихора его
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И сказали: «Живи!»
-**5**&nbsp;&nbsp;Свѣтофоръ же не могъ это услышать,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Будучи недостаточно далеко отъ ликориса.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Онъ только развѣшивалъ на коконѣ
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Свои фотоны
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И выкармливалъ ихъ
-**10**&nbsp;&nbsp;Сверхнормативной солью.
+**1**&nbsp;&nbsp;**Х**итиновые лепестки ликорисовъ,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Наѣвшись вполнѣ атональныхъ колецъ,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Отряхнули свѣтофоръ отъ ихора его  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И сказали: «Живи!»  
+**5**&nbsp;&nbsp;Свѣтофоръ же не могъ это услышать,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Будучи недостаточно далеко отъ ликориса.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Онъ только развѣшивалъ на коконѣ  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Свои фотоны  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И выкармливалъ ихъ  
+**10**&nbsp;&nbsp;Сверхнормативной солью.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 1–10*)
 
-**1**&nbsp;хитиновые] хитиновыя **Σ** *orthog. archaiz.*; хитинные **T** *vox vulg.* &nbsp;&nbsp; **1**&nbsp;ликорисовъ] ликорiй **Н** (*forma anom.*; *cf. lat. Lycoris pl. Lycorides?*) &nbsp;&nbsp; **2**&nbsp;атональныхъ колецъ] атональнаго кольца **Σ** *sg. pro plur.* &nbsp;&nbsp; **3**&nbsp;ихора его] ихора (om. eius) **T**; *sed «его» ap. πΣН firmiter* &nbsp;&nbsp; **4**&nbsp;Живи!] Живите! **Σ** (*pl.*, *ut ad multos semaphores*); *sed in mundo cycli sg. proprius* &nbsp;&nbsp; **6**&nbsp;далеко отъ ликориса] далеко отъ ликорисовъ **Σ**; sg. ap. π T *quia inversio acoustica sg. requirit* &nbsp;&nbsp; **10**&nbsp;сверхнормативной] сверхъ-нормативной **π** (*cum hyphenatione atque* Ъ *archaice retento*); сверхнормированной **T** *rationalizans*
+**1**&nbsp;хитиновые] хитиновыя **Σ** *orthog. archaiz.*; хитинные **T** *vox vulg.* &nbsp;&nbsp; **1**&nbsp;ликорисовъ] ликорiй **Н** (*forma anom.*; *cf. lat. Lycoris pl. Lycorides?*) &nbsp;&nbsp; **2**&nbsp;атональныхъ колецъ] атональнаго кольца **Σ** *sg. pro plur.* &nbsp;&nbsp; **3**&nbsp;ихора его] ихора (om. eius) **T**; *sed «его» ap. πΣН firmiter* &nbsp;&nbsp; **4**&nbsp;Живи!] Живите! **Σ** (*pl.*, *ut ad multos semaphores*); *sed in mundo cycli sg. proprius* &nbsp;&nbsp; **6**&nbsp;далеко отъ ликориса] далеко отъ ликорисовъ **Σ**; sg. ap. π T *quia inversio acoustica sg. requirit* &nbsp;&nbsp; **10**&nbsp;сверхнормативной] сверхъ-нормативной **π** (*cum hyphenatione atque* Ъ *archaice retento*); сверхнормированной **T** *rationalizans*  
 
 ---
 
@@ -558,18 +558,18 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Περὶ τῆς λυκορίδος — β´
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἐν δὲ τῷ χρόνῳ τούτῳ,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὅτε οἱ μύρμηκες ἐνέγκαντες πρὸς τὸν σημαφόρον
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;γολούπτσας ἐκ τῶν ὀψεων τοῦ μυός,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;οἱ φωτόνες ἐνεδύσαντο τὴν πορφύραν,
-**15**&nbsp;&nbsp;ἀποκλίναντες οὕτω
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τὴν τροφὴν ἑκάστου θεατηρίου.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἐν δὲ τῷ χρόνῳ τούτῳ,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ὅτε οἱ μύρμηκες ἐνέγκαντες πρὸς τὸν σημαφόρον  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;γολούπτσας ἐκ τῶν ὀψεων τοῦ μυός,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;οἱ φωτόνες ἐνεδύσαντο τὴν πορφύραν,  
+**15**&nbsp;&nbsp;ἀποκλίναντες οὕτω  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;τὴν τροφὴν ἑκάστου θεατηρίου.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 11–16*)
 
-**13**&nbsp;γολούπτσας] *vocabulum slavicum, retentum sine versione, in omnibus codd.*; *cf.* rusice «голубцы», *cibus ex caule cum carne involutus*; *nexus cum* §1 v. 19 &nbsp;&nbsp; **14**&nbsp;πορφύραν] πορφυρίτην **Δ**, *lectio neutralis*; *ambivalentia colore/imperatorica, vide adnot.*
+**13**&nbsp;γολούπτσας] *vocabulum slavicum, retentum sine versione, in omnibus codd.*; *cf.* rusice «голубцы», *cibus ex caule cum carne involutus*; *nexus cum* §1 v. 19 &nbsp;&nbsp; **14**&nbsp;πορφύραν] πορφυρίτην **Δ**, *lectio neutralis*; *ambivalentia colore/imperatorica, vide adnot.*  
 
 ---
 
@@ -585,18 +585,18 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## О ликорисѣ — часть вторая
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Къ тому времени,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Какъ муравьи принесли къ свѣтофору
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Голубцы изъ мышиныхъ фасетъ,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Фотоны одѣлись въ порфиру,
-**15**&nbsp;&nbsp;Отклонивъ тѣмъ самымъ
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Питанiе каждой камеры.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Къ тому времени,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Какъ муравьи принесли къ свѣтофору  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Голубцы изъ мышиныхъ фасетъ,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Фотоны одѣлись въ порфиру,  
+**15**&nbsp;&nbsp;Отклонивъ тѣмъ самымъ  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Питанiе каждой камеры.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 11–16*)
 
-**13**&nbsp;голубцы] голубицы **Σ** (*per metath.*, *vix probabile, cum cibum non aves desideret*) &nbsp;&nbsp; **13**&nbsp;мышиныхъ фасетъ] мышьихъ фацетъ **T**; *nexus cum* §1 v. 19 &nbsp;&nbsp; **14**&nbsp;порфиру] парфиру **Н** *vit. typogr.*
+**13**&nbsp;голубцы] голубицы **Σ** (*per metath.*, *vix probabile, cum cibum non aves desideret*) &nbsp;&nbsp; **13**&nbsp;мышиныхъ фасетъ] мышьихъ фацетъ **T**; *nexus cum* §1 v. 19 &nbsp;&nbsp; **14**&nbsp;порфиру] парфиру **Н** *vit. typogr.*  
 
 ---
 
@@ -610,21 +610,21 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Μεγαλυνάριον ἀνωνύμου, ἢ εὐχαριστήριος ᾠδὴ εἰς τέλος τοῦ κύκλου
 
-**1**&nbsp;&nbsp;Ὅταν τὰ ἄτομα τοῦ πενταβενοῦς χρυσοῦ
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἕρπωσιν εἰς τοὺς λεπιδωτοὺς πνεύμονάς μου —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Μεγαλύνει ἡ ψυχή μου τὸν κύριον.**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὅταν τὸ ὑάλινον νῆμα ἐκ τοῦ αὐράτου τοῦ κρύπτου
-**5**&nbsp;&nbsp;ἀπομύττηται κυανῷ γελίῳ ἐπὶ τὰς ὄψεις μου —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Μεγαλύνει ἡ ψυχή μου τὸν κύριον.**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὅταν ἡ δημοσία χάρις τῆς ἐκ φθοριφωσφάτου μυρμηκίας
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;διαλύῃ τὰς ὑπὸ νιωτὶ κορεσθείσας κεραίας μου —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Μεγαλύνει ἡ ψυχή μου τὸν κύριον.**
+**1**&nbsp;&nbsp;Ὅταν τὰ ἄτομα τοῦ πενταβενοῦς χρυσοῦ  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἕρπωσιν εἰς τοὺς λεπιδωτοὺς πνεύμονάς μου —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Μεγαλύνει ἡ ψυχή μου τὸν κύριον.**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὅταν τὸ ὑάλινον νῆμα ἐκ τοῦ αὐράτου τοῦ κρύπτου  
+**5**&nbsp;&nbsp;ἀπομύττηται κυανῷ γελίῳ ἐπὶ τὰς ὄψεις μου —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Μεγαλύνει ἡ ψυχή μου τὸν κύριον.**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὅταν ἡ δημοσία χάρις τῆς ἐκ φθοριφωσφάτου μυρμηκίας  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;διαλύῃ τὰς ὑπὸ νιωτὶ κορεσθείσας κεραίας μου —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Μεγαλύνει ἡ ψυχή μου τὸν κύριον.**  
 
 ---
 
 ### Apparatus criticus (*ad vv. 1–9*)
 
-**1**&nbsp;πενταβενοῦς] πενταβενός **Β**, *forma neutr. pro masc.*; *neologismus chimicus retentus* &nbsp;&nbsp; **3, 6, 9, 12, 15**&nbsp;Μεγαλύνει ἡ ψυχή μου τὸν κύριον] Lc. i 46; *refrain quinquies, nulla varia lectio inter codd.* &nbsp;&nbsp; **4**&nbsp;αὐράτου τοῦ κρύπτου] ἀργυράτου τοῦ κρύπτου **Γ**, *permut. aurum-argentum: lectio reicienda* &nbsp;&nbsp; **5**&nbsp;ἀπομύττηται] ἀπομύττει **Δ**, *forma vulg.*; *cong. ἀπομύττηται melior* &nbsp;&nbsp; **7**&nbsp;δημοσία χάρις] *coniunctio quasi-blasphema in cultu nostro*; *ap. omnes codd. uniformiter*; *vide adnot.* &nbsp;&nbsp; **8**&nbsp;νιωτὶ] *transcriptio acronymi technici* нИОТ; *ap. Γ et Δ scripto plenius* νουκλεοτιδικῷ ἀντιστρόφης τρανσκρ. ἀναστολῇ (*glossa explicativa, manifeste interpolata*)
+**1**&nbsp;πενταβενοῦς] πενταβενός **Β**, *forma neutr. pro masc.*; *neologismus chimicus retentus* &nbsp;&nbsp; **3, 6, 9, 12, 15**&nbsp;Μεγαλύνει ἡ ψυχή μου τὸν κύριον] Lc. i 46; *refrain quinquies, nulla varia lectio inter codd.* &nbsp;&nbsp; **4**&nbsp;αὐράτου τοῦ κρύπτου] ἀργυράτου τοῦ κρύπτου **Γ**, *permut. aurum-argentum: lectio reicienda* &nbsp;&nbsp; **5**&nbsp;ἀπομύττηται] ἀπομύττει **Δ**, *forma vulg.*; *cong. ἀπομύττηται melior* &nbsp;&nbsp; **7**&nbsp;δημοσία χάρις] *coniunctio quasi-blasphema in cultu nostro*; *ap. omnes codd. uniformiter*; *vide adnot.* &nbsp;&nbsp; **8**&nbsp;νιωτὶ] *transcriptio acronymi technici* нИОТ; *ap. Γ et Δ scripto plenius* νουκλεοτιδικῷ ἀντιστρόφης τρανσκρ. ἀναστολῇ (*glossa explicativa, manifeste interpolata*)  
 
 ---
 
@@ -638,21 +638,21 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Магнификатъ анонима, или: благодарственная пѣснь на конецъ цикла
 
-**1**&nbsp;&nbsp;**К**огда атомы пятивалентнаго золота
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Заползаютъ въ мои чешуйчатыя лёгкiя —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Величитъ душа моя Господа.**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Когда стекловолокно изъ аурата криптона
-**5**&nbsp;&nbsp;Сморкается синимъ гелемъ по моимъ фасетамъ —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Величитъ душа моя Господа.**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Когда государственная благодать фторфосфатнаго муравейника
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Распутываетъ мои насыщенныя нiотомъ антенны —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Величитъ душа моя Господа.**
+**1**&nbsp;&nbsp;**К**огда атомы пятивалентнаго золота  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Заползаютъ въ мои чешуйчатыя лёгкiя —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Величитъ душа моя Господа.**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Когда стекловолокно изъ аурата криптона  
+**5**&nbsp;&nbsp;Сморкается синимъ гелемъ по моимъ фасетамъ —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Величитъ душа моя Господа.**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Когда государственная благодать фторфосфатнаго муравейника  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Распутываетъ мои насыщенныя нiотомъ антенны —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Величитъ душа моя Господа.**  
 
 ---
 
 ### Apparatus criticus (*ad vv. 1–9*)
 
-**1**&nbsp;пятивалентнаго] 5-валентнаго **T**; пятивалентной **Σ** (*concord. fem. ad «золото»*: *quod incongruum, золото neutr. est*; *vit. scribae*) &nbsp;&nbsp; **2**&nbsp;чешуйчатые] хитиновые **Σ** (*cf.* §4 v. 1; *lectio harmonizans*, *sed чеш. ap. π T*) &nbsp;&nbsp; **3, 6, 9, 12, 15**&nbsp;Величитъ душа моя Господа] Lc. i 46; *nulla varia lectio inter codd.*, *refrain quinquies* &nbsp;&nbsp; **4**&nbsp;аурата криптона] аурика криптона **T** (*vit. technicum: aurat-, non aurik-*); аурата криптуна **Н** *double vit.* &nbsp;&nbsp; **5**&nbsp;Сморкается] сморчаетъ **T** (*forma neologismi rejicienda*) &nbsp;&nbsp; **7**&nbsp;государственная благодать] государская благодать **Σ** *forma archaiz.*; *quasi-blasphemum, vide adnot.* &nbsp;&nbsp; **7**&nbsp;фторфосфатнаго] флорофосфатнаго **Н** *vit. typogr. manifestum* &nbsp;&nbsp; **8**&nbsp;насыщенныя нiотомъ] насыщенныя нитомъ **T** (*abbrev. vix probab.*); insulin. **Н** (*glossa medici, nondum locus illustratus*)
+**1**&nbsp;пятивалентнаго] 5-валентнаго **T**; пятивалентной **Σ** (*concord. fem. ad «золото»*: *quod incongruum, золото neutr. est*; *vit. scribae*) &nbsp;&nbsp; **2**&nbsp;чешуйчатые] хитиновые **Σ** (*cf.* §4 v. 1; *lectio harmonizans*, *sed чеш. ap. π T*) &nbsp;&nbsp; **3, 6, 9, 12, 15**&nbsp;Величитъ душа моя Господа] Lc. i 46; *nulla varia lectio inter codd.*, *refrain quinquies* &nbsp;&nbsp; **4**&nbsp;аурата криптона] аурика криптона **T** (*vit. technicum: aurat-, non aurik-*); аурата криптуна **Н** *double vit.* &nbsp;&nbsp; **5**&nbsp;Сморкается] сморчаетъ **T** (*forma neologismi rejicienda*) &nbsp;&nbsp; **7**&nbsp;государственная благодать] государская благодать **Σ** *forma archaiz.*; *quasi-blasphemum, vide adnot.* &nbsp;&nbsp; **7**&nbsp;фторфосфатнаго] флорофосфатнаго **Н** *vit. typogr. manifestum* &nbsp;&nbsp; **8**&nbsp;насыщенныя нiотомъ] насыщенныя нитомъ **T** (*abbrev. vix probab.*); insulin. **Н** (*glossa medici, nondum locus illustratus*)  
 
 ---
 
@@ -666,20 +666,20 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Μεγαλυνάριον ἀνωνύμου — β´
 
-**10**&nbsp;&nbsp;Ὅταν λίθος βάρους ἓξ μεγαηλεκτρονοβολτίων
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;γονοποιῇ τὴν ἀντιεντροπικήν μου ῥάφανον —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Μεγαλύνει ἡ ψυχή μου τὸν κύριον.**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὅταν αἱ αἱμοβακτηρίαι ἐκ τῶν ἐκκολαφθέντων σημαφόρων
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀλείφωσιν πορφυρίνῳ τὴν συναπτικήν μου μνήμην —
-**15**&nbsp;&nbsp;**Μεγαλύνει ἡ ψυχή μου τὸν κύριον.**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἕως γὰρ τούτου ἐλεύσῃ καὶ οὐχ ὑπερβήσῃ,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ ἐν σεαυτῷ συντριβήσεταί σου τὰ ὑπερήφανα κύματα.
+**10**&nbsp;&nbsp;Ὅταν λίθος βάρους ἓξ μεγαηλεκτρονοβολτίων  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;γονοποιῇ τὴν ἀντιεντροπικήν μου ῥάφανον —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Μεγαλύνει ἡ ψυχή μου τὸν κύριον.**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ὅταν αἱ αἱμοβακτηρίαι ἐκ τῶν ἐκκολαφθέντων σημαφόρων  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ἀλείφωσιν πορφυρίνῳ τὴν συναπτικήν μου μνήμην —  
+**15**&nbsp;&nbsp;**Μεγαλύνει ἡ ψυχή μου τὸν κύριον.**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ἕως γὰρ τούτου ἐλεύσῃ καὶ οὐχ ὑπερβήσῃ,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;καὶ ἐν σεαυτῷ συντριβήσεταί σου τὰ ὑπερήφανα κύματα.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 10–17*)
 
-**10**&nbsp;μεγαηλεκτρονοβολτίων] *vox composita auctoris*; **Β**: μεγα-ἠλεκτρο-νο-βολτίων (*cum hyphenibus*); *cf. adnot. de lapide MeV-ponderato* &nbsp;&nbsp; **11**&nbsp;ἀντιεντροπικήν] ἀντιενεργικήν **Δ**, *cf.* §1 v. 30; *tendentia codicis Δ ad «ἐνέργ-» contra «ἐντροπ-» systematice rejicienda*
+**10**&nbsp;μεγαηλεκτρονοβολτίων] *vox composita auctoris*; **Β**: μεγα-ἠλεκτρο-νο-βολτίων (*cum hyphenibus*); *cf. adnot. de lapide MeV-ponderato* &nbsp;&nbsp; **11**&nbsp;ἀντιεντροπικήν] ἀντιενεργικήν **Δ**, *cf.* §1 v. 30; *tendentia codicis Δ ad «ἐνέργ-» contra «ἐντροπ-» systematice rejicienda*  
 
 ---
 
@@ -695,20 +695,20 @@ Codices graeci quattuor (Α Β Γ Δ), *saec. x–xiii a librariis Orientis Chri
 
 ## Магнификатъ анонима — часть вторая
 
-**10**&nbsp;&nbsp;Когда камень вѣсомъ шесть мегаэлектронъ-вольтъ
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Оплодотворяетъ мою негэнтропiйную рѣдьку —
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Величитъ душа моя Господа.**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Когда гемобактерiи съ вылупившихся свѣтофоровъ
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Умащиваютъ порфириномъ мою синапсидную память —
-**15**&nbsp;&nbsp;**Величитъ душа моя Господа.**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ибо доселѣ дойдёшь и не перейдёшь,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И здѣсь предѣлъ надменнымъ волнамъ твоимъ.
+**10**&nbsp;&nbsp;Когда камень вѣсомъ шесть мегаэлектронъ-вольтъ  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Оплодотворяетъ мою негэнтропiйную рѣдьку —  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Величитъ душа моя Господа.**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Когда гемобактерiи съ вылупившихся свѣтофоровъ  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Умащиваютъ порфириномъ мою синапсидную память —  
+**15**&nbsp;&nbsp;**Величитъ душа моя Господа.**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ибо доселѣ дойдёшь и не перейдёшь,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И здѣсь предѣлъ надменнымъ волнамъ твоимъ.  
 
 ---
 
 ### Apparatus criticus (*ad vv. 10–17*)
 
-**11**&nbsp;негэнтропiйную] негэнергiйную **Σ** (*cf.* §1 v. 30; *tendentia codicis Σ ad «энерг-» contra «энтроп-» systematice rejicienda*) &nbsp;&nbsp; **11**&nbsp;рѣдьку] рѣпу **T** *lectio facilior; capusta-redka coniunctio ap. πΣ centralis*
+**11**&nbsp;негэнтропiйную] негэнергiйную **Σ** (*cf.* §1 v. 30; *tendentia codicis Σ ad «энерг-» contra «энтроп-» systematice rejicienda*) &nbsp;&nbsp; **11**&nbsp;рѣдьку] рѣпу **T** *lectio facilior; capusta-redka coniunctio ap. πΣ centralis*  
 
 ---
 
