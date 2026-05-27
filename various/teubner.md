@@ -74,9 +74,9 @@
                   Archetypus
           (saec. ix, Anatol. vel Athon.)
                        │
-        ┌──────────┬───┴────┬──────────┐
-        │          │        │          │
-        Α          Β        Γ          Δ
+        ┌──────┬───┴────┬────── ─┐
+        │        │          │          │
+        Α        Β          Γ          Δ
      saec. xi  saec. xii saec. x/xi saec. xiii
 ```
 
@@ -86,8 +86,8 @@
                      π
             (ms. 47/б, c. 1951–55)
                      │
-        ┌────────────┼────────────┐
-        │            │            │
+        ┌─────────┼────────────┐
+        │            │               │
         π²           Σ ┄┄ contam. ┄┄ T
    man. secunda  Saratov,           Tolyatti,
                   c. 1965           manuscr.
