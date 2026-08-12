@@ -1,0 +1,26 @@
+{
+  "traditions": [
+    ["presocratic", "Досократики", ["pythagoras","heraclitus","parmenides"]],
+    ["ancient_classical", "Античная классика", ["socrates","plato","aristotle"]],
+    ["platonism", "Платонизм и неоплатонизм", ["plato","plotinus","augustine","cusanus"]],
+    ["hellenistic", "Эллинистические школы", ["epicurus","marcus_aurelius"]],
+    ["scholastic", "Патристика и схоластика", ["augustine","anselm","aquinas","duns_scotus","cusanus"]],
+    ["rationalism", "Рационализм", ["descartes","spinoza","leibniz"]],
+    ["empiricism", "Эмпиризм", ["bacon","locke","berkeley","hume"]],
+    ["enlightenment", "Просвещение", ["locke","hume","rousseau","kant"]],
+    ["german_idealism", "Немецкий идеализм", ["kant","fichte","hegel","schelling"]],
+    ["neokantian", "Неокантианство", ["cassirer"]],
+    ["lebensphilosophie", "Философия жизни", ["schopenhauer","nietzsche","dilthey","bergson"]],
+    ["marxism", "Марксизм", ["marx"]],
+    ["positivism", "Позитивизм", ["comte","carnap"]],
+    ["analytic", "Аналитическая философия", ["frege","russell","wittgenstein","carnap","quine","rorty"]],
+    ["pragmatism", "Прагматизм", ["peirce","dewey","rorty"]],
+    ["austrian", "Австрийская школа предметности", ["brentano","meinong"]],
+    ["phenomenology", "Феноменология", ["brentano","husserl","heidegger","sartre","levinas","merleau_ponty"]],
+    ["existentialism", "Экзистенциализм", ["kierkegaard","heidegger","sartre"]],
+    ["hermeneutics", "Герменевтика", ["dilthey","heidegger","gadamer"]],
+    ["psychoanalysis", "Психоанализ", ["freud","lacan"]],
+    ["poststructuralism", "Структурализм и постструктурализм", ["lacan","bataille","deleuze","foucault","derrida"]],
+    ["process", "Процессуальная философия", ["whitehead"]]
+  ]
+}

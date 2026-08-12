@@ -1,0 +1,319 @@
+{
+ "lifeworld|epoché|oppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "noesis_noema|eidetic|consequence": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "noesis_noema|evidence|condition": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "phenomenology|constitution|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "phenomenology|evidence|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "intentionality|eidetic|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "intersubjectivity|transcendental_ego|critique": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "constitution|transcendental_ego|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "constitution|intentionality|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "noesis_noema|intentionality|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "evidence|constitution|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "phenomenology|epoché|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "phenomenology|intentionality|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "epoché|phenomenology|instrument": [
+  "К3",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "intentionality|lifeworld|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "intersubjectivity|lifeworld|condition": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "intentionality|evidence|condition": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "transcendental_ego|evidence|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "transcendental_ego|phenomenology|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "noesis_noema|phenomenology|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "evidence|eidetic|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "transcendental_ego|eidetic|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "phenomenology|eidetic|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "epoché|transcendental_ego|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "epoché|evidence|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "intuition_bergson|intellect_spatialization|internal_contradiction": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "pure_perception|intellect_spatialization|oppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "image_bergson|pure_perception|consequence": [
+  "К1",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "creative_evolution|open_closed_morality|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "elan_vital|laughter|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "duree|creative_evolution|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "laughter|intellect_spatialization|exemplify": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "elan_vital|duree|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "matter_memory|duree|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "creative_evolution|elan_vital|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "pure_perception|matter_memory|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "intuition_bergson|duree|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "intuition_bergson|image_bergson|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "open_closed_morality|elan_vital|emerge_from": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "experience_dewey|democracy_education|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "instrumentalism|inquiry|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "warranted_assertibility|instrumentalism|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "experience_dewey|inquiry|condition": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "learning_doing|inquiry|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "concrescence|actual_occasion|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "fallacy_misplaced_concreteness|process_reality|critique": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "actual_occasion|process_reality|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "prehension|actual_occasion|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "creativity_whitehead|process_reality|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "eternal_objects|actual_occasion|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "russell_paradox|theory_descriptions|consequence": [
+  "К3",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "sense_data|external_world|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "acquaintance_description|sense_data|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "theory_descriptions|acquaintance_description|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "logical_atomism|theory_descriptions|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ]
+}

@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "batch": "V02",
+    "title": "Правка традиций в системе редактирования философа",
+    "spec": "traditions-spec.md",
+    "target": "philosophy_graph.html",
+    "targetMd5": "f00be87108c1f142ebca59616b673b1d",
+    "created": "2026-08-12",
+    "layer": "view",
+    "count": 5
+  },
+  "edits": [
+    {
+      "id": "phil-edit-traditions-field",
+      "note": "Поле-множественный выбор по образцу рубрик у концепции; ставится перед описанием, чтобы порядок формы отвечал порядку окна просмотра.",
+      "anchor": "        <div class=\"modal-form-group\">\n          <label for=\"philDescription\">Описание</label>\n",
+      "insert": "        <div class=\"modal-form-group\">\n          <label for=\"philTraditions\">Традиции</label>\n          <select id=\"philTraditions\" multiple size=\"6\">\n            ${traditions.map(t => {\n              const on = philosopherData\n                && (philosopherData.traditions || []).includes(t.id);\n              return `<option value=\"${t.id}\" ${on ? 'selected' : ''}>${t.name}</option>`;\n            }).join('')}\n          </select>\n          <div class=\"modal-form-note\">\n            Традиций может быть несколько — держите Ctrl. Признак читается\n            как «в какой традиции его рассматривают», а не «к какой школе он\n            принадлежал»: второе для доброй половины корпуса просто ложно.\n          </div>\n        </div>\n\n"
+    },
+    {
+      "id": "phil-save-read-traditions",
+      "note": "Чтение выбранных традиций из формы.",
+      "anchor": "      const description = descEl ? descEl.value.trim() : '';\n\n      if (!name) { alert('Укажите имя философа'); return; }\n",
+      "insert": "      // Традиции читаются так же, как рубрики в saveConceptData:\n      // множественный выбор → массив идентификаторов.\n      const tradEl = document.getElementById('philTraditions');\n      const traditionIds = tradEl\n        ? Array.from(tradEl.selectedOptions).map(o => o.value) : [];\n\n"
+    },
+    {
+      "id": "phil-save-new-traditions",
+      "note": "Новая запись философа получает поле традиций.",
+      "anchor": "        philosophers.push({ id, name, nameRu: name, color,\n                  birth, death, years, description });\n",
+      "replace": "        // Поле traditions обязано попасть и в НОВУЮ запись: без него\n        // у созданного философа не будет ни традиции, ни раздела в окне.\n        philosophers.push({ id, name, nameRu: name, color,\n                  birth, death, years, traditions: traditionIds, description });\n"
+    },
+    {
+      "id": "phil-save-edit-traditions",
+      "note": "Правка существующей записи переписывает состав традиций.",
+      "anchor": "        philosophers[i] = { ...philosophers[i], name, nameRu: name, color,\n                  birth, death, years, description };\n",
+      "replace": "        philosophers[i] = { ...philosophers[i], name, nameRu: name, color,\n                  birth, death, years, traditions: traditionIds, description };\n"
+    },
+    {
+      "id": "phil-save-traditions-warning",
+      "note": "Предупреждение при пустом составе — по образцу прочих предупреждений целостности.",
+      "anchor": "      if (!confirmWarnings('Сохранение философа',\n          philosopherIntegrityWarnings(name, birth, death,\n                         isNew ? null : originalName))) return;\n",
+      "replace": "      // Полнота (у каждого хотя бы одна традиция) — договорённость, а не\n      // запрет: предупреждаем и даём сохранить, как принято в этом окне.\n      if (!confirmWarnings('Сохранение философа',\n          philosopherIntegrityWarnings(name, birth, death,\n                         isNew ? null : originalName)\n            .concat(traditionIds.length ? [] : [\n              'Не выбрано ни одной традиции: раздел традиций в окне философа '\n              + 'выводиться не будет.']))) return;\n"
+    }
+  ]
+}

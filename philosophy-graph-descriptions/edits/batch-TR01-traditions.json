@@ -1,0 +1,483 @@
+{
+  "meta": {
+    "batch": "TR01",
+    "title": "Поле традиций: справочник и состав",
+    "spec": "traditions-spec.md",
+    "specRevision": 1,
+    "target": "philosophy_graph.html",
+    "targetMd5": "15a45d17e535e0f2c121a1b97245c2f0",
+    "created": "2026-08-12",
+    "layer": "traditions",
+    "count": 57
+  },
+  "traditions": [
+    {
+      "id": "presocratic",
+      "name": "Досократики",
+      "description": "Ранние греческие учения о начале и о едином, известные по чужим свидетельствам и разрозненным изречениям"
+    },
+    {
+      "id": "ancient_classical",
+      "name": "Античная классика",
+      "description": "Афинская мысль зрелого времени: испытание понятий вопросом, учение об идеях и первый свод наук"
+    },
+    {
+      "id": "platonism",
+      "name": "Платонизм и неоплатонизм",
+      "description": "Долгая линия, где подлинное сущее отделено от становящегося, а познание понято как восхождение"
+    },
+    {
+      "id": "hellenistic",
+      "name": "Эллинистические школы",
+      "description": "Учения, устроенные ради душевного покоя: философия как врачевание и как уклад повседневной жизни"
+    },
+    {
+      "id": "scholastic",
+      "name": "Патристика и схоластика",
+      "description": "Работа с откровением средствами доказательства: разбор понятий в опоре на предание и на школьную выучку"
+    },
+    {
+      "id": "rationalism",
+      "name": "Рационализм",
+      "description": "Новоевропейское убеждение, что надёжное знание добывается порядком мышления, а не накоплением наблюдений"
+    },
+    {
+      "id": "empiricism",
+      "name": "Эмпиризм",
+      "description": "Проверка понятий их происхождением из опыта и отказ от того, чему в опыте нет соответствия"
+    },
+    {
+      "id": "enlightenment",
+      "name": "Просвещение",
+      "description": "Разряд по времени, а не по понятию: работа на широкого читателя и разбор общественного устройства"
+    },
+    {
+      "id": "german_idealism",
+      "name": "Немецкий идеализм",
+      "description": "Выведение всего строя знания из условий самого познания и из деятельности духа"
+    },
+    {
+      "id": "neokantian",
+      "name": "Неокантианство",
+      "description": "Возврат к вопросу об условиях познания, перенесённый с ума на его произведения — науку, язык, миф"
+    },
+    {
+      "id": "lebensphilosophie",
+      "name": "Философия жизни",
+      "description": "Первенство живого, длящегося и переживаемого перед рассудочным разложением на части"
+    },
+    {
+      "id": "marxism",
+      "name": "Марксизм",
+      "description": "Объяснение права, власти и мысли из способа производства и из отношений, в которые люди при этом вступают"
+    },
+    {
+      "id": "positivism",
+      "name": "Позитивизм",
+      "description": "Отказ от вопроса о причинах в пользу устойчивых отношений между наблюдаемым и требование проверяемости"
+    },
+    {
+      "id": "analytic",
+      "name": "Аналитическая философия",
+      "description": "Работа средствами логики и разбора языка: прояснение вместо построения систем"
+    },
+    {
+      "id": "pragmatism",
+      "name": "Прагматизм",
+      "description": "Понятие проясняется его следствиями в опыте и действии, а истина — итогом доведённого исследования"
+    },
+    {
+      "id": "austrian",
+      "name": "Австрийская школа предметности",
+      "description": "Описание строения душевных действий и учение о предметном как таковом, включая невозможное"
+    },
+    {
+      "id": "phenomenology",
+      "name": "Феноменология",
+      "description": "Описание данного как данного, без объяснения его чем-либо иным, и разбор того, как складывается смысл"
+    },
+    {
+      "id": "existentialism",
+      "name": "Экзистенциализм",
+      "description": "Первенство существования перед сущностью: разбор ведётся изнутри положения, а не со стороны"
+    },
+    {
+      "id": "hermeneutics",
+      "name": "Герменевтика",
+      "description": "Понимание как способ быть, а не приём: истолкование предания, в котором истолкователь уже находится"
+    },
+    {
+      "id": "psychoanalysis",
+      "name": "Психоанализ",
+      "description": "Допущение неосознаваемых душевных процессов со своим устройством и истолкование их окольных проявлений"
+    },
+    {
+      "id": "poststructuralism",
+      "name": "Структурализм и постструктурализм",
+      "description": "Первенство порядка различий над говорящим и разбор того, что держит этот порядок незаметным"
+    },
+    {
+      "id": "process",
+      "name": "Процессуальная философия",
+      "description": "Последними единицами положены свершения, а не вещи: первично становление, а устойчивое производно"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "pythagoras",
+      "traditions": [
+        "presocratic"
+      ]
+    },
+    {
+      "id": "heraclitus",
+      "traditions": [
+        "presocratic"
+      ]
+    },
+    {
+      "id": "parmenides",
+      "traditions": [
+        "presocratic"
+      ]
+    },
+    {
+      "id": "socrates",
+      "traditions": [
+        "ancient_classical"
+      ]
+    },
+    {
+      "id": "plato",
+      "traditions": [
+        "ancient_classical",
+        "platonism"
+      ]
+    },
+    {
+      "id": "aristotle",
+      "traditions": [
+        "ancient_classical"
+      ]
+    },
+    {
+      "id": "epicurus",
+      "traditions": [
+        "hellenistic"
+      ]
+    },
+    {
+      "id": "marcus_aurelius",
+      "traditions": [
+        "hellenistic"
+      ]
+    },
+    {
+      "id": "plotinus",
+      "traditions": [
+        "platonism"
+      ]
+    },
+    {
+      "id": "augustine",
+      "traditions": [
+        "platonism",
+        "scholastic"
+      ]
+    },
+    {
+      "id": "anselm",
+      "traditions": [
+        "scholastic"
+      ]
+    },
+    {
+      "id": "aquinas",
+      "traditions": [
+        "scholastic"
+      ]
+    },
+    {
+      "id": "duns_scotus",
+      "traditions": [
+        "scholastic"
+      ]
+    },
+    {
+      "id": "cusanus",
+      "traditions": [
+        "platonism",
+        "scholastic"
+      ]
+    },
+    {
+      "id": "bacon",
+      "traditions": [
+        "empiricism"
+      ]
+    },
+    {
+      "id": "descartes",
+      "traditions": [
+        "rationalism"
+      ]
+    },
+    {
+      "id": "spinoza",
+      "traditions": [
+        "rationalism"
+      ]
+    },
+    {
+      "id": "locke",
+      "traditions": [
+        "empiricism",
+        "enlightenment"
+      ]
+    },
+    {
+      "id": "leibniz",
+      "traditions": [
+        "rationalism"
+      ]
+    },
+    {
+      "id": "berkeley",
+      "traditions": [
+        "empiricism"
+      ]
+    },
+    {
+      "id": "hume",
+      "traditions": [
+        "empiricism",
+        "enlightenment"
+      ]
+    },
+    {
+      "id": "rousseau",
+      "traditions": [
+        "enlightenment"
+      ]
+    },
+    {
+      "id": "kant",
+      "traditions": [
+        "enlightenment",
+        "german_idealism"
+      ]
+    },
+    {
+      "id": "fichte",
+      "traditions": [
+        "german_idealism"
+      ]
+    },
+    {
+      "id": "hegel",
+      "traditions": [
+        "german_idealism"
+      ]
+    },
+    {
+      "id": "schelling",
+      "traditions": [
+        "german_idealism"
+      ]
+    },
+    {
+      "id": "schopenhauer",
+      "traditions": [
+        "lebensphilosophie"
+      ]
+    },
+    {
+      "id": "comte",
+      "traditions": [
+        "positivism"
+      ]
+    },
+    {
+      "id": "kierkegaard",
+      "traditions": [
+        "existentialism"
+      ]
+    },
+    {
+      "id": "marx",
+      "traditions": [
+        "marxism"
+      ]
+    },
+    {
+      "id": "dilthey",
+      "traditions": [
+        "lebensphilosophie",
+        "hermeneutics"
+      ]
+    },
+    {
+      "id": "brentano",
+      "traditions": [
+        "austrian",
+        "phenomenology"
+      ]
+    },
+    {
+      "id": "peirce",
+      "traditions": [
+        "pragmatism"
+      ]
+    },
+    {
+      "id": "nietzsche",
+      "traditions": [
+        "lebensphilosophie"
+      ]
+    },
+    {
+      "id": "frege",
+      "traditions": [
+        "analytic"
+      ]
+    },
+    {
+      "id": "meinong",
+      "traditions": [
+        "austrian"
+      ]
+    },
+    {
+      "id": "freud",
+      "traditions": [
+        "psychoanalysis"
+      ]
+    },
+    {
+      "id": "husserl",
+      "traditions": [
+        "phenomenology"
+      ]
+    },
+    {
+      "id": "bergson",
+      "traditions": [
+        "lebensphilosophie"
+      ]
+    },
+    {
+      "id": "dewey",
+      "traditions": [
+        "pragmatism"
+      ]
+    },
+    {
+      "id": "whitehead",
+      "traditions": [
+        "process"
+      ]
+    },
+    {
+      "id": "russell",
+      "traditions": [
+        "analytic"
+      ]
+    },
+    {
+      "id": "cassirer",
+      "traditions": [
+        "neokantian"
+      ]
+    },
+    {
+      "id": "wittgenstein",
+      "traditions": [
+        "analytic"
+      ]
+    },
+    {
+      "id": "heidegger",
+      "traditions": [
+        "phenomenology",
+        "existentialism",
+        "hermeneutics"
+      ]
+    },
+    {
+      "id": "carnap",
+      "traditions": [
+        "positivism",
+        "analytic"
+      ]
+    },
+    {
+      "id": "bataille",
+      "traditions": [
+        "poststructuralism"
+      ]
+    },
+    {
+      "id": "gadamer",
+      "traditions": [
+        "hermeneutics"
+      ]
+    },
+    {
+      "id": "lacan",
+      "traditions": [
+        "psychoanalysis",
+        "poststructuralism"
+      ]
+    },
+    {
+      "id": "sartre",
+      "traditions": [
+        "phenomenology",
+        "existentialism"
+      ]
+    },
+    {
+      "id": "levinas",
+      "traditions": [
+        "phenomenology"
+      ]
+    },
+    {
+      "id": "merleau_ponty",
+      "traditions": [
+        "phenomenology"
+      ]
+    },
+    {
+      "id": "quine",
+      "traditions": [
+        "analytic"
+      ]
+    },
+    {
+      "id": "deleuze",
+      "traditions": [
+        "poststructuralism"
+      ]
+    },
+    {
+      "id": "foucault",
+      "traditions": [
+        "poststructuralism"
+      ]
+    },
+    {
+      "id": "derrida",
+      "traditions": [
+        "poststructuralism"
+      ]
+    },
+    {
+      "id": "rorty",
+      "traditions": [
+        "analytic",
+        "pragmatism"
+      ]
+    }
+  ]
+}

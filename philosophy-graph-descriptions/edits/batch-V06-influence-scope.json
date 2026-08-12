@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "batch": "V06",
+    "title": "Переключатель взгляда на влиятельность",
+    "spec": "traditions-spec.md",
+    "target": "philosophy_graph.html",
+    "targetMd5": "9784bea2c896c5434cf82219acb8bc0a",
+    "created": "2026-08-12",
+    "layer": "view",
+    "count": 12
+  },
+  "edits": [
+    {
+      "id": "infl-scope-state",
+      "note": "Переключатель взгляда на влиятельность. Положение «вся» даёт РОВНО прежний итог: разметка традиций включается только тогда, когда её попросили, и положение видно на экране.",
+      "anchor": "    const GENERATIVITY_DAMPING = 0.85;\n",
+      "insert": "    // ── Взгляд на влиятельность: вся / внутри традиций / за их пределы ──\n    // Не другая метрика, а другой взгляд на ту же. В положении 'all' формула\n    // и итог в точности прежние — перекройки рейтинга на основании разметки\n    // не происходит, пока читатель сам её не запросил.\n    //\n    // Связь внутри одной системы считается «своей»: у неё оба конца у одного\n    // философа, и традиции у них по определению общие.\n    var influenceScope = 'all';\n    const INFLUENCE_SCOPE_LABELS = {\n      all: 'вся', within: 'внутри традиций', cross: 'за пределы традиций'\n    };\n\n    function sameTraditionPhil(a, b) {\n      if (a === b) return true;\n      const ta = (_philosopherMap.get(a) || {}).traditions || [];\n      const tb = (_philosopherMap.get(b) || {}).traditions || [];\n      return ta.some(x => tb.includes(x));\n    }\n\n    // Проходит ли ребро при данном взгляде. Точка отсчёта — философ той\n    // концепции, для которой считается метрика.\n    function linkInInfluenceScope(r, ownPhilosopher, scope) {\n      if ((scope || influenceScope) === 'all') return true;\n      const s = _conceptMap.get(r.source), t = _conceptMap.get(r.target);\n      if (!s || !t) return false;\n      const other = s.philosopher === ownPhilosopher ? t.philosopher : s.philosopher;\n      const same = sameTraditionPhil(ownPhilosopher, other);\n      return (scope || influenceScope) === 'within' ? same : !same;\n    }\n\n"
+    },
+    {
+      "id": "infl-generativity-scope",
+      "note": "Генеративность строится по отобранному множеству рёбер; кеш — по взгляду.",
+      "anchor": "    let _generativityCache = null;\n\n    function generativityScores() {\n      if (_generativityCache) return _generativityCache;\n\n      const ids = _concepts.map(c => c.id);\n      const N = ids.length;\n      const idx = new Map(ids.map((id, i) => [id, i]));\n      const out = ids.map(() => []);\n\n      // Рёбра обращены: из target в source\n      for (const r of _relations) {\n        const s = idx.get(r.target), t = idx.get(r.source);\n        if (s === undefined || t === undefined) continue;\n        out[s].push({ t, w: (r.weight || 1) / 3 });\n      }\n",
+      "replace": "    // Кеш по ВЗГЛЯДУ: генеративность рекурсивна и считается на всём графе,\n    // поэтому для взглядов «внутри» и «за пределы» её приходится строить\n    // заново на отобранном множестве рёбер. В положении «вся» это та же\n    // величина, что и прежде, и считается она один раз.\n    let _generativityCacheByScope = new Map();\n\n    function generativityScores(scope) {\n      const sc = scope || 'all';\n      if (_generativityCacheByScope.has(sc)) return _generativityCacheByScope.get(sc);\n\n      const ids = _concepts.map(c => c.id);\n      const N = ids.length;\n      const idx = new Map(ids.map((id, i) => [id, i]));\n      const out = ids.map(() => []);\n\n      // Рёбра обращены: из target в source\n      for (const r of _relations) {\n        const s = idx.get(r.target), t = idx.get(r.source);\n        if (s === undefined || t === undefined) continue;\n        if (sc !== 'all') {\n          const sc2 = _conceptMap.get(r.source), tc = _conceptMap.get(r.target);\n          if (!sc2 || !tc) continue;\n          const same = sameTraditionPhil(sc2.philosopher, tc.philosopher);\n          if (sc === 'within' ? !same : same) continue;\n        }\n        out[s].push({ t, w: (r.weight || 1) / 3 });\n      }\n"
+    },
+    {
+      "id": "infl-generativity-tail",
+      "note": "Хвост генеративности: запись в кеш по взгляду.",
+      "anchor": "      const floor = 1 - d;\n      _generativityCache = new Map(ids.map((id, i) =>\n        [id, Math.max(0, pr[i] * N - floor)]));\n      return _generativityCache;\n    }\n\n    function generativity(conceptId) {\n      return generativityScores().get(conceptId) || 0;\n    }\n\n    function invalidateGenerativityCache() {\n      _generativityCache = null;\n    }\n",
+      "replace": "      const floor = 1 - d;\n      const res = new Map(ids.map((id, i) =>\n        [id, Math.max(0, pr[i] * N - floor)]));\n      _generativityCacheByScope.set(sc, res);\n      return res;\n    }\n\n    function generativity(conceptId, scope) {\n      return generativityScores(scope || 'all').get(conceptId) || 0;\n    }\n\n    function invalidateGenerativityCache() {\n      _generativityCacheByScope = new Map();\n    }\n"
+    },
+    {
+      "id": "infl-index-scope",
+      "note": "Отбор рёбер по взгляду в самой метрике: три слагаемых считаются на подмножестве, генеративность берётся своя для взгляда.",
+      "anchor": "      const incoming = _incomingLinks.get(conceptId) || [];\n\n      const forwardInfluence = incoming.reduce((sum, r) => {\n",
+      "replace": "      const incoming = (_incomingLinks.get(conceptId) || [])\n        .filter(r => linkInInfluenceScope(r, concept.philosopher));\n\n      const forwardInfluence = incoming.reduce((sum, r) => {\n"
+    },
+    {
+      "id": "infl-index-outgoing",
+      "note": "То же для исходящих.",
+      "anchor": "      const outgoingLinks = _outgoingLinks.get(conceptId) || [];\n",
+      "replace": "      const outgoingLinks = (_outgoingLinks.get(conceptId) || [])\n        .filter(r => linkInInfluenceScope(r, concept.philosopher));\n"
+    },
+    {
+      "id": "infl-index-generativity",
+      "note": "Генеративность берётся по тому же взгляду.",
+      "anchor": "      const exertedRecursive = generativity(conceptId) * EXERTED_SCALE;\n",
+      "replace": "      const exertedRecursive = generativity(conceptId, influenceScope) * EXERTED_SCALE;\n"
+    },
+    {
+      "id": "infl-index-report-scope",
+      "note": "Взгляд возвращается в подробностях — чтобы в таблице было видно, на каком подмножестве посчитано.",
+      "anchor": "      return {\n      total: exertedRecursive + forwardInfluence + contemporaryInfluence * 0.5,\n      exerted: exertedRecursive,\n",
+      "replace": "      return {\n      total: exertedRecursive + forwardInfluence + contemporaryInfluence * 0.5,\n      scope: INFLUENCE_SCOPE_LABELS[influenceScope],\n      exerted: exertedRecursive,\n"
+    },
+    {
+      "id": "infl-scope-switch",
+      "note": "Переключение взгляда: сбрасываются кеш влияния и всё, что от него считается (профили философов кеша не имеют), и вид перерисовывается.",
+      "anchor": "    function invalidateInfluenceIndexCache() {\n      influenceIndexCache = null;\n    }\n",
+      "replace": "    function invalidateInfluenceIndexCache() {\n      influenceIndexCache = null;\n    }\n\n    // Переключение взгляда на влиятельность. Кеш генеративности сброса не\n    // требует: он разложен по взглядам и каждый считается один раз.\n    function setInfluenceScope(scope) {\n      if (!INFLUENCE_SCOPE_LABELS[scope] || scope === influenceScope) return;\n      influenceScope = scope;\n      invalidateInfluenceIndexCache();\n      if (typeof currentStatsView !== 'undefined' && currentStatsView) {\n        loadStatsContent(currentStatsView);\n      }\n    }\n\n    function influenceScopeSwitcher() {\n      return `\n        <div class=\"influence-scope\">\n          <span class=\"influence-scope-label\">Влияние:</span>\n          ${Object.entries(INFLUENCE_SCOPE_LABELS).map(([k, v]) => `\n            <button class=\"influence-scope-btn${influenceScope === k ? ' active' : ''}\"\n                onclick=\"setInfluenceScope('${k}')\">${v}</button>\n          `).join('')}\n          <span class=\"influence-scope-note\">${influenceScope === 'all'\n            ? 'итог в точности прежний'\n            : 'считается по разметке традиций'}</span>\n        </div>\n      `;\n    }\n"
+    },
+    {
+      "id": "infl-switcher-concepts",
+      "note": "Переключатель в виде метрики концепций.",
+      "anchor": "      return generateMetricResults(\n        results.slice(0, 30),\n        '🎭 Индекс влияния',\n        'Концепции с наибольшим историческим влиянием',\n        'influence',\n        'value',\n        true\n      );\n",
+      "replace": "      return influenceScopeSwitcher() + generateMetricResults(\n        results.slice(0, 30),\n        '🎭 Индекс влияния',\n        'Концепции с наибольшим историческим влиянием',\n        'influence',\n        'value',\n        true\n      );\n"
+    },
+    {
+      "id": "infl-switcher-philosophers",
+      "note": "Тот же переключатель в профилях философов: они упорядочены по среднему влиянию, и взгляд у обоих видов общий, чтобы не разъезжались.",
+      "anchor": "        ${generateMetricDescriptionBlock('philosopher-profile')}\n",
+      "replace": "        ${generateMetricDescriptionBlock('philosopher-profile')}\n        ${influenceScopeSwitcher()}\n"
+    },
+    {
+      "id": "infl-scope-css",
+      "note": "Стиль переключателя.",
+      "anchor": "    .tradition-pick {\n",
+      "insert": "    .influence-scope {\n      display: flex;\n      align-items: center;\n      flex-wrap: wrap;\n      gap: 6px;\n      margin: 10px 0 14px;\n      font-size: 11px;\n      color: #7f8c8d;\n    }\n    .influence-scope-label { font-weight: 600; }\n    .influence-scope-btn {\n      padding: 3px 10px;\n      font-size: 11px;\n      cursor: pointer;\n      color: #a29bfe;\n      background: rgba(108, 92, 231, 0.12);\n      border: 1px solid rgba(108, 92, 231, 0.35);\n      border-radius: 5px;\n    }\n    .influence-scope-btn.active {\n      background: rgba(108, 92, 231, 0.45);\n      color: #fff;\n    }\n    .influence-scope-note { font-style: italic; opacity: 0.8; }\n\n"
+    },
+    {
+      "id": "infl-scope-label",
+      "note": "Подпись строки взгляда в подробностях.",
+      "anchor": "      instrumentality: 'Инструментальность', rubricsBreadth: 'Широта рубрик',\n",
+      "replace": "      instrumentality: 'Инструментальность', rubricsBreadth: 'Широта рубрик',\n      scope: 'Взгляд',\n"
+    }
+  ]
+}

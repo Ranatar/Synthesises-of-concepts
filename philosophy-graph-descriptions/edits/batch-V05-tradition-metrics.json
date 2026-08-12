@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "batch": "V05",
+    "title": "Межтрадиционная мостовость и отбор пар по традициям",
+    "spec": "traditions-spec.md",
+    "target": "philosophy_graph.html",
+    "targetMd5": "1cf2b7e0be535086a0d3c5be3abaebe9",
+    "created": "2026-08-12",
+    "layer": "view",
+    "count": 16
+  },
+  "edits": [
+    {
+      "id": "bridging-metrics-projection",
+      "note": "Внести поле традиций в проекцию философов, на которой работают метрики.",
+      "anchor": "          return {\n            id: concept,\n            name: concept,\n            birth: philData ? philData.birth : 0,\n            death: philData ? philData.death : 0\n          };\n",
+      "replace": "          return {\n            id: concept,\n            name: concept,\n            birth: philData ? philData.birth : 0,\n            death: philData ? philData.death : 0,\n            // Метрики работают не на живых записях, а на ПРОЕКЦИИ, и всякое\n            // новое поле надо вносить в неё явно — как внесены rubrics в\n            // conceptsData. Без этой строки мостовость считала все внешние\n            // связи межтрадиционными: у всех философов список традиций был\n            // пуст, общих не находилось ни у кого, и метрика давала ровно\n            // 100 % у всех 293 концепций. Поймано распределением, а не глазом.\n            traditions: philData ? (philData.traditions || []) : []\n          };\n"
+    },
+    {
+      "id": "bridging-compute",
+      "note": "Вычисление межтрадиционной мостовости. ПОРОГ ОБЯЗАТЕЛЕН: доля неустойчива на малых знаменателях — три связи дают сто процентов. Порог тот же по смыслу, что фильтр связности у близких пар.",
+      "anchor": "    function invalidateInstrumentalIndexCache() {\n",
+      "insert": "    // ── Межтрадиционная мостовость ──────────────────────────────\n    // Доля межтрадиционных связей среди ВНЕШНИХ. Единственная величина,\n    // которую традиции добавляют по-настоящему: корреляция рангов с общей\n    // степенью 0,11, с внешней 0,10 — почти ортогональна тому, что уже\n    // считается. Для сравнения, отвергнутые замыслы дали 0,84 (традиции\n    // истоков против философов-истоков в синтетичности) и 0,89 (традиции\n    // против философов в историческом охвате) — то есть переименование.\n    //\n    // ПОРОГ: доля неустойчива на малых знаменателях, три связи дают сто\n    // процентов. Ниже порога метрика равна нулю, и это видно в подробностях.\n    //\n    // ВАЖНО: величина опирается на РАЗМЕТКУ традиций, сделанную по\n    // содержанию, а не на измерение. Это сказано и в тексте формулы.\n    const BRIDGING_MIN_EXTERNAL = 3;\n    let traditionBridgingCache = null;\n\n    function traditionBridgingIndex(conceptId) {\n      const concept = _conceptMap.get(conceptId);\n      if (!concept) return { total: 0 };\n      const own = concept.philosopher;\n      const ownTraditions = (_philosopherMap.get(own) || {}).traditions || [];\n\n      let external = 0, crossing = 0, crossWeight = 0, extWeight = 0;\n      const reached = new Set();\n      const links = [...(_outgoingLinks.get(conceptId) || []),\n                     ...(_incomingLinks.get(conceptId) || [])];\n      links.forEach(r => {\n        const otherId = r.source === conceptId ? r.target : r.source;\n        if (otherId === conceptId) return;\n        const other = _conceptMap.get(otherId);\n        if (!other || other.philosopher === own) return;\n        external++;\n        const w = r.weight || 2;\n        extWeight += w;\n        const ot = (_philosopherMap.get(other.philosopher) || {}).traditions || [];\n        if (!ownTraditions.some(t => ot.includes(t))) {\n          crossing++; crossWeight += w;\n          ot.forEach(t => reached.add(t));\n        }\n      });\n\n      const enough = external >= BRIDGING_MIN_EXTERNAL;\n      // Доля показывается ПО ВЕСАМ — тою же мерой, какой считается сама\n      // величина. Считать её по числу связей значило бы показывать в\n      // подробностях не то, по чему построен рейтинг: у весов 1, 2 и 3\n      // расхождение доходит до десятка процентов.\n      const share = extWeight ? crossWeight / extWeight : 0;\n      return {\n        total: enough ? (crossWeight / Math.max(1, extWeight)) * 10 : 0,\n        share: Math.round(share * 100),\n        crossingLinks: crossing,\n        externalLinks: external,\n        traditionsReached: reached.size,\n        belowThreshold: !enough\n      };\n    }\n\n    function invalidateTraditionBridgingCache() {\n      traditionBridgingCache = null;\n    }\n\n"
+    },
+    {
+      "id": "bridging-invalidate",
+      "note": "Сброс кеша вместе с прочими.",
+      "anchor": "      invalidateInstrumentalIndexCache();\n",
+      "replace": "      invalidateInstrumentalIndexCache();\n      invalidateTraditionBridgingCache();\n"
+    },
+    {
+      "id": "bridging-view-metric",
+      "note": "Регистрация в VIEW_METRIC.",
+      "anchor": "      'abstraction': 'abstractionIndex', 'deductive': 'deductiveIndex',\n",
+      "replace": "      'abstraction': 'abstractionIndex', 'deductive': 'deductiveIndex',\n      'bridging': 'traditionBridgingIndex',\n"
+    },
+    {
+      "id": "bridging-flags",
+      "note": "Веса участвуют (доля считается по весам), направление безразлично: связь берётся в обе стороны.",
+      "anchor": "      instrumentalIndex:     { weights: 'yes',  direction: 'no' },\n",
+      "replace": "      instrumentalIndex:     { weights: 'yes',  direction: 'no' },\n      traditionBridgingIndex:  { weights: 'yes',  direction: 'no' },\n"
+    },
+    {
+      "id": "bridging-coverage",
+      "note": "Регистрация в карте покрытия.",
+      "anchor": "      'instrumental': instrumentalIndex,\n",
+      "replace": "      'instrumental': instrumentalIndex,\n      'bridging': traditionBridgingIndex,\n"
+    },
+    {
+      "id": "bridging-content",
+      "note": "Вид метрики по образцу инструментальности.",
+      "anchor": "    function generateAbstractionContent() {\n",
+      "insert": "    function generateBridgingContent() {\n      if (!concepts || !relations) {\n        initializePhilosophyMetrics();\n      }\n\n      const results = nodes.map(n => {\n        const metric = traditionBridgingIndex(n.id);\n        return { node: n, value: metric.total, details: metric };\n      }).filter(rankKeep).sort((a, b) => b.value - a.value);\n\n      return generateMetricResults(\n        results.slice(0, 30),\n        '🌉 Межтрадиционная мостовость',\n        'Концепции, чьи внешние связи ведут за пределы своей традиции',\n        'bridging',\n        'value',\n        true\n      );\n    }\n\n"
+    },
+    {
+      "id": "bridging-dispatch",
+      "note": "Регистрация вида.",
+      "anchor": "        'instrumental': generateInstrumentalContent,\n",
+      "replace": "        'instrumental': generateInstrumentalContent,\n        'bridging': generateBridgingContent,\n"
+    },
+    {
+      "id": "bridging-case",
+      "note": "Ветвь в разборе видов, требующих инициализации метрик.",
+      "anchor": "        case 'instrumental':\n",
+      "replace": "        case 'instrumental':\n        case 'bridging':\n"
+    },
+    {
+      "id": "bridging-nav",
+      "note": "Пункт меню рядом с прочими метриками структуры.",
+      "anchor": "            <div class=\"stats-nav-item\" onclick=\"switchStatsView('instrumental')\">\n              <span class=\"stats-nav-item-icon\">🔧</span>\n              <span class=\"stats-nav-item-text\">Инструментальность</span>\n            </div>\n",
+      "replace": "            <div class=\"stats-nav-item\" onclick=\"switchStatsView('instrumental')\">\n              <span class=\"stats-nav-item-icon\">🔧</span>\n              <span class=\"stats-nav-item-text\">Инструментальность</span>\n            </div>\n            <div class=\"stats-nav-item\" onclick=\"switchStatsView('bridging')\">\n              <span class=\"stats-nav-item-icon\">🌉</span>\n              <span class=\"stats-nav-item-text\">Межтрадиционная мостовость</span>\n            </div>\n"
+    },
+    {
+      "id": "bridging-labels",
+      "note": "Подписи подробностей.",
+      "anchor": "      instrumentality: 'Инструментальность', rubricsBreadth: 'Широта рубрик',\n",
+      "replace": "      instrumentality: 'Инструментальность', rubricsBreadth: 'Широта рубрик',\n      share: 'Доля межтрадиционных по весу, %', crossingLinks: 'Межтрадиционных связей',\n      externalLinks: 'Внешних связей', traditionsReached: 'Достигнуто традиций',\n      belowThreshold: 'Ниже порога связности',\n"
+    },
+    {
+      "id": "pairs-cross-tradition-state",
+      "note": "Флаг отбора пар из разных традиций. Пояснение к близким парам обещает «параллели между традициями», но такого отбора не было — был только по разным философам.",
+      "anchor": "    var _pairsCrossAuthor = true;\n",
+      "replace": "    var _pairsCrossAuthor = true;\n    var _pairsCrossTradition = false;\n"
+    },
+    {
+      "id": "pairs-cross-tradition-check",
+      "note": "Галочка рядом с прежней.",
+      "anchor": "            только между разными философами\n          </label>\n",
+      "replace": "            только между разными философами\n          </label>\n          <label class=\"pairs-check\">\n            <input type=\"checkbox\" ${_pairsCrossTradition ? 'checked' : ''}\n                 onchange=\"_pairsCrossTradition=this.checked; renderClosestPairs();\">\n            только между разными традициями\n          </label>\n"
+    },
+    {
+      "id": "pairs-cross-tradition-filter",
+      "note": "Отбор: у философов пары не должно быть НИ ОДНОЙ общей традиции — тот же критерий, что в режиме «между традициями» и при переходах в цепочке пути.",
+      "anchor": "        if (_pairsCrossAuthor && philOf[a] === philOf[b]) continue;\n",
+      "replace": "        if (_pairsCrossAuthor && philOf[a] === philOf[b]) continue;\n        if (_pairsCrossTradition) {\n          // Тот же критерий, что в режиме «между традициями» и при переходах\n          // в цепочке пути: общей традиции нет ни одной.\n          const ta = philosopherTraditions[philOf[a]] || [];\n          const tb = philosopherTraditions[philOf[b]] || [];\n          if (!ta.length || !tb.length || ta.some(x => tb.includes(x))) continue;\n        }\n"
+    },
+    {
+      "id": "bridging-description",
+      "note": "Запись в metricDescriptions. В тексте формулы прямо сказано, что величина опирается на разметку традиций.",
+      "anchor": "      'instrumental': {\n",
+      "insert": "      'bridging': {\n        name: \"Межтрадиционная мостовость (Tradition Bridging)\",\n        description: \"Насколько внешние связи концепции ведут за пределы её собственной традиции\",\n        interpretation: () => \"Доля межтрадиционных среди внешних связей. Величина почти ортогональна тому, что уже считается: корреляция рангов с общей связностью 0.11, с внешней 0.10. Высокое значение — понятие-переносчик, которое школы передают друг другу; низкое — понятие, работающее внутри своей традиции, даже если внешних связей у него много.\",\n        usage: () => `Поиск понятий, которыми традиции сообщаются между собой. Порог обязателен: доля неустойчива на малых знаменателях, и при трёх связях сто процентов ничего не значат, поэтому концепции менее чем с ${BRIDGING_MIN_EXTERNAL} внешними связями получают ноль. Дополняет betweenness: тот измеряет посредничество структурное, а здесь — содержательное.`,\n        formula: () => `TB = (вес межтрадиционных внешних связей / вес всех внешних) × 10, при числе внешних связей не менее ${BRIDGING_MIN_EXTERNAL}. Межтрадиционной считается связь с философом, у которого нет НИ ОДНОЙ общей традиции, — тот же критерий, что в режимах отбора и при переходах в цепочке пути. ВНИМАНИЕ: единственная метрика набора, опирающаяся на РАЗМЕТКУ традиций, то есть на содержательное суждение, а не на данные графа`\n      },\n"
+    },
+    {
+      "id": "synthetic-truth",
+      "note": "Описание синтетичности обещало «объединяет разные традиции», а формула считала разных философов-истоков и рубрики. Ранги при замене почти не сдвинулись бы (корреляция 0,84), потому величина оставлена как есть, а поправлено УТВЕРЖДЕНИЕ.",
+      "anchor": "        name: \"Индекс синтетичности (Synthetic Index)\",\n        description: \"Насколько концепция объединяет разные традиции\",\n",
+      "replace": "        name: \"Индекс синтетичности (Synthetic Index)\",\n        description: \"Насколько концепция перерабатывает разнородные истоки\",\n"
+    }
+  ]
+}

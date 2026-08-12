@@ -1,0 +1,256 @@
+{
+ "virtual_actual|multiplicity|exemplify": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "virtual_actual|event|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "difference|multiplicity|consequence": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "multiplicity|rhizome|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "difference|rhizome|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "virtual_actual|difference|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "body_without_organs|difference|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "fold|rhizome|complement": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "body_without_organs|fold|instrument": [
+  "К1",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "rhizome|assemblage|exemplify": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "fold|difference|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "event|difference|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "deterritorialization|rhizome|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "desiring_machines|body_without_organs|culminate": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "heterotopia|panopticon|complement": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "care_self|discipline|limit": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "power_knowledge|dispositif|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "dispositif|discipline|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "panopticon|biopower|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "problematization|care_self|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "biopower|episteme|condition": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "heterotopia|episteme|exemplify": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "power_knowledge|episteme|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "panopticon|dispositif|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "panopticon|discipline|exemplify": [
+  "К4",
+  "К5",
+  "К8"
+ ],
+ "panopticon|power_knowledge|exemplify": [
+  "К4",
+  "К5",
+  "К8"
+ ],
+ "archaeology|episteme|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "power_knowledge|discipline|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "problematization|archaeology|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "biopower|discipline|emerge_from": [
+  "К4",
+  "К5",
+  "К8"
+ ],
+ "heterotopia|power_knowledge|limit": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "logocentrism|deconstruction|internal_contradiction": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "trace_derrida|logocentrism|critique": [
+  "К4",
+  "К5"
+ ],
+ "iterability|differance|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "arche_writing|trace_derrida|complement": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "differance|trace_derrida|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "differance|deconstruction|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "pharmakon|supplement|exemplify": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "supplement|differance|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "edifying_philosophy|anti_representationalism|presuppose": [
+  "К1",
+  "К4",
+  "К5"
+ ],
+ "ironism|contingency_rorty|presuppose": [
+  "К4",
+  "К5"
+ ],
+ "vocabularies|anti_representationalism|presuppose": [
+  "К4",
+  "К5"
+ ],
+ "contingency_rorty|vocabularies|presuppose": [
+  "К4",
+  "К5"
+ ],
+ "solidarity|contingency_rorty|presuppose": [
+  "К4",
+  "К5"
+ ],
+ "conversation_mankind|edifying_philosophy|exemplify": [
+  "К4",
+  "К5"
+ ]
+}

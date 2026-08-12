@@ -1,0 +1,335 @@
+{
+ "leben_dilthey|objective_spirit_dilthey|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "hermeneutics_life|leben_dilthey|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "erlebnis|leben_dilthey|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "hermeneutics_life|objective_spirit_dilthey|instrument": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "historical_reason|geisteswissenschaften|condition": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "erlebnis|verstehen|condition": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "erlebnis|historical_reason|condition": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "hermeneutics_life|verstehen|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "verstehen|geisteswissenschaften|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "inner_perception|evidence_brentano|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "psychical_physical|intentionality_brentano|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "descriptive_psychology|intentionality_brentano|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "immanent_objectivity|intentionality_brentano|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "judgment_presentation|intentionality_brentano|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "inner_perception|psychical_physical|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "inner_perception|descriptive_psychology|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "thirdness|secondness|presuppose": [
+  "К1",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "secondness|firstness|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "synechism|thirdness|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "semiosis|thirdness|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "fallibilism|pragmatic_maxim|complement": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "semiosis|pragmatic_maxim|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "abduction|pragmatic_maxim|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "master_morality|slave_morality|internal_contradiction": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "ressentiment|master_morality|limit": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "ressentiment|will_power|oppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "master_morality|ubermensch|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "will_power|perspectivism|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "god_dead|ubermensch|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "slave_morality|god_dead|consequence": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "dionysian|apollonian|internal_contradiction": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "apollonian|will_power|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "eternal_return|will_power|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "dionysian|will_power|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "master_morality|will_power|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "eternal_return|dionysian|culminate": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "will_power|ubermensch|culminate": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "eternal_return|ubermensch|mediate": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "perspectivism|god_dead|emerge_from": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "ressentiment|slave_morality|emerge_from": [
+  "К1",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "function_argument|begriffsschrift|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "thought|sense_reference|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "sense_reference|function_argument|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "context_principle|sense_reference|condition": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "logicism|begriffsschrift|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "non_existent_objects|incomplete_objects|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "sosein|object_theory|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "non_existent_objects|object_theory|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "sosein|non_existent_objects|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "assumptions|non_existent_objects|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "death_drive|pleasure_principle|internal_contradiction": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "pleasure_principle|reality_principle|internal_contradiction": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "unconscious|dream_work|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "id_ego_superego|reality_principle|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "unconscious|oedipus_complex|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "id_ego_superego|unconscious|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "unconscious|repression|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "oedipus_complex|repression|condition": [
+  "К1",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "transference|unconscious|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "dream_work|unconscious|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ]
+}

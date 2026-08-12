@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "batch": "V04",
+    "title": "Переходы между традициями в цепочке пути",
+    "spec": "traditions-spec.md",
+    "target": "philosophy_graph.html",
+    "targetMd5": "c0de036ebfd5572631256fb411b75a5d",
+    "created": "2026-08-12",
+    "layer": "view",
+    "count": 9
+  },
+  "edits": [
+    {
+      "id": "path-trad-analyze",
+      "note": "Разбор цепочки по традициям. Счёт АБСОЛЮТНЫЙ, по всем традициям философа: путь ищется по полному графу (findShortestPathUnweighted строит смежность по всем nodes и links), панель отбора в нём не участвует, и комментарий к пути не вправе говорить о её состоянии. Этим место сознательно расходится с режимами within/between, где всё относительно выбранного, — там панель на результат влияет.",
+      "anchor": "    // Поиск кратчайшего пути между двумя концепциями (BFS)\n",
+      "insert": "    // ── Традиции вдоль цепочки ────────────────────────────────────\n    // Переход есть тогда и только тогда, когда у двух философов НЕТ НИ\n    // ОДНОЙ общей традиции — тот же критерий, что в режиме\n    // between_traditions, чтобы одно слово не значило в двух местах разного.\n    // Никакой «главной традиции» не выбирается: порядка среди традиций нет,\n    // и всякое «главное» было бы выдумкой. Замер: на 955 межфилософских\n    // рёбер общих традиций нет у 648, ровно одна у 293, две у 14 (все —\n    // Локк и Юм: эмпиризм и Просвещение).\n    function traditionsOfPhilosopher(name) {\n      return (philosopherTraditions[name] || [])\n        .map(id => (traditions.find(t => t.id === id) || {}).name)\n        .filter(Boolean);\n    }\n\n    function analyzePathTraditions(pathNodes) {\n      const segments = [];\n      for (let i = 0; i < pathNodes.length - 1; i++) {\n        const a = pathNodes[i].concept, b = pathNodes[i + 1].concept;\n        if (a === b) { segments.push({ kind: 'internal' }); continue; }\n        const ta = philosopherTraditions[a] || [], tb = philosopherTraditions[b] || [];\n        const shared = ta.filter(x => tb.includes(x));\n        segments.push(shared.length\n          ? { kind: 'shared', shared: shared.map(id =>\n              (traditions.find(t => t.id === id) || {}).name).filter(Boolean) }\n          : { kind: 'crossing', from: traditionsOfPhilosopher(a),\n              to: traditionsOfPhilosopher(b) });\n      }\n      // Различных традиций и переходов считаем ПОРОЗНЬ: цепочка может выйти\n      // из традиции и вернуться в неё, и слитный счёт тогда солгал бы.\n      const distinct = new Set();\n      pathNodes.forEach(n => (philosopherTraditions[n.concept] || [])\n        .forEach(id => distinct.add(id)));\n      return { segments, crossings: segments.filter(s => s.kind === 'crossing').length,\n               distinct: distinct.size };\n    }\n\n"
+    },
+    {
+      "id": "path-trad-arrow",
+      "note": "Пометка стрелки при переходе между традициями: места в панели мало, потому знак ставится на саму стрелку, а подробность уходит в подсказку. Внутрисистемные рёбра не метятся никогда.",
+      "anchor": "          // Б9: берём готовое ребро сегмента\n          const link = pathLinkList[i];\n          \n          if (link) {\n            const linkColor = relationTypesObj[link.type].color;\n            const linkLabel = relationTypesObj[link.type].label;\n            const linkDescription = link.description || '';\n            const src = link.source.id || link.source;\n            const tgt = link.target.id || link.target;\n            \n",
+      "replace": "          // Б9: берём готовое ребро сегмента\n          const link = pathLinkList[i];\n          \n          if (link) {\n            const linkColor = relationTypesObj[link.type].color;\n            const linkLabel = relationTypesObj[link.type].label;\n            const linkDescription = link.description || '';\n            const src = link.source.id || link.source;\n            const tgt = link.target.id || link.target;\n            \n            // Переход между традициями метится на самой стрелке\n            const trSeg = pathTraditionSegments ? pathTraditionSegments[i] : null;\n            const trCross = trSeg && trSeg.kind === 'crossing';\n            const trHint = !trSeg ? ''\n              : trSeg.kind === 'crossing'\n                ? 'Переход между традициями: ' + trSeg.from.join(', ')\n                  + ' → ' + trSeg.to.join(', ')\n                : trSeg.kind === 'shared'\n                  ? 'Продолжение в традиции: ' + trSeg.shared.join(', ')\n                  : 'Внутри одной системы';\n\n"
+    },
+    {
+      "id": "path-trad-arrow-markup",
+      "note": "Класс и заголовок стрелки.",
+      "anchor": "              <span class=\"path-arrow ${link.bidirectional ? 'bidirectional' : ''}\" \n                  style=\"color: ${linkColor};\" \n",
+      "replace": "              <span class=\"path-arrow ${link.bidirectional ? 'bidirectional' : ''}${trCross ? ' tradition-crossing' : ''}\" \n                  style=\"color: ${linkColor};\" \n                  title=\"${trHint}\"\n"
+    },
+    {
+      "id": "path-trad-compute",
+      "note": "Разбор считается один раз на трёх потребителей: стрелки, сводку и окно цепочки.",
+      "anchor": "      // Б9: рёбра пути вычисляются один раз на все три потребителя\n      const pathLinkList = resolvePathLinkList(path, respectDirectionPath);\n",
+      "replace": "      // Б9: рёбра пути вычисляются один раз на все три потребителя\n      const pathLinkList = resolvePathLinkList(path, respectDirectionPath);\n      const pathTraditions = analyzePathTraditions(pathNodes);\n      const pathTraditionSegments = pathTraditions.segments;\n"
+    },
+    {
+      "id": "path-trad-summary",
+      "note": "Сводка под цепочкой: различных традиций и переходов ПОРОЗНЬ — цепочка может выйти из традиции и вернуться в неё.",
+      "anchor": "      // Формируем предупреждения об анахронизмах\n",
+      "insert": "      // Сводка по традициям. Различных традиций и переходов — порознь:\n      // путь «феноменология → аналитическая → феноменология» имеет два\n      // перехода при двух традициях, и слитный счёт солгал бы.\n      const crossingList = pathTraditions.segments\n        .map((s, k) => ({ s, k }))\n        .filter(x => x.s.kind === 'crossing');\n      const traditionsInfo = `\n        <div class=\"path-traditions-info\">\n          <strong>Традиции:</strong> различных ${pathTraditions.distinct},\n          переходов ${pathTraditions.crossings}\n          ${crossingList.length ? '<div class=\"path-traditions-list\">'\n            + crossingList.map(x => `\n                <div class=\"path-traditions-item\">\n                  ${pathNodes[x.k].concept} <em>(${x.s.from.join(', ')})</em>\n                  → ${pathNodes[x.k + 1].concept} <em>(${x.s.to.join(', ')})</em>\n                </div>`).join('')\n            + '</div>' : ''}\n        </div>\n      `;\n\n"
+    },
+    {
+      "id": "path-trad-summary-out",
+      "note": "Сводка выводится под цепочкой, рядом с хронологией.",
+      "anchor": "        ${chronologyInfo}\n        ${warningsHTML}\n",
+      "replace": "        ${chronologyInfo}\n        ${traditionsInfo}\n        ${warningsHTML}\n"
+    },
+    {
+      "id": "path-trad-modal-line",
+      "note": "Строка о традициях в каждом сегменте окна цепочки — рядом со строкой типа связи.",
+      "anchor": "              <div class=\"path-description-type\">Тип связи: ${linkLabel}</div>\n",
+      "replace": "              <div class=\"path-description-type\">Тип связи: ${linkLabel}</div>\n              ${(() => {\n                const s = modalTraditions.segments[i];\n                if (!s || s.kind === 'internal') return '';\n                return s.kind === 'crossing'\n                  ? `<div class=\"path-description-type tradition-crossing-line\">\n                       Переход между традициями: ${s.from.join(', ')} → ${s.to.join(', ')}\n                     </div>`\n                  : `<div class=\"path-description-type\">\n                       Продолжение в традиции: ${s.shared.join(', ')}\n                     </div>`;\n              })()}\n"
+    },
+    {
+      "id": "path-trad-modal-head",
+      "note": "Разбор для окна цепочки и шапка со сводкой.",
+      "anchor": "      let html = '<h3>📋 Описания связей в пути</h3>';\n",
+      "replace": "      const modalTraditions = analyzePathTraditions(pathNodes);\n      let html = '<h3>📋 Описания связей в пути</h3>';\n      html += `\n        <div class=\"path-traditions-info\" style=\"margin-bottom:14px;\">\n          <strong>Традиции:</strong> цепочка проходит через\n          ${modalTraditions.distinct} и делает ${modalTraditions.crossings}\n          ${modalTraditions.crossings === 1 ? 'переход' : 'переходов'}\n        </div>\n      `;\n"
+    },
+    {
+      "id": "path-trad-css",
+      "note": "Стили пометки и сводки.",
+      "anchor": "    .tradition-pick {\n",
+      "insert": "    /* Стрелка на переходе между традициями: двойная засечка снизу */\n    .path-arrow.tradition-crossing {\n      border-bottom: 3px double currentColor;\n      padding-bottom: 1px;\n    }\n    .path-traditions-info {\n      margin-top: 8px;\n      font-size: 10px;\n      color: #7f8c8d;\n      line-height: 1.5;\n    }\n    .path-traditions-list {\n      margin-top: 4px;\n    }\n    .path-traditions-item {\n      font-size: 9px;\n      color: #95a5a6;\n      padding: 1px 0;\n    }\n    .tradition-crossing-line {\n      color: #a29bfe;\n    }\n\n"
+    }
+  ]
+}

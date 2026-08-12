@@ -1,0 +1,270 @@
+{
+ "number_essence|sphere_being|influence": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "being_is|number_essence|dialogue": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "metempsychosis|anamnesis|develop": [
+  "К4",
+  "К5б"
+ ],
+ "tetraktys|good|develop": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "number_essence|ideas|develop": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "harmony_spheres|demiurge|influence": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "harmony_spheres|ideas|influence": [
+  "К4",
+  "К5б"
+ ],
+ "metempsychosis|tripartite_soul|influence": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "tetraktys|the_one_plato|influence": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "number_essence|eidos|influence": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "harmony_spheres|unmoved_mover|influence": [
+  "К4",
+  "К5б"
+ ],
+ "number_essence|form|influence": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "being_is|unity_opposites|oppose": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "one_being|fire|oppose": [
+  "К4",
+  "К5б"
+ ],
+ "one_being|unity_opposites|oppose": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "immutability|panta_rhei|oppose": [
+  "К4",
+  "К5б"
+ ],
+ "being_is|panta_rhei|oppose": [
+  "К4",
+  "К5б"
+ ],
+ "panta_rhei|cave|influence": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "panta_rhei|chora|influence": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "eidos|logos_heraclitus|dialogue": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "logos_heraclitus|logos|develop": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "being_is|eidos|develop": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "one_being|eidos|develop": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "one_being|the_one_plato|develop": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "immutability|ideas|develop": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "way_truth|anamnesis|develop": [
+  "К4",
+  "К5б"
+ ],
+ "being_is|ideas|influence": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "way_opinion|cave|influence": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "being_is|categories|develop": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "immutability|unmoved_mover|develop": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "virtue_knowledge|ideas|develop": [
+  "К4",
+  "К5б"
+ ],
+ "virtue_knowledge|eidos|develop": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "virtue_knowledge|good|develop": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "soul|tripartite_soul|develop": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "soul|anamnesis|develop": [
+  "К4",
+  "К5б"
+ ],
+ "care_soul|tripartite_soul|develop": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "maieutics|anamnesis|develop": [
+  "К4",
+  "К5б"
+ ],
+ "maieutics|dialectic_plato|develop": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "daimonion|eros|influence": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "care_soul|eros|influence": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "virtue_knowledge|golden_mean|develop": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "virtue_knowledge|phronesis|develop": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "soul|entelechy|influence": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "demiurge|unmoved_mover|develop": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "tripartite_soul|golden_mean|develop": [
+  "К4",
+  "К5б",
+  "К3",
+  "К6"
+ ],
+ "tripartite_soul|eudaimonia|develop": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "act_potency|methexis|critique": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "form|eidos|critique": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "form|ideas|critique": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "entelechy|methexis|critique": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "matter_ar|chora|dialogue": [
+  "К4",
+  "К5б",
+  "К6"
+ ],
+ "atoms_void|eidos|oppose": [
+  "К4",
+  "К5б",
+  "К3"
+ ],
+ "pleasure_epicurus|good|dialogue": [
+  "К5б"
+ ]
+}

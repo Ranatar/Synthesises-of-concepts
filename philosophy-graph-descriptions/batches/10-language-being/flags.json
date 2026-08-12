@@ -1,0 +1,349 @@
+{
+ "symbolic_forms|animal_symbolicum|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "symbolic_pregnance|symbolic_forms|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "cultural_philosophy|symbolic_forms|presuppose": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "myth_cassirer|symbolic_forms|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "functional_concept|symbolic_forms|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "animal_symbolicum|cultural_philosophy|culminate": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "language_game|private_language|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "logical_space|showing_saying|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "rule_following|family_resemblance|complement": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "picture_theory|showing_saying|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "form_of_life|rule_following|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "limits_language|form_of_life|develop": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "language_game|picture_theory|critique": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "language_game|logical_space|critique": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "picture_theory|language_game|internal_contradiction": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "picture_theory|logical_space|presuppose": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "family_resemblance|language_game|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "rule_following|language_game|correlative": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "language_game|form_of_life|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "logical_space|limits_language|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "showing_saying|limits_language|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "picture_theory|limits_language|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "private_language|rule_following|mediate": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "private_language|form_of_life|limit": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "dwelling|das_man|oppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "das_man|sorge|limit": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "vorhanden|zuhanden|complement": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "dasein|dwelling|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "dasein|geviert|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "ereignis|geviert|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "dasein|zuhanden|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "dasein|sorge|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "ereignis|aletheia|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "ereignis|dasein|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "sorge|sein_zum_tode|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "sorge|zuhanden|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "geworfenheit|das_man|presuppose": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "kehre|sein|internal_contradiction": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "being_in_world|dasein|correlative": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "being_in_world|geworfenheit|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "aletheia|sein|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "dasein|geworfenheit|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "ereignis|sein|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "sorge|geworfenheit|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "being_in_world|sein|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "geviert|dwelling|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "dasein|sein|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "dasein|sein_zum_tode|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "dwelling|geviert|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "kehre|ereignis|mediate": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "das_man|dasein|limit": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "das_man|sein_zum_tode|limit": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "internal_external|linguistic_framework|presuppose": [
+  "К1",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "logical_syntax|linguistic_framework|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "construction_world|protocol_sentences|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "protocol_sentences|verification_principle|exemplify": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "logical_syntax|verification_principle|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "internal_external|verification_principle|mediate": [
+  "К4",
+  "К5",
+  "К6"
+ ]
+}

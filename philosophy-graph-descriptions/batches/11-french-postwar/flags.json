@@ -1,0 +1,332 @@
+{
+ "sovereignty_bataille|transgression|presuppose": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "general_economy|expenditure|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "heterology|general_economy|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "transgression|sacred_profane|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "sacred_profane|expenditure|exemplify": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "inner_experience|sovereignty_bataille|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "expenditure|transgression|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "tradition_gadamer|prejudice_gadamer|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "fusion_horizons|horizon_understanding|culminate": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "hermeneutic_circle|horizon_understanding|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "effective_history|tradition_gadamer|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "prejudice_gadamer|horizon_understanding|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "tradition_gadamer|horizon_understanding|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "application|hermeneutic_circle|culminate": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "signifier|desire_other|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "three_registers|lack|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "lack|objet_petit_a|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "big_other|three_registers|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "desire_other|objet_petit_a|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "signifier|big_other|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "mirror_stage|three_registers|presuppose": [
+  "К1",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "lack|desire_other|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "mirror_stage|lack|emerge_from": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "engagement|bad_faith|limit": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "project|bad_faith|limit": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "project|engagement|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "in_itself|existence|consequence": [
+  "К1",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "for_itself|look|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "for_itself|freedom_sartre|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "for_itself|project|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "look|bad_faith|condition": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "for_itself|in_itself|internal_contradiction": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "freedom_sartre|bad_faith|internal_contradiction": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "for_itself|nothingness|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "project|existence|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "project|freedom_sartre|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "existence|nothingness|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "nothingness|freedom_sartre|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "freedom_sartre|engagement|culminate": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "face|responsibility|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "face|saying_said|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "infinity_levinas|other_levinas|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "ethics_first_philosophy|responsibility|presuppose": [
+  "К1",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "ethics_first_philosophy|other_levinas|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "face|other_levinas|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "trace|other_levinas|exemplify": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "wild_being|flesh|complement": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "lived_body|flesh|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "reversibility|chiasm|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "flesh|chiasm|correlative": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "perception_phenomenology|lived_body|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "chiasm|visible_invisible|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "visible_invisible|reversibility|exemplify": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "indeterminacy_translation|inscrutability_reference|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "two_dogmas|web_belief|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "inscrutability_reference|web_belief|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "naturalized_epistemology|two_dogmas|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "naturalized_epistemology|web_belief|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "ontological_commitment|inscrutability_reference|consequence": [
+  "К2",
+  "К4",
+  "К5",
+  "К6"
+ ]
+}

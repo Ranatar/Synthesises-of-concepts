@@ -1,0 +1,345 @@
+{
+ "naturphilosophie|absolute_identity|presuppose": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "transcendental_idealism_system|absolute_identity|presuppose": [
+  "К4",
+  "К5",
+  "К8"
+ ],
+ "naturphilosophie|potencies|exemplify": [
+  "К1",
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "intellectual_intuition|absolute_identity|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "aesthetic_production|absolute_identity|instrument": [
+  "К4",
+  "К5",
+  "К8"
+ ],
+ "transcendental_idealism_system|aesthetic_production|culminate": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "absolute_identity|philosophy_revelation|culminate": [
+  "К1",
+  "К4",
+  "К5",
+  "К8"
+ ],
+ "potencies|absolute_identity|emerge_from": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "will_schop|representation|internal_contradiction": [
+  "К4",
+  "К5",
+  "К8"
+ ],
+ "compassion|individuation|limit": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "aesthetics_schop|individuation|limit": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "individuation|will_schop|oppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "will_schop|denial_will|internal_contradiction": [
+  "К4",
+  "К5",
+  "К8"
+ ],
+ "individuation|representation|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "individuation|suffering|condition": [
+  "К4",
+  "К5",
+  "К8"
+ ],
+ "compassion|denial_will|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "aesthetics_schop|denial_will|instrument": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "denial_will|suffering|complement": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "suffering|will_schop|emerge_from": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "positive_knowledge|hierarchy_sciences|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "social_physics|sociology|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "positive_knowledge|sociology|instrument": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "three_stages|positive_knowledge|culminate": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "hierarchy_sciences|sociology|culminate": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "absurd|leap_faith|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "absurd|subjective_truth|consequence": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "absurd|anxiety|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "moment|anxiety|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "moment|repetition|presuppose": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "anxiety|despair|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "repetition|moment|consequence": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "individual|subjective_truth|presuppose": [
+  "К4",
+  "К5",
+  "К6"
+ ],
+ "stages_existence|anxiety|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "stages_existence|despair|presuppose": [
+  "К4",
+  "К5",
+  "К8"
+ ],
+ "leap_faith|subjective_truth|presuppose": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "moment|leap_faith|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "anxiety|leap_faith|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "stages_existence|leap_faith|culminate": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "repetition|stages_existence|mediate": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "base_superstructure|alienation|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "base_superstructure|ideology|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "historical_materialism|base_superstructure|consequence": [
+  "К4",
+  "К5",
+  "К8"
+ ],
+ "class_struggle|praxis|exemplify": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "alienation|commodity_fetish|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "base_superstructure|commodity_fetish|consequence": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "historical_materialism|praxis|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "commodity_fetish|surplus_value|presuppose": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "labor|praxis|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "historical_materialism|labor|presuppose": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "base_superstructure|labor|presuppose": [
+  "К1",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "base_superstructure|class_struggle|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "surplus_value|class_struggle|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "labor|alienation|condition": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "praxis|alienation|complement": [
+  "К2",
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "ideology|alienation|mediate": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "class_struggle|commodity_fetish|mediate": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "base_superstructure|praxis|emerge_from": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ],
+ "surplus_value|labor|emerge_from": [
+  "К4",
+  "К5",
+  "К6",
+  "К8"
+ ]
+}

@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "batch": "V01",
+    "title": "Раздел традиций в окне философа",
+    "spec": "traditions-spec.md",
+    "target": "philosophy_graph.html",
+    "targetMd5": "0285a9414de0b1c8564a3fc747bd4559",
+    "created": "2026-08-12",
+    "layer": "view",
+    "count": 1
+  },
+  "edits": [
+    {
+      "id": "philosopher-traditions-section",
+      "note": "Раздел традиций ставится сразу после описания и кнопки профиля — прежде вычисляемых разделов. Довод: традиция есть данное о самом философе, того же рода, что плашка с годами, а взаимодействия, направления и концепции окно вычисляет из рёбер и из состава. Оформление повторяет раздел «Направления работы»: заголовок philosopher-section-title, затем описание с метками-подсказками rubric-name-tooltip.",
+      "anchor": "      // ========================================\n      // РАЗДЕЛ ВЗАИМОДЕЙСТВИЯ С ДРУГИМИ ФИЛОСОФАМИ\n      // ========================================\n",
+      "insert": "      // ========================================\n      // РАЗДЕЛ ТРАДИЦИЙ\n      // ========================================\n      // Признак читается как «в какой традиции его рассматривают», а не\n      // «к какой школе он принадлежал» — потому и оборот безличный.\n      // Поле множественное: у Хайдеггера традиций три.\n\n      const philTraditions = (philosopherData.traditions || [])\n        .map(tid => traditions.find(t => t.id === tid))\n        .filter(t => t !== undefined);\n\n      if (philTraditions.length > 0) {\n        const traditionNames = philTraditions.map(t => `\n            <span class=\"rubric-name-tooltip\">\n              ${t.name}\n              <span class=\"rubric-tooltip-text\">${t.description}</span>\n            </span>\n        `).join(', ');\n\n        html += `\n          <div class=\"philosopher-section-title\">\n            🏛 ${philTraditions.length > 1 ? 'Традиции' : 'Традиция'}\n          </div>\n          <div class=\"description\">\n            Его рассматривают в следующих традициях: ${traditionNames}\n          </div>\n        `;\n      }\n\n"
+    }
+  ]
+}

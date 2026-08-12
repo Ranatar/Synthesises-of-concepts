@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "batch": "V03",
+    "title": "Отбор по традициям и два режима связей",
+    "spec": "traditions-spec.md",
+    "target": "philosophy_graph.html",
+    "targetMd5": "28ebd8758e60402490b063bf57da4ef7",
+    "created": "2026-08-12",
+    "layer": "view",
+    "count": 17
+  },
+  "edits": [
+    {
+      "id": "tr-filter-state",
+      "note": "Набор выбранных традиций и указатель имя→традиции: искать философа find-ом на каждое из 1624 рёбер было бы дорого, у рубрик по той же причине заведён conceptToRubrics.",
+      "anchor": "    let selectedRubrics = new Set(rubrics.map(r => r.id));\n",
+      "insert": "    let selectedTraditions = new Set(traditions.map(t => t.id));\n\n    // Указатель имя философа -> его традиции, по образцу conceptToRubrics.\n    const philosopherTraditions = {};\n    philosophers.forEach(p => { philosopherTraditions[p.nameRu] = p.traditions || []; });\n    function rebuildPhilosopherTraditions() {\n      Object.keys(philosopherTraditions).forEach(k => delete philosopherTraditions[k]);\n      philosophers.forEach(p => { philosopherTraditions[p.nameRu] = p.traditions || []; });\n    }\n"
+    },
+    {
+      "id": "tr-filter-index-rebuild",
+      "note": "При правке философа состав традиций мог перемениться — указатель пересобирается там же, где philosopherIdToName.",
+      "anchor": "          philosopherIdToName[p.id] = p.nameRu;\n        });\n      }\n",
+      "replace": "          philosopherIdToName[p.id] = p.nameRu;\n        });\n        rebuildPhilosopherTraditions();\n      }\n"
+    },
+    {
+      "id": "tr-filter-helpers",
+      "note": "Предикаты отбора по традициям. Лазейка для философа без традиций — по образцу рубрик, где концепция без рубрик проходит всегда: иначе вновь созданный философ исчез бы с графа необъяснимо.",
+      "anchor": "    const FilterModes = {\n",
+      "insert": "    // ── Отбор по традициям ────────────────────────────────────────\n    // Традиция — признак ФИЛОСОФА, то есть той же оси, что и панель\n    // философов. Поэтому она соединяется с нею через «и», как рубрики,\n    // и НИКОГДА не переписывает набор философов: галочки там меняют\n    // только кнопки «только эти» и «+».\n    function philTraditionsSelected(name) {\n      const tl = philosopherTraditions[name] || [];\n      return tl.filter(t => selectedTraditions.has(t));\n    }\n    function philosopherPassesTraditions(name) {\n      const tl = philosopherTraditions[name] || [];\n      // Философ без традиций проходит всегда — иначе он исчезает молча.\n      return tl.length === 0 || tl.some(t => selectedTraditions.has(t));\n    }\n    // both === true — оба конца (режимы, где и философы соединены «и»);\n    // both === false — хотя бы один (режимы «с соседними» и «внешние»).\n    function linkPassesTraditions(l, both) {\n      const s = philosopherPassesTraditions(l.source.concept);\n      const t = philosopherPassesTraditions(l.target.concept);\n      return both ? (s && t) : (s || t);\n    }\n\n"
+    },
+    {
+      "id": "tr-filter-mode-all",
+      "note": "Проверка традиций в режиме «all»: форма повторяет форму проверки философов в том же режиме.",
+      "anchor": "          // Проверка типа связи и философов\n          const baseCheck = selectedRelations.has(l.type) &&\n                   selectedPhilosophers.has(l.source.concept) &&\n                   selectedPhilosophers.has(l.target.concept);\n          \n          if (!baseCheck) return false;\n",
+      "replace": "          // Проверка типа связи и философов\n          const baseCheck = selectedRelations.has(l.type) &&\n                   selectedPhilosophers.has(l.source.concept) &&\n                   selectedPhilosophers.has(l.target.concept);\n          \n          if (!baseCheck) return false;\n\n          if (!linkPassesTraditions(l, true)) return false;\n"
+    },
+    {
+      "id": "tr-filter-mode-internal",
+      "note": "Проверка традиций в режиме «internal»: форма повторяет форму проверки философов в том же режиме.",
+      "anchor": "          // Проверка типа связи, философов и внутренней связи\n          const baseCheck = selectedRelations.has(l.type) &&\n                   selectedPhilosophers.has(l.source.concept) &&\n                   selectedPhilosophers.has(l.target.concept) &&\n                   l.source.concept === l.target.concept;\n          \n          if (!baseCheck) return false;\n",
+      "replace": "          // Проверка типа связи, философов и внутренней связи\n          const baseCheck = selectedRelations.has(l.type) &&\n                   selectedPhilosophers.has(l.source.concept) &&\n                   selectedPhilosophers.has(l.target.concept) &&\n                   l.source.concept === l.target.concept;\n          \n          if (!baseCheck) return false;\n\n          if (!linkPassesTraditions(l, true)) return false;\n"
+    },
+    {
+      "id": "tr-filter-mode-context",
+      "note": "Проверка традиций в режиме «context»: форма повторяет форму проверки философов в том же режиме.",
+      "anchor": "          // Проверка типа связи и хотя бы одного философа\n          const baseCheck = selectedRelations.has(l.type) &&\n                   (selectedPhilosophers.has(l.source.concept) ||\n                    selectedPhilosophers.has(l.target.concept));\n          \n          if (!baseCheck) return false;\n",
+      "replace": "          // Проверка типа связи и хотя бы одного философа\n          const baseCheck = selectedRelations.has(l.type) &&\n                   (selectedPhilosophers.has(l.source.concept) ||\n                    selectedPhilosophers.has(l.target.concept));\n          \n          if (!baseCheck) return false;\n\n          if (!linkPassesTraditions(l, false)) return false;\n"
+    },
+    {
+      "id": "tr-filter-mode-external",
+      "note": "Проверка традиций в режиме «external»: форма повторяет форму проверки философов в том же режиме.",
+      "anchor": "          // Проверка типа связи, философов и внешней связи\n          const baseCheck = selectedRelations.has(l.type) &&\n                   (selectedPhilosophers.has(l.source.concept) ||\n                    selectedPhilosophers.has(l.target.concept)) &&\n                   l.source.concept !== l.target.concept;\n          \n          if (!baseCheck) return false;\n",
+      "replace": "          // Проверка типа связи, философов и внешней связи\n          const baseCheck = selectedRelations.has(l.type) &&\n                   (selectedPhilosophers.has(l.source.concept) ||\n                    selectedPhilosophers.has(l.target.concept)) &&\n                   l.source.concept !== l.target.concept;\n          \n          if (!baseCheck) return false;\n\n          if (!linkPassesTraditions(l, false)) return false;\n"
+    },
+    {
+      "id": "tr-filter-mode-cross_selected",
+      "note": "Проверка традиций в режиме «cross_selected»: форма повторяет форму проверки философов в том же режиме.",
+      "anchor": "          // Проверка типа связи, философов и межфилософской связи\n          const isDifferent = selectedPhilosophers.size === 1 || \n                     l.source.concept !== l.target.concept;\n          const baseCheck = selectedRelations.has(l.type) &&\n                   selectedPhilosophers.has(l.source.concept) &&\n                   selectedPhilosophers.has(l.target.concept) &&\n                   isDifferent;\n          \n          if (!baseCheck) return false;\n",
+      "replace": "          // Проверка типа связи, философов и межфилософской связи\n          const isDifferent = selectedPhilosophers.size === 1 || \n                     l.source.concept !== l.target.concept;\n          const baseCheck = selectedRelations.has(l.type) &&\n                   selectedPhilosophers.has(l.source.concept) &&\n                   selectedPhilosophers.has(l.target.concept) &&\n                   isDifferent;\n          \n          if (!baseCheck) return false;\n\n          if (!linkPassesTraditions(l, true)) return false;\n"
+    },
+    {
+      "id": "tr-filter-new-modes",
+      "note": "Два режима по традициям. Оба берут только связи МЕЖДУ РАЗНЫМИ философами: связь внутри одной системы не относится ни к какому отношению между традициями, и включать её значило бы утопить в ней весь замер. Определения даны ОТНОСИТЕЛЬНО ВЫБРАННЫХ традиций, поэтому панель на них действует; вместе они делят надвое все связи, у обоих концов которых есть выбранная традиция.",
+      "anchor": "      cross_selected: {\n",
+      "insert": "      within_traditions: {\n        name: 'Только внутри выбранных традиций',\n        linkFilter: (l) => {\n          if (!selectedRelations.has(l.type)) return false;\n          if (!selectedPhilosophers.has(l.source.concept)) return false;\n          if (!selectedPhilosophers.has(l.target.concept)) return false;\n          if (l.source.concept === l.target.concept) return false;\n          const s = philTraditionsSelected(l.source.concept);\n          const t = philTraditionsSelected(l.target.concept);\n          if (!s.some(x => t.includes(x))) return false;\n          const sr = conceptToRubrics[l.source.id || l.source] || [];\n          const tr = conceptToRubrics[l.target.id || l.target] || [];\n          return (sr.length === 0 || sr.some(r => selectedRubrics.has(r)))\n              && (tr.length === 0 || tr.some(r => selectedRubrics.has(r)));\n        }\n      },\n      between_traditions: {\n        name: 'Только между выбранными традициями',\n        linkFilter: (l) => {\n          if (!selectedRelations.has(l.type)) return false;\n          if (!selectedPhilosophers.has(l.source.concept)) return false;\n          if (!selectedPhilosophers.has(l.target.concept)) return false;\n          if (l.source.concept === l.target.concept) return false;\n          const s = philTraditionsSelected(l.source.concept);\n          const t = philTraditionsSelected(l.target.concept);\n          if (!s.length || !t.length) return false;\n          if (s.some(x => t.includes(x))) return false;\n          const sr = conceptToRubrics[l.source.id || l.source] || [];\n          const tr = conceptToRubrics[l.target.id || l.target] || [];\n          return (sr.length === 0 || sr.some(r => selectedRubrics.has(r)))\n              && (tr.length === 0 || tr.some(r => selectedRubrics.has(r)));\n        }\n      },\n"
+    },
+    {
+      "id": "tr-filter-mode-options",
+      "note": "Пункты списка режимов.",
+      "anchor": "            <option value=\"cross_selected\">Межфилософские связи выбранных</option>\n",
+      "replace": "            <option value=\"cross_selected\">Межфилософские связи выбранных</option>\n            <option value=\"within_traditions\">Только внутри выбранных традиций</option>\n            <option value=\"between_traditions\">Только между выбранными традициями</option>\n"
+    },
+    {
+      "id": "tr-filter-panel",
+      "note": "Панель традиций по образцу панели рубрик, но с двумя кнопками в строке: галочка отбирает («и» с философами, набор философов не трогает), кнопки правят набор философов.",
+      "anchor": "      <div class=\"filter-stats\" id=\"filterStats\">\n",
+      "insert": "      <div class=\"legend-section\">\n        <h4 class=\"collapsible-header collapsed\" onclick=\"toggleSection('traditions')\">\n          <span>Традиции:</span>\n        </h4>\n        <div id=\"traditions-content\" class=\"collapsible-content collapsed\">\n          <div class=\"filter-controls\">\n            <button onclick=\"selectAllTraditions()\">Все</button>\n            <button onclick=\"deselectAllTraditions()\">Сбросить</button>\n          </div>\n          <div style=\"font-size:10px;color:#7f8c8d;padding:4px 2px 6px;line-height:1.4;\">\n            Галочка сужает показ и набор философов не трогает.\n            Кнопки правят его: <strong>=</strong> оставить только этих,\n            <strong>+</strong> добавить к выбранным.\n          </div>\n          <div id=\"traditionFilters\"></div>\n        </div>\n      </div>\n\n"
+    },
+    {
+      "id": "tr-filter-render",
+      "note": "Отрисовка строк традиций; в скобках — сколько философов в традиции.",
+      "anchor": "      // Создаем фильтры рубрик\n      const rubricContainer = document.getElementById('rubricFilters');\n",
+      "insert": "      // Создаем фильтры традиций\n      const tradContainer = document.getElementById('traditionFilters');\n      if (tradContainer) {\n        traditions.forEach(tr => {\n          const members = philosophers.filter(p => (p.traditions || []).includes(tr.id));\n          const item = document.createElement('div');\n          item.className = 'legend-item';\n          const hint = (tr.description || '').replace(/\"/g, '&quot;');\n          item.innerHTML = `\n            <input type=\"checkbox\" id=\"trad-${tr.id}\" checked onchange=\"toggleTradition('${tr.id}')\">\n            <label for=\"trad-${tr.id}\" title=\"${hint}\" style=\"flex:1;\">\n              <span>${tr.name}<small style=\"color:#95a5a6;font-size:9px;\"> (${members.length})</small></span>\n            </label>\n            <button class=\"tradition-pick\" title=\"Оставить в отборе только этих философов\"\n                onclick=\"onlyTradition('${tr.id}')\">=</button>\n            <button class=\"tradition-pick\" title=\"Добавить этих к выбранным философам\"\n                onclick=\"addTradition('${tr.id}')\">+</button>\n          `;\n          tradContainer.appendChild(item);\n        });\n      }\n\n"
+    },
+    {
+      "id": "tr-filter-toggles",
+      "note": "Переключатель традиции, «все»/«сбросить» и две кнопки, правящие набор философов. Кнопки не хранят состояния, потому порядок нажатий безразличен, а двойное членство не создаёт противоречий.",
+      "anchor": "    // Переключение типа связи\n    function toggleRelation(relationType) {\n",
+      "insert": "    // Переключение традиции: сужает показ, набор философов НЕ трогает\n    function toggleTradition(traditionId) {\n      if (selectedTraditions.has(traditionId)) selectedTraditions.delete(traditionId);\n      else selectedTraditions.add(traditionId);\n      applyFilters();\n    }\n\n    function selectAllTraditions() {\n      selectedTraditions = new Set(traditions.map(t => t.id));\n      traditions.forEach(t => {\n        const cb = document.getElementById('trad-' + t.id);\n        if (cb) cb.checked = true;\n      });\n      applyFilters();\n    }\n\n    function deselectAllTraditions() {\n      selectedTraditions.clear();\n      traditions.forEach(t => {\n        const cb = document.getElementById('trad-' + t.id);\n        if (cb) cb.checked = false;\n      });\n      applyFilters();\n    }\n\n    // Кнопки традиции правят НАБОР ФИЛОСОФОВ. Состояния они не хранят,\n    // поэтому порядок нажатий безразличен, а философ, состоящий в двух\n    // традициях, просто попадает в набор от каждой из них.\n    function traditionMembers(traditionId) {\n      return philosophers.filter(p => (p.traditions || []).includes(traditionId))\n                 .map(p => p.nameRu);\n    }\n\n    function syncPhilosopherCheckboxes() {\n      Object.keys(philosopherConcepts).forEach(name => {\n        const cb = document.getElementById('phil-' + name);\n        if (cb) cb.checked = selectedPhilosophers.has(name);\n      });\n    }\n\n    function onlyTradition(traditionId) {\n      selectedPhilosophers = new Set(traditionMembers(traditionId));\n      syncPhilosopherCheckboxes();\n      applyFilters();\n    }\n\n    function addTradition(traditionId) {\n      traditionMembers(traditionId).forEach(name => selectedPhilosophers.add(name));\n      syncPhilosopherCheckboxes();\n      applyFilters();\n    }\n\n"
+    },
+    {
+      "id": "tr-filter-dimming",
+      "note": "Приглушение в панели философов тех, кого сузили традиции: галочки не меняются, но видно, что из выбранного сейчас действует.",
+      "anchor": "      updateFilterStats();\n      cleanupInvisibleSelections();\n",
+      "replace": "      updateFilterStats();\n      updatePhilosopherDimming();\n      cleanupInvisibleSelections();\n"
+    },
+    {
+      "id": "tr-filter-dimming-fn",
+      "note": "Сама функция приглушения.",
+      "anchor": "    // Обновление статистики фильтров\n    function updateFilterStats() {\n",
+      "insert": "    // Философ, выбранный галочкой, но отсечённый традициями, не исчезает\n    // из панели и не теряет галочки — он приглушается. Так видно и что\n    // выбрано, и что из выбранного сейчас действует.\n    function updatePhilosopherDimming() {\n      Object.keys(philosopherConcepts).forEach(name => {\n        const cb = document.getElementById('phil-' + name);\n        if (!cb) return;\n        const row = cb.closest('.legend-item');\n        if (!row) return;\n        const dim = cb.checked && !philosopherPassesTraditions(name);\n        row.style.opacity = dim ? '0.35' : '';\n        row.title = dim ? 'Отсечён отбором по традициям' : '';\n      });\n    }\n\n"
+    },
+    {
+      "id": "tr-filter-help",
+      "note": "Пояснение к двум новым режимам в справке под списком.",
+      "anchor": "          <strong>Режимы:</strong><br>\n",
+      "replace": "          <strong>Режимы:</strong><br>\n          • <em>Внутри традиций</em> - связи между разными философами, у которых есть общая выбранная традиция<br>\n          • <em>Между традициями</em> - связи между философами, у которых общей выбранной традиции нет<br>\n"
+    },
+    {
+      "id": "tr-filter-css",
+      "note": "Стиль кнопок в строке традиции — по мерке кнопок панели отбора.",
+      "anchor": "    .rubric-name-tooltip {\n",
+      "insert": "    .tradition-pick {\n      flex: none;\n      margin-left: 4px;\n      padding: 1px 6px;\n      font-size: 10px;\n      line-height: 1.4;\n      cursor: pointer;\n      color: #a29bfe;\n      background: rgba(108, 92, 231, 0.12);\n      border: 1px solid rgba(108, 92, 231, 0.35);\n      border-radius: 4px;\n    }\n    .tradition-pick:hover {\n      background: rgba(108, 92, 231, 0.28);\n      color: #fff;\n    }\n\n"
+    }
+  ]
+}

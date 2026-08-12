@@ -1,0 +1,29 @@
+# Иноязычные термины, допустимые в описаниях связей (критерий К6).
+# Метки концепций на латинице добавляются автоматически — здесь их нет.
+# Пополняется по ходу заходов; каждое пополнение обосновывается в отчёте.
+
+# — заход 0 (рефлексивные связи)
+# ничего сверх меток концепций не понадобилось
+
+# — немецкая традиция
+Dasein Sein Seiendes Ereignis Geviert Geworfenheit Sorge Gestell Lichtung
+Zuhandenheit Vorhandenheit Mitsein Tathandlung Sittlichkeit Geist Erlebnis
+Evidenz Verstehen Lebenswelt Weltanschauung Wesenschau Begriffsschrift
+Anstoss Ressentiment Wille Vorstellung Sosein Aussersein Existenz
+
+# — латинская традиция
+cogito sum res cogitans extensa conatus causa sui natura naturans naturata
+sive Deus Dei esse essentia existentia amor fati intellectualis haecceitas
+quidditas analogia entis principium rationis sufficientis contradictionis
+individuationis ens realissimum summum bonum actus purus potentia substantia
+accidens forma materia prima clinamen participatio possest coincidentia
+oppositorum fides quaerens intellectum tabula rasa percipi ergo
+
+# — греческая традиция (в латинской записи)
+telos arche logos nous psyche eidos hexis energeia entelecheia phronesis
+episteme techne doxa aletheia physis nomos kosmos apeiron eudaimonia
+prohairesis noesis noeseos metexis
+
+# — французская традиция
+durée différance différence élan vital pour-soi en-soi rhizome jouissance
+objet petit autre amour propre soi

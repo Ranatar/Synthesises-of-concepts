@@ -1,0 +1,199 @@
+# Отчёт применения правок
+
+Файл: `dist/philosophy_graph.html`  
+md5 входа: `1eba141e2a74b420fdf2d6eaed0f2799`
+
+Правок: применено 0, пропущено (уже применены) 1615, признано годными 0, отложено 3, отказов 150
+
+## Замечания
+
+- СПРАВКА [edits/batch-00-reflexive.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках ce1e5cc8d8d1fc429a07882994a0ccd3 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-01-antiquity.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 3cfd69b1d71571f00f27deb280579148 — это ожидаемо, если ранее применялись другие заходы
+- отложено panta_rhei —exemplify→ fire: Тип читается наоборот: у exemplify источник — частное, цель — общее (основание в цели), а здесь источник есть всеобщее положение о текучести, цель же — образ огня, которым это положение показывают. Кандидат на переворот направления; правка данных, а не описания.
+- отложено the_one_plato —culminate→ eidos: Кульминация направлена от Единого к эйдосу, то есть высшее начало достигает вершины в отдельной форме. При этом соседняя связь «Мир идей —предполагает→ Единое» делает Единое основанием, а «Единое ~ Благо» ставит его вровень с высшей идеей. Кандидат на переворот направления.
+- отложено eros —exemplify→ cave: Эрос не частный случай пещеры: притча не есть общее, примером которого служит влечение. Отношение, которое здесь имеется в виду, скорее условие (влечение как то, без чего узник не двинется) либо инструмент. Кандидат на смену типа.
+- СПРАВКА [edits/batch-01b-deferred.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 6da5b3275cd2af3ae2b2b46fe5cf88e3 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-02-late-antiquity.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 6da5b3275cd2af3ae2b2b46fe5cf88e3 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-03-scholastics.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 2d1e839b370901454aac0a7bc75993c9 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-04-spinoza-locke.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 565c165c4ea016a9d51300bcac961a23 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-05-leibniz-rousseau.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 2ec6fc80113f4b7c433a94e1b6477e40 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-06-german-idealism.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 5f5d95534b6bf34df85d27a3d77e06a4 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-07-post-hegel.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках dd00d1e6840e20e3274be945789229af — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-08-fin-de-siecle.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 933b98098a51b61d24466d1abba62551 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-09-process-analysis.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках aba5d239c816b44b2fcc975f3bc4d1ca — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-10-language-being.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках b9f2093e70905a716296fe370017b4bd — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-11-french-postwar.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 72368aa696bbba0df9a42717ef08cc6b — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-12-poststructuralism.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 5bd40d692b0f8aeadcc6f79389c81901 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-M01-antiquity-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках e7481c27a88a058950a4df21b5e52e4a — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-M02-late-antiquity-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 3c0142394729c5dd55b702650b769337 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ ideas —develop→ nous: описание изменилось помимо этого файла правок
+- ОТКАЗ emanation —oppose→ atoms_void: описание изменилось помимо этого файла правок
+- ОТКАЗ tripartite_soul —influence→ two_cities: описание изменилось помимо этого файла правок
+- ОТКАЗ emanation —influence→ two_cities: описание изменилось помимо этого файла правок
+- ОТКАЗ faith_reason —develop→ faith_seeking_understanding: описание изменилось помимо этого файла правок
+- ОТКАЗ methexis —develop→ participatio: описание изменилось помимо этого файла правок
+- ОТКАЗ eidos —influence→ essence_existence: описание изменилось помимо этого файла правок
+- ОТКАЗ act_potency —develop→ actual_being: описание изменилось помимо этого файла правок
+- ОТКАЗ act_potency —influence→ essence_existence: описание изменилось помимо этого файла правок
+- ОТКАЗ entelechy —influence→ actual_being: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M03-scholastic-modern-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках cd51c199628e00202f94f3fd7b9dbd60 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ anamnesis —influence→ innate_ideas: описание изменилось помимо этого файла правок
+- ОТКАЗ time_augustine —influence→ res_cogitans: описание изменилось помимо этого файла правок
+- ОТКАЗ clear_distinct —dialogue→ idols_cave: описание изменилось помимо этого файла правок
+- ОТКАЗ univocity_being —influence→ substance_spinoza: описание изменилось помимо этого файла правок
+- ОТКАЗ res_cogitans —synthesize→ substance_spinoza: описание изменилось помимо этого файла правок
+- ОТКАЗ res_extensa —synthesize→ substance_spinoza: описание изменилось помимо этого файла правок
+- ОТКАЗ simple_ideas —dialogue→ clear_distinct: описание изменилось помимо этого файла правок
+- ОТКАЗ demiurge —develop→ best_worlds: описание изменилось помимо этого файла правок
+- ОТКАЗ four_causes —develop→ sufficient_reason: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M04-empiricism-kant-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 5a8eacc0f50db10ead817486c5823088 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ immaterialism —critique→ res_extensa: описание изменилось помимо этого файла правок
+- ОТКАЗ immaterialism —critique→ substance_locke: описание изменилось помимо этого файла правок
+- ОТКАЗ immaterialism —critique→ primary_qualities: описание изменилось помимо этого файла правок
+- ОТКАЗ simple_ideas —develop→ impressions: описание изменилось помимо этого файла правок
+- ОТКАЗ social_contract_locke —develop→ social_contract: описание изменилось помимо этого файла правок
+- ОТКАЗ categories —develop→ transcendental: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M05-kant-fichte-hegel-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 683ab60ee744d915c9cfbf338b08c8c5 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ antinomies —critique→ sufficient_reason: описание изменилось помимо этого файла правок
+- ОТКАЗ monads —influence→ thing_itself: описание изменилось помимо этого файла правок
+- ОТКАЗ apriori —critique→ custom: описание изменилось помимо этого файла правок
+- ОТКАЗ causality_critique —influence→ synthetic_apriori: описание изменилось помимо этого файла правок
+- ОТКАЗ general_will —influence→ autonomy: описание изменилось помимо этого файла правок
+- ОТКАЗ cogito —develop→ absolute_ego: описание изменилось помимо этого файла правок
+- ОТКАЗ transcendental —develop→ absolute_ego: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M06-idealism-schopenhauer-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках d4e64ab16a5ae5a98ac12328c955e353 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ substance_spinoza —influence→ absolute_idea: описание изменилось помимо этого файла правок
+- ОТКАЗ absolute_ego —synthesize→ absolute_idea: описание изменилось помимо этого файла правок
+- ОТКАЗ natura_naturans —develop→ naturphilosophie: описание изменилось помимо этого файла правок
+- ОТКАЗ substance_spinoza —influence→ absolute_identity: описание изменилось помимо этого файла правок
+- ОТКАЗ thing_itself —develop→ absolute_identity: описание изменилось помимо этого файла правок
+- ОТКАЗ absolute_ego —develop→ absolute_identity: описание изменилось помимо этого файла правок
+- ОТКАЗ absolute_identity —synthesize→ absolute_idea: описание изменилось помимо этого файла правок
+- ОТКАЗ will_schop —oppose→ stoic_reason: описание изменилось помимо этого файла правок
+- ОТКАЗ will_schop —critique→ absolute_idea: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M07-kierkegaard-marx-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках b12599dd3394bcbb18cb50da6aff1f58 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ individual —critique→ absolute_idea: описание изменилось помимо этого файла правок
+- ОТКАЗ individual —oppose→ weltgeist: описание изменилось помимо этого файла правок
+- ОТКАЗ subjective_truth —oppose→ weltgeist: описание изменилось помимо этого файла правок
+- ОТКАЗ alienation —critique→ property_theory: описание изменилось помимо этого файла правок
+- ОТКАЗ base_superstructure —critique→ objective_spirit: описание изменилось помимо этого файла правок
+- ОТКАЗ praxis —critique→ absolute_idea: описание изменилось помимо этого файла правок
+- ОТКАЗ master_slave —develop→ class_struggle: описание изменилось помимо этого файла правок
+- ОТКАЗ dialectic —develop→ historical_materialism: описание изменилось помимо этого файла правок
+- ОТКАЗ entfremdung —influence→ alienation: описание изменилось помимо этого файла правок
+- ОТКАЗ historical_reason —critique→ transcendental: описание изменилось помимо этого файла правок
+- ОТКАЗ objective_spirit —develop→ objective_spirit_dilthey: описание изменилось помимо этого файла правок
+- ОТКАЗ geisteswissenschaften —critique→ positive_knowledge: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M08-nietzsche-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 8f0ddb0f37f56bc967eea23072aa4034 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ eternal_return —dialogue→ clinamen: описание изменилось помимо этого файла правок
+- ОТКАЗ dionysian —oppose→ ataraxia: описание изменилось помимо этого файла правок
+- ОТКАЗ amor_fati —influence→ eternal_return: описание изменилось помимо этого файла правок
+- ОТКАЗ conatus —develop→ will_power: описание изменилось помимо этого файла правок
+- ОТКАЗ dionysian —dialogue→ noble_savage: описание изменилось помимо этого файла правок
+- ОТКАЗ master_morality —critique→ categorical: описание изменилось помимо этого файла правок
+- ОТКАЗ god_dead —critique→ absolute_idea: описание изменилось помимо этого файла правок
+- ОТКАЗ potencies —influence→ will_power: описание изменилось помимо этого файла правок
+- ОТКАЗ will_power —oppose→ will_schop: описание изменилось помимо этого файла правок
+- ОТКАЗ ubermensch —oppose→ denial_will: описание изменилось помимо этого файла правок
+- ОТКАЗ perspectivism —typological→ ideology: описание изменилось помимо этого файла правок
+- ОТКАЗ immanent_objectivity —develop→ non_existent_objects: описание изменилось помимо этого файла правок
+- ОТКАЗ intentionality_brentano —develop→ object_theory: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M09-freud-bergson-husserl-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 1568b9607e003ea1d3b90e3a53e61d69 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ will_schop —develop→ unconscious: описание изменилось помимо этого файла правок
+- ОТКАЗ psychical_physical —influence→ id_ego_superego: описание изменилось помимо этого файла правок
+- ОТКАЗ eidos —develop→ eidetic: описание изменилось помимо этого файла правок
+- ОТКАЗ cogito —synthesize→ transcendental_ego: описание изменилось помимо этого файла правок
+- ОТКАЗ intellectual_love —influence→ intuition_bergson: описание изменилось помимо этого файла правок
+- ОТКАЗ conatus —influence→ elan_vital: описание изменилось помимо этого файла правок
+- ОТКАЗ petites_perceptions —influence→ lifeworld: описание изменилось помимо этого файла правок
+- ОТКАЗ transcendental —synthesize→ transcendental_ego: описание изменилось помимо этого файла правок
+- ОТКАЗ duree —typological→ erlebnis: описание изменилось помимо этого файла правок
+- ОТКАЗ intuition_bergson —typological→ verstehen: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M10-husserl-whitehead-russell-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 76a88463e3b1e9b612849924a76f5589 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ descriptive_psychology —develop→ eidetic: описание изменилось помимо этого файла правок
+- ОТКАЗ intentionality_brentano —develop→ intentionality: описание изменилось помимо этого файла правок
+- ОТКАЗ evidence_brentano —develop→ evidence: описание изменилось помимо этого файла правок
+- ОТКАЗ semiosis —typological→ intentionality: описание изменилось помимо этого файла правок
+- ОТКАЗ phenomenology —typological→ firstness: описание изменилось помимо этого файла правок
+- ОТКАЗ sense_reference —influence→ intentionality: описание изменилось помимо этого файла правок
+- ОТКАЗ experience_dewey —typological→ lifeworld: описание изменилось помимо этого файла правок
+- ОТКАЗ creativity_whitehead —dialogue→ the_one: описание изменилось помимо этого файла правок
+- ОТКАЗ perception_monad —develop→ prehension: описание изменилось помимо этого файла правок
+- ОТКАЗ monads —develop→ actual_occasion: описание изменилось помимо этого файла правок
+- ОТКАЗ process_reality —typological→ eternal_return: описание изменилось помимо этого файла правок
+- ОТКАЗ creativity_whitehead —typological→ will_power: описание изменилось помимо этого файла правок
+- ОТКАЗ russell_paradox —critique→ logicism: описание изменилось помимо этого файла правок
+- ОТКАЗ theory_descriptions —critique→ non_existent_objects: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M11-cassirer-wittgenstein-heidegger-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 9ea555827299268d74ed4906352563f2 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ schematism —develop→ symbolic_forms: описание изменилось помимо этого файла правок
+- ОТКАЗ sein —critique→ ideas: описание изменилось помимо этого файла правок
+- ОТКАЗ original_sin —influence→ geworfenheit: описание изменилось помимо этого файла правок
+- ОТКАЗ possible_worlds —influence→ logical_space: описание изменилось помимо этого файла правок
+- ОТКАЗ sein —critique→ absolute_idea: описание изменилось помимо этого файла правок
+- ОТКАЗ potencies —influence→ ereignis: описание изменилось помимо этого файла правок
+- ОТКАЗ aesthetics_schop —influence→ limits_language: описание изменилось помимо этого файла правок
+- ОТКАЗ individual —develop→ dasein: описание изменилось помимо этого файла правок
+- ОТКАЗ anxiety —develop→ geworfenheit: описание изменилось помимо этого файла правок
+- ОТКАЗ hermeneutics_life —develop→ sein: описание изменилось помимо этого файла правок
+- ОТКАЗ historical_reason —develop→ kehre: описание изменилось помимо этого файла правок
+- ОТКАЗ immanent_objectivity —influence→ dasein: описание изменилось помимо этого файла правок
+- ОТКАЗ showing_saying —typological→ pragmatic_maxim: описание изменилось помимо этого файла правок
+- ОТКАЗ aletheia —typological→ thirdness: описание изменилось помимо этого файла правок
+- ОТКАЗ geworfenheit —typological→ firstness: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M12-carnap-bataille-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 73891d14f1eda24c7e6ce31d131d2a30 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ sense_reference —influence→ picture_theory: описание изменилось помимо этого файла правок
+- ОТКАЗ intentionality —develop→ dasein: описание изменилось помимо этого файла правок
+- ОТКАЗ zuhanden —dialogue→ pure_perception: описание изменилось помимо этого файла правок
+- ОТКАЗ creative_evolution —influence→ ereignis: описание изменилось помимо этого файла правок
+- ОТКАЗ pure_perception —influence→ dasein: описание изменилось помимо этого файла правок
+- ОТКАЗ dasein —typological→ experience_dewey: описание изменилось помимо этого файла правок
+- ОТКАЗ sorge —typological→ inquiry: описание изменилось помимо этого файла правок
+- ОТКАЗ logical_atomism —influence→ picture_theory: описание изменилось помимо этого файла правок
+- ОТКАЗ symbolic_forms —typological→ form_of_life: описание изменилось помимо этого файла правок
+- ОТКАЗ language_game —typological→ symbolic_forms: описание изменилось помимо этого файла правок
+- ОТКАЗ language_game —dialogue→ aletheia: описание изменилось помимо этого файла правок
+- ОТКАЗ begriffsschrift —develop→ logical_syntax: описание изменилось помимо этого файла правок
+- ОТКАЗ verification_principle —oppose→ epoché: описание изменилось помимо этого файла правок
+- ОТКАЗ logical_atomism —develop→ logical_syntax: описание изменилось помимо этого файла правок
+- ОТКАЗ logical_syntax —oppose→ sein: описание изменилось помимо этого файла правок
+- ОТКАЗ sovereignty_bataille —critique→ master_slave: описание изменилось помимо этого файла правок
+- ОТКАЗ expenditure —oppose→ denial_will: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M13-gadamer-lacan-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках c82b88e5d98cc77860c7e42b1039b04c — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ general_economy —critique→ surplus_value: описание изменилось помимо этого файла правок
+- ОТКАЗ will_power —develop→ sovereignty_bataille: описание изменилось помимо этого файла правок
+- ОТКАЗ dionysian —develop→ transgression: описание изменилось помимо этого файла правок
+- ОТКАЗ death_drive —develop→ transgression: описание изменилось помимо этого файла правок
+- ОТКАЗ phronesis —develop→ application: описание изменилось помимо этого файла правок
+- ОТКАЗ verstehen —synthesize→ hermeneutic_circle: описание изменилось помимо этого файла правок
+- ОТКАЗ kehre —develop→ effective_history: описание изменилось помимо этого файла правок
+- ОТКАЗ dasein —develop→ horizon_understanding: описание изменилось помимо этого файла правок
+- ОТКАЗ sein —develop→ hermeneutic_circle: описание изменилось помимо этого файла правок
+- ОТКАЗ master_slave —influence→ mirror_stage: описание изменилось помимо этого файла правок
+- ОТКАЗ unconscious —develop→ big_other: описание изменилось помимо этого файла правок
+- ОТКАЗ transference —develop→ desire_other: описание изменилось помимо этого файла правок
+- ОТКАЗ oedipus_complex —develop→ mirror_stage: описание изменилось помимо этого файла правок
+- ОТКАЗ dasein —influence→ mirror_stage: описание изменилось помимо этого файла правок
+- ОТКАЗ autonomy —influence→ freedom_sartre: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M14-sartre-levinas.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 318c06b58fbdd5bfaaac0c6f7aace658 — это ожидаемо, если ранее применялись другие заходы
+- ОТКАЗ an_sich_fur_sich —develop→ in_itself: описание изменилось помимо этого файла правок
+- ОТКАЗ master_slave —develop→ look: описание изменилось помимо этого файла правок
+- ОТКАЗ an_sich_fur_sich —synthesize→ for_itself: описание изменилось помимо этого файла правок
+- ОТКАЗ subjective_truth —develop→ existence: описание изменилось помимо этого файла правок
+- ОТКАЗ anxiety —develop→ nothingness: описание изменилось помимо этого файла правок
+- ОТКАЗ praxis —develop→ engagement: описание изменилось помимо этого файла правок
+- ОТКАЗ evidence —influence→ for_itself: описание изменилось помимо этого файла правок
+- ОТКАЗ intentionality —synthesize→ for_itself: описание изменилось помимо этого файла правок
+- ОТКАЗ duree —influence→ for_itself: описание изменилось помимо этого файла правок
+- ОТКАЗ intuition_bergson —influence→ nothingness: описание изменилось помимо этого файла правок
+- ОТКАЗ geworfenheit —develop→ existence: описание изменилось помимо этого файла правок
+- ОТКАЗ sein_zum_tode —develop→ nothingness: описание изменилось помимо этого файла правок
+- ОТКАЗ dasein —synthesize→ for_itself: описание изменилось помимо этого файла правок
+- СПРАВКА [edits/batch-M15-levinas-merleau-quine.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 7d289b3a595a2f5f632c65c4c01cadda — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-M16-deleuze-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках c8999194e5cf1fe608244f62231f2db2 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-M17-foucault-cross.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках d7a94d080f109dc307374b0522d51d9d — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-M18-derrida-rorty.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках f7d804dabf4e65a3520bb2d6c70ab7d6 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-C01-plotinus-dilthey.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках db5db9e4c4070468f6e34502ce289703 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-C02-nietzsche-wittgenstein.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 313f2912921f20a8aa93308baef44b98 — это ожидаемо, если ранее применялись другие заходы
+- СПРАВКА [edits/batch-C03-heidegger-sartre.json]: md5 входного файла 1eba141e2a74b420fdf2d6eaed0f2799 не совпадает с указанным в правках 369f96fc37990b2fe81600bfcc8938fc — это ожидаемо, если ранее применялись другие заходы
+
+**Файл не записан.**
